@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -24,11 +24,14 @@ export const FloatingNav = ({
   const handleScroll = () => {
     clearTimeout(scrollTimeout);
 
-    let direction = scrollYProgress.get() - scrollYProgress.getPrevious();
+    const currentScroll = scrollYProgress.get() ?? 0; // Add a fallback in case it's undefined
+    const previousScroll = scrollYProgress.getPrevious() ?? 0; // Fallback for previous scroll
+
+    let direction = currentScroll - previousScroll;
 
     if (isAtBottom()) {
       setVisible(false); // Hide navbar at the bottom
-    } else if (scrollYProgress.get() < 0.05) {
+    } else if (currentScroll < 0.05) {
       setVisible(true); // Show when near the top
     } else {
       setVisible(direction < 0); // Show when scrolling up, hide when scrolling down
@@ -61,7 +64,7 @@ export const FloatingNav = ({
             className
           )}
         >
-          {navItems.map((navItem: any, idx: number) => (
+          {navItems.map((navItem, idx: number) => (
             <Link
               key={`link=${idx}`}
               href={navItem.link}
