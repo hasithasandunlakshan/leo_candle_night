@@ -27,7 +27,7 @@ export const FloatingNav = ({
 
     const currentScroll = scrollYProgress.get() ?? 0; // Add a fallback in case it's undefined
     const previousScroll = scrollYProgress.getPrevious() ?? 0; // Fallback for previous scroll
-    const currentpath=usePathname();
+   
     let direction = currentScroll - previousScroll;
 
     if (isAtBottom()) {
