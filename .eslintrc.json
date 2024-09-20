@@ -1,9 +1,4 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"],
-  "rules": {
-    "@typescript-eslint/no-unused-vars": "off", // Ignore unused variables
-    "prefer-const": "off",                      // Ignore prefer-const errors
-    "react-hooks/exhaustive-deps": "off",        // Ignore missing dependencies in useEffect
-    "@typescript-eslint/no-explicit-any": "off"  // Allow usage of 'any' type
-  }
+  "extends": ["next/core-web-vitals", "next/typescript"]
+
 }
