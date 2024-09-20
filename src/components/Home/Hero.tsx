@@ -1,12 +1,11 @@
 import React from 'react'
-import { BackgroundBeamsWithCollision } from '../ui/background-beams-with-collision'
-import Navbar from '../Nav/Navbar'
+
 import { Spotlight } from '../ui/Spotlight'
-import { cn } from "@/lib/utils";
+
 import Image from 'next/image';
-import { HoverBorderGradient } from '../ui/hover-border-gradient';
+
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
-import { TextRevealCard } from '../ui/text-reveal-card';
+
 import { TextGenerateEffect } from '../ui/text-generate-effect';
 export default function Hero() {
   const description = `Expirience the magical world with us!!`;
