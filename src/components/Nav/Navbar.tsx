@@ -9,13 +9,13 @@ export default function Navbar() {
           icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
         {
-          name: "About",
-          link: "/about",
+          name: "Booking",
+          link: "/bookseat",
           icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
         },
         {
           name: "Contact",
-          link: "/contact",
+          link: "/contactus",
           icon: (
             <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
           ),
