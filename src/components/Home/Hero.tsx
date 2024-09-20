@@ -30,7 +30,7 @@ export default function Hero() {
       fill="#d6ab31"
     />
 <div className="flex justify-center  container items-center">
-<div className="flex flex-col w-1/2 items-center md:items-start py-32">
+<div className="flex flex-col w-[90%] md:w-1/2 items-center md:items-start py-32">
     <TypewriterEffectSmooth words={words} cursorClassName='hidden' />
   
     <TextGenerateEffect words={description} className='text-gray-200 text-center sm:text-left text-4xl font-bold mb-2' duration={3} />
@@ -41,7 +41,7 @@ export default function Hero() {
    viewport={{ once: true }}
    transition={{ duration: 3 }}
   
-  className='text-white text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
+  className='text-white w-full  text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   </motion.p>
 
