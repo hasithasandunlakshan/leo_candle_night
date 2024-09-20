@@ -29,7 +29,7 @@ export default function Hero() {
 
     <div className="flex flex-col w-1/2">
     <TypewriterEffectSmooth words={words} cursorClassName='hidden' />
-    {/* <h1 className=' text-gray-200 text-4xl font-bold'>Expirience the magical world with us!!</h1>  */}
+  
     <TextGenerateEffect words={description} className='text-gray-200 text-4xl font-bold' duration={3} />
    
   <p  className='text-white text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
