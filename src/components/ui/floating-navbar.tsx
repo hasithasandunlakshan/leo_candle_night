@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export const FloatingNav = ({
   navItems,
@@ -26,7 +27,7 @@ export const FloatingNav = ({
 
     const currentScroll = scrollYProgress.get() ?? 0; // Add a fallback in case it's undefined
     const previousScroll = scrollYProgress.getPrevious() ?? 0; // Fallback for previous scroll
-
+    const currentpath=usePathname();
     let direction = currentScroll - previousScroll;
 
     if (isAtBottom()) {
@@ -60,7 +61,7 @@ export const FloatingNav = ({
           animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "flex items-center shadow-lg shadow-sky-700 md:w-[50%] fixed top-10 inset-x-0 mx-auto border  border-white/[0.2] rounded-full bg-black hover:border-amber-400   z-[5000] pr-2 pl-8 py-2 justify-center space-x-4",
+            "flex justify-around items-center shadow-lg shadow-sky-700 w-[100%] sm:w-[80%] md:w-[50%] fixed top-10 inset-x-0 mx-auto border  border-white/[0.2] rounded-full bg-black hover:border-amber-400   z-[5000] pr-2  py-2  ",
             className
           )}
         >
@@ -69,11 +70,14 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                "relative  text-neutral-50 items-center flex space-x-1  hover:text-amber-300 hover:scale-105 transition-all duration-300 "
+                "text-neutral-50 text-8xl items-center flex   hover:text-amber-300 hover:scale-105 transition-all duration-300 "
               )}
             >
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="hidden sm:block text-sm">{navItem.name}</span>
+              <span className=" flex   items-center flex-col sm:hidden">{navItem.icon} 
+                
+                 <p className=" text-xs">{navItem.name}</p>
+                </span>
+              <span className="hidden cursor-pointer sm:flex text-sm">{navItem.name}</span>
             </Link>
           ))}
         </motion.div>

@@ -1,30 +1,41 @@
 import React from 'react'
 import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 import { FloatingNav } from '../ui/floating-navbar';
+import { AiFillPhone } from "react-icons/ai";
+import { AiTwotoneBank } from "react-icons/ai";
+import { GiMeal } from "react-icons/gi";
+import { ImCart } from "react-icons/im";
 export default function Navbar() {
     const navItems = [
         {
           name: "Home",
           link: "/",
-          icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
+          icon: <AiTwotoneBank className='text-xl'/>
         },
         {
-          name: "Booking",
+          name: "Book",
           link: "/bookseat",
-          icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
+          icon: <GiMeal className='text-xl'/>
         },
         {
           name: "Contact",
           link: "/contactus",
-          icon: (
-            <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
-          ),
+          icon: 
+           <AiFillPhone className='text-xl'/>
+          ,
+        },
+        {
+          name: "Your Order",
+          link: "/contactus",
+          icon: 
+       <ImCart className='text-xl'/>
+      
         },
       ];
   return (
-    <div>
+    
 
 <FloatingNav navItems={navItems} />
-    </div>
+ 
   )
 }
