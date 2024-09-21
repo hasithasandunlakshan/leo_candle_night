@@ -5,7 +5,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { MdAccessTime } from "react-icons/md";
 export default function Details() {
   return (
-    <div  className=' bg-primary relative items-center justify-center h-full flex-col min-h-screen ' >
+    <div  className=' bg-primary relative items-center justify-center  h-full flex-col min-h-screen ' >
  <div className="absolute top-40 -left-20 w-60 h-60 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-10"></div>
  <div className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-20"></div>
 <div className="flex justify-center items-center  container flex-col align-middle    lg:flex-row ">
