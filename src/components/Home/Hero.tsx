@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation';
 export default function Hero() {
   const router=useRouter();
   const description = `Experience the magical world with us!!`;
+  const description2 = `Candle Night`;
   const words = [
     {
       text: "Candle ",
@@ -24,15 +25,18 @@ export default function Hero() {
     },]
   return (
    
-    <div className="min-h-screen  w-full  flex items-center align-middle justify-center bg-gradient-to-br from-primary via-primary to-secondary  relative overflow-hidden">
+    <div className="min-h-screen  w-full  flex items-center align-middle justify-center bg-primary relative overflow-hidden">
+       <div className="absolute  bottom-10 left-10 w-60 h-60 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></div>
+       <div className="absolute top-20 right-20 w-60 h-60 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></div>
     {/* <Spotlight
       className="-top-40 left-0 md:left-60 md:-top-20"
       fill="#d6ab31"
     /> */}
 <div className="flex justify-center  container items-center">
 <div className="flex flex-col w-[90%] md:w-1/2 items-center md:items-start py-32">
-    <TypewriterEffectSmooth words={words} cursorClassName='hidden' />
-  
+    {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
+    <TextGenerateEffect words={description2} className='text-secondary  font-Allura text-5xl sm:text-6xl  md:text-8xl font-bold' duration={2} />
+   
     <TextGenerateEffect words={description} className='text-gray-200 text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={3} />
    
   <motion.p 
@@ -41,7 +45,7 @@ export default function Hero() {
    viewport={{ once: true }}
    transition={{ duration: 3 }}
   
-  className='text-white w-full  text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
+  className=' text-gray-500 w-full  text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   </motion.p>
 

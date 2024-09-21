@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import Hero from "@/components/Home/Hero";
 import "locomotive-scroll/dist/locomotive-scroll.css";
+import Details from "@/components/Home/Details";
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,11 +26,11 @@ export default function Page() {
   }, []);
 
   return (
-    <div ref={containerRef} data-scroll-container>
+    <div ref={containerRef} data-scroll-container   className=" bg-primary">
+
+       
       <Hero />
-      <Hero />
-      <Hero />
-      <Hero />
+    <Details/>
     </div>
   );
 }
