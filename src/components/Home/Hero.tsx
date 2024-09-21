@@ -11,29 +11,29 @@ import { TextGenerateEffect } from '../ui/text-generate-effect';
 import { useRouter } from 'next/navigation';
 export default function Hero() {
   const router=useRouter();
-  const description = `Expirience the magical world with us!!`;
+  const description = `Experience the magical world with us!!`;
   const words = [
     {
-      text: "Candle",
-      className:'text-secondary  font-Allura text-6xl  md:text-8xl font-bold',
+      text: "Candle ",
+      className:'text-secondary  font-Allura text-5xl sm:text-6xl  md:text-8xl font-bold',
       
     },
     {
-      text: "Night ",
-      className:'text-secondary font-Allura text-6xl  md:text-8xl font-bold'
+      text: " Night ",
+      className:'text-secondary font-Allura text-5xl sm:text-6xl   md:text-8xl font-bold'
     },]
   return (
    
-    <div className="min-h-screen  w-full  flex items-center align-middle justify-center bg-primary  relative overflow-hidden">
-    <Spotlight
+    <div className="min-h-screen  w-full  flex items-center align-middle justify-center bg-gradient-to-br from-primary via-primary to-secondary  relative overflow-hidden">
+    {/* <Spotlight
       className="-top-40 left-0 md:left-60 md:-top-20"
       fill="#d6ab31"
-    />
+    /> */}
 <div className="flex justify-center  container items-center">
 <div className="flex flex-col w-[90%] md:w-1/2 items-center md:items-start py-32">
     <TypewriterEffectSmooth words={words} cursorClassName='hidden' />
   
-    <TextGenerateEffect words={description} className='text-gray-200 text-center sm:text-left text-4xl font-bold mb-2' duration={3} />
+    <TextGenerateEffect words={description} className='text-gray-200 text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={3} />
    
   <motion.p 
    initial={{ opacity: 0, y: 50 }}
@@ -65,8 +65,7 @@ export default function Hero() {
  
     </div>
 </div>
-  
-   
+
   </div>
 
   )

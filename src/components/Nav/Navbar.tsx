@@ -5,6 +5,7 @@ import { AiFillPhone } from "react-icons/ai";
 import { AiTwotoneBank } from "react-icons/ai";
 import { GiMeal } from "react-icons/gi";
 import { ImCart } from "react-icons/im";
+import { FloatingDock } from '../ui/floating-dock';
 export default function Navbar() {
     const navItems = [
         {
@@ -34,8 +35,9 @@ export default function Navbar() {
       ];
   return (
     
-
+<>
 <FloatingNav navItems={navItems} />
  
+</>
   )
 }

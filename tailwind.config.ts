@@ -10,13 +10,19 @@ const config = {
   ],
   prefix: "",
   theme: {
- 
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       fontFamily: {
         Allura: ['Allura', 'serif'],
        },
       colors: {
-        primary: "#07041b",
+        primary: "#09061F",
     
         secondary: "#d6ab31"
       },

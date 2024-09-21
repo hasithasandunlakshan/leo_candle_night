@@ -52,7 +52,7 @@ export const FloatingNav = ({
       clearTimeout(scrollTimeout);
     };
   }, []);
-
+  const currentpath=usePathname();
   return (
     <AnimatePresence mode="wait">
       {visible && (
@@ -61,7 +61,7 @@ export const FloatingNav = ({
           animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "flex justify-around items-center shadow-lg shadow-sky-700 w-[100%] sm:w-[80%] md:w-[50%] fixed top-10 inset-x-0 mx-auto border  border-white/[0.2] rounded-full bg-black hover:border-amber-400   z-[5000] pr-2  py-2  ",
+            "flex overflow-hidden justify-around items-center shadow-lg shadow-sky-700 w-[100%] sm:w-[80%] md:w-[50%] fixed top-10 inset-x-0 mx-auto border  border-white/[0.2] rounded-full bg-black hover:border-amber-400   z-[5000] pr-2  py-2  ",
             className
           )}
         >
@@ -70,16 +70,18 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                "text-neutral-50 text-8xl items-center flex   hover:text-amber-300 hover:scale-105 transition-all duration-300 "
+                `${currentpath==navItem.link?" group border-transparent  sm:border-secondary shadow-2xl shadow-transparent":"border-transparent"} rounded-3xl border-2    px-2 text-neutral-50 text-8xl items-center flex   hover:text-amber-300 hover:scale-105 transition-all duration-300 `
               )}
             >
               <span className=" flex   items-center flex-col sm:hidden">{navItem.icon} 
                 
-                 <p className=" text-xs">{navItem.name}</p>
+                 <p className=" group-hover:flex text-justify text-xs">{navItem.name}</p>
                 </span>
-              <span className="hidden cursor-pointer sm:flex text-sm">{navItem.name}</span>
+              <span className="hidden cursor-pointer sm:flex text-lg">{navItem.name}</span>
             </Link>
+
           ))}
+          
         </motion.div>
       )}
     </AnimatePresence>
