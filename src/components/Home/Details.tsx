@@ -10,7 +10,7 @@ export default function Details() {
   return (
     <div  className=' bg-primary relative items-center flex justify-center  h-full flex-col min-h-screen ' >
 
-<motion.div className="flex w-[70%]    gap-3 items-center justify-center"
+<motion.div className="flex w-[70%]  mb-10   gap-3 items-center justify-center"
 
 initial={{ opacity: 0, y: 100 }}
 whileInView={{ opacity: 1, y: 0 }}

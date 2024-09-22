@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import Hero from "@/components/Home/Hero";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Details from "@/components/Home/Details";
+import { UserDetails } from "@/components/Booking/UserDetails";
 
 export default function Page() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,7 @@ export default function Page() {
        
       <Hero />
     <Details/>
+
     </div>
   );
 }

@@ -26,23 +26,7 @@ export const TypewriterEffect = ({
 
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
-  useEffect(() => {
-    if (isInView) {
-      animate(
-        "span",
-        {
-          display: "inline-block",
-          opacity: 1,
-          width: "fit-content",
-        },
-        {
-          duration: 0.3,
-          delay: stagger(0.1),
-          ease: "easeInOut",
-        }
-      );
-    }
-  }, [isInView]);
+  
 
   const renderWords = () => {
     return (
@@ -174,11 +158,11 @@ export const TypewriterEffectSmooth = ({
         transition={{
           duration: 0.8,
 
-          repeat: Infinity,
-          repeatType: "reverse",
+         repeat: Infinity,
+          repeatType: "mirror",
         }}
         className={cn(
-          "block rounded-sm w-[4px]  h-4 sm:h-6 xl:h-12 bg-secondary",
+          "block rounded-sm w-[4px]   font-Allura h-6 sm:h-6 xl:h-12 bg-secondary",
           cursorClassName
         )}
       ></motion.span>
