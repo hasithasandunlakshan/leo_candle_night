@@ -28,7 +28,7 @@ export default function Page() {
           resetNativeScroll: true,
           smartphone: {
             smooth: true,
-            lerp: 0.1
+            lerp: 0.6
           },
           tablet: {
             smooth: true,
