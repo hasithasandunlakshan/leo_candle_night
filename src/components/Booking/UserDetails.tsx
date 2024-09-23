@@ -55,17 +55,9 @@ export function UserDetails() {
     },
   });
 
-  // Pre-fill the form on mount with context values if needed
   useEffect(() => {
-    if (userOrder) {
-      form.reset({
-        username: userOrder.name || "",
-        index: userOrder.index || "",
-        email: userOrder.email || "",
-        seats: userOrder.seats || "1",
-      });
-    }
-  }, []);
+    form;
+  }, [])
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
