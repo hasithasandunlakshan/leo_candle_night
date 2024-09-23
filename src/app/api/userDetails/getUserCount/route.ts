@@ -7,16 +7,15 @@ connect();
 
 export async function GET(request: NextRequest) {
   try {
-    // Fetch all teachers from the database
-    const user = await User.find({});
+    const count = await User.countDocuments({});
+    console.log('Total number of users:', count);
 
-    // Return the teachers as a JSON response
     return NextResponse.json({
       success: true,
-      user,
+      count,
     });
   } catch (error) {
-    // Handle errors and return appropriate response
+
     return NextResponse.json({ error}, { status: 500 });
   }
 }
