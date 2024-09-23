@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster"
@@ -5,6 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/Nav/Navbar";
 import { CartContextProvider } from "@/context/userOrder";
 import { SessionProvider } from "next-auth/react";
+import { useEffect } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,7 +27,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  
   return (
     <html lang="en">
    
