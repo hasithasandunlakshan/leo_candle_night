@@ -13,7 +13,7 @@ export const animatePageIn = () => {
     })
       .to(transitionElement, {
         yPercent: 100,
-        duration: 2,
+        duration: 1.5,
       })
       .to(
         transitionElement,

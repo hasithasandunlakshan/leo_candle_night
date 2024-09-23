@@ -35,8 +35,8 @@ export default function Details() {
         </h1>
       </motion.div>
 
-      <div className="absolute w-52 h-40 bottom-8 left-0 sm:w-96 sm:h-96 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-20"></div>
-      <div className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></div>
+      {/* <div className="absolute w-52 h-40 bottom-8 left-0 sm:w-96 sm:h-96 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-20"></div>
+      <div className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></div> */}
 
       <div className="flex justify-center items-center container flex-col lg:flex-row">
         <PinContainer title="Date">
@@ -66,7 +66,7 @@ export default function Details() {
               <MdAccessTime className='text-4xl' />
               Time
             </h3>
-            <h1 className=' text-secondary animate-pulse text-2xl font-bold'>6.00 P.M. Onwards</h1>
+            <h1 className=' text-secondary animate-pulse text-2xl font-bold'>6.00 PM Onwards</h1>
             {/* <TypewriterEffectSmooth words={wordsTime} cursorClassName='hidden' /> */}
           </div>
         </PinContainer>
