@@ -28,6 +28,7 @@ export default function Page() {
           resetNativeScroll: true,
           smartphone: {
             smooth: true,
+            lerp: 0.1
           },
           tablet: {
             smooth: true,
@@ -44,7 +45,7 @@ export default function Page() {
   }, [isLoading]); // Dependency array to run when loading state changes
 
   return (
-    <main data-scroll-container className="bg-primary">
+    <main data-scroll-container  className="bg-primary">
       {isLoading ? (
         <PreLoader /> // Show preloader while loading
       ) : (
