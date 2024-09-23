@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import "./globals.css";
 import Navbar from "@/components/Nav/Navbar";
 import { CartContextProvider } from "@/context/userOrder";
+import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,17 +28,21 @@ export default function RootLayout({
   
   return (
     <html lang="en">
-      <CartContextProvider>
+   
+
       <body
         className={ ` ${poppins.className} antialiased`}
-      >
+        >
+        
+         <CartContextProvider>
 
         <Navbar/>
         {children}
         <Toaster />
-
-      </body>
         </CartContextProvider>
+      </body>
+        
+       
     </html>
   );
 }

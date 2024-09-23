@@ -1,13 +1,19 @@
 "use client";
+
 import { createContext, useState, ReactNode } from "react";
 
-// Define the shape of the context
+// Define the shape of the context, including setter functions
 interface CartContextType {
   index: string;
+  setIndex: (index: string) => void;
   name: string;
+  setName: (name: string) => void;
   email: string;
+  setEmail: (email: string) => void;
   seats: string;
+  setSeats: (seats: string) => void;
   products: any[];
+  setProducts: (products: any[]) => void;
 }
 
 // Create the context with an initial null value
@@ -22,7 +28,20 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [products, setProducts] = useState<any[]>([]);
 
   return (
-    <CartContext.Provider value={{ index, name, email, seats, products }}>
+    <CartContext.Provider
+      value={{
+        index,
+        setIndex,
+        name,
+        setName,
+        email,
+        setEmail,
+        seats,
+        setSeats,
+        products,
+        setProducts,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

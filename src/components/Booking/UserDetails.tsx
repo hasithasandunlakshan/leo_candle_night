@@ -49,10 +49,10 @@ export function UserDetails() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: userOrder?.name || "",    
-      index: userOrder?.index || "",      
-      email: userOrder?.email || "",      
-      seats: userOrder?.seats || "1",     
+      username: userOrder?.name || "",
+      index: userOrder?.index || "",
+      email: userOrder?.email || "",
+      seats: userOrder?.seats || "1",
     },
   });
 
@@ -66,10 +66,10 @@ export function UserDetails() {
         seats: userOrder.seats || "1",
       });
       setIsLoading(false); // Only proceed when data is available
+    } else {
+      console.log("UserOrder is null");
     }
-    console.log("details nne");
   }, [userOrder, form]);
-  
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
@@ -81,21 +81,21 @@ export function UserDetails() {
       ),
     });
 
-    // Update context with form data
+    // Update context using setter functions
     if (userOrder) {
-      userOrder.index = data.index;
-      userOrder.email = data.email;
-      userOrder.name = data.username;
-      userOrder.seats = data.seats.toString();
+      userOrder.setIndex(data.index);
+      userOrder.setEmail(data.email);
+      userOrder.setName(data.username);
+      userOrder.setSeats(data.seats.toString());
     }
-
-    
 
     router.push("/bookseat/selectmeal");
   }
+
   if (isLoading) {
     return <div>Loading...</div>; // Show a loading state until the form is ready
   }
+
   return (
     <main className="flex min-h-screen bg-primary items-center justify-center">
       <Form {...form}>
@@ -173,16 +173,14 @@ export function UserDetails() {
             )}
           />
 
-          <div className="flex  items-end justify-center  sm:justify-end">
-          <Button
-            type="submit"
-            className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold text-black bg-white shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-          >
-            Next
-          </Button>
+          <div className="flex items-end justify-center sm:justify-end">
+            <Button
+              type="submit"
+              className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold text-black bg-white shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+            >
+              Next
+            </Button>
           </div>
-
-       
         </form>
       </Form>
     </main>
