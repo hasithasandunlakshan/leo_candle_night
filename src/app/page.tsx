@@ -27,7 +27,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div ref={containerRef} data-scroll-container   className="   bg-primary">
+    <div ref={containerRef} data-scroll-container   className="  bg-primary">
 
        
       <Hero />

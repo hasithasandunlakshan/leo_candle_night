@@ -48,10 +48,10 @@ export function UserDetails() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: userOrder?.name || "",    // Fill with context data
-      index: userOrder?.index || "",      // Fill with context data
-      email: userOrder?.email || "",      // Fill with context data
-      seats: userOrder?.seats || "1",     // Default to 1 if seats are not filled
+      username: userOrder?.name || "",    
+      index: userOrder?.index || "",      
+      email: userOrder?.email || "",      
+      seats: userOrder?.seats || "1",     
     },
   });
 
@@ -65,7 +65,7 @@ export function UserDetails() {
         seats: userOrder.seats || "1",
       });
     }
-  }, [userOrder, form]);
+  }, []);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
