@@ -1,37 +1,51 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Hero from "@/components/Home/Hero";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Details from "@/components/Home/Details";
-import { UserDetails } from "@/components/Booking/UserDetails";
+import PreLoader from "@/components/Loading/Loader"; // Adjust import path if necessary
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    import("locomotive-scroll").then((locomotiveModule) => {
-        let scroll = new locomotiveModule.default({
-            el: document.querySelector("[data-scroll-container]"),
-            smooth: true,
-            smoothMobile: true,
-            resetNativeScroll: true,
-         });
-      
-         scroll.destroy();  //<-- DOESN'T WORK OR IDK
+    const timer = setTimeout(() => {
+      setIsLoading(false); // Stop loading after 3 seconds
+    }, 1000);
 
-         setTimeout(function () {
-             scroll.init();
-         }, 400);
-     });
- });
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, []);
 
-  
+  useEffect(() => {
+    let scroll;
+
+    if (!isLoading) {
+      import("locomotive-scroll").then((locomotiveModule) => {
+        scroll = new locomotiveModule.default({
+          el: document.querySelector("[data-scroll-container]"),
+          smooth: true,
+          smoothMobile: true,
+          resetNativeScroll: true,
+        });
+      });
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      if (scroll) scroll.destroy(); // Make sure the scroll is destroyed on unmount
+    };
+  }, [isLoading]); // Dependency array to run when loading state changes
 
   return (
-    <div  data-scroll-container   className="  bg-primary">
-
-       
-      <Hero />
-    <Details/>
-
-    </div>
+    <main data-scroll-container className="bg-primary">
+      {isLoading ? (
+        <PreLoader /> // Show preloader while loading
+      ) : (
+        <>
+          <Hero />
+          <Details />
+        </>
+      )}
+    </main>
   );
 }

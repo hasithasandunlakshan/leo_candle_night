@@ -6,7 +6,36 @@ import { MdAccessTime } from "react-icons/md";
 import { motion
 
  } from 'framer-motion';
+import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
 export default function Details() {
+  const words = [
+    {
+      text: "Old",
+      className:'text-secondary   animate-pulse text-2xl font-bold',
+      
+    },
+    {
+      text: "Gymnasium",
+      className:'text-secondary animate-pulse text-2xl font-bold'
+    },]
+
+
+    const words1 = [
+      {
+        text: "October 30",
+        className:'text-secondary animate-pulse text-2xl font-bold',
+        
+      }
+  ]
+
+
+  const words3 = [
+    {
+      text: "6.00 P.M. Onwards",
+      className:'text-secondary text-2xl animate-pulse font-bold',
+      
+    },
+ ]
   return (
     <div  className='     bg-transparent relative items-center flex justify-center  h-full flex-col min-h-screen ' >
 
@@ -38,18 +67,14 @@ transition={{ duration: 1}}
         title=" Octomber 30"
       
       >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[15rem] sm:w-[15rem] h-[15rem]  ">
-          <h3 className="max-w-xs flex  !pb-2 !m-0 font-bold  gap-2  text-base text-slate-100">
+        <div className="flex basis-full  flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[15rem] sm:w-[15rem] h-[15rem]  ">
+          <h3 className="max-w-xs flex   !pb-2 !m-0 font-bold gap-2   text-3xl  text-slate-100">
 
           <CgCalendarDates   className=' text-4xl'/>  
          Date 
           </h3>
-          <div className="text-base !m-0 !p-0 font-normal">
-            <span className="text-slate-500 ">
-            Octomber 30
-            </span>
-          </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-primary via-primary to-secondary " />
+
+          <TypewriterEffectSmooth words={words1} cursorClassName=' hidden' />
         </div>
       </PinContainer>
       
@@ -57,40 +82,30 @@ transition={{ duration: 1}}
         title="Old Gymnasium"
       
       >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[15rem] sm:w-[15rem] h-[15rem]  ">
-          <h3 className="max-w-xs flex  !pb-2 !m-0 font-bold  gap-2  text-base text-slate-100">
+             <div className="flex basis-full  flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[15rem] sm:w-[15rem] h-[15rem]  ">
+          <h3 className="max-w-xs flex  !pb-2 !m-0 font-bold  gap-2 text-3xl  text-slate-100">
 
-          <FaLocationDot  className=' text-4xl'/>  
-         Venue
+          <FaLocationDot   className=' text-4xl'/>  
+         Venue 
           </h3>
-          <div className="text-base !m-0 !p-0 font-normal">
-            <span className="text-slate-500 ">
-            Old Gymnasium
-            </span>
-          </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-primary via-primary to-secondary " />
+
+          <TypewriterEffectSmooth words={words} cursorClassName=' hidden' />
         </div>
       </PinContainer>
-      
       <PinContainer 
         title="6.00 P.M. Onwards"
       
       >
-        <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[15rem] sm:w-[15rem] h-[15rem]  ">
-          <h3 className="max-w-xs flex  !pb-2 !m-0 font-bold  gap-2  text-base text-slate-100">
+        <div className="flex basis-full  flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[15rem] sm:w-[15rem] h-[15rem]  ">
+          <h3 className="max-w-xs flex  !pb-2 !m-0 font-bold  gap-2 font-bold   text-3xl text-slate-100">
 
           <MdAccessTime   className=' text-4xl'/>  
          Time
           </h3>
-          <div className="text-base !m-0 !p-0 font-normal">
-            <span className="text-slate-500 ">
-            6.00 P.M. Onwards
-            </span>
-          </div>
-          <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-primary via-primary to-secondary " />
+
+          <TypewriterEffectSmooth words={words3} cursorClassName=' hidden' />
         </div>
       </PinContainer>
-
 
 
 </div>
