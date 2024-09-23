@@ -5,13 +5,13 @@ import { AiFillPhone } from "react-icons/ai";
 import { AiTwotoneBank } from "react-icons/ai";
 import { GiMeal } from "react-icons/gi";
 import { ImCart } from "react-icons/im";
-import { FloatingDock } from '../ui/floating-dock';
+import { FaHome } from "react-icons/fa";
 export default function Navbar() {
     const navItems = [
         {
           name: "Home",
           link: "/",
-          icon: <AiTwotoneBank className='text-xl'/>
+          icon: <FaHome className='text-xl'/>
         },
         {
           name: "Book",

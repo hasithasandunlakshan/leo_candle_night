@@ -11,7 +11,7 @@ export default function Page() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false); // Stop loading after 3 seconds
-    }, 1000);
+    }, 3000);
 
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
@@ -26,15 +26,7 @@ export default function Page() {
           smooth: true,
           smoothMobile: true,
           resetNativeScroll: true,
-          smartphone: {
-            smooth: true,
-            lerp: 0.6
-          },
-          tablet: {
-            smooth: true,
-          },
         });
-        console.log("Locomotive Scroll initialized:", scroll);
       });
     }
 
@@ -45,7 +37,7 @@ export default function Page() {
   }, [isLoading]); // Dependency array to run when loading state changes
 
   return (
-    <main data-scroll-container  className="bg-primary">
+    <main data-scroll-container className="bg-primary">
       {isLoading ? (
         <PreLoader /> // Show preloader while loading
       ) : (
