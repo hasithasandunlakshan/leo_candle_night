@@ -74,10 +74,10 @@ export default function Hero() {
     </div>
     <div className="sm:flex hidden   md:ml-20   items-center  justify-center align-middle">
       <motion.div className="sm:flex hidden"
-      //  initial={{ opacity: 0,  }}
-      //  whileInView={{ opacity: 1, }}
-      //  viewport={{ once: true }}
-      //  transition={{ duration: 8 }}
+       initial={{ opacity: 0,  }}
+       animate={{ opacity: 1, }}
+       viewport={{ once: true }}
+       transition={{ duration: 8 }}
       >
       <Image src={"/images/candle.png"} width={500} height={40} alt='candle' className=' rounded-2xl'/>
       </motion.div>

@@ -7,7 +7,6 @@ import "./globals.css";
 import Navbar from "@/components/Nav/Navbar";
 import { CartContextProvider } from "@/context/userOrder";
 
-
 const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
@@ -34,8 +33,11 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased`}>
     
           <CartContextProvider>
+
             <Navbar />
+           
             {children}
+          
             <Toaster />
           </CartContextProvider>
       

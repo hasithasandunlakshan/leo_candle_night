@@ -18,8 +18,7 @@ export const animatePageIn = () => {
       .to(
         transitionElement,
         {
-          borderTopLeftRadius: "5vh",
-          borderTopRightRadius: "5vh",
+     
           // borderBottomLeftRadius: "50vh",
           // duration: 40,
         },

@@ -26,7 +26,14 @@ export default function Page() {
           smooth: true,
           smoothMobile: true,
           resetNativeScroll: true,
+          smartphone: {
+            smooth: true,
+          },
+          tablet: {
+            smooth: true,
+          },
         });
+        console.log("Locomotive Scroll initialized:", scroll);
       });
     }
 
