@@ -8,7 +8,7 @@ import { motion
  } from 'framer-motion';
 export default function Details() {
   return (
-    <div  className=' bg-primary relative items-center flex justify-center  h-full flex-col min-h-screen ' >
+    <div  className='     bg-transparent relative items-center flex justify-center  h-full flex-col min-h-screen ' >
 
 <motion.div className="flex w-[70%]  mb-10   gap-3 items-center justify-center"
 

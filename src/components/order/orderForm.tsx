@@ -62,18 +62,21 @@ export function  OrderForm() {
             <FormItem >
               <FormLabel className=" text-secondary">Username</FormLabel>
               <FormControl className="border-secondary">
-                <Input placeholder="shadcn" className="  text-white bg-black  border" {...field} />
+                <Input placeholder="220356R" className="  text-white bg-black  border" {...field} />
               </FormControl>
             
               <FormMessage />
             </FormItem>
           )}
         />
-       <button type="submit"
+        <div className="flex items-end justify-center  sm:justify-end">
+        <button type="submit"
   className="relative px-8 py-1 max-w-48 rounded-full  isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center  text-sm font-semibold text-black bg-white   shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
 >
   Get Ticket Details
 </button>
+        </div>
+      
 
       </form>
     </Form>

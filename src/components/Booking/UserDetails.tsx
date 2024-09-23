@@ -6,6 +6,7 @@ import { z } from "zod";
 import { CartContext } from "@/context/userOrder";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import {
   Form,
   FormControl,
@@ -88,9 +89,9 @@ export function UserDetails() {
   }
 
   return (
-    <div className="flex py-20  min-h-screen bg-primary items-center justify-center">
-      <Form  {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6 mt-10">
+    <main className="flex min-h-screen bg-primary items-center justify-center">
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
           <FormField
             control={form.control}
             name="username"
@@ -164,14 +165,18 @@ export function UserDetails() {
             )}
           />
 
+          <div className="flex  items-end justify-center  sm:justify-end">
           <Button
             type="submit"
-            className="relative px-8 py-1  z-10 rounded-full isolation-auto  border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold text-black bg-white shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+            className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold text-black bg-white shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
           >
             Next
           </Button>
+          </div>
+
+       
         </form>
       </Form>
-    </div>
+    </main>
   );
 }

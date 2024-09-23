@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         Allura: ['Allura', 'serif'],
+        Qwigley:['Qwigley','serif']
        },
       colors: {
         primary: "#09061F",

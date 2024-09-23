@@ -25,7 +25,7 @@ export default function Hero() {
     },]
   return (
    
-    <div className="min-h-screen  w-full  flex items-center align-middle justify-center bg-primary relative overflow-hidden">
+    <div className="min-h-screen  w-full  flex items-center align-middle justify-center bg-transparent relative overflow-hidden">
        <motion.div
         initial={{ y: -50 }}     // Starting point
         animate={{  y: 0 }}      // Animate to this position
@@ -45,9 +45,9 @@ export default function Hero() {
 <div className="flex justify-center  container items-center">
 <div className="flex flex-col w-[90%] md:w-1/2  lg:w-[40%] items-center md:items-start py-32">
     {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
-    <TextGenerateEffect words={description2} className='text-secondary  font-Allura text-6xl sm:text-7xl  md:text-8xl font-bold' duration={2} />
+    <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl font-bold' duration={4} />
    
-    <TextGenerateEffect words={description} className='text-gray-200 text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={1} />
+    <TextGenerateEffect words={description} className='text-gray-200   text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={1} />
    
   <motion.p 
    initial={{ opacity: 0, y: 50 }}
@@ -74,10 +74,10 @@ export default function Hero() {
     </div>
     <div className="sm:flex hidden   md:ml-20   items-center  justify-center align-middle">
       <motion.div className="sm:flex hidden"
-       initial={{ opacity: 0,  }}
-       whileInView={{ opacity: 1, }}
-       viewport={{ once: true }}
-       transition={{ duration: 8 }}
+      //  initial={{ opacity: 0,  }}
+      //  whileInView={{ opacity: 1, }}
+      //  viewport={{ once: true }}
+      //  transition={{ duration: 8 }}
       >
       <Image src={"/images/candle.png"} width={500} height={40} alt='candle' className=' rounded-2xl'/>
       </motion.div>

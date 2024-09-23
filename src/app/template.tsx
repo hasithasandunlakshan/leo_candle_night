@@ -11,6 +11,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
   }, []);
   const description2 = `Celestia'24`;
   return (
+    
     <div>
       <div
         id="transition-element"

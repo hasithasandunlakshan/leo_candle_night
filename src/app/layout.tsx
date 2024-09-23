@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster"
 import "./globals.css";
 import Navbar from "@/components/Nav/Navbar";
+import { CartContextProvider } from "@/context/userOrder";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -29,10 +30,12 @@ export default function RootLayout({
       <body
         className={ ` ${poppins.className} antialiased`}
       >
-
+<CartContextProvider>
         <Navbar/>
         {children}
         <Toaster />
+
+        </CartContextProvider>
       </body>
     </html>
   );
