@@ -16,7 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const FormSchema = z.object({
@@ -44,6 +44,7 @@ const FormSchema = z.object({
 export function UserDetails() {
   const router = useRouter();
   const userOrder = useContext(CartContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -56,10 +57,19 @@ export function UserDetails() {
   });
 
   useEffect(() => {
-    form;
-
-    console.log(userOrder?.name ,userOrder?.index)
-  }, [])
+    if (userOrder) {
+      console.log("User order data:", userOrder);
+      form.reset({
+        username: userOrder.name || "",
+        index: userOrder.index || "",
+        email: userOrder.email || "",
+        seats: userOrder.seats || "1",
+      });
+      setIsLoading(false); // Only proceed when data is available
+    }
+    console.log("details nne");
+  }, [userOrder, form]);
+  
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
     toast({
@@ -79,9 +89,13 @@ export function UserDetails() {
       userOrder.seats = data.seats.toString();
     }
 
+    
+
     router.push("/bookseat/selectmeal");
   }
-
+  if (isLoading) {
+    return <div>Loading...</div>; // Show a loading state until the form is ready
+  }
   return (
     <main className="flex min-h-screen bg-primary items-center justify-center">
       <Form {...form}>
