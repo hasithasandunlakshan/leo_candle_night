@@ -57,6 +57,8 @@ export function UserDetails() {
 
   useEffect(() => {
     form;
+
+    console.log(userOrder?.name ,userOrder?.index)
   }, [])
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
