@@ -2,31 +2,26 @@
 import React, { useEffect, useRef } from "react";
 import Hero from "@/components/Home/Hero";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import LocomotiveScroll from 'locomotive-scroll';
 import Details from "@/components/Home/Details";
 import { UserDetails } from "@/components/Booking/UserDetails";
-interface ExtendedInstanceOptions extends LocomotiveScroll.InstanceOptions {
-  smoothMobile?: boolean;
-}
 
 export default function Page() {
   useEffect(() => {
-    let scroll: any;
-
     import("locomotive-scroll").then((locomotiveModule) => {
-        scroll = new locomotiveModule.default({
-            el: document.querySelector("[data-scroll-container]") as HTMLElement,
+        let scroll = new locomotiveModule.default({
+            el: document.querySelector("[data-scroll-container]"),
             smooth: true,
-            smoothMobile: false,
+            smoothMobile: true,
             resetNativeScroll: true,
-        });
-    });
+         });
+      
+         scroll.destroy();  //<-- DOESN'T WORK OR IDK
 
-    // `useEffect`'s cleanup phase
-    return () => {
-        if (scroll) scroll.destroy();
-    };
-}, []); // Make sure to include the dependency array
+         setTimeout(function () {
+             scroll.init();
+         }, 400);
+     });
+ });
 
   
 
