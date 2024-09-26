@@ -23,7 +23,7 @@ const ParticleComponents = () => {
           type: "circle", // Shape of particles
         },
         color: {
-            value: ["#ff0000", "#00ff00", "#0000ff"], // Red, Green, and Blue particles
+            value: ["#d6ab31","#FFD700"], // Red, Green, and Blue particles
           },
       },
       interactivity: {
