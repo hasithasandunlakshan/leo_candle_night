@@ -7,14 +7,14 @@ const ParticleComponents = () => {
     return {
       particles: {
         number: {
-          value: 50, // Number of particles
+          value: 20, // Number of particles
         },
         size: {
           value: 3, // Size of particles
         },
         move: {
           enable: true,
-          speed: 2, // Speed of movement
+          speed: 1, // Speed of movement
         },
         opacity: {
           value: 0.5, // Opacity of particles
