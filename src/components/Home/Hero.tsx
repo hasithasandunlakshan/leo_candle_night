@@ -2,7 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
 import { Spotlight } from '../ui/Spotlight'
-
+import Particles from '../Particle'
 import Image from 'next/image';
 
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
@@ -76,6 +76,7 @@ export default function Hero() {
     </div>
 </div>
 
+<Particles/>
   </div>
 
   )

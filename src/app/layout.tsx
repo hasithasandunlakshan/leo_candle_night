@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import Navbar from "@/components/Nav/Navbar";
 import { CartContextProvider } from "@/context/userOrder";
-
+import Particles from '../components/Particle'
 const poppins = Poppins({
   subsets: ["latin"],
   display: "swap",
@@ -45,6 +45,7 @@ export default function RootLayout({
           </CartContextProvider>
       
       </body>
+      
      
     </html>
   );
