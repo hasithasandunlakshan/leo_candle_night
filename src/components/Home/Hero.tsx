@@ -36,7 +36,8 @@ export default function Hero() {
 <div className="flex flex-col w-[90%] md:w-1/2  lg:w-[40%] items-center md:items-start py-32">
     {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
     <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl font-bold' duration={4} />
-   
+    
+
     <TextGenerateEffect words={description} className='text-gray-200   text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={1} />
    
   <motion.p 
@@ -49,7 +50,7 @@ export default function Hero() {
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   </motion.p>
 
-
+ 
 <motion.button onClick={()=>router.push("/bookseat")}
  initial={{ opacity: 0,y:50 }}
  whileInView={{ opacity: 1, y:0 }}

@@ -72,11 +72,11 @@ export function UserDetails() {
   }, [userOrder, form]);
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
+    toast ({
+    className:"bg-primary ",
       description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+        <pre className=" bg-secondary  rounded-md  p-4">
+      <p  className=" text-white">Your Index Saved {data.index}</p>
         </pre>
       ),
     });

@@ -28,9 +28,12 @@ export default function RootLayout({
  
 
 
+
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+    
+      
+      <body  className={`${poppins.className} antialiased`}>
     
           <CartContextProvider>
 
@@ -42,6 +45,7 @@ export default function RootLayout({
           </CartContextProvider>
       
       </body>
+     
     </html>
   );
 }
