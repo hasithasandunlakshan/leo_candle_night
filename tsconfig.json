@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.jsx", "src/components/SmoothScroll.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.jsx", "src/components/SmoothScroll.jsx", "src/components/Booking/UserDetails.tsx"],
   "exclude": ["node_modules"]
 }

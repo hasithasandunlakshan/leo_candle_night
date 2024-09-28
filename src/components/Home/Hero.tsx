@@ -76,7 +76,10 @@ export default function Hero() {
     </div>
 </div>
 
+
 <Particles/>
+
+
   </div>
 
   )

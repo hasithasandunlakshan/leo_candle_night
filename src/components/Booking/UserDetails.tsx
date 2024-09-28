@@ -45,6 +45,17 @@ export function UserDetails() {
   const router = useRouter();
   const userOrder = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
+  const[food,selectfood]=useState();
+  const [isSeatOpen, setSeatOpen] = useState(false)
+  const [selectedSeat, setSelectedSeat] = useState<string | undefined>(userOrder?.seats || ""); // Default to an empty string
+
+  const [meal,setMeal]=useState([]);
+
+  const handleSeatSelection = (seatNumber: any) => {
+    setSelectedSeat(seatNumber);
+    setSeatOpen(false); // Close seat selection after selecting a seat
+    form.setValue('seats', seatNumber.toString()); // Update the form's seats field
+  }
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -52,7 +63,7 @@ export function UserDetails() {
       username: userOrder?.name || "",
       index: userOrder?.index || "",
       email: userOrder?.email || "",
-      seats: userOrder?.seats || "1",
+      seats: userOrder?.seats || selectedSeat,
     },
   });
 
@@ -63,7 +74,7 @@ export function UserDetails() {
         username: userOrder.name || "",
         index: userOrder.index || "",
         email: userOrder.email || "",
-        seats: userOrder.seats || "1",
+        seats: userOrder.seats || "",
       });
       setIsLoading(false); // Only proceed when data is available
     } else {
@@ -86,7 +97,12 @@ export function UserDetails() {
       userOrder.setIndex(data.index);
       userOrder.setEmail(data.email);
       userOrder.setName(data.username);
-      userOrder.setSeats(data.seats.toString());
+      if (selectedSeat) {
+        userOrder.setSeats(selectedSeat.toString());
+      } else {
+        // Handle the case when selectedSeat is undefined, e.g., set a default value or show a message
+        userOrder.setSeats(""); // or however you want to handle it
+      }
     }
 
     router.push("/bookseat/selectmeal");
@@ -155,12 +171,66 @@ export function UserDetails() {
             )}
           />
 
+
+
           <FormField
             control={form.control}
             name="seats"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-secondary">Number of Seats</FormLabel>
+                <FormLabel className="text-secondary">Select Seat</FormLabel>
+                <FormControl className="border-secondary">
+                <div className="flex gap-2">
+  <p className="w-full align-middle border-secondary rounded-md  justify-start items-center flex text-white bg-black border">
+   <span className="ml-3">
+   {selectedSeat || "No seat selected"}
+    </span>
+  </p>
+  <Button
+    onClick={() => setSeatOpen(!isSeatOpen)}
+    type="button"
+    className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
+  >
+    Select Seat
+  </Button>
+  {isSeatOpen && (
+    <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
+      {/* <div className="bg-white p-4 rounded shadow-lg">
+        {[...Array(20).keys()].map((seatNumber) => (
+          <Button
+            key={seatNumber + 1}
+            onClick={() => handleSeatSelection(seatNumber + 1)}
+            className={`w-10 h-10 m-2 rounded ${
+              selectedSeat === (seatNumber + 1).toString()
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-300 text-black'
+            }`}
+          >
+            {seatNumber + 1}
+          </Button>
+        ))}
+      </div> */}
+    </div>
+  )}
+</div>
+
+
+            
+             
+
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+{/* 
+
+<FormField
+            control={form.control}
+            name="seats"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-secondary">Select Seat</FormLabel>
                 <FormControl className="border-secondary">
                   <Input
                     placeholder="1"
@@ -172,17 +242,84 @@ export function UserDetails() {
               </FormItem>
             )}
           />
+      
+
+
+
+
+ */}
+   <FormField
+            control={form.control}
+            name="seats"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-secondary">Select Seat</FormLabel>
+                <FormControl className="border-secondary">
+                <div className="flex gap-2">
+  <p className="w-full align-middle border-secondary rounded-md  justify-start items-center flex text-white bg-black border">
+   <span className="ml-3">
+   {selectedSeat || "No seat selected"}
+    </span>
+  </p>
+  <Button
+    onClick={() => setSeatOpen(!isSeatOpen)}
+    type="button"
+    className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
+  >
+    Select Food
+  </Button>
+  {isSeatOpen && (
+    <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
+      <div className="bg-white p-4 rounded shadow-lg">
+        {[...Array(20).keys()].map((seatNumber) => (
+          <Button
+            key={seatNumber + 1}
+            onClick={() => handleSeatSelection(seatNumber + 1)}
+            className={`w-10 h-10 m-2 rounded ${
+              selectedSeat === (seatNumber + 1).toString()
+                ? 'bg-blue-500 text-white'
+                : 'bg-gray-300 text-black'
+            }`}
+          >
+            {seatNumber + 1}
+          </Button>
+        ))}
+      </div>
+    </div>
+  )}
+</div>
+
+
+            
+             
+
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+
+
+
+
+
+
+
 
           <div className="flex items-end justify-center sm:justify-end">
             <Button
               type="submit"
               className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold text-black bg-white shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
             >
-              Next
+              Confirm 
             </Button>
           </div>
         </form>
       </Form>
+
+
+      
     </main>
   );
 }
