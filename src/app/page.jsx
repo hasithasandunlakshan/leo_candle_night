@@ -71,7 +71,7 @@ export default function Page() {
           <Hero />
           <Details />
           <ContactPage/>
-          <Footer/>
+        
       
         </>
       )}
