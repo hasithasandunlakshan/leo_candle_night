@@ -302,3 +302,4 @@ export function UserDetails() {
     </main>
   );
 }
+
