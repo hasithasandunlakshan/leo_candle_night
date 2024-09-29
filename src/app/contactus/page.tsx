@@ -20,7 +20,7 @@ export default function HeroHighlightDemo() {
       } as any); // <--- Cast options to 'any'
 
       // Mark loading complete
-      setIsLoading(false);
+   
     })();
 
     // Cleanup LocomotiveScroll on component unmount
