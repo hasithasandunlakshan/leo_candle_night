@@ -35,7 +35,7 @@ export default function Hero() {
 <div className="flex justify-center  container items-center">
 <div className="flex flex-col w-[90%] md:w-1/2  lg:w-[40%] items-center md:items-start py-32">
     {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
-    <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl font-bold' duration={4} />
+    <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl ' duration={4} />
     
 
     <TextGenerateEffect words={description} className='text-gray-200   text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={1} />

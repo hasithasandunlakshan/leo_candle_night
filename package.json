@@ -23,6 +23,7 @@
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
     "lucide-react": "^0.441.0",
+    "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.11",
     "next-auth": "^4.24.7",
     "react": "^18",
