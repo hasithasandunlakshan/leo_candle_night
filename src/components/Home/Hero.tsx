@@ -35,10 +35,10 @@ export default function Hero() {
 <div className="flex justify-center  container items-center">
 <div className="flex flex-col w-[90%] md:w-1/2  lg:w-[40%] items-center md:items-start py-32">
     {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
-    <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl font-bold' duration={4} />
+    <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl ' duration={4} />
     
 
-    <TextGenerateEffect words={description} className='text-gray-200   text-center sm:text-left text-3xl sm:text-4xl font-bold mb-2' duration={1} />
+    <TextGenerateEffect words={description} className='text-gray-200 font-light  text-center sm:text-left text-xl sm:text-2xl mb-2 ' duration={1} />
    
   <motion.p 
    initial={{ opacity: 0, y: 50 }}
@@ -46,7 +46,7 @@ export default function Hero() {
    viewport={{ once: true }}
    transition={{ duration: 3 }}
   
-  className=' text-gray-500 w-full  text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
+  className=' text-gray-500 w-full   text-justify'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   </motion.p>
 
@@ -76,8 +76,8 @@ export default function Hero() {
     </div>
 </div>
 
-
-<Particles/>
+{/* 
+<Particles/> */}
 
 
   </div>

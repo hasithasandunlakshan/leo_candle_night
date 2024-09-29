@@ -223,31 +223,9 @@ export function UserDetails() {
               </FormItem>
             )}
           />
-{/* 
-
-<FormField
-            control={form.control}
-            name="seats"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-secondary">Select Seat</FormLabel>
-                <FormControl className="border-secondary">
-                  <Input
-                    placeholder="1"
-                    className="text-white bg-black border"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-      
 
 
 
-
- */}
    <FormField
             control={form.control}
             name="seats"
@@ -270,21 +248,22 @@ export function UserDetails() {
   </Button>
   {isSeatOpen && (
     <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
-      <div className="bg-white p-4 rounded shadow-lg">
-        {[...Array(20).keys()].map((seatNumber) => (
-          <Button
-            key={seatNumber + 1}
-            onClick={() => handleSeatSelection(seatNumber + 1)}
-            className={`w-10 h-10 m-2 rounded ${
-              selectedSeat === (seatNumber + 1).toString()
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-300 text-black'
-            }`}
-          >
-            {seatNumber + 1}
-          </Button>
-        ))}
-      </div>
+        <div className="bg-white p-4 rounded shadow-lg">
+      {Array.from({ length: 20 }, (_, index) => index + 1).map((seatNumber) => (
+        // <Button
+        //   key={seatNumber}
+        //   onClick={() => handleSeatSelection(seatNumber)}
+        //   className={`w-10 h-10 m-2 rounded ${
+        //     selectedSeat === seatNumber
+        //       ? "bg-blue-500 text-white"
+        //       : "bg-gray-300 text-black"
+        //   }`}
+        // >
+        //   {seatNumber}
+        // </Button>
+        <></>
+      ))}
+    </div>
     </div>
   )}
 </div>

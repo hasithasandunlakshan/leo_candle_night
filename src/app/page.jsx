@@ -6,6 +6,7 @@ import Details from "@/components/Home/Details";
 import PreLoader from "@/components/Loading/Loader"; // Adjust import path if necessary
 import { motion } from "framer-motion";
 
+
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -67,6 +68,7 @@ export default function Page() {
           className="absolute top-0 right-0  w-52 h-40     sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></motion.div>
           <Hero />
           <Details />
+          {/* <Footer/> */}
       
         </>
       )}
