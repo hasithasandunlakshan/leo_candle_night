@@ -76,8 +76,8 @@ export default function Hero() {
     </div>
 </div>
 
-{/* 
-<Particles/> */}
+
+<Particles/>
 
 
   </div>
