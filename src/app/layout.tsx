@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import Navbar from "@/components/Nav/Navbar";
+import Footer from "@/components/Footer";
 import { CartContextProvider } from "@/context/userOrder";
 import Particles from '../components/Particle'
 const poppins = Poppins({
@@ -40,10 +41,12 @@ export default function RootLayout({
             <Navbar />
            
             {children}
-          
+            
             <Toaster />
+            
           </CartContextProvider>
-      
+          
+           
       </body>
       
      
