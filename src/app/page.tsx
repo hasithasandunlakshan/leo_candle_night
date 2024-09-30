@@ -25,7 +25,7 @@ export default function Page() {
       } as any); // <--- Cast options to 'any'
 
       // Mark loading complete
-      setIsLoading(false);
+      // setIsLoading(false);
     })();
 
     // Cleanup LocomotiveScroll on component unmount
