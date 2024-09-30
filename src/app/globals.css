@@ -13,8 +13,6 @@ body,html {
   html {
     scroll-behavior: smooth;
   }
-[data-scroll-container] {
-  overflow: hidden;
-}
+
 
 

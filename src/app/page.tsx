@@ -7,6 +7,7 @@ import { motion, useScroll } from "framer-motion";
 import ContactPage from "@/components/contact/contactPage";
 import Footer from "@/components/footer/FooterPage";
 
+import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +48,7 @@ export default function Page() {
 
   return (
     
-    <main  className="bg-primary relative scroll-smooth">
+    <main  className="bg-primary  scroll-container relative scroll-smooth">
       {/* Animated background circles */}
       <motion.div
         initial={{ y: -50 }} // Starting point

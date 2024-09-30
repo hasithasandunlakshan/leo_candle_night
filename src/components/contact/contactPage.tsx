@@ -22,9 +22,9 @@ export default function ContactPage() {
                     <h1 className="py-2 text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
                   </div>
                 </div>
-                <p className="text-center sm:text-base leading-7 text-white font-semibold">Director</p>
-                <p className="text-center sm:text-base leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
-                <p className="text-sm leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
+                <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
+                <p className="text-center sm:text-left leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
+                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
               </div>
             </HeroHighlight>
             </div>
@@ -43,9 +43,9 @@ export default function ContactPage() {
                     <h1 className="py-2 text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
                   </div>
                 </div>
-                <p className="text-center sm:text-base leading-7 text-white font-semibold">Director</p>
-                <p className="text-center sm:text-base leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
-                <p className="text-sm leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
+                <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
+                <p className="text-center sm:text-left leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
+                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
               </div>
             </HeroHighlight>
             </div>
