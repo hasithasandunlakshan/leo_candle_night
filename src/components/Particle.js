@@ -17,7 +17,7 @@ const ParticleComponents = () => {
           speed: 1, // Speed of movement
         },
         opacity: {
-          value: 0.5, // Opacity of particles
+          value: 0.4, // Opacity of particles
         },
         shape: {
           type: "circle", // Shape of particles
@@ -41,7 +41,7 @@ const ParticleComponents = () => {
     loadSlim(engine);
   }, []);
 
-  return <Particles init={particlesInit} options={options}></Particles>;
+  return <Particles className=" -z-40  min-h-screen " init={particlesInit} options={options}></Particles>;
 };
 
 export default ParticleComponents;
