@@ -15,6 +15,7 @@ import Image from 'next/image';
 import { useScroll, useTransform, motion} from 'framer-motion';
 import { useRef } from 'react';
 import ContactPage from '../contact/contactPage';
+import { boolean } from 'zod';
 
 export default function Index() {
     
@@ -62,17 +63,17 @@ export default function Index() {
     ]
 
     return (
-        <div ref={container} className={`${styles.container} !h-[300vh] !md:h-[200vh]`}>
+        <div ref={container} className={`${styles.container} !h-[300vh] md:h-[350vh]`}>
             <div className={styles.sticky}>
                 {
                     pictures.map( ({src, scale}, index) => {
                         return <motion.div key={index} style={{scale}} className={styles.el}>
-                            <div className={styles.imageContainer}>
+                            <div className={ `${styles.imageContainer}   `}>
                                 <Image
-                                    src={src}
+                                    src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
                                     fill
                                     alt="image"
-                                    placeholder='blur'
+                                   
                                 />
                             </div>
                         </motion.div>
