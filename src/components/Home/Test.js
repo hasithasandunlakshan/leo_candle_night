@@ -70,7 +70,7 @@ export default function Test() {
   }, [])
 
   return (
-    <main className={"flex min-h-screen h-full  place-content-center"}>
+    <main className={"flex min-h-screen h-full  items-center justify-center"}>
       <div className={styles.spacer}></div>
       <div ref={gallery} className={styles.gallery}>
         <Column images={[images[0], images[1], images[2]]} y={y}/>
