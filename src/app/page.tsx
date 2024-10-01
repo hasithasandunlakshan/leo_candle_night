@@ -12,27 +12,44 @@ import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import th
 import Parallax from "@/components/Home/Parallax";
 import Test from "@/components/Test/Test";
 import Details2 from "@/components/Home/Details2";
-
+import Lenis from '@studio-freight/lenis'
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    let locomotiveScroll: any;
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+  // useEffect(() => {
+  //   let locomotiveScroll: any;
+  //   (async () => {
+  //     const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
-      // Bypass TypeScript type error by casting options to 'any'
-      locomotiveScroll = new LocomotiveScroll({
-        el: document.querySelector(".scroll-container") as HTMLElement, 
-        smooth: true,
-      } as any);
+  //     // Bypass TypeScript type error by casting options to 'any'
+  //     locomotiveScroll = new LocomotiveScroll({
+  //       el: document.querySelector(".scroll-container") as HTMLElement, 
+  //       smooth: true,
+  //     } as any);
 
-    })();
+  //   })();
 
-    return () => {
-      if (locomotiveScroll) locomotiveScroll.destroy();
-    };
-  }, []); 
+  //   return () => {
+  //     if (locomotiveScroll) locomotiveScroll.destroy();
+  //   };
+  // }, []); 
+  useEffect( () => {
+    const lenis = new Lenis({
+      // Valeur entre 0 et 1
+      // Valeur par défaut : 0,1
+      // Plus la valeur est faible, plus le scroll sera fluide
+      lerp: 0.05, 
+      // Valeur par défaut : 1
+      // Plus la valeur est haute, plus le défilement sera rapide 
+      wheelMultiplier: 1, 
+    });
+    function raf(time:any) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+},[])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -50,7 +67,7 @@ export default function Page() {
 
   return (
     
-    <main  className="bg-primary  scroll-container relative scroll-smooth">
+    <main  className="bg-primary   scroll-container relative scroll-smooth">
       {/* Animated background circles */}
       <motion.div
         initial={{ y: -50 }} // Starting point

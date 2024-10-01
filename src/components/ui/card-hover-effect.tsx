@@ -55,10 +55,10 @@ export const Card = ({
 }) => {
   return (
     <motion.div
-    initial={{ opacity: 0,  }}
-        whileInView={{ opacity: 1,  }}
+    initial={{ opacity: 0, x: 15 }}
+        whileInView={{ opacity: 1, x: 0 }}
       
-        transition={{ duration: 2 }}
+        transition={{ duration: 0.5 }}
       className={cn(
         "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent group-hover:border-secondary relative z-20",
         className
