@@ -9,6 +9,10 @@ import Footer from "@/components/footer/FooterPage";
 
 import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
+import Parallax from "@/components/Home/Parallax";
+import { ItemList } from "@/components/Home/ItemList";
+import Test from "@/components/Home/Test";
+
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -77,7 +81,12 @@ export default function Page() {
       {/* Main content sections */}
       <Hero />
       <Details />
+     
+  
       <ContactPage />
+      {/* <Parallax/> */}
+      <Test/>
+      {/* <ItemList/> */}
       <Footer /> {/* Ensure you include the Footer component */}
     </main>
   );
