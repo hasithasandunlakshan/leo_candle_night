@@ -1,4 +1,5 @@
  // Marking the component as a Client Component
+ import { Providers } from './providers';
 
  import type { Metadata } from "next";
  import { Poppins } from "next/font/google";
@@ -37,13 +38,16 @@
        <body  className={`${poppins.className} antialiased`}>
      
            <CartContextProvider>
+            <Providers>
+
+           
  
              <Navbar />
             
              {children}
     
              <Toaster />
-            
+             </Providers>
            </CartContextProvider>
        
        </body>
