@@ -4,18 +4,17 @@ import Hero from "@/components/Home/Hero";
 import Details from "@/components/Home/Details";
 import PreLoader from "@/components/Loading/Loader"; // Adjust import path if necessary
 import { motion, useScroll } from "framer-motion";
-import ContactPage from "@/components/contact/contactPage";
+
 import Footer from "@/components/footer/FooterPage";
 
 import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
 import Parallax from "@/components/Home/Parallax";
-import { ItemList } from "@/components/Home/ItemList";
-import Test from "@/components/Home/Test";
+import Test from "@/components/Test/Test";
+import Details2 from "@/components/Home/Details2";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
-
 
   useEffect(() => {
     let locomotiveScroll: any;
@@ -24,27 +23,26 @@ export default function Page() {
 
       // Bypass TypeScript type error by casting options to 'any'
       locomotiveScroll = new LocomotiveScroll({
-        el: document.querySelector(".scroll-container") as HTMLElement, // Target scroll container
+        el: document.querySelector(".scroll-container") as HTMLElement, 
         smooth: true,
-      } as any); // <--- Cast options to 'any'
+      } as any);
 
-      // Mark loading complete
-      // setIsLoading(false);
     })();
 
-    // Cleanup LocomotiveScroll on component unmount
     return () => {
       if (locomotiveScroll) locomotiveScroll.destroy();
     };
-  }, []); // Empty dependency array means this runs once when component mounts
+  }, []); 
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIsLoading(false); // Stop loading after 3 seconds
+      setIsLoading(false);
     }, 3000);
 
-    return () => clearTimeout(timer); // Cleanup timer on unmount
+    return () => clearTimeout(timer); 
   }, []);
+
+
   
   if (isLoading) {
     return <PreLoader />;
@@ -78,15 +76,14 @@ export default function Page() {
         className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"
       ></motion.div>
 
-      {/* Main content sections */}
+   
       <Hero />
-      <Details />
-     
+      {/* <Details /> */}
+     <Details2/>
   
-      <ContactPage />
-      {/* <Parallax/> */}
+      
       <Test/>
-      {/* <ItemList/> */}
+      {/* <Parallax/> */}
       <Footer /> {/* Ensure you include the Footer component */}
     </main>
   );

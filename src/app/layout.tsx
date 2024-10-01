@@ -1,5 +1,3 @@
- // Marking the component as a Client Component
- import { Providers } from './providers';
 
  import type { Metadata } from "next";
  import { Poppins } from "next/font/google";
@@ -9,6 +7,7 @@
  import { CartContextProvider } from "@/context/userOrder";
  import Particles from '../components/Particle'
  import Footer from "@/components/footer/FooterPage";
+import Foot from '@/components/footer/Footer';
  const poppins = Poppins({
    subsets: ["latin"],
    display: "swap",
@@ -38,7 +37,7 @@
        <body  className={`${poppins.className} antialiased`}>
      
            <CartContextProvider>
-            <Providers>
+        
 
            
  
@@ -47,7 +46,7 @@
              {children}
     
              <Toaster />
-             </Providers>
+          
            </CartContextProvider>
        
        </body>

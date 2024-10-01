@@ -5,8 +5,18 @@ import Image from 'next/image'
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col min-w-screen bg-primary  justify-center  min-h-screen items-center">
-      <h1 className="text-justify text-secondary text-5xl sm:text-8xl pt-28 font-Qwigley">Stay Connected With Us </h1>
+    <motion.div className="flex flex-col min-w-screen bg-transparent  justify-center  min-h-screen items-center"
+    
+    initial={{ opacity: 0, x: -100 }}
+    whileInView={{ opacity: 1, x: 0 }}
+  
+    transition={{ duration: 1 }}>
+      <motion.h1 className="text-justify text-secondary text-5xl sm:text-8xl pt-28 lg:pt-28 font-Qwigley"
+      
+      initial={{ opacity: 0,  }}
+      whileInView={{ opacity: 1, }}
+      
+      transition={{ duration: 2 }}>Stay Connected With Us </motion.h1>
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
             <HeroHighlight className="w-full border border-secondary rounded-xl">
@@ -50,7 +60,7 @@ export default function ContactPage() {
             </HeroHighlight>
             </div>
     </div>
-    </div>
+    </motion.div>
 
 
      )
