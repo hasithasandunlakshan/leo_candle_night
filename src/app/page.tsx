@@ -13,6 +13,7 @@ import Parallax from "@/components/Home/Parallax";
 import Test from "@/components/Test/Test";
 import Details2 from "@/components/Home/Details2";
 import Lenis from '@studio-freight/lenis'
+import ContactPage from "@/components/contact/contactPage";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,7 +39,7 @@ export default function Page() {
       // Valeur entre 0 et 1
       // Valeur par défaut : 0,1
       // Plus la valeur est faible, plus le scroll sera fluide
-      lerp: 0.05, 
+      lerp: 0.5, 
       // Valeur par défaut : 1
       // Plus la valeur est haute, plus le défilement sera rapide 
       wheelMultiplier: 1, 
@@ -101,6 +102,7 @@ export default function Page() {
       
       <Test/>
       {/* <Parallax/> */}
+      <ContactPage/>
       <Footer /> {/* Ensure you include the Footer component */}
     </main>
   );

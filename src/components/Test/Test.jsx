@@ -33,31 +33,31 @@ export default function Index() {
 
     const pictures = [
         {
-            src: Picture1,
+            src: "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600",
             scale: scale4
         },
         {
-            src: Picture2,
+            src: "https://images.pexels.com/photos/2641886/pexels-photo-2641886.jpeg?auto=compress&cs=tinysrgb&w=600",
             scale: scale5
         },
         {
-            src: Picture3,
+            src: "https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600",
             scale: scale6
         },
         {
-            src: Picture4,
+            src: "https://media.istockphoto.com/id/1316145932/photo/table-top-view-of-spicy-food.jpg?b=1&s=612x612&w=0&k=20&c=X6CkFGpSKhNZeiii8Pp2M_YrBdqs7tRaBytkGi48a0U=",
             scale: scale5
         },
         {
-            src: Picture5,
+            src: "https://images.pexels.com/photos/1482803/pexels-photo-1482803.jpeg?auto=compress&cs=tinysrgb&w=600",
             scale: scale6
         },
         {
-            src: Picture6,
+            src: "https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=600",
             scale: scale8
         },
         {
-            src: Picture7,
+            src: 'https://images.pexels.com/photos/1860204/pexels-photo-1860204.jpeg?auto=compress&cs=tinysrgb&w=600',
             scale: scale9
         }
     ]
@@ -68,9 +68,9 @@ export default function Index() {
                 {
                     pictures.map( ({src, scale}, index) => {
                         return <motion.div key={index} style={{scale}} className={styles.el}>
-                            <div className={ `${styles.imageContainer}   `}>
+                            <div className={ styles.imageContainer}>
                                 <Image
-                                    src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80"
+                                    src={src}
                                     fill
                                     alt="image"
                                    
@@ -79,9 +79,9 @@ export default function Index() {
                         </motion.div>
                     })
                 }
-         
+        
             </div>
-            <ContactPage/>
+           
         </div>
     )
 }
