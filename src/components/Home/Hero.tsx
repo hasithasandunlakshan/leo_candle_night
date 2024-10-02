@@ -38,7 +38,7 @@ export default function Hero() {
     <TextGenerateEffect words={description2} className='text-secondary -mb-8 font-Qwigley text-6xl sm:text-7xl  md:text-9xl ' duration={4} />
     
 
-    <TextGenerateEffect words={description} className='text-gray-200 font-light  text-center sm:text-left text-xl sm:text-2xl mb-2 ' duration={1} />
+    <TextGenerateEffect words={description} className='text-gray-300 font-bold  text-center sm:text-left text-xl sm:text-2xl mb-2 ' duration={1} />
    
   <motion.p 
    initial={{ opacity: 0, y: 50 }}
