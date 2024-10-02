@@ -7,8 +7,8 @@ export default function Details2() {
   return (
     <div className='   items-center flex justify-center  flex-col min-h-screen'>
       <motion.div className="flex w-[70%] mb-10 gap-3 items-center justify-center"
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, scale:0 }}
+        whileInView={{ opacity: 1, scale:1 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}>
         <h1 className="text-center text-3xl text-white md:text-6xl">
