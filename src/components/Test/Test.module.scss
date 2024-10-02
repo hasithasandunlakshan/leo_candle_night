@@ -5,7 +5,7 @@
         position: sticky;
         overflow: hidden;
         top: 0;
-        height: 200vh;
+        height: 300vh;
 
         .el{
             width: 100%;
@@ -23,7 +23,7 @@
                 margin: 2;
                 img{
                     object-fit: cover;
-                    border-radius: 5%;
+                    border-radius: 2%;
                 }
             }
             &:nth-of-type(2){
