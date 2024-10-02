@@ -5,16 +5,19 @@ import Image from 'next/image'
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col min-w-screen bg-transparent  justify-center  min-h-screen items-center"
+    <div className="flex flex-col items-center justify-center space-y-8   p-8">
+
     
-   >
-      <motion.h1
-      initial={{ opacity: 0, scale:0.5 }}
-      whileInView={{ opacity: 1, scale:1 }}
-    
-      transition={{ duration: 1 }}
-      className="text-center text-secondary text-6xl sm:text-8xl pt-28 lg:pt-28 font-Qwigley"
-      >Stay Connected With Us </motion.h1>
+   
+  <motion.h1
+  initial={{ opacity: 0, scale: 0.5 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1 }}
+  className="text-center   text-secondary  text-7xl sm:text-8xl  lg:pt-20 px-4 pt-20 font-Qwigley max-w-[90%] mx-auto"
+
+>
+  Stay Connected With Us
+</motion.h1>
         <div className="flex flex-col lg:flex-row items-center  justify-center">
 
 

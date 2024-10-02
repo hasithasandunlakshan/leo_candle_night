@@ -30,7 +30,7 @@ export default function HeroHighlightDemo() {
   }, []); // Empty dependency array means this runs once when component mounts
 
   return (
-    <div className="scroll-container flex flex-col min-h-screen items-center justify-center bg-primary">
+    <div className="bg-primary   scroll-container relative scroll-smooth">
       {/* Top animation */}
       <motion.div
         initial={{ y: -50 }}
