@@ -9,19 +9,19 @@ export default function ContactPage() {
     
    >
       <motion.h1
-      initial={{ opacity: 0, scale:0 }}
+      initial={{ opacity: 0, scale:0.5 }}
       whileInView={{ opacity: 1, scale:1 }}
     
-      transition={{ duration: 0.5 }}
-      className="text-justify text-secondary text-5xl sm:text-8xl pt-28 lg:pt-28 font-Qwigley"
+      transition={{ duration: 1 }}
+      className="text-center text-secondary text-6xl sm:text-8xl pt-28 lg:pt-28 font-Qwigley"
       >Stay Connected With Us </motion.h1>
         <div className="flex flex-col lg:flex-row items-center  justify-center">
 
 
           <motion.div  
 
-   className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
-            <HeroHighlight className="w-full border border-secondary rounded-xl">
+   className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black">
+            <HeroHighlight className="w-full border border-secondary hover:border-white  transition-all duration-500 rounded-xl">
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
                 <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
                   <Image
@@ -31,7 +31,7 @@ export default function ContactPage() {
                     height={160} // height in pixels
                     className="rounded-full object-cover"/>
                   <div className="flex flex-col">
-                    <h1 className="py-2 text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
+                    <h1 className="py-2  text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
                   </div>
                 </div>
                 <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
@@ -41,8 +41,8 @@ export default function ContactPage() {
             </HeroHighlight>
             </motion.div>
 
-            <motion.div  className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
-            <HeroHighlight className="w-full border border-secondary rounded-xl">
+            <motion.div  className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black duration-700">
+            <HeroHighlight className="w-full border border-secondary hover:border-white  transition-all rounded-xl">
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
                 <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
                   <Image
