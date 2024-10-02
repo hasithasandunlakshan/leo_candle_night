@@ -18,10 +18,9 @@ export default function ContactPage() {
         <div className="flex flex-col lg:flex-row items-center  justify-center">
 
 
-          <motion.div  initial={{ opacity: 0, scale:0 }}
-      whileInView={{ opacity: 1, scale:1 }}
-  
-    transition={{ duration: 0.5 }} className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
+          <motion.div  
+
+   className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
             <HeroHighlight className="w-full border border-secondary rounded-xl">
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
                 <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
@@ -42,10 +41,7 @@ export default function ContactPage() {
             </HeroHighlight>
             </motion.div>
 
-            <motion.div  initial={{ opacity: 0, scale:0 }}
-      whileInView={{ opacity: 1, scale:1 }}
-  
-    transition={{ duration: 0.5}} className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
+            <motion.div  className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
             <HeroHighlight className="w-full border border-secondary rounded-xl">
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
                 <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
@@ -67,7 +63,6 @@ export default function ContactPage() {
             </motion.div>
     </div>
     </div>
-
 
      )
 }
