@@ -8,13 +8,18 @@ export default function ContactPage() {
     <div className="flex flex-col min-w-screen bg-transparent  justify-center  min-h-screen items-center"
     
    >
-      <motion.h1 className="text-justify text-secondary text-5xl sm:text-8xl pt-28 lg:pt-28 font-Qwigley"
+      <motion.h1
+      initial={{ opacity: 0, scale:0 }}
+      whileInView={{ opacity: 1, scale:1 }}
+    
+      transition={{ duration: 0.5 }}
+      className="text-justify text-secondary text-5xl sm:text-8xl pt-28 lg:pt-28 font-Qwigley"
       >Stay Connected With Us </motion.h1>
         <div className="flex flex-col lg:flex-row items-center  justify-center">
 
 
-          <motion.div  initial={{ opacity: 0, x: -50 }}
-    whileInView={{ opacity: 1, x: 0 }}
+          <motion.div  initial={{ opacity: 0, scale:0 }}
+      whileInView={{ opacity: 1, scale:1 }}
   
     transition={{ duration: 0.5 }} className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
             <HeroHighlight className="w-full border border-secondary rounded-xl">
@@ -37,8 +42,8 @@ export default function ContactPage() {
             </HeroHighlight>
             </motion.div>
 
-            <motion.div  initial={{ opacity: 0, x: 50 }}
-    whileInView={{ opacity: 1, x: 0 }}
+            <motion.div  initial={{ opacity: 0, scale:0 }}
+      whileInView={{ opacity: 1, scale:1 }}
   
     transition={{ duration: 0.5}} className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
             <HeroHighlight className="w-full border border-secondary rounded-xl">
