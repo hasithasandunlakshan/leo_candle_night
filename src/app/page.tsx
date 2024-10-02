@@ -98,9 +98,7 @@ export default function Page() {
       <Hero />
       {/* <Details /> */}
      <Details2/>
-  <div className="hidden md:flex">
-  
-  </div>
+
   <Test/>
    
       {/* <Parallax/> */}
