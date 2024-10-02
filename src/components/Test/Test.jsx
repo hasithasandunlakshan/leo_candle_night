@@ -63,7 +63,7 @@ export default function Index() {
     ]
 
     return (
-        <div ref={container} className={`${styles.container} !h-[300vh] md:h-[350vh]`}>
+        <div ref={container} className={`${styles.container} !h-[300vh] md:h-[350vh] hidden md:block `}>
             <div className={styles.sticky}>
                 {
                     pictures.map( ({src, scale}, index) => {

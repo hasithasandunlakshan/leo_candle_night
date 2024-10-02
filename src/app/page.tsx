@@ -98,9 +98,11 @@ export default function Page() {
       <Hero />
       {/* <Details /> */}
      <Details2/>
+  <div className="hidden md:flex">
   
-      
-      <Test/>
+  </div>
+  <Test/>
+   
       {/* <Parallax/> */}
       <ContactPage/>
       <Footer /> {/* Ensure you include the Footer component */}
