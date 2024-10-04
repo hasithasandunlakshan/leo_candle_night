@@ -1,5 +1,5 @@
 import { OrderForm } from '@/components/order/orderForm'
-import { SeatSelect } from '@/components/order/Orderview'
+
 import React from 'react'
 
 export default function page() {
@@ -8,7 +8,7 @@ export default function page() {
 
 
         <OrderForm/>
-        <SeatSelect/>
+   
     </div>
   )
 }

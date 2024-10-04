@@ -1,11 +1,31 @@
+"use client"
+import { Availableseats } from '@/components/Booking/AvailableSeats';
+import SeatSelect from '@/components/Booking/SeatSelect'
 import { UserDetails } from '@/components/Booking/UserDetails'
-import React from 'react'
+import Users from '@/components/Booking/Users';
+import FoodList from '@/components/meal/FoodList';
+import { CartContext } from '@/context/userOrder';
+
+import React, { useContext, useEffect } from 'react'
 
 export default function page() {
+  
+const useOrder=useContext(CartContext);
+useEffect(()=>{
+
+
+  console.log("hhhhhhhhhhhhh",useOrder?.numOfSeat)
+},[])
+
+
+
   return (
     <>
-
-      <UserDetails/>
+     <SeatSelect/> 
+     {/* <FoodList/> */}
+     <Availableseats/>
+ 
+   
     </>
   )
 }

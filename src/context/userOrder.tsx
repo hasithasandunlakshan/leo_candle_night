@@ -4,42 +4,40 @@ import { createContext, useState, ReactNode } from "react";
 
 // Define the shape of the context, including setter functions
 interface CartContextType {
-  index: string;
-  setIndex: (index: string) => void;
+ 
+  users: any[];
+  setUsers: (products: any[]) => void;
+  numOfSeat:number;
+  setNumOfSeat: (numOfSeat:number) => void;
   name: string;
-  setName: (name: string) => void;
-  email: string;
-  setEmail: (email: string) => void;
-  seats: string;
-  setSeats: (seats: string) => void;
-  products: any[];
-  setProducts: (products: any[]) => void;
+  setName: (department: string) => void;
+  addUser:(user:any)=>void;
+ 
 }
 
 // Create the context with an initial null value
 export const CartContext = createContext<CartContextType | null>(null);
 
 export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Initialize state for index, name, email, seats, and products
-  const [index, setIndex] = useState<string>("");
+
   const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [seats, setSeats] = useState<string>("");
-  const [products, setProducts] = useState<any[]>([]);
+
+  const [users, setUsers] = useState<any[]>([]);
+
+  const [numOfSeat,setNumOfSeat] = useState<number>(0);
+  
+
+  const addUser = (user:any) => {
+    setUsers((prevUsers) => [...prevUsers, user]);
+  };
 
   return (
     <CartContext.Provider
       value={{
-        index,
-        setIndex,
-        name,
-        setName,
-        email,
-        setEmail,
-        seats,
-        setSeats,
-        products,
-        setProducts,
+      users,
+      setUsers,
+      name,setName,
+numOfSeat,setNumOfSeat,addUser
       }}
     >
       {children}
