@@ -98,7 +98,7 @@ export default function Page() {
       <Hero />
       {/* <Details /> */}
      <Details2/>
-  
+
   <Test/>
    
       {/* <Parallax/> */}
