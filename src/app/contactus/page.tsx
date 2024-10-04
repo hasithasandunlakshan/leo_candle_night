@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../../components/ui/hero-highlight";
 import ContactPage from "../../components/contact/contactPage";
 import Footer from "@/components/footer/FooterPage";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
-export default function HeroHighlightDemo() {
+export default function Page() {
  
   useEffect(() => {
     let locomotiveScroll: any;

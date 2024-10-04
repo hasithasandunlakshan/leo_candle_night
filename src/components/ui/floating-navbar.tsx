@@ -70,7 +70,7 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                `${currentpath==navItem.link?" group border-transparent -translate-y-1 sm:border-b-secondary transition-all duration-500 shadow-2xl shadow-transparent":"border-transparent"} rounded-3xl border-b-2    px-2 text-neutral-50 text-8xl items-center flex   hover:text-amber-300 hover:scale-125 hover:shadow-slate-100  hover:z-30 transition-all duration-300 `
+                `${currentpath==navItem.link?" group border-transparent -translate-y-1 sm:border-b-secondary transition-all duration-500 shadow-2xl shadow-transparent":"border-transparent"} rounded-3xl border-b-2    px-2 text-neutral-50 text-8xl items-center flex   hover:text-amber-300 hover:scale-105 hover:shadow-slate-100  hover:z-30 transition-all duration-300 `
               )}
             >
               <span className=" flex   items-center flex-col sm:hidden">{navItem.icon} 

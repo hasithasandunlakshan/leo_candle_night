@@ -3,10 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { CartContext } from "@/context/userOrder";
 import { toast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 import {
   Form,
   FormControl,
@@ -15,9 +13,28 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import { CartContext } from "@/context/userOrder"; 
+import FoodList from "../meal/FoodList";
+const FoodItemSchema = z.object({
+  name: z.string().min(1, {
+    message: "Food name must not be empty.",
+  }),
+  price: z.number().positive({
+    message: "Price must be a positive number.",
+  }),
+});
 
 const FormSchema = z.object({
   username: z.string().min(2, {
@@ -31,91 +48,73 @@ const FormSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  seats: z
+  whatsapp: z
     .string()
-    .min(1, {
-      message: "You must book at least 1 seat.",
-    })
-    .max(10, {
-      message: "You cannot book more than 10 seats.",
+    .regex(/^\d{10}$/, {
+      message: "Please enter a valid 10-digit phone number.",
     }),
+  department: z.string().min(1, { message: "Please select a department." }),
+  foodList: z.array(FoodItemSchema).min(1, {
+    message: "At least one food item must be added.",
+  }),
 });
 
-export function UserDetails() {
+type FormSchemaType = z.infer<typeof FormSchema>;
+interface UserDetailsProps {
+  onConfirm: () => void; // Callback function to be called on confirmation
+}
+
+export function UserDetails({ onConfirm }: UserDetailsProps) {
   const router = useRouter();
-  const userOrder = useContext(CartContext);
-  const [isLoading, setIsLoading] = useState(true);
-  const[food,selectfood]=useState();
+  const  useOrder = useContext(CartContext); 
+ 
   const [isSeatOpen, setSeatOpen] = useState(false)
-  const [selectedSeat, setSelectedSeat] = useState<string | undefined>(userOrder?.seats || ""); // Default to an empty string
 
-  const [meal,setMeal]=useState([]);
 
-  const handleSeatSelection = (seatNumber: any) => {
-    setSelectedSeat(seatNumber);
-    setSeatOpen(false); // Close seat selection after selecting a seat
-    form.setValue('seats', seatNumber.toString()); // Update the form's seats field
-  }
 
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const [selectedFoods, setSelectedFoods] = useState<any[]>([]); // To store selected foods
+
+
+  const handleFoodSelect = (food: { id: number; name: string; price: number }) => {
+    setSelectedFoods((prevFoods) => [...prevFoods, food]);
+  };
+
+
+  const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: userOrder?.name || "",
-      index: userOrder?.index || "",
-      email: userOrder?.email || "",
-      seats: userOrder?.seats || selectedSeat,
+      username: "",
+      index: "",
+      email: "",
+      whatsapp: "",
+      department: "",
     },
   });
 
-  useEffect(() => {
-    if (userOrder) {
-      console.log("User order data:", userOrder);
-      form.reset({
-        username: userOrder.name || "",
-        index: userOrder.index || "",
-        email: userOrder.email || "",
-        seats: userOrder.seats || "",
-      });
-      setIsLoading(false); // Only proceed when data is available
-    } else {
-      console.log("UserOrder is null");
-    }
-  }, [userOrder, form]);
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast ({
-    className:"bg-primary ",
+  function onSubmit(data: FormSchemaType) {
+    toast({
+      className: "bg-primary",
       description: (
-        <pre className=" bg-secondary  rounded-md  p-4">
-      <p  className=" text-white">Your Index Saved {data.index}</p>
+        <pre className="bg-secondary rounded-md p-4">
+          <p className="text-white">Your Index Saved {data.index}</p>
         </pre>
       ),
     });
+  
+    console.log("Submitted data:", data);
 
-    // Update context using setter functions
-    if (userOrder) {
-      userOrder.setIndex(data.index);
-      userOrder.setEmail(data.email);
-      userOrder.setName(data.username);
-      if (selectedSeat) {
-        userOrder.setSeats(selectedSeat.toString());
-      } else {
-        // Handle the case when selectedSeat is undefined, e.g., set a default value or show a message
-        userOrder.setSeats(""); // or however you want to handle it
-      }
-    }
+    useOrder?.addUser(data); 
 
-    router.push("/bookseat/selectmeal");
-  }
-
-  if (isLoading) {
-    return <div>Loading...</div>; // Show a loading state until the form is ready
+    onConfirm();
   }
 
   return (
-    <main className="flex min-h-screen bg-primary items-center justify-center">
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
+    <main className="flex min-h-screen bg-primary  items-center justify-center">
+
+<div className="flex py-20 mt-10   container w-[50%]">
+<Form {...form} >
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
           <FormField
             control={form.control}
             name="username"
@@ -152,6 +151,9 @@ export function UserDetails() {
             )}
           />
 
+
+
+
           <FormField
             control={form.control}
             name="email"
@@ -171,135 +173,154 @@ export function UserDetails() {
             )}
           />
 
+          <FormField
+            control={form.control}
+            name="whatsapp"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-secondary">WhatsApp</FormLabel>
+                <FormControl className="border-secondary">
+                  <Input
+                    placeholder="0761343793"
+                    className="text-white bg-black border"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+         <FormField
+            control={form.control}
+            name="foodList"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-secondary">Select Seat</FormLabel>
+                <FormControl className="border-secondary">
+                <div className="flex gap-2">
+  <p className="w-full align-middle border-secondary rounded-md  justify-start items-center flex text-white bg-black border">
+  <span className="ml-3">
+                  {selectedFoods.length > 0 ? selectedFoods.map(f => f.name).join(', ') : "No food selected"}
+                </span>
+  </p>
+  <Button
+    onClick={() => setSeatOpen(!isSeatOpen)}
+    type="button"
+    className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
+  >
+    Select Meal
+  </Button>
+  {isSeatOpen && (
+    <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
+      <FoodList  onSelectFood={handleFoodSelect} />
+    </div>
+  )}
+</div>
 
+
+            
+             
+
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+
+<FormField
+            control={form.control}
+            name="department"
+            render={({ field }) => (
+              <FormItem className=" w-[50%]">
+                <FormLabel className="text-secondary">Department</FormLabel>
+                <FormControl className="border-secondary">
+                  
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+
+
+
+
+
+         <div className="flex flex-col md:flex-row  place-content-center w-[100%] gap-2">
 
           <FormField
             control={form.control}
-            name="seats"
+          
+            name="department"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-secondary">Select Seat</FormLabel>
-                <FormControl className="border-secondary">
-                <div className="flex gap-2">
-  <p className="w-full align-middle border-secondary rounded-md  justify-start items-center flex text-white bg-black border">
-   <span className="ml-3">
-   {selectedSeat || "No seat selected"}
-    </span>
-  </p>
-  <Button
-    onClick={() => setSeatOpen(!isSeatOpen)}
-    type="button"
-    className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
-  >
-    Select Seat
-  </Button>
-  {isSeatOpen && (
-    <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
-      {/* <div className="bg-white p-4 rounded shadow-lg">
-        {[...Array(20).keys()].map((seatNumber) => (
-          <Button
-            key={seatNumber + 1}
-            onClick={() => handleSeatSelection(seatNumber + 1)}
-            className={`w-10 h-10 m-2 rounded ${
-              selectedSeat === (seatNumber + 1).toString()
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-300 text-black'
-            }`}
-          >
-            {seatNumber + 1}
-          </Button>
-        ))}
-      </div> */}
-    </div>
-  )}
-</div>
-
-
-            
-             
-
+              <FormItem className=" w-[50%]">
+                <FormLabel className="text-secondary">Department</FormLabel>
+                <FormControl className="border-secondary  w-[100%]">
+                  <Select
+                    value={field.value || ""}
+                    onValueChange={(value) => field.onChange(value)}
+                    
+                  >
+                    <SelectTrigger className="">
+                      <SelectValue placeholder="Select a department" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Departments</SelectLabel>
+                        <SelectItem value="CS">Computer Science</SelectItem>
+                        <SelectItem value="IT">Information Technology</SelectItem>
+                        <SelectItem value="ENG">Engineering</SelectItem>
+                        <SelectItem value="MATH">Mathematics</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-
-
-
-   <FormField
+            <FormField
             control={form.control}
-            name="seats"
+            name="department"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="text-secondary">Select Seat</FormLabel>
+              <FormItem className=" w-[50%]">
+                <FormLabel className="text-secondary">Department</FormLabel>
                 <FormControl className="border-secondary">
-                <div className="flex gap-2">
-  <p className="w-full align-middle border-secondary rounded-md  justify-start items-center flex text-white bg-black border">
-   <span className="ml-3">
-   {selectedSeat || "No seat selected"}
-    </span>
-  </p>
-  <Button
-    onClick={() => setSeatOpen(!isSeatOpen)}
-    type="button"
-    className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
-  >
-    Select Food
-  </Button>
-  {isSeatOpen && (
-    <div className="absolute inset-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
-        <div className="bg-white p-4 rounded shadow-lg">
-      {Array.from({ length: 20 }, (_, index) => index + 1).map((seatNumber) => (
-        // <Button
-        //   key={seatNumber}
-        //   onClick={() => handleSeatSelection(seatNumber)}
-        //   className={`w-10 h-10 m-2 rounded ${
-        //     selectedSeat === seatNumber
-        //       ? "bg-blue-500 text-white"
-        //       : "bg-gray-300 text-black"
-        //   }`}
-        // >
-        //   {seatNumber}
-        // </Button>
-        <></>
-      ))}
-    </div>
-    </div>
-  )}
-</div>
-
-
-            
-             
-
+                  <Select
+                    value={field.value || ""}
+                    onValueChange={(value) => field.onChange(value)}
+                  >
+                    <SelectTrigger className="">
+                      <SelectValue placeholder="Select a department" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectLabel>Departments</SelectLabel>
+                        <SelectItem value="CS">Computer Science</SelectItem>
+                        <SelectItem value="IT">Information Technology</SelectItem>
+                        <SelectItem value="ENG">Engineering</SelectItem>
+                        <SelectItem value="MATH">Mathematics</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-
-
-
-
-
-
-
-
+         </div>
 
           <div className="flex items-end justify-center sm:justify-end">
-            <Button
-              type="submit"
-              className="relative px-8 py-1 rounded-full isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold text-black bg-white shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-            >
-              Confirm 
+            <Button type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
+              Confirm
             </Button>
           </div>
         </form>
       </Form>
-
-
-      
+</div>
+   
+   
     </main>
   );
 }
-

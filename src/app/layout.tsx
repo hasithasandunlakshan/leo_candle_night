@@ -8,6 +8,7 @@
  import Particles from '../components/Particle'
  import Footer from "@/components/footer/FooterPage";
 import Foot from '@/components/footer/Footer';
+import { useRouter } from "next/router";
  const poppins = Poppins({
    subsets: ["latin"],
    display: "swap",
@@ -30,6 +31,7 @@ import Foot from '@/components/footer/Footer';
  
  
  
+
    return (
      <html lang="en">
      
@@ -41,7 +43,7 @@ import Foot from '@/components/footer/Footer';
 
            
  
-             <Navbar />
+           <Navbar />
             
              {children}
     
