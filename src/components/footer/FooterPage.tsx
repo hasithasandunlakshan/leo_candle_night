@@ -26,25 +26,32 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative bg-primary text-white py-12 px-4 font-sans tracking-wide">
-      {/* Wave SVG */}
-      
+    <footer className="relative bg-black text-white py-12 px-4 font-sans tracking-wide sm">
 
-      <div className="relative z-10 text-center">
-        <h6 className="text-base">Stay connected with us:</h6>
-
-        <ul className="flex flex-wrap justify-center gap-x-8 gap-4 my-8">
-          {links.map((link, index) => (
-            <li key={index}>
-              <a href={link.href} className="text-xl">
-                {link.icon}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <p className="text-base">© Leo Club UOM. All rights reserved.</p>
+      <div className="items-center">
+        <img className="h-20 max-w-x mx-auto" src="/images/LeoLogSet.png" alt="leo logo" />
       </div>
+
+      <div>
+        <div className="relative z-10 text-center">
+          <h6 className="text-base">Stay connected with us:</h6>
+
+          <ul className="flex flex-wrap justify-center gap-x-8 gap-4 my-8 mt-4">
+            {links.map((link, index) => (
+              <li key={index}>
+                <a href={link.href} className="text-xl">
+                  {link.icon}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+        </div>
+      </div>
+      <p className="text-black bg-yellow-500 text-bold text-center">&copy; 2024 Leo Club UOM All rights reserved.</p>
+
+
+      
     </footer>
   );
 }
