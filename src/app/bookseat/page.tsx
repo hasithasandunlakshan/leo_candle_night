@@ -8,15 +8,9 @@ import { CartContext } from '@/context/userOrder';
 
 import React, { useContext, useEffect } from 'react'
 
-export default function page() {
+export default function Page() {
   
 const useOrder=useContext(CartContext);
-useEffect(()=>{
-
-
-  console.log("hhhhhhhhhhhhh",useOrder?.numOfSeat)
-},[])
-
 
 
   return (

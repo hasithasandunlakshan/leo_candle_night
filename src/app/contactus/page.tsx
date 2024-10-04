@@ -6,7 +6,7 @@ import Footer from "@/components/footer/FooterPage";
 import { useEffect } from "react";
 import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
-export default function page() {
+export default function Page() {
  
   useEffect(() => {
     let locomotiveScroll: any;
