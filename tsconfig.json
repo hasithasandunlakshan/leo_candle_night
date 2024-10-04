@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/slips/uploadSlips/route.ts", "src/app/uploadSlips/page.tsx", "src/app/bookseat/page.jsx", "src/app/api/seats/route.js", "src/app/api/seats/getSeats/route.js"],
   "exclude": ["node_modules"]
 }
