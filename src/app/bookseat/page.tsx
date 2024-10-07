@@ -1,5 +1,5 @@
 "use client"
-import { Availableseats } from '@/components/Booking/AvailableSeats';
+import Availableseats from '@/components/Booking/AvailableSeats';
 import SeatSelect from '@/components/Booking/SeatSelect'
 import { UserDetails } from '@/components/Booking/UserDetails'
 import Users from '@/components/Booking/Users';
