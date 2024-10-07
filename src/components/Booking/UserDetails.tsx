@@ -52,9 +52,10 @@ const FormSchema = z.object({
 type FormSchemaType = z.infer<typeof FormSchema>;
 interface UserDetailsProps {
   onConfirm: () => void;
+  buttonText: boolean;
 }
 
-export function UserDetails({ onConfirm }: UserDetailsProps) {
+export function UserDetails({ onConfirm ,buttonText}: UserDetailsProps) {
   const router = useRouter();
   const useOrder = useContext(CartContext);
   const [isSeatOpen, setSeatOpen] = useState(false);
@@ -169,7 +170,7 @@ export function UserDetails({ onConfirm }: UserDetailsProps) {
                   <FormControl>
                     <div className="flex gap-2">
                       <p className="w-full align-middle border-secondary rounded-md justify-start items-center flex text-white bg-black border">
-                        <span className="ml-3">{selectedFoods.length > 0 ? selectedFoods.join(", ") : "No food selected"}</span>
+                        <span className="ml-3">{selectedFoods.length > 0 ? selectedFoods.join(", ")+"" : "No food selected"}</span>
                       </p>
                       <Button
                         onClick={() => setSeatOpen(!isSeatOpen)}
@@ -219,9 +220,12 @@ export function UserDetails({ onConfirm }: UserDetailsProps) {
             />
 
             <div className="flex items-end justify-center sm:justify-end">
-              <Button type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
-                Confirm
-              </Button>
+              {buttonText?     <Button onClick={()=>{router.push("/orderdetails")}}  type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
+              Submit
+              </Button>:     <Button  type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
+                Add Next User
+              </Button>}
+            
             </div>
           </form>
         </Form>
