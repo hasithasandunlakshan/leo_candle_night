@@ -16,7 +16,7 @@ const useOrder=useContext(CartContext);
   return (
     <>
      <SeatSelect/> 
-     {/* <FoodList/> */}
+  
      <Availableseats/>
  
    
