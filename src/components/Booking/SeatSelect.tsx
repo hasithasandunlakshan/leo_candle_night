@@ -31,7 +31,7 @@ export default function SeatSelect() {
   const handleSeatSelection = (seatNumber: number) => {
     setSelectedSeat(seatNumber);
     useOrder?.setNumOfSeat(seatNumber); 
-    router.push("/bookseat/users");
+    // router.push("/bookseat/users");
     console.log("kkkkkkkkkkk",useOrder?.numOfSeat)
  
   }
@@ -63,7 +63,7 @@ export default function SeatSelect() {
 
         <AlertDialogFooter>
           <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          <AlertDialogAction >Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
