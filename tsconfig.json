@@ -21,6 +21,10 @@
       "@/*": ["./src/*"]
     }
   },
+<<<<<<< HEAD
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.jsx", "src/components/SmoothScroll.jsx", "src/components/Booking/UserDetails.tsx", "src/components/footer/Footer.ts"],
+=======
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/slips/uploadSlips/route.ts", "src/app/uploadSlips/page.tsx", "src/app/bookseat/page.jsx", "src/app/api/seats/route.js", "src/app/api/seats/getSeats/route.js"],
+>>>>>>> Hash
   "exclude": ["node_modules"]
 }
