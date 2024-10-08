@@ -13,7 +13,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-interface cloudinaryUploadResult {
+interface CloudinaryUploadResult {
   public_id: string;
   secure_url: string; // Include the URL field
   [key: string]: any;
@@ -22,10 +22,11 @@ interface cloudinaryUploadResult {
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as File | null;
+    const file = formData.get('file');
 
-    if (!file) {
-      return NextResponse.json({ error: "File not found" }, { status: 400 });
+    // Check if file exists and is indeed a File object
+    if (!file || !(file instanceof File)) {
+      return NextResponse.json({ error: "No file uploaded or file is invalid" }, { status: 400 });
     }
 
     // Convert the file into a buffer
@@ -33,14 +34,14 @@ export async function POST(request: NextRequest) {
     const buffer = Buffer.from(bytes);
 
     // Upload the file to Cloudinary
-    const result = await new Promise<cloudinaryUploadResult>((resolve, reject) => {
+    const result = await new Promise<CloudinaryUploadResult>((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
         { folder: 'nextjs' },
         (error, result) => {
           if (error) {
             reject(error);
           } else {
-            resolve(result as cloudinaryUploadResult);
+            resolve(result as CloudinaryUploadResult);
           }
         }
       );
