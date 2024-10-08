@@ -14,6 +14,8 @@ import Test from "@/components/Test/Test";
 import Details2 from "@/components/Home/Details2";
 import Lenis from '@studio-freight/lenis'
 import ContactPage from "@/components/contact/contactPage";
+import Foods from "@/components/meal/Foodz";
+import Gallery from "@/components/Home/gallery";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -93,13 +95,13 @@ export default function Page() {
         }}
         className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"
       ></motion.div>
-
-   
+<Foods/>
+<Gallery/>
       <Hero />
       {/* <Details /> */}
      <Details2/>
 
-  <Test/>
+ 
    
       {/* <Parallax/> */}
       <ContactPage/>

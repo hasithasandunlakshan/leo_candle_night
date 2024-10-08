@@ -34,10 +34,14 @@ const FoodList:React.FC<FoodListProps> = ({ FinalFood }) => {
     FinalFood(cart); // Pass selected food items to the parent component
   };
   return (
-    <div className="flex flex-wrap justify-center ">
+    <div className="flex flex-wrap min-h-screen w-screen overflow-x-hidden overflow-y-scroll  justify-center ">
+    
+
       {foods.map((food) => (
         <FoodCard key={food.id} food={food} onAddToCart={handleAddToCart} />
       ))}
+
+   
       {/* <h2 className="mt-4 text-xl font-bold">Cart Items:</h2>
       <ul className="mt-2">
         {cart.map((item, index) => (
