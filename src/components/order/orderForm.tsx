@@ -50,7 +50,7 @@ export function  OrderForm() {
 
   return (
 
-    <div className="flex min-h-screen bg-primary items-center justify-center">
+    <div className="flex min-h-screen w-screen bg-primary items-center justify-center">
   <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6  flex  flex-col">
        

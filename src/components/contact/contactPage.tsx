@@ -5,13 +5,28 @@ import Image from 'next/image'
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col min-w-screen bg-primary items-center justify-center  min-h-screen items-center">
-      <h1 className="text-justify text-secondary text-8xl pt-28 font-Qwigley">Stay Connected With Us </h1>
-        <div className="flex items-center justify-center">
-          <div className="m-12 w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
-            <HeroHighlight className="w-full border border-secondary rounded-xl">
+    <div className="flex flex-col items-center justify-center space-y-8   p-8">
+
+    
+   
+  <motion.h1
+  initial={{ opacity: 0, scale: 0.5 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1 }}
+  className="text-center   text-secondary  text-7xl sm:text-8xl  lg:pt-20 px-4 pt-20 font-Qwigley max-w-[90%] mx-auto"
+
+>
+  Stay Connected With Us
+</motion.h1>
+        <div className="flex flex-col lg:flex-row items-center  justify-center">
+
+
+          <motion.div  
+
+   className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black">
+            <HeroHighlight className="w-full border border-secondary hover:border-white  transition-all duration-500 rounded-xl">
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
-                <div className="flex w-full  items-center gap-5 mb-6">
+                <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
                   <Image
                     src="/ContactUs/chamindu.jpg" 
                     alt="Description"
@@ -19,20 +34,20 @@ export default function ContactPage() {
                     height={160} // height in pixels
                     className="rounded-full object-cover"/>
                   <div className="flex flex-col">
-                    <h1 className="py-2 text-4xl text-white font-bold ">Chamindu Sathsara</h1>
+                    <h1 className="py-2  text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
                   </div>
                 </div>
-                <p className="text-base leading-7 text-white font-semibold">Director</p>
-                <p className="text-base leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
-                <p className="text-sm leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
+                <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
+                <p className="text-center sm:text-left leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
+                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
               </div>
             </HeroHighlight>
-            </div>
+            </motion.div>
 
-            <div className="m-12 w-[90%] rounded-3xl border border-black hover:scale-105 duration-700">
-            <HeroHighlight className="w-full border border-secondary rounded-xl">
+            <motion.div  className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black duration-700">
+            <HeroHighlight className="w-full border border-secondary hover:border-white  transition-all rounded-xl">
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
-                <div className="flex w-full  items-center gap-5 mb-6">
+                <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
                   <Image
                     src="/ContactUs/chamindu.jpg" 
                     alt="Description"
@@ -40,18 +55,17 @@ export default function ContactPage() {
                     height={160} // height in pixels
                     className="rounded-full object-cover"/>
                   <div className="flex flex-col">
-                    <h1 className="py-2 text-4xl text-white font-bold ">Chamindu Sathsara</h1>
+                    <h1 className="py-2 text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
                   </div>
                 </div>
-                <p className="text-base leading-7 text-white font-semibold">Director</p>
-                <p className="text-base leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
-                <p className="text-sm leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
+                <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
+                <p className="text-center sm:text-left leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
+                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
               </div>
             </HeroHighlight>
-            </div>
+            </motion.div>
     </div>
     </div>
-
 
      )
 }

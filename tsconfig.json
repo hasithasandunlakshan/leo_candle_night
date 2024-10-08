@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -21,10 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-<<<<<<< HEAD
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.jsx", "src/components/SmoothScroll.jsx", "src/components/Booking/UserDetails.tsx", "src/components/footer/Footer.ts"],
-=======
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/slips/uploadSlips/route.ts", "src/app/uploadSlips/page.tsx", "src/app/bookseat/page.jsx", "src/app/api/seats/route.js", "src/app/api/seats/getSeats/route.js"],
->>>>>>> Hash
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.tsx", "src/components/SmoothScroll.jsx", "src/components/Booking/UserDetails.tsx", "src/components/footer/Footer.tsx", "src/app/layout.tsx", "src/components/Home/Parallax.tsx", "src/components/Home/ItemList.jsx", "src/components/Home/Test.js", "src/app/api/seats/getSeats/route.ts"],
   "exclude": ["node_modules"]
 }

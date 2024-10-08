@@ -1,38 +1,67 @@
 "use client";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../../components/ui/hero-highlight";
-import ContactPage from "../../components/contact/contactPage"
-import Particles from "react-tsparticles";
-export default function HeroHighlightDemo() {
+import ContactPage from "../../components/contact/contactPage";
+import Footer from "@/components/footer/FooterPage";
+import { useEffect } from "react";
+import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
+
+export default function Page() {
+ 
+  useEffect(() => {
+    let locomotiveScroll: any;
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+
+      // Bypass TypeScript type error by casting options to 'any'
+      locomotiveScroll = new LocomotiveScroll({
+        el: document.querySelector(".scroll-container") as HTMLElement, // Target scroll container
+        smooth: true,
+      } as any); // <--- Cast options to 'any'
+
+      // Mark loading complete
+   
+    })();
+
+    // Cleanup LocomotiveScroll on component unmount
+    return () => {
+      if (locomotiveScroll) locomotiveScroll.destroy();
+    };
+  }, []); // Empty dependency array means this runs once when component mounts
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-primary">
-<motion.div
-           initial={{ y: -50 }}     // Starting point
-           animate={{  y: 0 }}      // Animate to this position
-           transition={{
-             duration: 2,                      // Smooth transition duration (seconds)
-                       // Easing for smoother motion
-             repeat: Infinity,                  // Loop the animation infinitely
-             repeatType: "mirror",              // Go back and forth (y: 0 -> y: 50 -> y: 0)
-             repeatDelay: 0.5                   // Small delay between each loop
-           }}
-          className="absolute top-0 right-0  w-52 h-40     sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></motion.div>
+    <div className="bg-primary   scroll-container relative scroll-smooth">
+      {/* Top animation */}
+      <motion.div
+        initial={{ y: -50 }}
+        animate={{ y: 0 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "mirror",
+          repeatDelay: 0.5,
+        }}
+        className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"
+      ></motion.div>
 
-     <ContactPage/>
+      {/* Contact page content */}
+      <ContactPage />
 
+      {/* Bottom animation */}
+      <motion.div
+        initial={{ y: -50 }}
+        animate={{ y: 0 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "mirror",
+          repeatDelay: 0.5,
+        }}
+        className="absolute bottom-0 left-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"
+      ></motion.div>
 
-     <motion.div
-           initial={{ y: -50 }}     // Starting point
-           animate={{  y: 0 }}      // Animate to this position
-           transition={{
-             duration: 2,                      // Smooth transition duration (seconds)
-                       // Easing for smoother motion
-             repeat: Infinity,                  // Loop the animation infinitely
-             repeatType: "mirror",              // Go back and forth (y: 0 -> y: 50 -> y: 0)
-             repeatDelay: 0.5                   // Small delay between each loop
-           }}
-          className="absolute  bottom-0  left-0  w-52 h-40     sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"></motion.div>
-<Particles/>
+      {/* Footer content */}
+      <Footer />
     </div>
   );
 }

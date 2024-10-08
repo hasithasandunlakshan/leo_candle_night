@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 import { FloatingNav } from '../ui/floating-navbar';
@@ -6,7 +7,13 @@ import { AiTwotoneBank } from "react-icons/ai";
 import { GiMeal } from "react-icons/gi";
 import { ImCart } from "react-icons/im";
 import { FaHome } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 export default function Navbar() {
+  const router = usePathname();
+  const hiddenNavbarRoutes = ["/bookseat/users", "/bookseat"];
+
+  const isNavbarHidden = hiddenNavbarRoutes.includes(router);
+
     const navItems = [
         {
           name: "Home",
@@ -36,7 +43,8 @@ export default function Navbar() {
   return (
     
 <>
-<FloatingNav navItems={navItems} />
+{!isNavbarHidden && <FloatingNav navItems={navItems} />}
+
  
 </>
   )

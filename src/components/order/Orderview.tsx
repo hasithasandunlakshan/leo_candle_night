@@ -4,7 +4,7 @@
     ToggleGroupItem,
   } from "@/components/ui/toggle-group"
   
-  export function SeatSelect() {
+  export function View() {
     return (
 
         <div className="flex ">
