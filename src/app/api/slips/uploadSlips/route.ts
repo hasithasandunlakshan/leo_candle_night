@@ -13,10 +13,11 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Define an interface for Cloudinary upload results
 interface CloudinaryUploadResult {
   public_id: string;
   secure_url: string; // Include the URL field
-  [key: string]: any;
+  [key: string]: any; // This allows for additional properties
 }
 
 export async function POST(request: NextRequest) {
