@@ -39,6 +39,7 @@ export async function POST(request: NextRequest) {
         { folder: 'nextjs' },
         (error, result) => {
           if (error) {
+            console.error("Cloudinary upload error:", error);
             reject(error);
           } else {
             resolve(result as CloudinaryUploadResult);
@@ -56,7 +57,12 @@ export async function POST(request: NextRequest) {
     });
 
     // Save the document to MongoDB
-    await newSlip.save();
+    try {
+      await newSlip.save();
+    } catch (dbError) {
+      console.error("MongoDB save error:", dbError);
+      return NextResponse.json({ error: "Failed to save to database" }, { status: 500 });
+    }
 
     // Return the secure URL to the client
     return NextResponse.json({ imageUrl: result.secure_url }, { status: 200 });
