@@ -40,8 +40,8 @@ export default function SeatSelect() {
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>How Many Seats Do You Want?</AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogTitle className=" text-primary">How Many Seats Do You Want?</AlertDialogTitle>
+          <AlertDialogDescription className="text-primary">
             Please select the number of seats you want.
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -52,9 +52,9 @@ export default function SeatSelect() {
             <button
               key={seat}
               onClick={() => handleSeatSelection(seat)}
-              className={`border transition-all duration-500 font-extrabold shadow-inner rounded-md px-4 py-2 
-                text-white hover:bg-slate-600 border-black
-                ${selectedSeat === seat ? "bg-orange-400" : "bg-red-500"}`}
+              className={` transition-all duration-500 font-extrabold shadow-inner rounded-md px-4 py-2 
+                text-white hover:bg-yellow-400 border-black
+                ${selectedSeat === seat ? "bg-amber-400" : "bg-primary"}`}
             >
               {seat}
             </button>
@@ -63,7 +63,7 @@ export default function SeatSelect() {
 
         <AlertDialogFooter>
           <AlertDialogCancel onClick={handleCancel}>Cancel</AlertDialogCancel>
-          <AlertDialogAction >Continue</AlertDialogAction>
+          <AlertDialogAction className=" bg-primary" >Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

@@ -31,6 +31,7 @@ const FoodList:React.FC<FoodListProps> = ({ FinalFood }) => {
   };
 
   const handleConfirm = () => {
+    console.log("cartr",cart)
     FinalFood(cart); // Pass selected food items to the parent component
   };
   return (
