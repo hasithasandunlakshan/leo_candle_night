@@ -10,16 +10,22 @@ import React, { useContext, useEffect } from 'react'
 
 export default function Page() {
   
-const useOrder=useContext(CartContext);
+const resetOrder=useContext(CartContext);
+useEffect(()=>{
+resetOrder?.resetOrder();
 
+
+},[])
 
   return (
     <>
-     <SeatSelect/> 
-  
+    
+    <div className="flex bg-primary min-h-screen  flex-col">
+    
+    {/* <SeatSelect/>  */}
      <Availableseats/>
  
-   
+     </div>
     </>
   )
 }
