@@ -6,6 +6,7 @@ import { createContext, useState, ReactNode } from "react";
 const initialState = {
   users: [],
   name: '',
+  index: '', // Index initialized as an empty string
   numOfSeat: 1,
   seats: [],
 };
@@ -19,6 +20,9 @@ interface CartContextType {
   setNumOfSeat: (numOfSeat: number) => void;
   name: string;
   setName: (name: string) => void;
+  index: string;
+  setIndex: (index: string) => void; // Function to update the index
+
   addUser: (user: any) => void;
   resetOrder: () => void;
 }
@@ -31,6 +35,7 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [users, setUsers] = useState<any[]>(initialState.users);
   const [seats, setSeats] = useState<any[]>(initialState.seats);
   const [numOfSeat, setNumOfSeat] = useState<number>(initialState.numOfSeat);
+  const [index, setIndex] = useState<string>(initialState.index); // Add state for index
 
   // Reset function to revert all values back to initial state
   const resetOrder = () => {
@@ -38,6 +43,7 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     setUsers(initialState.users);
     setSeats(initialState.seats);
     setNumOfSeat(initialState.numOfSeat);
+    setIndex(initialState.index); // Reset index as well
   };
 
   // Add a user to the users array
@@ -56,6 +62,8 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
         setNumOfSeat,
         name,
         setName,
+        index,
+        setIndex,
         addUser,
         resetOrder,
       }}

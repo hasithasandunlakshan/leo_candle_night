@@ -18,7 +18,7 @@ export default function OrderSummary() {
     return <div>No order summary available</div>;
   }
 
-  const { users, name, numOfSeat ,seats} = cartContext;
+  const { users, name, numOfSeat ,seats,index} = cartContext;
 
   const sendOrderToBackend = async () => {
     try {
@@ -70,6 +70,7 @@ export default function OrderSummary() {
  <div className=" py-32">
          <h1 className="text-2xl font-bold mb-4 md:text-5xl py-5 text-secondary ">Order Summary</h1>
       <p className="mt-2 text-secondary">Name: {name}</p>
+      <p className="mt-2 text-secondary">Index Num: {index}</p>
       <p className="mt-1 text-secondary">Number of Seats: {numOfSeat}</p>
       <p className="mt-1 text-secondary">Seats: 
   {seats.map((seat, index) => (

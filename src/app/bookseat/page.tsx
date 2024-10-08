@@ -19,10 +19,10 @@ resetOrder?.resetOrder();
 
   return (
     <>
-     <SeatSelect/> 
+    
     <div className="flex bg-primary min-h-screen  flex-col">
     
-  
+    {/* <SeatSelect/>  */}
      <Availableseats/>
  
      </div>

@@ -98,6 +98,7 @@ export function UserDetails({ onConfirm, isLastUser }: UserDetailsProps) {
 
     if(useOrder?.name === ""){
       useOrder.setName(data.username);
+      useOrder.setIndex(data.index);
     }
 
     toast({
@@ -211,7 +212,7 @@ export function UserDetails({ onConfirm, isLastUser }: UserDetailsProps) {
                         Select Meal
                       </Button>
                       {isSeatOpen && (
-                        <div className="absolute top-0 right-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-80 z-30">
+                        <div className="absolute top-0 right-0 flex items-center justify-center w-full min-h-[200vh]  bg-gray-800 bg-opacity-100 z-30">
                           <FoodList FinalFood={handleFoodSelect} />
                         </div>
                       )}
