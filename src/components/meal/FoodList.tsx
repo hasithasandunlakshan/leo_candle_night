@@ -17,6 +17,7 @@ interface FoodItem {
   id: number;
   name: string;
   price: number;
+
 }
 
 // Define the different food categories
@@ -66,9 +67,9 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   return (
     <div className="flex  min-h-screen w-screen justify-center align-middle">
       <div className=" flex flex-col w-full justify-center items-center">
-      <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">Food</h2>
+      <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary my-10">Food</h2>
         {/* Render Food Section */}
-        <div className='grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-[90%] grid justify-center align-middle'>
+        <div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle'>
           
           {foods.map((food) => (
             <FoodCard key={food.id} food={food} onAddToCart={handleAddToCart} />
@@ -76,8 +77,8 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         </div>
 
         {/* Render Drinks Section */}
-        <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">Drinks</h2>
-        <div className='grid-cols-1 sm:grid-cols-2 md:grid-cols-4  w-[90%] grid justify-center align-middle'>
+        <h2 className="text-3xl sm:text-4xl  font-bold  md:text-7xl py-0 text-secondary my-10 ">Drinks</h2>
+        <div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  w-[90%] grid justify-center align-middle'>
         
           {drinks.map((drink) => (
             <FoodCard key={drink.id} food={drink} onAddToCart={handleAddToCart} />
@@ -85,8 +86,8 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         </div>
 
         {/* Render Desserts Section */}
-          <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">Desserts</h2>
-        <div className='grid-cols-1 sm:grid-cols-2 md:grid-cols-4  w-[90%] grid justify-center align-middle'>
+          <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary my-10 ">Desserts</h2>
+        <div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  w-[90%] grid justify-center align-middle'>
           {desserts.map((dessert) => (
             <FoodCard key={dessert.id} food={dessert} onAddToCart={handleAddToCart} />
           ))}
@@ -95,7 +96,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         {/* Sheet to show the cart items */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" className=' right-10 bg-secondary top-10 fixed '>View Cart</Button>
+            <Button variant="outline" className=' right-10 bg-secondary hover:bg-primary top-10 fixed '>Confirm</Button>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>

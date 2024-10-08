@@ -52,7 +52,7 @@ export default function SeatSelect() {
             <button
               key={seat}
               onClick={() => handleSeatSelection(seat)}
-              className={` transition-all duration-500 font-extrabold shadow-inner rounded-md px-4 py-2 
+              className={` transition-all duration-500 font-extrabold shadow-inner rounded-md px-3 md:px-4 py-2 
                 text-white hover:bg-yellow-400 border-black
                 ${selectedSeat === seat ? "bg-amber-400" : "bg-primary"}`}
             >

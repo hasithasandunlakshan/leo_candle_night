@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import Hero from "@/components/Home/Hero";
-import Details from "@/components/Home/Details";
+
 import PreLoader from "@/components/Loading/Loader"; // Adjust import path if necessary
 import { motion, useScroll } from "framer-motion";
 
@@ -9,11 +9,12 @@ import Footer from "@/components/footer/FooterPage";
 
 import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
-import Parallax from "@/components/Home/Parallax";
-import Test from "@/components/Test/Test";
-import Details2 from "@/components/Home/Details2";
+
+
+import Details from "@/components/Home/Details";
 import Lenis from '@studio-freight/lenis'
 import ContactPage from "@/components/contact/contactPage";
+import Gallery from "@/components/Home/Gallery";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -96,14 +97,14 @@ export default function Page() {
 
    
       <Hero />
-      {/* <Details /> */}
-     <Details2/>
+    
+      <Gallery/>
 
-  <Test/>
+     <Details/>
+
    
-      {/* <Parallax/> */}
       <ContactPage/>
-      <Footer /> {/* Ensure you include the Footer component */}
+      <Footer /> 
     </main>
   );
 }
