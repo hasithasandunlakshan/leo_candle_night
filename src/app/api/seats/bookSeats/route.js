@@ -24,4 +24,3 @@ export async function POST(request) {
     return NextResponse.json({ success: false, message: "Booking failed" }, { status: 400 });
   }
 }
-
