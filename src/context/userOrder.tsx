@@ -25,7 +25,6 @@ interface CartContextType {
 
   addUser: (user: any) => void;
   resetOrder: () => void;
-  
 }
 
 // Create the context with an initial null value
@@ -51,9 +50,6 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const addUser = (user: any) => {
     setUsers((prevUsers) => [...prevUsers, user]);
   };
-  const addSeat = (seat: any) => {
-    setSeats((prevSeats) => [...prevSeats, seat]); // Update seats array
-  };
 
   return (
     <CartContext.Provider
@@ -70,7 +66,6 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
         setIndex,
         addUser,
         resetOrder,
-        addSeat
       }}
     >
       {children}

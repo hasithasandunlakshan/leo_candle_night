@@ -5,10 +5,8 @@
  import "./globals.css";
  import Navbar from "@/components/Nav/Navbar";
  import { CartContextProvider } from "@/context/userOrder";
- import Particles from '../components/Particle'
- import Footer from "@/components/footer/FooterPage";
-import Foot from '@/components/footer/Footer';
-import { useRouter } from "next/router";
+
+
  const poppins = Poppins({
    subsets: ["latin"],
    display: "swap",
