@@ -15,6 +15,7 @@ import Details from "@/components/Home/Details";
 import Lenis from '@studio-freight/lenis'
 import ContactPage from "@/components/contact/contactPage";
 import Gallery from "@/components/Home/Gallery";
+import { Sponsers } from "@/components/sponser/CarouselSize";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -102,8 +103,8 @@ export default function Page() {
 
      <Details/>
 
-   
       <ContactPage/>
+   <Sponsers/>
       <Footer /> 
     </main>
   );

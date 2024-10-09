@@ -8,17 +8,15 @@ export default function ContactPage() {
     <div className="flex flex-col items-center justify-center space-y-8   p-8">
 
     
-   
-  <motion.h1
-  initial={{ opacity: 0, scale: 1.5,rotate:180  }}
-  whileInView={{ opacity: 1, scale: 1,rotate:0  }}
 
-  transition={{ duration: 0.5 }}
+<motion.h1
+  initial={{ opacity: 0, scale: 0.5 }}
+  whileInView={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 1 }}
+  className="text-center text-white  text-2xl sm:text-7xl      w-[90%]"
 
-  className="text-center   text-secondary  text-7xl sm:text-8xl  lg:pt-20 px-4 pt-20 font-Qwigley max-w-[90%] mx-auto"
-
->
-  Stay Connected With Us
+    >
+Stay<span className="font-Qwigley text-secondary text-2xl sm:text-9xl"> Connected </span> with Us
 </motion.h1>
         <div className="flex flex-col lg:flex-row items-center  justify-center">
 
