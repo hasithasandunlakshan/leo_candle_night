@@ -70,7 +70,7 @@ export default function Page() {
 
   return (
     
-    <main  className="bg-primary   scroll-container relative scroll-smooth">
+    <main  className="   scroll-container relative scroll-smooth">
       {/* Animated background circles */}
       <motion.div
         initial={{ y: -50 }} // Starting point

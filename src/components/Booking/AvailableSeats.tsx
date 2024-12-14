@@ -4,69 +4,86 @@ import axios from "axios";
 import { CartContext } from "@/context/userOrder";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { string } from "zod";
 
 // Define the Seat type
+
+const seatsdemo=[
+  { "seatNumber": 1, "isBooked": false, "seatName": "Seat-1" },
+  { "seatNumber": 2, "isBooked": true, "seatName": "Seat-2" },
+  { "seatNumber": 3, "isBooked": false, "seatName": "Seat-3" },
+  { "seatNumber": 4, "isBooked": false, "seatName": "Seat-4" },
+  { "seatNumber": 5, "isBooked": false, "seatName": "Seat-5" },
+  { "seatNumber": 6, "isBooked": false, "seatName": "Seat-6" },
+  { "seatNumber": 7, "isBooked": false, "seatName": "Seat-7" },
+  { "seatNumber": 8, "isBooked": false, "seatName": "Seat-8" },
+  { "seatNumber": 9, "isBooked": false, "seatName": "Seat-9" },
+  { "seatNumber": 10, "isBooked": false, "seatName": "Seat-10" }
+]
+
 type Seat = {
+
   seatNumber: number;
   isBooked: boolean;
+  seatName:string;
 };
 
 export default function BookSeats() {
-  const [seats, setSeats] = useState<Seat[]>([]); // Ensure it's always an array
-  const [selectedSeats, setSelectedSeats] = useState<number[]>([]);
-  const [loadingSeats, setLoadingSeats] = useState<boolean>(true); // Loading state for fetching seats
+  const [seats, setSeats] = useState<Seat[]>(seatsdemo); // Ensure it's always an array
+  const [selectedSeats, setSelectedSeats] = useState<Seat|null>(null);
+  const [loadingSeats, setLoadingSeats] = useState<boolean>(false); // Loading state for fetching seats
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false); // Loading state for submitting booking
   const useOrder = useContext(CartContext);
   const router = useRouter();
 
-  useEffect(() => {
-    // Fetch seats from the API
-    async function fetchSeats() {
-      setLoadingSeats(true); // Start loading
-      try {
-        const response = await axios.get("/api/seats/getSeats");
-        setSeats(response.data.seats || []); // Ensure data is being set to an array
-        console.log("Seats fetched:", response.data.seats);
-      } catch (error) {
-        console.error("Error fetching seats:", error);
-      } finally {
-        setLoadingSeats(false); // Stop loading
-      }
-    }
-    fetchSeats();
-  }, []);
+  // useEffect(() => {
+  //   // Fetch seats from the API
+  //   async function fetchSeats() {
+  //     setLoadingSeats(true); // Start loading
+  //     try {
+  //       const response = await axios.get("/api/seats/getSeats");
+  //       setSeats(response.data.seats || []); // Ensure data is being set to an array
+  //       console.log("Seats fetched:", response.data.seats);
+  //     } catch (error) {
+  //       console.error("Error fetching seats:", error);
+  //     } finally {
+  //       setLoadingSeats(false); // Stop loading
+  //     }
+  //   }
+  //   fetchSeats();
+  // }, []);
 
   // Handle seat selection with CartContext
-  const toggleSeatSelection = (seatNumber: number) => {
-    if (selectedSeats.includes(seatNumber)) {
-      setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
-    } else {
-      if (useOrder) {
-        if (selectedSeats.length < useOrder.numOfSeat) {
-          setSelectedSeats([...selectedSeats, seatNumber]);
+  const toggleSeatSelection = (seat: Seat) => {
+    // if (selectedSeats.includes(seatNumber)) {
+    //   setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
+  
+   
+   
+        if (useOrder) {
+          setSelectedSeats(seat)
+          alert(`Are you sure`);
         } else {
-          alert(`You can only select up to ${useOrder.numOfSeat} seats.`);
+          alert(`You can only select up to  seats.`);
         }
-      } else {
-        alert("Refresh");
-      }
+      
     }
-  };
+  ;
 
   // Handle booking submission
   const handleBookSeats = async () => {
-    if (selectedSeats.length === 0) return;
+    if (selectedSeats ===null) return;
 
     setLoadingSubmit(true); // Start loading on submit
     try {
-      await axios.post("/api/seats/bookSeats", { seatNumbers: selectedSeats });
+      // await axios.post("/api/seats/bookSeats", { seatNumbers: selectedSeats });
       alert("Seats booked successfully!");
        // Clear selected seats
        useOrder?.setSeats(selectedSeats);
       // Re-fetch updated seats
-      const response = await axios.get("/api/seats/getSeats");
-      setSelectedSeats([]);
-      setSeats(response.data.seats || []);
+      // const response = await axios.get("/api/seats/getSeats");
+      setSelectedSeats(null);
+      // setSeats(response.data.seats || []);
       // useOrder?.setSeats(selectedSeats);
 
       router.push("/bookseat/users");
@@ -93,12 +110,12 @@ export default function BookSeats() {
               className={`border rounded-lg p-1 text-center transition ${
                 seat.isBooked
                   ? "bg-red-500 text-white"
-                  : selectedSeats.includes(seat.seatNumber)
+                  : selectedSeats?.seatNumber===seat.seatNumber
                   ? "bg-green-500 text-white"
                   : "bg-gray-200 hover:bg-gray-300"
               }`}
               onClick={() =>
-                !seat.isBooked && toggleSeatSelection(seat.seatNumber)
+                !seat.isBooked && toggleSeatSelection(seat)
               }
             >
               {seat.seatNumber}
