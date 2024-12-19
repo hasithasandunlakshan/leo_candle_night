@@ -6,7 +6,7 @@ import { ShuffleGrid } from './Test'
 export default function Gallery() {
   return (
     
-    <div className="flex flex-col justify-center w-screen  items-center ">
+    <div className="flex flex-col justify-center w-screen h-full  items-center ">
         <div className=" flex flex-col my-5  items-center justify-center">
         <motion.h1
   initial={{ opacity: 0, scale: 0.9 }}
@@ -19,11 +19,11 @@ export default function Gallery() {
 </motion.h1>
         </div>
 
-<div className="grid  w-[80%] grid-cols-1">
+<div className="md:grid hidden  w-[80%] grid-cols-1">
         <ShuffleGrid/>
     
 </div>
-        {/* <div className="grid grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
+        <div className="grid md:hidden grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
     <div className="grid gap-4">
         <div>
             <img className="h-auto max-w-full rounded-lg" src="/food/burger.jpg" alt="/food/burger.jpg" />
@@ -68,7 +68,7 @@ export default function Gallery() {
             <img className="h-auto max-w-full rounded-lg" src="/food/faluda.jpg" alt="" />
         </div>
     </div>
-</div> */}
+</div>
 
     </div>
     

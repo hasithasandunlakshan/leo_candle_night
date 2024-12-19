@@ -127,7 +127,7 @@ const generateSquares = () => {
       whileInView="show"
       exit="hide"
       variants={introPictureVariants}
-      className=" w-full h-full flex "
+      className=" w-40 lg:w-56 xl:w-64 2xl:w-72 min-h-40 flex "
       style={{
         backgroundImage: `url(${sq.src})`,
         backgroundSize: "cover",
@@ -154,7 +154,7 @@ export const ShuffleGrid = () => {
   };
 
   return (
-    <div className="grid   grid-cols-4 grid-rows-4 h-[450px] gap-1">
+    <div className="grid   grid-cols-4 grid-rows-4 gap-1">
       {squares.map((sq) => sq)}
   
     </div>

@@ -35,7 +35,7 @@ export default function Hero() {
       fill="#d6ab31"
     /> */}
 <div className=" flex  justify-center align-middle  container items-center">
-<div className="flex flex-col w-[100%] md:w-1/2  lg:w-[60%] items-center md:items-start py-32">
+<div className="flex flex-col w-[100%]   lg:w-[60%] items-center lg:items-start py-32">
     {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
     
 
@@ -67,8 +67,8 @@ export default function Hero() {
 
 <Button text='Book Ticket'/>
     </div>
-    <div className="sm:flex hidden   md:ml-20   items-center  justify-center align-middle">
-      <motion.div className="sm:flex hidden"
+    <div className="md:flex hidden   lg:ml-20   items-center  justify-center align-middle">
+      <motion.div className="lg:flex hidden"
        initial={{ opacity: 0,y:40  }}
        animate={{ opacity: 1,y:0 }}
        viewport={{ once: true }}
