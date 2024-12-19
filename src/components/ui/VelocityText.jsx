@@ -28,7 +28,7 @@ export default function VelocityText() {
   return (
 
     
-    <section ref={targetRef} className="relative bg-transparent">
+    <section ref={targetRef} className="relative h-full bg-transparent">
       {/* <Details/> */}
       <Gallery/>
       <div className="sticky top-0 flex  items-center overflow-hidden">

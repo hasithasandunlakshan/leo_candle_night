@@ -6,7 +6,7 @@ import { ShuffleGrid } from './Test'
 export default function Gallery() {
   return (
     
-    <div className="flex flex-col justify-center w-screen  items-center ">
+    <div className="flex flex-col justify-center w-screen h-full  items-center ">
         <div className=" flex flex-col my-5  items-center justify-center">
         <motion.h1
   initial={{ opacity: 0, scale: 0.9 }}
