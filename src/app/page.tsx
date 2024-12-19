@@ -101,10 +101,10 @@ export default function Page() {
    
       <Hero />
    {/* <ShuffleHero/> */}
+     <Details/>
     <VelocityText/>
       {/* <Gallery/> */}
 
-     <Details/>
 
       <ContactPage/>
    <Sponsers/>

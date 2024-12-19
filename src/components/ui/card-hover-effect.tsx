@@ -55,7 +55,7 @@ export const Card = ({
 }) => {
   return (
     <motion.div
-    initial={{ opacity: 0, x: 15 }}
+    initial={{ opacity: 0, y: 5 }}
         whileInView={{ opacity: 1, x: 0 }}
       
         transition={{ duration: 0.5 }}

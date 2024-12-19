@@ -34,8 +34,8 @@ export default function Hero() {
       className="-top-40 left-0 md:left-60 md:-top-20"
       fill="#d6ab31"
     /> */}
-<div className=" grid md:grid-cols-2 grid-cols-1 justify-center align-middle  container items-center">
-<div className="flex flex-col w-[100%] md:w-1/2  lg:w-[90%] items-center md:items-start py-32">
+<div className=" flex  justify-center align-middle  container items-center">
+<div className="flex flex-col w-[100%] md:w-1/2  lg:w-[60%] items-center md:items-start py-32">
     {/* <TypewriterEffectSmooth words={words} cursorClassName='hidden' /> */}
     
 
@@ -65,7 +65,7 @@ export default function Hero() {
 
 <Button text='Book Ticket'/>
     </div>
-    {/* <div className="sm:flex hidden   md:ml-20   items-center  justify-center align-middle">
+    <div className="sm:flex hidden   md:ml-20   items-center  justify-center align-middle">
       <motion.div className="sm:flex hidden"
        initial={{ opacity: 0,  }}
        animate={{ opacity: 1, }}
@@ -75,9 +75,9 @@ export default function Hero() {
       <Image src={"/images/candle.png"} width={500} height={40} alt='candle' className=' rounded-2xl'/>
       </motion.div>
  
-    </div> */}
+    </div>
 
-<ShuffleGrid/>
+{/* <ShuffleGrid/> */}
 </div>
 
 
