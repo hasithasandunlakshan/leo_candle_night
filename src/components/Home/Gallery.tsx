@@ -1,12 +1,13 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import VelocityText from '../ui/VelocityText'
 
 export default function Gallery() {
   return (
     
     <div className="flex flex-col justify-center w-screen items-center ">
-        <div className=" flex flex-col  items-center justify-center">
+        {/* <div className=" flex flex-col  items-center justify-center">
         <motion.h1
   initial={{ opacity: 0, scale: 0.5 }}
   whileInView={{ opacity: 1, scale: 1 }}
@@ -16,7 +17,9 @@ export default function Gallery() {
     >
   Delight in a night of <span className="font-Qwigley text-secondary text-2xl sm:text-9xl">unforgettable </span> flavors
 </motion.h1>
-        </div>
+        </div> */}
+
+        <VelocityText/>
         <div className="grid grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
     <div className="grid gap-4">
         <div>
