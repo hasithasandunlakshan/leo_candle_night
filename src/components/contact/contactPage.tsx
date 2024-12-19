@@ -10,7 +10,7 @@ export default function ContactPage() {
     
 
 <motion.h1
-  initial={{ opacity: 0, scale: 0.5 }}
+  initial={{ opacity: 0, scale: 0.9 }}
   whileInView={{ opacity: 1, scale: 1 }}
   transition={{ duration: 1 }}
   className="text-center text-white  text-2xl sm:text-7xl      w-[90%]"
