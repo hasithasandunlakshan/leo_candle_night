@@ -11,7 +11,7 @@ export default function OrderSummary() {
   const cartContext = useContext(CartContext);
 
   useEffect(() => {
-    console.log("cartContext:", cartContext?.seats[0]);
+    console.log("cartContext:", cartContext?.seats?.seatName);
   }, [cartContext]);
 
   if (!cartContext) {
@@ -73,11 +73,11 @@ export default function OrderSummary() {
       <p className="mt-2 text-secondary">Index Num: {index}</p>
       <p className="mt-1 text-secondary">Number of Seats: {numOfSeat}</p>
       <p className="mt-1 text-secondary">Seats: 
-  {seats.map((seat, index) => (
+ 
     <span key={index} className="inline-block mr-2">
-       {seat.seatNumber} 
+       {seats?  seats.seatName:"Not selected"} 
     </span>
-  ))}
+  
 </p>
       <h3 className="mt-4 text-xl font-semibold text-secondary">Users</h3>
       {users.length > 0 ? (

@@ -5,6 +5,15 @@
 @tailwind utilities;
 body,html {
     @apply overflow-x-hidden;
+     background: linear-gradient(
+      90deg,
+      rgb(11, 38, 211) 0%,
+      rgb(4, 3, 17) 0%,
+      rgba(10, 9, 37, 1) 44%,
+      rgb(5, 9, 40) 47%,
+      rgb(18, 13, 58) 100%,
+      rgb(199, 139, 9) 100%
+    );
 
 
   

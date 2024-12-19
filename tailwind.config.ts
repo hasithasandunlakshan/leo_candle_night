@@ -20,6 +20,9 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
+    './components/**/*.{ts,jsx}',
+    './src/**/*.{ts,jsx}',
+    './pages/**/*.{ts,jsx}',
   ],
   prefix: "",
   theme: {
@@ -87,3 +90,13 @@ const config = {
 } satisfies Config
 
 export default config
+function addVariablesForColors1({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}
