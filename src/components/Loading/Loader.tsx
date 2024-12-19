@@ -22,10 +22,13 @@ const Loading: React.FC = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentWordIndex}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.1 }}
+            transition={{ duration: 0.1 ,ease: "easeInOut"}}
+
+
+            
             className="absolute text-center font-Allura text-4xl  flex justify-center items-center"
           >
             {words[currentWordIndex]}

@@ -9,10 +9,12 @@ interface text{
 export default function Button({text}:text) {
   return (
     <motion.div
-    initial={{ scale: 1,opacity:0 }}
+    initial={{ y: 10,opacity:0 }}
     whileTap={{ scale: 0.9 }}
-        animate={{scale:1,opacity:1}}
-    transition={{duration:0.2}}
+        animate={{y:0,opacity:1}}
+    transition={{  delay: 0.3,
+      duration: 0.8,
+      ease: "easeInOut"}}
     className="flex flex-wrap justify-center mt-8 gap-6">
     <a className="relative" href="#">
     <span className="absolute top-0 left-0 mt-1 ml-1 h-full w-full rounded bg-white"></span>

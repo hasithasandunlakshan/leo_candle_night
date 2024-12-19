@@ -1,6 +1,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import { ShuffleGrid } from './Test'
 
 export default function Gallery() {
   return (
@@ -17,7 +18,12 @@ export default function Gallery() {
   Delight in a night of <span className="font-Qwigley text-secondary text-5xl md:text-8xl ">unforgettable </span> flavors
 </motion.h1>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
+
+<div className="grid  w-[80%] grid-cols-1">
+        <ShuffleGrid/>
+    
+</div>
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
     <div className="grid gap-4">
         <div>
             <img className="h-auto max-w-full rounded-lg" src="/food/burger.jpg" alt="/food/burger.jpg" />
@@ -62,7 +68,7 @@ export default function Gallery() {
             <img className="h-auto max-w-full rounded-lg" src="/food/faluda.jpg" alt="" />
         </div>
     </div>
-</div>
+</div> */}
 
     </div>
     
