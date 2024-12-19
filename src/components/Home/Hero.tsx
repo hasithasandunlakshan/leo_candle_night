@@ -40,13 +40,15 @@ export default function Hero() {
     
 
     <TextGenerateEffect words={description} className='text-gray-300 font-bold  text-center sm:text-left text-xl sm:text-2xl  ' duration={1} />
-    <TextGenerateEffect words={description2} className='text-secondary -mb-10  font-Qwigley text-7xl sm:text-8xl  md:text-9xl ' duration={4} />
+    <TextGenerateEffect words={description2} className='text-secondary -mb-10  font-Qwigley text-7xl sm:text-8xl  md:text-9xl ' duration={1} />
    
   <motion.p 
-   initial={{ opacity: 0,  }}
-   whileInView={{ opacity: 1, }}
-   viewport={{ once: true }}
-   transition={{ duration: 3 }}
+ initial={{ y: 10,opacity:0 }}
+
+     animate={{y:0,opacity:1}}
+ transition={{  delay: 0.3,
+   duration: 0.8,
+   ease: "easeInOut"}}
   
   className=' text-gray-500 w-full md:text-justify   text-center'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
@@ -67,10 +69,12 @@ export default function Hero() {
     </div>
     <div className="sm:flex hidden   md:ml-20   items-center  justify-center align-middle">
       <motion.div className="sm:flex hidden"
-       initial={{ opacity: 0,  }}
-       animate={{ opacity: 1, }}
+       initial={{ opacity: 0,y:40  }}
+       animate={{ opacity: 1,y:0 }}
        viewport={{ once: true }}
-       transition={{ duration: 8 }}
+       transition={{  delay: 0.3,
+        duration: 0.8,
+        ease: "easeInOut"  }}
       >
       <Image src={"/images/candle.png"} width={500} height={40} alt='candle' className=' rounded-2xl'/>
       </motion.div>

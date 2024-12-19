@@ -51,7 +51,12 @@ export default function VelocityText() {
           </span>{" "}
           flavors */}
         </motion.p>
+
+        
       </div>
+
+
+      
     </section>
   );
 }
