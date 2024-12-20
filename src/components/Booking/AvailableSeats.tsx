@@ -1,10 +1,18 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { CartContext } from "@/context/userOrder";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
+
+///////
+////////
+//////////
+/////////////
+//////////
+////////
+//me tika hasitha dapu dummy data. me tika ain karala data kiyala thiyana eken seats tika ganin.
 const tables = "ABCDEFGHIJKLMNOP".split(""); // Tables from A to P
 const seatsPerTable = 10;
 
@@ -16,12 +24,25 @@ const seatsdemo = tables.map((table) =>
   }))
 );
 
+
+
 export default function BookSeats() {
-  const [seats, setSeats] = useState(seatsdemo); // Grouped by table
+  const [seats, setSeats] = useState(seatsdemo);
   const [selectedSeat, setSelectedSeat] = useState<any>(null);
   const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
   const useOrder = useContext(CartContext);
   const router = useRouter();
+    const [data, setData] = useState(null);///////////////////////////////////////////////menna mekata enne seat tika
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch('/api/seats/getSeats');
+      const result = await res.json();
+      setData(result);
+      console.log(result);
+    }
+    fetchData();
+  }, []);
 
   const toggleSeatSelection = (seat: any) => {
     if (useOrder) {
@@ -29,6 +50,8 @@ export default function BookSeats() {
       alert(`Are you sure?`);
     }
   };
+
+
 
   const handleBookSeats = async () => {
     if (selectedSeat === null) return;
@@ -46,8 +69,14 @@ export default function BookSeats() {
     }
   };
 
+
+
+
   return (
     <div className="bg-primary min-h-screen w-[100%] justify-center flex flex-col items-center">
+
+
+
       <h1 className="text-2xl font-bold mb-4 md:text-7xl pt-10 text-secondary ">
         Book Your Seats
       </h1>

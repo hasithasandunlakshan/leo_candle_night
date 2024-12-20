@@ -7,6 +7,7 @@ import {
 } from "framer-motion";
 import React, { useRef } from "react";
 import Details from "../Home/Details";
+import Gallery from "../Home/Gallery";
 
 export default function VelocityText() {
   const targetRef = useRef(null);
@@ -27,25 +28,35 @@ export default function VelocityText() {
   return (
 
     
-    <section ref={targetRef} className="relative bg-transparent">
-      <Details/>
+    <section ref={targetRef} className="relative h-full bg-transparent">
+      {/* <Details/> */}
+      <Gallery/>
       <div className="sticky top-0 flex  items-center overflow-hidden">
         <motion.p
           style={{ skewX, x }}
-          className="origin-bottom-left from-black via-gray-900 to-black bg-black text-white whitespace-nowrap text-5xl font-black uppercase leading-tight md:text-7xl"
+          className="origin-bottom-left bg-white text-black whitespace-nowrap text-4xl font-black uppercase leading-tight md:text-5xl"
         >
-          Delight in a night of{" "}
+          Delight in a night of Unforgettable
+          {/* <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
+            unforgettable
+          </span>{" "} */}
+          flavors Delight in a night of Unforgettable
+          {/* <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
+            unforgettable
+          </span>{" "} */}
+          flavors
+          {/* Delight in a night of{" "}
           <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
             unforgettable
           </span>{" "}
-          flavors
-          Delight in a night of{" "}
-          <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
-            unforgettable
-          </span>{" "}
-          flavors
+          flavors */}
         </motion.p>
+
+        
       </div>
+
+
+      
     </section>
   );
 }
