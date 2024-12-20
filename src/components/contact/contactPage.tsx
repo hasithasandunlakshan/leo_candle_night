@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-8   p-8">
+    <div className="flex flex-col items-center justify-center    p-8">
 
     
 
@@ -13,10 +13,10 @@ export default function ContactPage() {
   initial={{ opacity: 0, scale: 0.9 }}
   whileInView={{ opacity: 1, scale: 1 }}
   transition={{ duration: 1 }}
-  className="text-center text-white  text-2xl sm:text-7xl      w-[90%]"
+  className="text-center text-white  text-3xl sm:text-7xl      w-[90%]"
 
     >
-Stay<span className="font-Qwigley text-secondary text-2xl sm:text-9xl"> Connected </span> with Us
+Stay<span className="font-Qwigley text-secondary text-5xl md:text-8xl "> Connected </span> with Us
 </motion.h1>
         <div className="flex flex-col lg:flex-row items-center  justify-center">
 

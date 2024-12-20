@@ -5,16 +5,16 @@ import { MdAccessTime } from "react-icons/md";
 import { motion } from 'framer-motion';
 export default function Details() {
   return (
-    <div className='   items-center flex justify-center  flex-col min-h-screen'>
-      <motion.div className="flex w-[70%] my-10 gap-3 items-center justify-center"
-       initial={{ opacity: 0, scale: 0.5, }}
+    <div className=' min-h-screen   items-center flex justify-center  flex-col h-full'>
+      <motion.div className="flex w-[90%] mb-5 gap-3 items-start justify-start"
+       initial={{ opacity: 0, scale: 0.99, }}
        whileInView={{ opacity: 1, scale: 1  }}
        transition={{ duration: 1,bounce: 0.25 }}
         viewport={{ once: true }}
         >
-        <h1 className="text-center text-3xl text-white md:text-6xl">
+        <h1 className="text-center  text-3xl text-white md:text-6xl">
           Organized By the
-          <span className="mx-5 font-Qwigley text-4xl md:text-8xl  text-secondary">
+          <span className="mx-5 font-Qwigley text-5xl md:text-8xl  text-secondary">
             Leo Club
           </span>
           of University Of Moratuwa
