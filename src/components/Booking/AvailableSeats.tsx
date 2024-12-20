@@ -70,7 +70,7 @@ export default function BookSeats() {
       
         Ex - If you want to book seat 1 in table A, select A1</h3>
 
-        <div className="w-full px-4">
+<div className="w-full px-4">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
     {seats.map((tableSeats, tableIndex) => (
       <div key={tableIndex} className="mb-8">
