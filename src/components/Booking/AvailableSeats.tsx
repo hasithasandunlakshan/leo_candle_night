@@ -5,14 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-
-///////
-////////
-//////////
-/////////////
-//////////
-////////
-//me tika hasitha dapu dummy data. me tika ain karala data kiyala thiyana eken seats tika ganin.
+// Tables and seats configuration
 const tables = "ABCDEFGHIJKLMNOP".split(""); // Tables from A to P
 const seatsPerTable = 10;
 
@@ -24,60 +17,101 @@ const seatsdemo = tables.map((table) =>
   }))
 );
 
-
-
 export default function BookSeats() {
-  const [seats, setSeats] = useState(seatsdemo);
-  const [selectedSeat, setSelectedSeat] = useState<any>(null);
-  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
-  const useOrder = useContext(CartContext);
+  const [seats, setSeats] = useState(seatsdemo); // Seat layout
+  const [selectedSeat, setSelectedSeat] = useState<any>(null); // Selected seat
+  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false); // Loading state
+  const useOrder = useContext(CartContext); // Context for seat selection
   const router = useRouter();
-    const [data, setData] = useState(null);///////////////////////////////////////////////menna mekata enne seat tika
 
   useEffect(() => {
     async function fetchData() {
-      const res = await fetch('/api/seats/getSeats');
-      const result = await res.json();
-      setData(result);
-      console.log(result);
+      try {
+        const res = await fetch('/api/seats/getSeats');
+        if (!res.ok) {
+          throw new Error(`Failed to fetch seats: ${res.status}`);
+        }
+        const result = await res.json();
+  
+        // Ensure `bookedSeats` exists
+        const bookedSeats = result.bookedSeats || [];
+  
+        setSeats((prevSeats) =>
+          prevSeats.map((tableSeats) =>
+            tableSeats.map((seat) => ({
+              ...seat,
+              isBooked: bookedSeats.includes(seat.seatNumber),
+            }))
+          )
+        );
+      } catch (error) {
+        console.error("Error fetching seat data:", error);
+      }
     }
+  
     fetchData();
   }, []);
+  
 
   const toggleSeatSelection = (seat: any) => {
-    if (useOrder) {
+    if (!seat.isBooked) {
       setSelectedSeat(seat);
-      alert(`Are you sure?`);
+      alert("Seat selected. Please click 'Next' to continue.");
     }
   };
 
-
-
   const handleBookSeats = async () => {
-    if (selectedSeat === null) return;
+    if (!selectedSeat) {
+      alert("Please select a seat before proceeding.");
+      return;
+    }
 
     setLoadingSubmit(true);
     try {
-      alert("Seats booked successfully!");
-      useOrder?.setSeats(selectedSeat);
-      setSelectedSeat(null);
-      router.push("/bookseat/users");
+      const response = await fetch("/api/seats/bookSeats", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          seatNumbers: [selectedSeat.seatNumber],
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        
+        alert("Seat booked successfully!");
+        useOrder?.setSeats(selectedSeat);
+        
+        // Update seat status locally
+        setSeats((prevSeats) =>
+          prevSeats.map((tableSeats) =>
+            tableSeats.map((seat) =>
+              seat.seatNumber === selectedSeat.seatNumber
+                ? { ...seat, isBooked: true }
+                : seat
+            )
+          )
+        );
+
+        setSelectedSeat(null);
+        router.push("/bookseat/users");
+      } else {
+        throw new Error(data.message || "Failed to book the seat");
+      }
     } catch (error) {
-      console.error("Error booking seats:", error);
+      console.error("Error booking seat:", error);
+      alert("Failed to book seat. Please try again.");
     } finally {
       setLoadingSubmit(false);
     }
   };
 
-
-
-
   return (
     <div className="bg-primary min-h-screen w-[100%] justify-center flex flex-col items-center">
-
-
-
-      <h1 className="text-2xl font-bold mb-4 md:text-7xl pt-10 text-secondary ">
+      <h1 className="text-2xl font-bold mb-4 md:text-7xl pt-10 text-secondary">
         Book Your Seats
       </h1>
 
@@ -92,53 +126,48 @@ export default function BookSeats() {
         />
       </div>
 
-      <h2 className="text-xl items-left justify-start mt-4 text-white">
-      When booking your seat, the seat is the combination of the table letter and the seat number.
+      <h2 className="text-xl mt-4 text-white">
+        When booking your seat, the seat is the combination of the table letter and the seat number.
       </h2>
-      <h3 className="text-xl items-left mt-4 mb-4 text-gray-400">
-      
-        Ex - If you want to book seat 1 in table A, select A1</h3>
+      <h3 className="text-xl mt-4 mb-4 text-gray-400">
+        Ex - If you want to book seat 1 in table A, select A1
+      </h3>
 
-<div className="w-full px-4">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {seats.map((tableSeats, tableIndex) => (
-      <div key={tableIndex} className="mb-8">
-        {/* Table Heading */}
-        <h2 className="text-2xl font-bold text-white mb-4 text-center">
-          Table {tables[tableIndex]} {/* Dynamically display the table name */}
-        </h2>
-
-        {/* Seats under the table */}
-        <div className="flex justify-center flex-wrap gap-2">
-          {tableSeats.map((seat) => (
-            <div
-              key={seat.seatNumber}
-              className={`border rounded-lg p-1 text-center w-16 transition ${
-                seat.isBooked
-                  ? "bg-red-500 text-white"
-                  : selectedSeat?.seatNumber === seat.seatNumber
-                  ? "bg-green-500 text-white"
-                  : "bg-primary hover:bg-secondary text-white"
-              }`}
-              onClick={() => !seat.isBooked && toggleSeatSelection(seat)}
-            >
-              <Image
-                src="/images/seat.png"
-                alt="Seat Icon"
-                width={30}
-                height={30}
-                className="mx-auto mb-1"
-              />
-              {seat.seatNumber}
+      <div className="w-full px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {seats.map((tableSeats, tableIndex) => (
+            <div key={tableIndex} className="mb-8">
+              <h2 className="text-2xl font-bold text-white mb-4 text-center">
+                Table {tables[tableIndex]}
+              </h2>
+              <div className="flex justify-center flex-wrap gap-2">
+                {tableSeats.map((seat) => (
+                  <div
+                    key={seat.seatNumber}
+                    className={`border rounded-lg p-1 text-center w-16 transition ${
+                      seat.isBooked
+                        ? "bg-red-500 text-white"
+                        : selectedSeat?.seatNumber === seat.seatNumber
+                        ? "bg-green-500 text-white"
+                        : "bg-primary hover:bg-secondary text-white"
+                    }`}
+                    onClick={() => toggleSeatSelection(seat)}
+                  >
+                    <Image
+                      src="/images/seat.png"
+                      alt="Seat Icon"
+                      width={30}
+                      height={30}
+                      className="mx-auto mb-1"
+                    />
+                    {seat.seatNumber}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
       </div>
-    ))}
-  </div>
-</div>
-
-
 
       <motion.button
         onClick={handleBookSeats}
