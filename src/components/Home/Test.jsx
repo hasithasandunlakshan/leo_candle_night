@@ -127,7 +127,7 @@ const generateSquares = () => {
       whileInView="show"
       exit="hide"
       variants={introPictureVariants}
-      className=" w-40 lg:w-56 xl:w-64 2xl:w-72 min-h-40 flex "
+      className=" w-[100%] rounded-2xl m-2 min-h-40 flex "
       style={{
         backgroundImage: `url(${sq.src})`,
         backgroundSize: "cover",

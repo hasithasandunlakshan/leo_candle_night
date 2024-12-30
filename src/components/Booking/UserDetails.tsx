@@ -54,12 +54,12 @@ const FormSchema = z.object({
 
 type FormSchemaType = z.infer<typeof FormSchema>;
 
-interface UserDetailsProps {
-  onConfirm: () => void;
-  isLastUser: boolean;
-}
+// interface UserDetailsProps {
+//   onConfirm: () => void;
+//   isLastUser: boolean;
+// }
 
-export function UserDetails({ onConfirm, isLastUser }: UserDetailsProps) {
+export function UserDetails() {
   
   const router = useRouter();
   const useOrder = useContext(CartContext);
@@ -117,11 +117,11 @@ export function UserDetails({ onConfirm, isLastUser }: UserDetailsProps) {
 
     useOrder?.addUser(data);
 
-    if (isLastUser) {
+   
       router.push("/orderdetails"); // Navigate to order details if it's the last user
-    }
+    
 
-    onConfirm();
+   
   }
 
   return (
@@ -311,7 +311,7 @@ export function UserDetails({ onConfirm, isLastUser }: UserDetailsProps) {
       
 <div className="flex items-end justify-end">
               <Button type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
-                {isLastUser ? "Submit" : "Next"}
+          Submit
               </Button>
             </div>
           </form>
