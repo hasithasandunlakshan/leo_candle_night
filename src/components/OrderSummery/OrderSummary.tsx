@@ -11,7 +11,7 @@ export default function OrderSummary() {
   const cartContext = useContext(CartContext);
 
   useEffect(() => {
-    console.log("cartContext:", cartContext?.seats?.seatName);
+    console.log("cartContext:", cartContext);
   }, [cartContext]);
 
   if (!cartContext) {

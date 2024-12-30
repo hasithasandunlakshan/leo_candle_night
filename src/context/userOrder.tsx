@@ -8,7 +8,11 @@ const initialState = {
   name: '',
   index: '', // Index initialized as an empty string
   numOfSeat: 1,
-  seats: null,
+  seats: {
+    seatNumber: 1,
+    isBooked: false,
+    seatName: "Seat A1",
+  } as Seat | null, // Initial seat configuration
 };
 type Seat = {
 

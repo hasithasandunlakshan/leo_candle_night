@@ -25,3 +25,25 @@ body,html {
 
 
 
+  /* styles/globals.css */
+
+/* Customize scrollbar for WebKit-based browsers (e.g., Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b6b6b; /* Scrollbar thumb color */
+  border-radius: 10px; /* Round edges */
+  border: 3px solid #f1f1f1; /* Padding between thumb and track */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Scrollbar track color */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width:1; /* Thin scrollbar */
+  scrollbar-color: #050e3b #09065f; /* Thumb and track colors */
+}

@@ -32,7 +32,7 @@ export default function BookSeats() {
           throw new Error(`Failed to fetch seats: ${res.status}`);
         }
         const result = await res.json();
-  
+  console.log("result ,",result)
         // Ensure `bookedSeats` exists
         const bookedSeats = result.bookedSeats || [];
   
@@ -44,6 +44,7 @@ export default function BookSeats() {
             }))
           )
         );
+        console.log("Seats",seats)
       } catch (error) {
         console.error("Error fetching seat data:", error);
       }
