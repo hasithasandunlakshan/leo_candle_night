@@ -31,7 +31,7 @@ export default function VelocityText() {
     <section ref={targetRef} className="relative h-full bg-transparent">
       {/* <Details/> */}
       <Gallery/>
-      <div className="sticky top-0 flex  items-center overflow-hidden">
+      <div className="sticky my-20 top-0 flex  items-center overflow-hidden">
         <motion.p
           style={{ skewX, x }}
           className="origin-bottom-left bg-white text-black whitespace-nowrap text-4xl font-black uppercase leading-tight md:text-5xl"

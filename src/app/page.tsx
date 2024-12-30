@@ -6,7 +6,8 @@ import PreLoader from "@/components/Loading/Loader"; // Adjust import path if ne
 import { motion, useScroll } from "framer-motion";
 import VelocityText from "@/components/ui/VelocityText";
 import Footer from "@/components/footer/FooterPage";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+
+import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
 
 
 
@@ -35,22 +36,23 @@ export default function Page() {
   //     if (locomotiveScroll) locomotiveScroll.destroy();
   //   };
   // }, []); 
+  useEffect( () => {
+    const lenis = new Lenis({
+      // Valeur entre 0 et 1
+      // Valeur par défaut : 0,1
+      // Plus la valeur est faible, plus le scroll sera fluide
+      lerp: 0.2, 
+      // Valeur par défaut : 1
+      // Plus la valeur est haute, plus le défilement sera rapide 
+      wheelMultiplier: 1, 
+    });
+    function raf(time:any) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
 
-  useEffect(() => {
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-  
-      const scroll = new LocomotiveScroll({
-        el: document.querySelector("[data-scroll-container]") as HTMLElement,
-        smooth: true,
-      });
-  
-      // Clean up on component unmount
-      return () => {
-        if (scroll) scroll.destroy();
-      };
-    })();
-  }, []);
+    requestAnimationFrame(raf)
+},[])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -68,7 +70,7 @@ export default function Page() {
 
   return (
     
-    <main  data-scroll-container className="   relative  overflow-hidden">
+    <main  className="   scroll-container relative scroll-smooth">
       {/* Animated background circles */}
 
       

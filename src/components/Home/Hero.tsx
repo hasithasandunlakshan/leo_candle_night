@@ -50,7 +50,7 @@ export default function Hero() {
    duration: 0.8,
    ease: "easeInOut"}}
   
-  className=' text-gray-500 w-full md:text-justify   text-center'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
+  className=' text-gray-500 w-full md:text-justify mt-6   text-center'> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi ipsa sit placeat earum error tempore tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti dolorem dolor cupiditate, aliquam quia enim!
   </motion.p>
 
@@ -81,7 +81,7 @@ export default function Hero() {
  
     </div>
 
-{/* <ShuffleGrid/> */}
+
 </div>
 
 
