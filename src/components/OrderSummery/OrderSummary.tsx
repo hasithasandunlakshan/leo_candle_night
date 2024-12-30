@@ -75,7 +75,7 @@ export default function OrderSummary() {
       <p className="mt-1 text-secondary">Seats: 
  
     <span key={index} className="inline-block mr-2">
-       {seats?  seats.seatName:"Not selected"} 
+       {seats?  seats.seatNumber:"Not selected"} 
     </span>
   
 </p>
