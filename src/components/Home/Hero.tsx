@@ -28,7 +28,20 @@ export default function Hero() {
           y: imageY,
          
         }}
-        className="top-0 right-0 left-0 bottom-0 opacity-100 -z-50 absolute min-h-[100vh] w-screen"
+        className="top-0 hidden lg:flex right-0 left-0 bottom-0 opacity-50 -z-50 absolute min-h-[100vh] w-screen"
+      ></motion.div>
+
+
+
+<motion.div
+        style={{
+          backgroundImage: "url('/images/hero.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          y: imageY,
+         
+        }}
+        className="top-0 right-0 left-0 bottom-0 lg:hidden opacity-10 -z-50 absolute min-h-[100vh] w-screen"
       ></motion.div>
 
       <div className="justify-start container items-start">
@@ -51,7 +64,7 @@ export default function Hero() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="text-gray-400 w-[50%] justify-start mt-6 text-left"
+            className="text-gray-400 w-[100%] justify-center lg:justify-start mt-6 text-center  lg:text-left"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
             ipsa sit placeat earum error tempore tenetur iusto ipsum facilis!
@@ -60,7 +73,7 @@ export default function Hero() {
             adipisicing elit. 
           </motion.p>
 
-          <Button text="Book Ticket" />
+          <Button text="BOOK TICKET" />
         </div>
         <div className="md:flex hidden lg:ml-20 items-center justify-center align-middle">
           <motion.div
