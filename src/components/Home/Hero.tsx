@@ -22,16 +22,16 @@ export default function Hero() {
       {/* Parallax Image */}
       <motion.div
         style={{
-          backgroundImage: "url('/images/hero.jpg')",
+          backgroundImage: "url('/images/11.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           y: imageY,
          
         }}
-        className="top-0 right-0 left-0 bottom-0 opacity-5 -z-50 absolute min-h-[100vh] w-screen"
+        className="top-0 right-0 left-0 bottom-0 opacity-100 -z-50 absolute min-h-[100vh] w-screen"
       ></motion.div>
 
-      <div className="flex justify-center container items-center">
+      <div className="justify-start container items-start">
         <div className="flex flex-col w-[100%] lg:w-[60%] items-center lg:items-start py-32">
           <TextGenerateEffect
             words={description}
@@ -51,15 +51,13 @@ export default function Hero() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="text-gray-500 w-full md:text-justify mt-6 text-center"
+            className="text-gray-400 w-[50%] justify-start mt-6 text-left"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
             ipsa sit placeat earum error tempore tenetur iusto ipsum facilis!
             Praesentium nulla natus atque corrupti dolorem dolor cupiditate,
             aliquam quia enim! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Eligendi ipsa sit placeat earum error tempore
-            tenetur iusto ipsum facilis! Praesentium nulla natus atque corrupti
-            dolorem dolor cupiditate, aliquam quia enim!
+            adipisicing elit. 
           </motion.p>
 
           <Button text="Book Ticket" />
@@ -75,13 +73,13 @@ export default function Hero() {
               ease: "easeInOut",
             }}
           >
-            <Image
-              src={"/images/11.jpeg"}
+            {/* <Image
+              src={"/images/113.jpeg"}
               width={500}
               height={40}
               alt="candle"
               className="rounded-2xl"
-            />
+            /> */}
           </motion.div>
         </div>
       </div>
