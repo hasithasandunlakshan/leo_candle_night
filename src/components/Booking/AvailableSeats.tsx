@@ -90,7 +90,9 @@ setSeats(tables);
       //   );
 
         // setSelectedSeat(null);
+        useOrder?.setSeats(selectedSeat);
         router.push("/bookseat/users");
+
       // } else {
       //   throw new Error(data.message || "Failed to book the seat");
       // }

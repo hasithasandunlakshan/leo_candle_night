@@ -44,7 +44,7 @@ export default function OrderSummary() {
       const data = {
         index,
         numOfSeat,
-        seats: seats?.seatNumber || "Not selected",
+        seats: seats?.seatNumber ?? "Not selected",
         orderDetails, 
       };
 
