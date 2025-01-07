@@ -34,22 +34,17 @@ export default function VelocityText() {
       <div className="sticky my-20 top-0 flex  items-center overflow-hidden">
         <motion.p
           style={{ skewX, x }}
-          className="origin-bottom-left bg-white text-black whitespace-nowrap text-4xl font-black uppercase leading-tight md:text-5xl"
+          className="origin-bottom-left bg-transparent text-white whitespace-nowrap text-4xl font-black uppercase leading-tight md:text-5xl"
         >
           Delight in a night of Unforgettable
-          {/* <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
-            unforgettable
-          </span>{" "} */}
-          flavors Delight in a night of Unforgettable
-          {/* <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
-            unforgettable
-          </span>{" "} */}
-          flavors
-          {/* Delight in a night of{" "}
-          <span className="font-Qwigley text-secondary text-4xl md:text-8xl">
-            unforgettable
-          </span>{" "}
-          flavors */}
+
+          <span className=" text-secondary"> flavors </span>Delight in a night of Unforgettable
+          
+          <span className=" text-secondary"> flavors </span>
+
+
+
+          
         </motion.p>
 
         

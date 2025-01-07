@@ -60,7 +60,7 @@ export const Card = ({
       
         transition={{ duration: 0.5 }}
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent border-secondary relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black bg-opacity-10 group-hover:bg-opacity-100  border border-transparent border-secondary relative z-20",
         className
       )}
     >

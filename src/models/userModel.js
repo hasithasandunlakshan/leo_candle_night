@@ -21,6 +21,6 @@ const orderSchema = new mongoose.Schema({
   });
   
   // Check if the Order model already exists, otherwise create it
-  const User = mongoose.models.Order || mongoose.model("User", orderSchema);
+  const User = mongoose.models.userModel || mongoose.model("userModel", orderSchema);
 
 export default User;
