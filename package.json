@@ -28,10 +28,9 @@
         "clsx": "^2.1.1",
         "embla-carousel-autoplay": "^8.3.0",
         "embla-carousel-react": "^8.3.0",
-        "framer-motion": "^11.9.0",
+        "framer-motion": "^11.15.0",
         "gsap": "^3.12.5",
         "lenis": "^1.1.13",
-        "locomotive-scroll": "^4.1.4",
         "lucide-react": "^0.441.0",
         "mini-svg-data-uri": "^1.4.4",
         "mongoose": "^8.7.0",
@@ -51,6 +50,7 @@
         "zod": "^3.23.8"
     },
     "devDependencies": {
+        "@types/locomotive-scroll": "^4.1.4",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",

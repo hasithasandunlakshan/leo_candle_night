@@ -5,6 +5,15 @@
 @tailwind utilities;
 body,html {
     @apply overflow-x-hidden;
+     background: linear-gradient(
+      90deg,
+      rgb(11, 38, 211) 0%,
+      rgb(4, 3, 17) 0%,
+      #0a0925 44%,
+      rgb(5, 9, 40) 47%,
+      rgb(11, 8, 39) 100%,
+      rgb(199, 139, 9) 100%
+    );
 
 
   
@@ -16,3 +25,25 @@ body,html {
 
 
 
+  /* styles/globals.css */
+
+/* Customize scrollbar for WebKit-based browsers (e.g., Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Scrollbar width */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b6b6b; /* Scrollbar thumb color */
+  border-radius: 10px; /* Round edges */
+  border: 3px solid #f1f1f1; /* Padding between thumb and track */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Scrollbar track color */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width:1; /* Thin scrollbar */
+  scrollbar-color: #050e3b #000000; /* Thumb and track colors */
+}

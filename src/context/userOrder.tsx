@@ -8,14 +8,21 @@ const initialState = {
   name: '',
   index: '', // Index initialized as an empty string
   numOfSeat: 1,
-  seats: [],
+  seats:  null, // Initial seat configuration
 };
+type Seat = {
 
+  seatNumber: number;
+  isBooked: boolean;
+ 
+};
 interface CartContextType {
   users: any[];
   setUsers: (users: any[]) => void;
-  seats: any[];
-  setSeats: (seats: any[]) => void;
+  // seats: any[];
+  // setSeats: (seats: any[]) => void;
+  seats: Seat|null;
+  setSeats: (name: Seat|null) => void;
   numOfSeat: number;
   setNumOfSeat: (numOfSeat: number) => void;
   name: string;
@@ -33,7 +40,7 @@ export const CartContext = createContext<CartContextType | null>(null);
 export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [name, setName] = useState<string>(initialState.name);
   const [users, setUsers] = useState<any[]>(initialState.users);
-  const [seats, setSeats] = useState<any[]>(initialState.seats);
+  const [seats, setSeats] = useState<Seat|null>(initialState.seats);
   const [numOfSeat, setNumOfSeat] = useState<number>(initialState.numOfSeat);
   const [index, setIndex] = useState<string>(initialState.index); // Add state for index
 

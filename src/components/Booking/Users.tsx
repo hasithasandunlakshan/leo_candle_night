@@ -22,16 +22,9 @@ export default function Users() {
   return (
     <div className=' bg-primary w-full min-h-screen  m-0  flex justify-center items-center'>
 
-      {seatArray.map((seat, index) => (
 
-        
-        index === currentUserIndex ? (
+          <UserDetails />
 
-          
-          <UserDetails  key={seat} onConfirm={handleUserConfirmation} isLastUser={currentUserIndex === seatArray.length - 1 ? true : false}  />
-        ) : null
-        
-      ))}
 
 
     </div>

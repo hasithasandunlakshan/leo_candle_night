@@ -61,7 +61,7 @@ export const FloatingNav = ({
           animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0 }}
           transition={{ duration: 0.2 }}
           className={cn(
-            "flex overflow-hidden justify-around items-center shadow-lg shadow-sky-700 w-[100%] sm:w-[80%] md:w-[50%] fixed top-10 inset-x-0 mx-auto border  border-white/[0.2] rounded-full bg-black hover:border-amber-400   z-[5000] pr-2  py-2  ",
+            "flex overflow-hidden justify-around items-center  w-[100%] sm:w-[80%] md:w-[50%] fixed top-10 inset-x-0 mx-auto border   rounded-full bg-black border-amber-400/95   z-[40] pr-2  py-2  ",
             className
           )}
         >
@@ -70,7 +70,7 @@ export const FloatingNav = ({
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
-                `${currentpath==navItem.link?" group border-transparent -translate-y-1 sm:border-b-secondary transition-all duration-500 shadow-2xl shadow-transparent":"border-transparent"} rounded-3xl border-b-2    px-2 text-neutral-50 text-8xl items-center flex   hover:text-amber-300 hover:scale-105 hover:shadow-slate-100  hover:z-30 transition-all duration-300 `
+                `${currentpath==navItem.link?" group border-transparent  text-secondary  transition-all duration-500 shadow-2xl shadow-transparent":"border-transparent text-neutral-50 "} rounded-3xl border-b-2    px-2 text-8xl items-center flex   hover:text-amber-300 hover:scale-105 hover:shadow-slate-100  hover:z-30 transition-all duration-300 `
               )}
             >
               <span className=" flex   items-center flex-col sm:hidden">{navItem.icon} 

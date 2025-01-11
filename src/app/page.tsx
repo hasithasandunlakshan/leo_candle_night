@@ -4,7 +4,7 @@ import Hero from "@/components/Home/Hero";
 
 import PreLoader from "@/components/Loading/Loader"; // Adjust import path if necessary
 import { motion, useScroll } from "framer-motion";
-
+import VelocityText from "@/components/ui/VelocityText";
 import Footer from "@/components/footer/FooterPage";
 
 import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import the CSS
@@ -41,7 +41,7 @@ export default function Page() {
       // Valeur entre 0 et 1
       // Valeur par défaut : 0,1
       // Plus la valeur est faible, plus le scroll sera fluide
-      lerp: 0.5, 
+      lerp: 0.2, 
       // Valeur par défaut : 1
       // Plus la valeur est haute, plus le défilement sera rapide 
       wheelMultiplier: 1, 
@@ -57,7 +57,7 @@ export default function Page() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 5000);
 
     return () => clearTimeout(timer); 
   }, []);
@@ -70,9 +70,10 @@ export default function Page() {
 
   return (
     
-    <main  className="bg-primary   scroll-container relative scroll-smooth">
-      {/* Animated background circles */}
-      <motion.div
+    <main  className="   scroll-container relative scroll-smooth">
+
+      
+      {/* <motion.div
         initial={{ y: -50 }} // Starting point
         animate={{ y: 0 }} // Animate to this position
         transition={{
@@ -94,14 +95,15 @@ export default function Page() {
           repeatDelay: 0.5, // Small delay between each loop
         }}
         className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"
-      ></motion.div>
+      ></motion.div> */}
 
    
       <Hero />
-    
-      <Gallery/>
-
+   {/* <ShuffleHero/> */}
      <Details/>
+    <VelocityText/>
+      {/* <Gallery/> */}
+
 
       <ContactPage/>
    <Sponsers/>

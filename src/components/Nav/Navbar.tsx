@@ -10,7 +10,7 @@ import { FaHome } from "react-icons/fa";
 import { usePathname } from "next/navigation";
 export default function Navbar() {
   const router = usePathname();
-  const hiddenNavbarRoutes = ["/bookseat/users", "/bookseat"];
+  const hiddenNavbarRoutes = ["", ""];
 
   const isNavbarHidden = hiddenNavbarRoutes.includes(router);
 
@@ -25,13 +25,7 @@ export default function Navbar() {
           link: "/bookseat",
           icon: <GiMeal className='text-xl'/>
         },
-        {
-          name: "Contact",
-          link: "/contactus",
-          icon: 
-           <AiFillPhone className='text-xl'/>
-          ,
-        },
+       
         {
           name: "Your Order",
           link: "/orderdetails",
