@@ -1,13 +1,10 @@
-
+"use client"
 import React, { useState } from 'react';
 import FoodCard from './FoodCard';
 import { Button } from '../ui/button';
 
 
 
-import React, { useState } from "react";
-import FoodCard from "./FoodCard";
-import { Button } from "../ui/button";
 
 import {
   Sheet,
@@ -61,25 +58,11 @@ const desserts: FoodItem[] = [
   { id: 19, name: 'Chocolate Ice Cream', price: 1.99, image: '/images/meals/cice.jpg' },
   { id: 20, name: 'Kesari', price: 1.99, image: '/images/meals/kesari.jpg' },
 
-  { id: 1, name: "Pizza", price: 9.99 },
-  { id: 2, name: "Burger", price: 5.99 },
-  { id: 3, name: "Sushi", price: 12.99 },
-  { id: 4, name: "Pasta", price: 7.99 },
-  { id: 5, name: "Salad", price: 4.99 },
+ 
 ];
 
-const drinks: FoodItem[] = [
-  { id: 6, name: "Coke", price: 1.99 },
-  { id: 7, name: "Water", price: 0.99 },
-  { id: 8, name: "Lemonade", price: 2.49 },
-];
 
-const desserts: FoodItem[] = [
-  { id: 9, name: "Ice Cream", price: 3.99 },
-  { id: 10, name: "Cake", price: 4.99 },
-  { id: 11, name: "Brownie", price: 2.99 },
 
-];
 
 
 interface FoodListProps {
