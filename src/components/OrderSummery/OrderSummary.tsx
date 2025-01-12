@@ -126,13 +126,19 @@ export default function OrderSummary() {
   
 
   const handleOrderSubmission = async () => {
-    console.log("Starting order submission...");
-    const imageUrl = await uploadImage();
-    console.log("Image URL:", imageUrl);
-    if (imageUrl) {
-      await sendOrderToBackend(imageUrl);
+    setLoading(true); // Start loading
+    try {
+      const imageUrl = await uploadImage();
+      if (imageUrl) {
+        await sendOrderToBackend(imageUrl);
+        await handleSeatBoook();
+        setShowThankYou(true); // Show the Thank You message
+      }
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
+
 
   const triggerFileInput = () => {
     fileInputRef.current?.click();
@@ -255,11 +261,7 @@ export default function OrderSummary() {
           )} */}
           
           <button
-            onClick={() => { 
-              uploadImage();
-              handleOrderSubmission()
-              handleSeatBoook();
-            }}
+              onClick={handleOrderSubmission}
             className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-gray-300 text-base font-bold rounded-lg overflow-hidden bg-transparent border border-white transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
           >
             Place Order
