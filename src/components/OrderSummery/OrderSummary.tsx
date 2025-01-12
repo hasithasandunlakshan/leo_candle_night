@@ -27,37 +27,6 @@ export default function OrderSummary() {
 
   console.log("cartContext user:", users);
 
-  const sendOrderToBackend = async () => {
-    console.log("Sending order to backend:");
-    try {
-      const orderDetails = users.map((user) => ({
-        username: user.username,
-        email: user.email,
-        whatsapp: user.whatsapp,
-        department: user.department,
-        foodList: user.foodList,
-        totalPrice: user.totalprice,
-        batch: user.batch, 
-        faculty: user.faculty,
-      }));
-
-      const data = {
-        index,
-        numOfSeat,
-        seats: seats?.seatNumber ?? "Not selected",
-        orderDetails, 
-      };
-
-      const response = await axios.post("/api/user/setUserDetails", data);
-
-      console.log("Order saved successfully:", response.data);
-      alert("Order saved successfully!");
-    } catch (error) {
-      console.error("Error sending order to backend:", error);
-      alert("Failed to send order");
-    }
-  };
-
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -70,9 +39,12 @@ export default function OrderSummary() {
     setFormData(newFormData);  // Update the global formData state
   };
 
-  const uploadImage = async () => {
+  const uploadImage = async (): Promise<string | null> => {
     try {
-      if (!formData) return;
+      if (!formData) {
+        alert("No file selected for upload.");
+        return null;
+      }
 
       const response = await fetch("/api/slips/uploadSlips", {
         method: "POST",
@@ -84,10 +56,68 @@ export default function OrderSummary() {
       }
 
       const data = await response.json();
-      setUploadedImage(data.publicId); // Save the uploaded image URL
+      console.log("Upload response data:", data);  // Log the full response data
+      if (data && data.publicId && data.imageUrl) {
+        setUploadedImage(data.imageUrl); // Save the uploaded image URL
+        console.log("Image uploaded successfully, publicId:", data.publicId);
+        return data.imageUrl; // You can now use publicId if needed
+      } else {
+        console.error("publicId not found in the response:", data);
+        return null;
+      }
     } catch (error) {
       console.error(error);
       alert("Failed to upload image");
+      return null;
+    }
+  };
+
+  const sendOrderToBackend = async (imageUrl: string | null) => {
+    if (!imageUrl) {
+      alert("Image URL is missing. Please upload the image again.");
+      console.log("No image URL, cannot send order");
+      return;
+    }
+
+    try {
+      const orderDetails = users.map((user) => ({
+        username: user.username,
+        email: user.email,
+        whatsapp: user.whatsapp,
+        department: user.department,
+        foodList: user.foodList,
+        totalPrice: user.totalprice,
+        batch: user.batch,
+        faculty: user.faculty,
+        seatNumber: user.seatNumber,
+        imageURL: imageUrl, // Pass the uploaded image URL
+        isApproved: user.isApproved || false,
+      }));
+
+      const data = {
+        index,
+        numOfSeat,
+        seats: seats?.seatNumber ?? "Not selected",
+        orderDetails,
+      };
+      
+      const response = await axios.post("/api/user/setUserDetails", data);
+      console.log("Order saved successfully:", response.data);
+      alert("Order saved successfully!");
+    } catch (error) {
+      console.error("Error sending order to backend:", error);
+      alert("Failed to send order");
+    }
+  };
+
+  
+
+  const handleOrderSubmission = async () => {
+    console.log("Starting order submission...");
+    const imageUrl = await uploadImage();
+    console.log("Image URL:", imageUrl);
+    if (imageUrl) {
+      await sendOrderToBackend(imageUrl);
     }
   };
 
@@ -176,8 +206,9 @@ export default function OrderSummary() {
           
           <button
             onClick={() => { 
-              uploadImage();
-              sendOrderToBackend(); 
+              
+              handleOrderSubmission();
+              
             }}
             className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-black text-base font-bold rounded-full overflow-hidden bg-secondary transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
           >
