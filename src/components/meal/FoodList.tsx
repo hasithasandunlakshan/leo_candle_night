@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import FoodCard from './FoodCard';
 import { Button } from '../ui/button';
-
-
 import {
   Sheet,
   SheetClose,
@@ -20,7 +18,6 @@ interface FoodItem {
   name: string;
   price: number;
   image: string;
-
 }
 
 // Define the different food categories
@@ -44,7 +41,6 @@ const drinks: FoodItem[] = [
   { id: 14, name: 'Sprite', price: 1.99, image: '/images/meals/sprite.jpg' },
   { id: 15, name: 'Welcome Drink', price: 1.99, image: '/images/meals/welcomedrink.jpg' },
   { id: 16, name: 'Fruit Juice', price: 1.99, image: '/images/meals/juice.jpeg' },
-
 ];
 
 const desserts: FoodItem[] = [
@@ -54,83 +50,104 @@ const desserts: FoodItem[] = [
   { id: 20, name: 'Kesari', price: 1.99, image: '/images/meals/kesari.jpg' },
 ];
 
-
 interface FoodListProps {
-  FinalFood: (cart: FoodItem[]) => void; // Use FoodItem type for cart
+  FinalFood: (cart: FoodItem[]) => void;
 }
 
 const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
-  const [cart, setCart] = useState<FoodItem[]>([]);
+  const [cart, setCart] = useState<{ item: FoodItem; quantity: number }[]>([]);
 
   const handleAddToCart = (food: FoodItem) => {
-    setCart((prevCart) => [...prevCart, food]);
+    const existingItemIndex = cart.findIndex(item => item.item.id === food.id);
+    if (existingItemIndex >= 0) {
+      const updatedCart = [...cart];
+      updatedCart[existingItemIndex].quantity += 1;
+      setCart(updatedCart);
+    } else {
+      setCart((prevCart) => [...prevCart, { item: food, quantity: 1 }]);
+    }
     alert(`${food.name} added to cart!`);
   };
 
   const handleRemoveFromCart = (id: number) => {
-    setCart((prevCart) => prevCart.filter(item => item.id !== id));
+    setCart((prevCart) => prevCart.filter(item => item.item.id !== id));
+  };
+
+  const handleQuantityChange = (id: number, quantity: number) => {
+    const updatedCart = cart.map(item =>
+      item.item.id === id ? { ...item, quantity } : item
+    );
+    setCart(updatedCart);
   };
 
   const handleConfirm = () => {
     console.log("cart", cart);
-    FinalFood(cart); // Pass selected food items to the parent component
+    FinalFood(cart.map(item => item.item)); // Pass selected food items to the parent component
   };
 
-  const totalPrice = cart.reduce((total, item) => total + item.price, 0); // Calculate total price
+  const totalPrice = cart.reduce(
+    (total, item) => total + item.item.price * item.quantity,
+    0
+  );
 
   return (
-    <div className="flex  min-h-screen w-screen justify-center align-middle">
-      <div className=" flex flex-col w-full justify-center items-center">
-      <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary my-10">Food</h2>
-        {/* Render Food Section */}
-        <div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle'>
-          
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="flex flex-col w-full max-w-7xl p-4">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800">Food</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {foods.map((food) => (
             <FoodCard key={food.id} food={food} onAddToCart={handleAddToCart} />
           ))}
         </div>
 
-        {/* Render Drinks Section */}
-        <h2 className="text-3xl sm:text-4xl  font-bold  md:text-7xl py-0 text-secondary my-10 ">Drinks</h2>
-        <div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  w-[90%] grid justify-center align-middle'>
-        
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800">Drinks</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {drinks.map((drink) => (
             <FoodCard key={drink.id} food={drink} onAddToCart={handleAddToCart} />
           ))}
         </div>
 
-        {/* Render Desserts Section */}
-          <h2 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary my-10 ">Desserts</h2>
-        <div className='grid-cols-1 sm:grid-cols-2 lg:grid-cols-4  w-[90%] grid justify-center align-middle'>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800">Desserts</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {desserts.map((dessert) => (
             <FoodCard key={dessert.id} food={dessert} onAddToCart={handleAddToCart} />
           ))}
         </div>
 
-        {/* Sheet to show the cart items */}
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant="outline" className=' right-10 bg-secondary hover:bg-primary top-10 fixed '>Confirm</Button>
+            <Button variant="outline" className="fixed top-4 right-4 bg-green-600 text-white hover:bg-green-700">
+              Confirm
+            </Button>
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>
-              <SheetTitle>Cart Items</SheetTitle>
-              <SheetDescription>
-                Review your selected items below.
-              </SheetDescription>
+            <SheetTitle className="font-bold">Cart Items</SheetTitle>
+
+              <SheetDescription>Review your selected items below.</SheetDescription>
             </SheetHeader>
-            <div className="grid gap-4 py-4">
+            <div className="py-4">
               {cart.length === 0 ? (
-                <div className="text-gray-500">Your cart is empty.</div>
+                <div className="text-gray-500 text-center font-bold">Your cart is empty.</div>
               ) : (
                 <ul>
                   {cart.map((item) => (
-                    <li key={item.id} className="flex justify-between text-gray-700">
-                      <span>{item.name} - ${item.price.toFixed(2)}</span>
-                      <Button 
-                        onClick={() => handleRemoveFromCart(item.id)} 
-                        variant="outline" 
-                        className="ml-2"
+                    <li key={item.item.id} className="flex justify-between items-center text-gray-700 mb-2">
+                      <span>{item.item.name} - Rs {item.item.price.toFixed(2)}</span>
+                      <input
+                        type="number"
+                        value={item.quantity}
+                        min="1"
+                        onChange={(e) =>
+                          handleQuantityChange(item.item.id, Number(e.target.value))
+                        }
+                        className="w-12 text-center border rounded-md p-1"
+                      />
+                      <Button
+                        onClick={() => handleRemoveFromCart(item.item.id)}
+                        variant="outline"
+                        className="ml-1 bg-red-500 text-white hover:bg-red-600 px-2 py-1 text-xs"
+
                       >
                         Remove
                       </Button>
@@ -139,17 +156,19 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
                 </ul>
               )}
               {cart.length > 0 && (
-                <div className="font-bold">
-                  Total: ${totalPrice.toFixed(2)}
+                <div className="font-bold text-lg mt-4">
+                  Total: Rs {totalPrice.toFixed(2)}
                 </div>
               )}
             </div>
             <SheetFooter>
-              <Button onClick={handleConfirm} className="bg-green-500 text-white">
+              <Button onClick={handleConfirm} className="bg-green-600 text-white hover:bg-blue-700">
                 Confirm Cart
               </Button>
               <SheetClose asChild>
-                <Button type="button">Close</Button>
+                <Button type="button" className="ml-2">
+                  Close
+                </Button>
               </SheetClose>
             </SheetFooter>
           </SheetContent>
