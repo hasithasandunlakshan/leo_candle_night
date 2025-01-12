@@ -8,7 +8,8 @@ export default function OrderSummary() {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  
+  const [loading, setLoading] = useState(false); // To handle the loading state
+  const [showThankYou, setShowThankYou] = useState(false); // To show the "Thank You" message
 
   const [formData, setFormData] = useState<FormData | null>(null);  // Declare formData as a state
 
@@ -125,16 +126,12 @@ export default function OrderSummary() {
   
 
   const handleOrderSubmission = async () => {
-    uploadImage();
     console.log("Starting order submission...");
     const imageUrl = await uploadImage();
     console.log("Image URL:", imageUrl);
     if (imageUrl) {
       await sendOrderToBackend(imageUrl);
     }
-    handleSeatBoook();
-
-
   };
 
   const triggerFileInput = () => {
@@ -142,60 +139,75 @@ export default function OrderSummary() {
   };
 
   const totalPrice = users.reduce((sum, user) => sum + (user.totalprice || 0), 0);
+  if (loading) {
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <div className="text-white text-xl">Processing your order...</div>
+      </div>
+    );
+  }
 
+
+  if (showThankYou) {
+    return (
+      <div className="w-screen h-screen flex items-center justify-center">
+        <div className="text-white text-2xl">Thank you! Your order has been placed successfully.</div>
+      </div>
+    );
+  }
   return (
     <main className="w-screen align-middle flex items-center justify-center flex-col min-h-screen py-32">
        {/* <h1 className="text-2xl   mb-4 md:text-5xl py-5">Order Summary</h1> */}
       <div className=" border-gray-50 border rounded-xl p-10  w-[90%] text-slate-400">
        
-      <p className="mt-2 gap-10 flex">
-  Name: <span className="text-white">{name}</span>
-</p>
-<p className="mt-2 gap-10 flex ">
-  Index Num: <span className="text-white">{index}</span>
-</p>
-<p className="mt-2 gap-10 flex">
-  Number of Seats: <span className="text-white ">{numOfSeat}</span>
-</p>
-<p className="mt-2 gap-10 flex">
-  Seat Number:{" "}
-  <span key={index} className="inline-block mr-2 text-white">
-    {seats ? seats.seatNumber : "Not selected"}
-  </span>
-</p>
+      <div className="p-4">
+  <p className="mt-2 gap-5 flex min-h-[3rem]">
+    Name: <span className="text-white">{name}</span>
+  </p>
+  <p className="mt-2 gap-5 flex min-h-[3rem]">
+    Index Num: <span className="text-white">{index}</span>
+  </p>
+  <p className="mt-2 gap-5 flex min-h-[3rem]">
+    Number of Seats: <span className="text-white">{numOfSeat}</span>
+  </p>
+  <p className="mt-2 gap-5 flex min-h-[3rem]">
+    Seat Number:{" "}
+    <span key={index} className="inline-block mr-2 text-white">
+      {seats ? seats.seatNumber : "Not selected"}
+    </span>
+  </p>
 
-{users.length === 1 ? (
-  <ul className="text-slate-400">
-    {users.map((user, index) => (
-      <li className="" key={index}>
-        <p className="mt-2 gap-10 flex">
-          Email: <span className="text-white">{user.email}</span>
-        </p>
-        <p className="mt-2 gap-10 flex">
-          Whatsapp: <span className="text-white">{user.whatsapp}</span>
-        </p>
-        <p className="mt-2 gap-10 flex">
-          Department:{" "}
-          <span className="text-white">{user.department}</span>
-        </p>
-        <p className="mt-2 gap-10 flex">
-          Food List:{" "}
-          <span className="text-white">
-            {user.foodList.join(", ")}
-          </span>
-        </p>
-      </li>
-    ))}
-  </ul>
-) : (
-  <p className="mt-2 text-gray-500">No users added yet.</p>
-)}
+  {users.length === 1 ? (
+    <ul className="text-slate-400">
+      {users.map((user, index) => (
+        <li className="mt-4" key={index}>
+          <p className="mt-2 gap-5 flex min-h-[3rem]">
+            Email: <span className="text-white">{user.email}</span>
+          </p>
+          <p className="mt-2 gap-5 flex min-h-[3rem]">
+            Whatsapp: <span className="text-white">{user.whatsapp}</span>
+          </p>
+          <p className="mt-2 gap-5 flex min-h-[3rem]">
+            Department:{" "}
+            <span className="text-white">{user.department}</span>
+          </p>
+          <p className="mt-2 gap-5 flex min-h-[3rem]">
+            Food List:{" "}
+            <span className="text-white">{user.foodList.join(", ")}</span>
+          </p>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p className="mt-2 text-gray-500">No users added yet.</p>
+  )}
+</div>
 
         <div className="flex flow-root font-bold  mt-10">
-          <h1 className="text-gray-300">Total Price Rs:     </h1>
+         
           <h1 className="mt-2 gap-10 flex">
           Total Price:{" "}
-          <span className="text-white">RS: {totalPrice}.00 </span>
+          <span className="text-white">RS:{totalPrice}.00 </span>
         </h1>
           <input
             type="file"
@@ -244,9 +256,9 @@ export default function OrderSummary() {
           
           <button
             onClick={() => { 
-             
+              uploadImage();
               handleOrderSubmission()
-              
+              handleSeatBoook();
             }}
             className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-gray-300 text-base font-bold rounded-lg overflow-hidden bg-transparent border border-white transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
           >
