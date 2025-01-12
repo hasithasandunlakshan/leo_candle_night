@@ -165,7 +165,7 @@ export default function BookSeats() {
             <div className="ml-2 mr-6">
               <span className="font-semibold text-secondary">Seat Selected!</span>
               <span className="block text-white">
-                Seat {selectedSeat?.seatNumber} selected. Click "Next" to continue.
+              Seat {selectedSeat?.seatNumber} selected. Click &quot;Next&quot; to continue.
               </span>
             </div>
           </div>
