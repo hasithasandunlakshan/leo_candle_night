@@ -26,7 +26,18 @@ export default function OrderSummary() {
   const { users, name, numOfSeat, seats, index } = cartContext;
 
   console.log("cartContext user:", users);
-
+  const handleSeatBoook = async () => {
+    const seatNumbers = 'S2'//meka ain karanna ona
+    try{
+      const response = await axios.post("/api/seats/bookSeats",{seatNumbers})
+      if(response.status === 200){
+        alert("seat booked successfully")
+      }
+    }catch(error){
+      console.error("Error sending order to backend:", error);
+      alert("Failed to add seat");
+    }
+  }
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -206,9 +217,9 @@ export default function OrderSummary() {
           
           <button
             onClick={() => { 
-              
-              handleOrderSubmission();
-              
+              uploadImage();
+              handleOrderSubmission()
+              handleSeatBoook();
             }}
             className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-black text-base font-bold rounded-full overflow-hidden bg-secondary transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
           >

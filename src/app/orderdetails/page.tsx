@@ -8,8 +8,8 @@ export default function page() {
     <div>
 
 
-        {/* <OrderForm/> */}
-        <OrderSummary/>
+        <OrderForm/>
+        {/* <OrderSummary/> */}
     </div>
   )
 }

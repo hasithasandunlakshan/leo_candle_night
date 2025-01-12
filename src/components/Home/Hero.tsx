@@ -28,7 +28,7 @@ export default function Hero() {
           y: imageY,
          
         }}
-        className="top-0 hidden lg:flex right-0 left-0 bottom-0 opacity-50 -z-50 absolute min-h-[100vh] w-screen"
+        className="top-0 hidden lg:flex right-0 left-0 bottom-0 opacity-100 -z-50 absolute min-h-[100vh] w-screen"
       ></motion.div>
 
 
