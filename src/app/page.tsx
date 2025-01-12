@@ -71,10 +71,9 @@ export default function Page() {
   return (
     
     <main  className="   scroll-container relative scroll-smooth">
-      {/* Animated background circles */}
 
       
-      <motion.div
+      {/* <motion.div
         initial={{ y: -50 }} // Starting point
         animate={{ y: 0 }} // Animate to this position
         transition={{
@@ -96,7 +95,7 @@ export default function Page() {
           repeatDelay: 0.5, // Small delay between each loop
         }}
         className="absolute top-0 right-0 w-52 h-40 sm:w-72 sm:h-72 bg-gradient-to-r from-yellow-400 to-amber-500 rounded-full filter blur-3xl opacity-30"
-      ></motion.div>
+      ></motion.div> */}
 
    
       <Hero />

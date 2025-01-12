@@ -25,13 +25,7 @@ export default function Navbar() {
           link: "/bookseat",
           icon: <GiMeal className='text-xl'/>
         },
-        {
-          name: "Contact",
-          link: "/contactus",
-          icon: 
-           <AiFillPhone className='text-xl'/>
-          ,
-        },
+       
         {
           name: "Your Order",
           link: "/orderdetails",

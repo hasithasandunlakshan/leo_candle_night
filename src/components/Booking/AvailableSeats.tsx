@@ -62,38 +62,40 @@ setSeats(tables);
 
     setLoadingSubmit(true);
     try {
-      const response = await fetch("/api/seats/bookSeats", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          seatNumbers: [selectedSeat.seatNumber],
-        }),
-      });
+      // const response = await fetch("/api/seats/bookSeats", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     seatNumbers: [selectedSeat.seatNumber],
+      //   }),
+      // });
 
-      const data = await response.json();
+      // const data = await response.json();
 
-      if (response.ok && data.success) {
-        alert("Seat booked successfully!");
+      // if (response.ok && data.success) {
+      //   alert("Seat booked successfully!");
+      //   useOrder?.setSeats(selectedSeat);
+
+      //   // Update seat status locally
+      //   setSeats((prevSeats) =>
+      //     prevSeats.map((tableSeats) =>
+      //       tableSeats.map((seat) =>
+      //         seat.seatNumber === selectedSeat.seatNumber
+      //           ? { ...seat, isBooked: true }
+      //           : seat
+      //       )
+      //     )
+      //   );
+
+        // setSelectedSeat(null);
         useOrder?.setSeats(selectedSeat);
-
-        // Update seat status locally
-        setSeats((prevSeats) =>
-          prevSeats.map((tableSeats) =>
-            tableSeats.map((seat) =>
-              seat.seatNumber === selectedSeat.seatNumber
-                ? { ...seat, isBooked: true }
-                : seat
-            )
-          )
-        );
-
-        setSelectedSeat(null);
         router.push("/bookseat/users");
-      } else {
-        throw new Error(data.message || "Failed to book the seat");
-      }
+
+      // } else {
+      //   throw new Error(data.message || "Failed to book the seat");
+      // }
     } catch (error) {
       console.error("Error booking seat:", error);
       alert("Failed to book seat. Please try again.");

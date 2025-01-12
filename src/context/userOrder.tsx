@@ -8,13 +8,13 @@ const initialState = {
   name: '',
   index: '', // Index initialized as an empty string
   numOfSeat: 1,
-  seats: null,
+  seats:  null, // Initial seat configuration
 };
 type Seat = {
 
   seatNumber: number;
   isBooked: boolean;
-  seatName:string;
+ 
 };
 interface CartContextType {
   users: any[];

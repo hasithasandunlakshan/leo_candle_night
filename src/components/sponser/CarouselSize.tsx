@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
+  CarouselItem
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 import Head from "next/head"; // Make sure to import Head for SSR frameworks
@@ -45,11 +45,12 @@ export function Sponsers() {
         <title>Sponsors</title> {/* This sets the document title */}
       </Head>
       <div className="flex flex-col items-center justify-items-center align-middle  min-h-screen">
-      <h1 className="text-justify text-white font-bold text-5xl sm:text-7xl  my-10">Sponsors</h1>
+      <h1 className="text-center text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl my-10">Sponsors</h1>
 
         <Carousel
           plugins={[autoplay.current]}
-          className="w-full max-w-xs sm:max-w-md lg:max-w-4xl xl:max-w-4xl mt-10"
+          className="w-full max-w-xs sm:max-w-md md:max-w-xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl mt-10"
+
         >
           <CarouselContent className="-ml-1">
             {images.map((image, index) => (

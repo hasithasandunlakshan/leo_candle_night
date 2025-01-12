@@ -7,10 +7,10 @@ const ParticleComponents = () => {
     return {
       particles: {
         number: {
-          value: 20, // Number of particles
+          value: 30, // Number of particles
         },
         size: {
-          value: 3, // Size of particles
+          value:1, // Size of particles
         },
         move: {
           enable: true,
@@ -23,7 +23,7 @@ const ParticleComponents = () => {
           type: "circle", // Shape of particles
         },
         color: {
-            value: ["#d6ab31","#FFD700"], // Red, Green, and Blue particles
+            value: ["#FFD700","#FFFFFF"], // Red, Green, and Blue particles
           },
       },
       interactivity: {

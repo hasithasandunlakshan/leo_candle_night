@@ -17,8 +17,8 @@ const Loading: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-black ">
-      <div className="text-2xl flex justify-center items-center font-bold text-secondary">
+    <div className="flex absolute z-50 w-screen top-0 justify-center items-center h-screen bg-black ">
+      <div className="text-2xl flex justify-center items-center text-secondary">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentWordIndex}
