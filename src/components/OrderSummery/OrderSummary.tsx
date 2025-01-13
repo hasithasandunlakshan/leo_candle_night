@@ -2,6 +2,8 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { CartContext } from "../../context/userOrder"; // Adjust the path as needed
+import { useRouter } from "next/navigation";
+import ProcessingOrder from "../Loading/ProcessingOrder";
 
 export default function OrderSummary() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -14,7 +16,7 @@ export default function OrderSummary() {
   const [formData, setFormData] = useState<FormData | null>(null);  // Declare formData as a state
 
   const cartContext = useContext(CartContext);
-
+  const router = useRouter();
   useEffect(() => {
     console.log("cartContext:", cartContext);
   }, [cartContext]);
@@ -132,6 +134,7 @@ export default function OrderSummary() {
       if (imageUrl) {
         await sendOrderToBackend(imageUrl);
         await handleSeatBoook();
+        cartContext.resetOrder();
         setShowThankYou(true); // Show the Thank You message
       }
     } finally {
@@ -147,18 +150,34 @@ export default function OrderSummary() {
   const totalPrice = users.reduce((sum, user) => sum + (user.totalprice || 0), 0);
   if (loading) {
     return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <div className="text-white text-xl">Processing your order...</div>
-      </div>
+     <ProcessingOrder/>
     );
   }
 
 
   if (showThankYou) {
     return (
-      <div className="w-screen h-screen flex items-center justify-center">
-        <div className="text-white text-2xl">Thank you! Your order has been placed successfully.</div>
-      </div>
+      <div className="h-screen flex items-center align-middle justify-center">
+      <div className="p-6  md:mx-auto">
+        <svg viewBox="0 0 24 24" className="w-16 h-16 mx-auto my-6 text-green-600">
+            <path fill="currentColor"
+                d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z">
+            </path>
+        </svg>
+        <div className="text-center">
+            <h3 className="text-base font-semibold text-center text-gray-100 md:text-2xl">Payment Done!</h3>
+            <p className="my-2 text-gray-600">Thank you for completing your secure online payment.</p>
+            <p> Have a great day!  </p>
+            <button
+              onClick={()=>router.push("/")}
+            className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-gray-300 text-base font-bold rounded-lg overflow-hidden bg-transparent border border-white transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
+          >
+            GO BACK
+          </button>
+        </div>
+    </div>
+  </div>
+    
     );
   }
   return (
@@ -167,16 +186,16 @@ export default function OrderSummary() {
       <div className=" border-gray-50 border rounded-xl p-10  w-[90%] text-slate-400">
        
       <div className="p-4">
-  <p className="mt-2 gap-5 flex min-h-[3rem]">
+  {/* <p className="mt-2 gap-5 flex min-h-[3rem]">
     Name: <span className="text-white">{name}</span>
+  </p> */}
+  <p className="mt-2  flex flex-col">
+    Index Num: <span className="text-white">{index} </span>
   </p>
-  <p className="mt-2 gap-5 flex min-h-[3rem]">
-    Index Num: <span className="text-white">{index}</span>
-  </p>
-  <p className="mt-2 gap-5 flex min-h-[3rem]">
+  <p className="mt-2  flex  flex-col">
     Number of Seats: <span className="text-white">{numOfSeat}</span>
   </p>
-  <p className="mt-2 gap-5 flex min-h-[3rem]">
+  <p className="mt-2  flex  flex-col">
     Seat Number:{" "}
     <span key={index} className="inline-block mr-2 text-white">
       {seats ? seats.seatNumber : "Not selected"}
@@ -187,17 +206,15 @@ export default function OrderSummary() {
     <ul className="text-slate-400">
       {users.map((user, index) => (
         <li className="mt-4" key={index}>
-          <p className="mt-2 gap-5 flex min-h-[3rem]">
-            Email: <span className="text-white">{user.email}</span>
-          </p>
-          <p className="mt-2 gap-5 flex min-h-[3rem]">
-            Whatsapp: <span className="text-white">{user.whatsapp}</span>
-          </p>
-          <p className="mt-2 gap-5 flex min-h-[3rem]">
-            Department:{" "}
+          <p className="mt-2  flex  flex-col">
+            Email:{" "}
             <span className="text-white">{user.department}</span>
           </p>
-          <p className="mt-2 gap-5 flex min-h-[3rem]">
+         
+         <p className="mt-2  flex  flex-col">
+            Whatsapp: <span className="text-white">{user.whatsapp}</span>
+          </p>
+        <p className="mt-2  flex  flex-col">
             Food List:{" "}
             <span className="text-white">{user.foodList.join(", ")}</span>
           </p>
@@ -247,7 +264,7 @@ export default function OrderSummary() {
           </div>
         )}
 
-        <div className="flex items-end justify-end">
+        <div className="flex  justify-between flex-col md:flex-row">
           {/* {uploadedImage && (
             <div className="mt-20 text-center">
               <h2 className="text-lg font-semibold">Uploaded Image:</h2>
@@ -259,7 +276,12 @@ export default function OrderSummary() {
               />
             </div>
           )} */}
-          
+            <button
+              onClick={handleOrderSubmission}
+            className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-gray-300 text-base font-bold rounded-lg overflow-hidden bg-transparent border border-white transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
+          >
+          CANCEL
+          </button>
           <button
               onClick={handleOrderSubmission}
             className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-gray-300 text-base font-bold rounded-lg overflow-hidden bg-transparent border border-white transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
