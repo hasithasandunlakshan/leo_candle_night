@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
         console.log("Email sent successfully");
       } catch (err) {
         console.error("Email sending failed:", err);
-        alert('case')
+     
       }
     }
 
