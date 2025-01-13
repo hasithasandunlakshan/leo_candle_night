@@ -4,6 +4,7 @@ import { CartContext } from "@/context/userOrder";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import axios from "axios";
 
 export default function BookSeats() {
   const [seats, setSeats] = useState<any[][]>([]); // Seat layout by table
@@ -18,12 +19,13 @@ export default function BookSeats() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/api/seats/getSeats");
-        if (!res.ok) {
-          throw new Error(`Failed to fetch seats: ${res.status}`);
+        const res = await axios.get("/api/seats/getSeats");
+        if (res.status !== 200) {
+          console.error("Failed to fetch seat data:", res.statusText);
+          alert("Failed to fetch seat data. Please try again.");
         }
 
-        const result = await res.json();
+        const result = await res.data;
         console.log("Fetched seats:", result);
 
         const tables: any[][] = [];
@@ -41,7 +43,6 @@ export default function BookSeats() {
 
     fetchData();
   }, []);
-
   const toggleSeatSelection = (seat: any) => {
     if (!seat.isBooked) {
       setSelectedSeat(seat);
