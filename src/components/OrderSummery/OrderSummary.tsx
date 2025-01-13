@@ -31,9 +31,9 @@ export default function OrderSummary() {
 
   console.log("cartContext user:", users);
   const handleSeatBoook = async () => {
-    const seatNumbers = {seats}
+    const seatNumbers = seats?.seatNumber
     try{
-      const response = await axios.post("/api/seats/bookSeats",{seatNumbers})
+      const response = await axios.post("/api/seats/bookSeats",{ seatNumbers: [seatNumbers] })
       if(response.status === 200){
         alert("seat booked successfully")
       }
