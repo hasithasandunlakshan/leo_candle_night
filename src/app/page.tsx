@@ -105,8 +105,8 @@ export default function Page() {
       {/* <Gallery/> */}
 
 
-      <ContactPage/>
-   <Sponsers/>
+      {/* <ContactPage/>
+   <Sponsers/> */}
       <Footer /> 
     </main>
   );
