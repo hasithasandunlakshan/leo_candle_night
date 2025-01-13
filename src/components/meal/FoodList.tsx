@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
+
+"use client"
+import React, { useState } from 'react';
 import FoodCard from './FoodCard';
 import { Button } from '../ui/button';
+
+
+
 
 import {
   Sheet,
@@ -23,6 +28,7 @@ interface FoodItem {
 
 // Define the different food categories
 const foods: FoodItem[] = [
+
   { id: 1, name: 'Lamprais', price: 750, image: '/images/meals/Lamprais.jpg' },
   { id: 2, name: 'Chicken Kottu', price: 650, image: '/images/meals/chickenkottu.jpg' },
   { id: 3, name: 'Vegetable Kottu', price: 550, image: '/images/meals/vegikootu.jpg' },
@@ -50,6 +56,11 @@ const desserts: FoodItem[] = [
   { id: 19, name: 'Chocolate Ice Cream', price: 200, image: '/images/meals/cice.jpg' },
   { id: 20, name: 'Kesari', price: 300, image: '/images/meals/kesari.jpg' },
 ];
+
+
+
+
+
 
 interface FoodListProps {
   FinalFood: (cart: FoodItem[]) => void;

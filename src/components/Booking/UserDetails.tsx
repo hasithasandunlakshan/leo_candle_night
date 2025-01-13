@@ -118,7 +118,7 @@ export function UserDetails() {
     useOrder?.addUser(data);
 
    
-      router.push("/orderdetails"); // Navigate to order details if it's the last user
+      router.push("/orderdetails/ordersummery"); // Navigate to order details if it's the last user
     
 
    

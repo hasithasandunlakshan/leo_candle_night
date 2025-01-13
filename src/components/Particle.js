@@ -7,10 +7,10 @@ const ParticleComponents = () => {
     return {
       particles: {
         number: {
-          value: 30, // Number of particles
+          value: 10, // Number of particles
         },
         size: {
-          value:1, // Size of particles
+          value:2, // Size of particles
         },
         move: {
           enable: true,

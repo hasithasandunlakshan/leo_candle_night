@@ -27,7 +27,7 @@ export default function Navbar() {
         },
        
         {
-          name: "Your Order",
+          name: "Orders",
           link: "/orderdetails",
           icon: 
        <ImCart className='text-xl'/>

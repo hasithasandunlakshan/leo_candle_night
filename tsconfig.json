@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.tsx", "src/components/SmoothScroll.jsx", "src/components/Booking/UserDetails.tsx", "src/components/footer/Footer.tsx", "src/app/layout.tsx", "src/components/Home/Parallax.tsx", "src/components/Home/ItemList.jsx", "src/components/Home/Test.js", "src/app/api/seats/getSeats/route.ts", "src/components/Home/Test.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/TransitionContext.js", "src/app/page.tsx", "src/components/SmoothScroll.jsx", "src/components/Booking/UserDetails.tsx", "src/components/footer/Footer.tsx", "src/app/layout.tsx", "src/components/Home/Parallax.tsx", "src/components/Home/ItemList.jsx", "src/components/Home/Test.js", "src/app/api/seats/getSeats/route.ts", "src/components/Home/Test.jsx", "src/components/Home/TEST2.jsx"],
   "exclude": ["node_modules"]
 }
