@@ -9,7 +9,14 @@ const initialState = {
   index: '', // Index initialized as an empty string
   numOfSeat: 1,
   seats:  null, // Initial seat configuration
+  cartLocal:[]
 };
+interface FoodItem {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
 type Seat = {
 
   seatNumber: number;
@@ -19,8 +26,7 @@ type Seat = {
 interface CartContextType {
   users: any[];
   setUsers: (users: any[]) => void;
-  // seats: any[];
-  // setSeats: (seats: any[]) => void;
+
   seats: Seat|null;
   setSeats: (name: Seat|null) => void;
   numOfSeat: number;
@@ -32,6 +38,9 @@ interface CartContextType {
 
   addUser: (user: any) => void;
   resetOrder: () => void;
+  cartLocal: FoodItem[];
+  addToCart: (item: FoodItem) => void;
+  removeFromCart: (id: number) => void;
 }
 
 // Create the context with an initial null value
@@ -43,6 +52,7 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [seats, setSeats] = useState<Seat|null>(initialState.seats);
   const [numOfSeat, setNumOfSeat] = useState<number>(initialState.numOfSeat);
   const [index, setIndex] = useState<string>(initialState.index); // Add state for index
+  const [cartLocal, setCartLocal] = useState<FoodItem[]>(initialState.cartLocal);
 
   // Reset function to revert all values back to initial state
   const resetOrder = () => {
@@ -52,6 +62,22 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     setNumOfSeat(initialState.numOfSeat);
     setIndex(initialState.index); // Reset index as well
   };
+  const addToCart = (item: FoodItem) => {
+    if (!cartLocal.some((cartItem) => cartItem.id === item.id)) {
+      setCartLocal((prevCart) => [...prevCart, item]);
+    }
+  };
+
+  // Remove item from cart
+  const removeFromCart = (id: number) => {
+    setCartLocal((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
+  // Reset the cart
+  const resetCart = () => {
+    setCartLocal([]);
+  };
+
 
   // Add a user to the users array
   const addUser = (user: any) => {
@@ -73,6 +99,11 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
         setIndex,
         addUser,
         resetOrder,
+        cartLocal,
+    
+        addToCart,
+        removeFromCart,
+        
       }}
     >
       {children}

@@ -1,10 +1,10 @@
 
 "use client"
-import React, { useState } from 'react';
+import React, { useState,useEffect, useContext } from 'react';
 import FoodCard from './FoodCard';
 import { Button } from '../ui/button';
 
-
+import { MdDelete } from "react-icons/md";
 
 
 import {
@@ -17,6 +17,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import Image from 'next/image';
+import { CartContext } from '@/context/userOrder';
 
 // Define the FoodItem type
 interface FoodItem {
@@ -67,13 +69,21 @@ interface FoodListProps {
 }
 
 const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
-  const [cart, setCart] = useState<FoodItem[]>([]);
+  const cartContext = useContext(CartContext);
+
+  if (!cartContext) {
+    throw new Error("CartContext is not provided!");
+  }
+
+  const { cartLocal, addToCart, removeFromCart,  } = cartContext;
+  const [cart, setCart] = useState<FoodItem[]>(cartLocal);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
 
   const handleAddToCart = (food: FoodItem) => {
     if (!cart.some((item) => item.id === food.id)) {
       setSelectedFood(food);
+      addToCart(food);
       setShowToast(true);
     } else {
       alert('Item already in the cart');
@@ -112,8 +122,8 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
       {showToast && <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
 
       <div className="flex flex-col w-full justify-center items-center">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:text-7xl py-0 text-secondary my-10">
-          Food
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:text-7xl pt-20 text-secondary my-10">
+          Foods
         </h2>
         <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
           {foods.map((food) => (
@@ -140,15 +150,15 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         </div>
 
         {/* Sheet to show the cart items */}
-        <Sheet>
+        <Sheet >
           <SheetTrigger asChild>
-            <Button variant="outline" className='right-10 bg-secondary hover:bg-primary top-10 fixed'>
-              Confirm
+            <Button variant="outline" className='right-10 bg-primary border z-50 border-white text-secondary top-32 fixed'>
+            VIEW CART
             </Button>
           </SheetTrigger>
-          <SheetContent>
+          <SheetContent className='bg-primary bg-opacity-85'>
             <SheetHeader>
-              <SheetTitle className='font-bold'>Cart Items</SheetTitle>
+              <SheetTitle className='font-bold text-secondary text-2xl'>Cart Items</SheetTitle>
               <SheetDescription>Review your selected items below.</SheetDescription>
             </SheetHeader>
             <div className="grid gap-4 py-4">
@@ -156,33 +166,52 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
                 <div className="text-black-500 font-bold">Your cart is empty.</div>
               ) : (
                 <ul>
-                  {cart.map((item) => (
-                    <li key={item.id} className="flex justify-between text-gray-700">
-                      <span>{item.name} - ${item.price.toFixed(2)}</span>
-                      <Button
-                        onClick={() => handleRemoveFromCart(item.id)}
-                        variant="outline"
-                        className="ml-2 font-xs bg-red-400"
-                      >
-                        Remove
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
+                {cart.map((item) => (
+                  <li
+                    key={item.id}
+                    className="flex justify-between my-2 w-full bg-gray-800/80 p-2  rounded-xl text-gray-200 items-center align-middle"
+                  >
+                    {/* Product Image */}
+                    <div className="flex w-[80%] gap-2">
+                    <Image
+                      src={item.image}
+                      width={50}
+                      height={20}
+                      alt={item.name}
+                      className="rounded-xl max-h-32"
+                    />
+                    <span>
+                      {item.name} <br /> RS:   {item.price.toFixed(2)}
+                    </span>
+                    </div>
+                    
+              
+                    {/* Remove Button */}
+                    {/* <Button
+                      onClick={() => handleRemoveFromCart(item.id)}
+                      variant="outline"
+                      className="ml-2 font-xs bg-red-400"
+                    >
+                    
+                    </Button> */}
+               <MdDelete className=' text-red-600 text-xl cursor-pointer hover:scale-110 transition-all duration-150'   onClick={() => handleRemoveFromCart(item.id)}/>
+                  </li>
+                ))}
+              </ul>
               )}
               {cart.length > 0 && (
                 <div className="font-bold">
-                  Total: ${totalPrice.toFixed(2)}
+                  Total: RS:{totalPrice.toFixed(2)}
                 </div>
               )}
             </div>
             <SheetFooter>
-              <Button onClick={handleConfirm} className="bg-green-500 text-white">
-                Confirm Cart
+              <Button onClick={handleConfirm} className=" text-secondary">
+              PURCHASE
               </Button>
               <SheetClose asChild>
-                <Button type="button" className="bg-secondary text-white">
-                  Close
+                <Button type="button" className=" text-white">
+                  CONTINUE
                 </Button>
               </SheetClose>
             </SheetFooter>

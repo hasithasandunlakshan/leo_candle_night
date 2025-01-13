@@ -207,7 +207,7 @@ export function UserDetails() {
                       <Button
                         onClick={() => setSeatOpen(!isSeatOpen)}
                         type="button"
-                        className="relative w-[40%] px-10   rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
+                        className="relative w-48 px-10   rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
                       >
                         Select Meal
                       </Button>
@@ -266,10 +266,10 @@ export function UserDetails() {
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>Batch</SelectLabel>
-                          <SelectItem value="19">Batch 19</SelectItem>
                           <SelectItem value="20">Batch 20</SelectItem>
                           <SelectItem value="21">Batch 21</SelectItem>
                           <SelectItem value="22">Batch 22</SelectItem>
+                          <SelectItem value="23">Batch 23</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -309,9 +309,9 @@ export function UserDetails() {
            
 
       
-<div className="flex items-end justify-end">
-              <Button type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
-          Submit
+<div className="flex items-end justify-center md:justify-end">
+              <Button type="submit" className="px-10 py-1 rounded-lg hover:bg-secondary hover:text-primary bg-transparent border border-white w-48 text-white">
+          NEXT
               </Button>
             </div>
           </form>
