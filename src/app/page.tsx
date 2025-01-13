@@ -16,6 +16,7 @@ import Lenis from '@studio-freight/lenis'
 import ContactPage from "@/components/contact/contactPage";
 import Gallery from "@/components/Home/Gallery";
 import { Sponsers } from "@/components/sponser/CarouselSize";
+import { SmoothScrollHero } from "@/components/Home/TEST2";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -105,8 +106,12 @@ export default function Page() {
       {/* <Gallery/> */}
 
 
-      {/* <ContactPage/>
+      {/*
    <Sponsers/> */}
+    <ContactPage/>
+ 
+   {/* <SmoothScrollHero/> */}
+
       <Footer /> 
     </main>
   );

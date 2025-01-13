@@ -12,7 +12,9 @@ connect();
 export async function GET(request: NextRequest) {
   try {
     console.log("Fetching all seats from the database...");
-    const seats = await Seat.find({});
+
+    // Sort by a field, e.g., seatNumber in ascending order
+    const seats = await Seat.find({}).sort({ seatNumber: 1 });
     console.log("Fetched seats:", seats);
 
     // Return the response with cache control headers
