@@ -23,7 +23,7 @@ export default function Gallery() {
         <ShuffleGrid/>
     
 </div>
-        <div className="grid md:hidden grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
+        {/* <div className="grid md:hidden grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
     <div className="grid gap-4">
         <div>
             <img className="h-auto max-w-full rounded-lg" src="/food/burger.jpg" alt="/food/burger.jpg" />
@@ -68,8 +68,56 @@ export default function Gallery() {
             <img className="h-auto max-w-full rounded-lg" src="/food/faluda.jpg" alt="" />
         </div>
     </div>
-</div>
+</div> */}
 
+
+
+<div className="grid md:hidden grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
+    <div className="grid gap-4">
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/burger.jpg" alt="/food/burger.jpg" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/mac.jpg" alt="" />
+        </div>
+        <div className=' mt-10'>
+            <img className="h-auto max-w-full rounded-lg " src="/food/stoo.jpg" alt="" />
+        </div>
+    </div>
+    <div className="grid gap-4">
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/crab.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/nood.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/pancake.jpg" alt="" />
+        </div>
+    </div>
+    <div className="grid gap-4">
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/nood2.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/biri.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/rice.jpg" alt="" />
+        </div>
+    </div>
+    <div className="grid gap-4">
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/kottu.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/ice.jpg" alt="" />
+        </div>
+        <div>
+            <img className="h-auto max-w-full rounded-lg" src="/food/faluda.jpg" alt="" />
+        </div>
+    </div>
+    </div>
     </div>
     
   )
