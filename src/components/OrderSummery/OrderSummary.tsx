@@ -1,44 +1,43 @@
-"use client";
+'use client'
 import React, { useContext, useEffect, useState, useRef } from "react";
-import axios from "axios";
-import { CartContext } from "../../context/userOrder"; // Adjust the path as needed
+import { CartContext } from "../../context/userOrder";
+import { useRouter } from "next/navigation";
+import ProcessingOrder from "../Loading/ProcessingOrder";
 
 export default function OrderSummary() {
-  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const [uploadedImage, setUploadedImage] = useState(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
+  const [formData, setFormData] = useState<FormData | null>(null);
+  
+  const imageRef = useRef(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const [formData, setFormData] = useState<FormData | null>(null);  // Declare formData as a state
-
   const cartContext = useContext(CartContext);
-
-  useEffect(() => {
-    console.log("cartContext:", cartContext);
-  }, [cartContext]);
+  const router = useRouter();
 
   if (!cartContext) {
-    return <div>No order summary available</div>;
+    return <div className="text-white">No order summary available</div>;
   }
 
-  console.log("cartContext:", cartContext);
+  const { users, numOfSeat, seats, index } = cartContext;
+  const totalPrice = users.reduce((sum, user) => sum + (user.totalprice || 0), 0);
 
-  const { users, name, numOfSeat, seats, index } = cartContext;
-
-  console.log("cartContext user:", users);
-  const handleSeatBoook = async () => {
-    const seatNumbers = 'S2'//meka ain karanna ona
-    try{
-      const response = await axios.post("/api/seats/bookSeats",{seatNumbers})
-      if(response.status === 200){
-        alert("seat booked successfully")
-      }
-    }catch(error){
-      console.error("Error sending order to backend:", error);
-      alert("Failed to add seat");
-    }
+  interface User {
+    department: string;
+    whatsapp: string;
+    foodList: string[];
+    totalprice?: number;
   }
-  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  interface CartContextType {
+    users: User[];
+    numOfSeat: number;
+    seats: { seatNumber: string } | null;
+    index: number;
+  }
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -47,186 +46,132 @@ export default function OrderSummary() {
 
     const newFormData = new FormData();
     newFormData.append("file", file);
-    setFormData(newFormData);  // Update the global formData state
-  };
-
-  const uploadImage = async (): Promise<string | null> => {
-    try {
-      if (!formData) {
-        alert("No file selected for upload.");
-        return null;
-      }
-
-      const response = await fetch("/api/slips/uploadSlips", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-
-      const data = await response.json();
-      console.log("Upload response data:", data);  // Log the full response data
-      if (data && data.publicId && data.imageUrl) {
-        setUploadedImage(data.imageUrl); // Save the uploaded image URL
-        console.log("Image uploaded successfully, publicId:", data.publicId);
-        return data.imageUrl; // You can now use publicId if needed
-      } else {
-        console.error("publicId not found in the response:", data);
-        return null;
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Failed to upload image");
-      return null;
-    }
-  };
-
-  const sendOrderToBackend = async (imageUrl: string | null) => {
-    if (!imageUrl) {
-      alert("Image URL is missing. Please upload the image again.");
-      console.log("No image URL, cannot send order");
-      return;
-    }
-
-    try {
-      const orderDetails = users.map((user) => ({
-        username: user.username,
-        email: user.email,
-        whatsapp: user.whatsapp,
-        department: user.department,
-        foodList: user.foodList,
-        totalPrice: user.totalprice,
-        batch: user.batch,
-        faculty: user.faculty,
-        seatNumber: user.seatNumber,
-        imageURL: imageUrl, // Pass the uploaded image URL
-        isApproved: user.isApproved || false,
-      }));
-
-      const data = {
-        index,
-        numOfSeat,
-        seats: seats?.seatNumber ?? "Not selected",
-        orderDetails,
-      };
-      
-      const response = await axios.post("/api/user/setUserDetails", data);
-      console.log("Order saved successfully:", response.data);
-      alert("Order saved successfully!");
-    } catch (error) {
-      console.error("Error sending order to backend:", error);
-      alert("Failed to send order");
-    }
-  };
-
-  
-
-  const handleOrderSubmission = async () => {
-    console.log("Starting order submission...");
-    const imageUrl = await uploadImage();
-    console.log("Image URL:", imageUrl);
-    if (imageUrl) {
-      await sendOrderToBackend(imageUrl);
-    }
+    setFormData(newFormData);
   };
 
   const triggerFileInput = () => {
     fileInputRef.current?.click();
   };
 
-  const totalPrice = users.reduce((sum, user) => sum + (user.totalprice || 0), 0);
+  const handleOrderSubmission = () => {
+    setLoading(true);
+    // Simulate order submission process
+    setTimeout(() => {
+      setLoading(false);
+      setShowThankYou(true);
+    }, 2000);
+  };
 
-  return (
-    <main className="w-screen align-middle flex items-center justify-center min-h-screen bg-primary">
-      <div className="py-32">
-        <h1 className="text-2xl font-bold mb-4 md:text-5xl py-5 text-secondary">Order Summary</h1>
-        <p className="mt-2 text-secondary">Name: {name}</p>
-        <p className="mt-2 text-secondary">Index Num: {index}</p>
-        <p className="mt-1 text-secondary">Number of Seats: {numOfSeat}</p>
-        <p className="mt-1 text-secondary">Seats: 
-          <span key={index} className="inline-block mr-2">
-            {seats ? seats.seatNumber : "Not selected"}
-          </span>
-        </p>
-        <h3 className="mt-4 text-xl font-semibold text-secondary">Users</h3>
-        {users.length > 0 ? (
-          <ul className="mt-2">
-            {users.map((user, index) => (
-              <li className="border rounded-lg p-4 mb-2 bg-gray-50" key={index}>
-                <p className="text-gray-800">Username: {user.username}</p>
-                <p className="text-gray-700">Email: {user.email}</p>
-                <p className="text-gray-700">Whatsapp: {user.whatsapp}</p>
-                <p className="text-gray-700">Department: {user.department}</p>
-                <p className="text-gray-700">Food List: {user.foodList.join(", ")}</p>
-                <p className="text-gray-700">Total Price: {user.totalprice}</p>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="mt-2 text-gray-500">No users added yet.</p>
-        )}
+  if (loading) return <ProcessingOrder />;
 
-        <div className="flex flow-root">
-          <h1 className="text-secondary">Total Rs: {totalPrice}.00</h1>
-          <input
-            type="file"
-            ref={fileInputRef}
-            style={{ display: "none" }} // Hides the file input
-            onChange={handleFileUpload}
-          />
-          <div className="flex gap-1 justify-between items-center">
-            <label
-              className="text-sm text-slate-500 h-8 justify-around items-center flex w-[60%] rounded-md border-0 text-sm font-semibold bg-pink-50 text-pink-700 hover:bg-pink-100 cursor-pointer"
-            >
-              Choose file
-            </label>
+  if (showThankYou) {
+    return (
+      <div className="min-h-screen bg-primary flex items-center justify-center">
+        <div className="bg-gray-900/50 p-8 rounded-2xl backdrop-blur-sm max-w-md w-full">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-green-500/20 rounded-full mx-auto flex items-center justify-center mb-6">
+              <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-4">Payment Complete!</h2>
+            <p className="text-gray-300 mb-8">Thank you for your order. Your payment has been processed successfully.</p>
             <button
-              onClick={triggerFileInput}
-              className="relative cursor-pointer py-1 w-[40%] max-w-50 text-black text-base font-bold rounded-full overflow-hidden bg-secondary transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
+              onClick={() => router.push("/")}
+              className="px-8 py-3 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/80 transition-colors"
             >
-              Upload Slip
+              Return Home
             </button>
           </div>
         </div>
+      </div>
+    );
+  }
 
-        {imagePreview && (
-          <div className="mt-5">
-            <h2 className="text-lg font-semibold">Image Preview:</h2>
-            <img
-              src={imagePreview}
-              alt="Preview"
-              className="max-w-full h-auto rounded mt-3"
-            />
-          </div>
-        )}
-
-        <div className="flex items-end justify-end">
-          {uploadedImage && (
-            <div className="mt-20 text-center">
-              <h2 className="text-lg font-semibold">Uploaded Image:</h2>
-              <img
-                ref={imageRef}
-                src={`https://res.cloudinary.com/YOUR_CLOUD_NAME/image/upload/${uploadedImage}`}
-                alt="Uploaded"
-                className="max-w-full h-auto rounded"
-              />
-            </div>
-          )}
+  return (
+    <div className="min-h-screen bg-primary py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8">
+          <h1 className="text-7xl font-bold text-secondary mb-10 mt-10 text-center">Order Summary</h1>
           
-          <button
-            onClick={() => { 
-              uploadImage();
-              handleOrderSubmission()
-              handleSeatBoook();
-            }}
-            className="relative cursor-pointer py-1 mt-10 px-10 max-w-50 text-black text-base font-bold rounded-full overflow-hidden bg-secondary transition-all duration-400 ease-in-out hover:scale-105 hover:text-white"
-          >
-            Place Order
-          </button>
+          {/* Order Details */}
+          <div className="space-y-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-800/50 p-4 rounded-xl">
+                <h3 className="text-secondary font-semibold mb-2">Order Information</h3>
+                <div className="space-y-2">
+                  <p className="text-gray-400">Seat Number: <span className="text-white">{seats ? seats.seatNumber : "Not selected"}</span></p>
+                  <p className="text-gray-400">Number of Seats: <span className="text-white">{numOfSeat}</span></p>
+                  <p className="text-gray-400">Food Items: <span className="text-white">{users[-1].foodList.join(", ")}</span></p>
+                  
+                </div>
+              </div>
+
+              <div className="bg-gray-800/50 p-4 rounded-xl">
+                <h3 className="text-secondary font-semibold mb-2">User Details</h3>
+                  <div className="space-y-2">
+                    <p className="text-gray-400">Index Number: <span className="text-white">{index}</span></p>
+                    <p className="text-gray-400">Department: <span className="text-white">{users[-1].department}</span></p>
+                    <p className="text-gray-400">WhatsApp: <span className="text-white">{users[-1].whatsapp}</span></p>
+                  </div>
+              </div>
+            </div>
+
+            {/* Payment Section */}
+            <div className="bg-gray-800/50 p-6 rounded-xl">
+              <div className="flex justify-between items-center mb-6">
+                <h3 className="text-secondary font-semibold">Payment Details</h3>
+                <p className="text-2xl font-bold text-white">RS {totalPrice}.00</p>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-sm text-gray-400">Please upload the payment slip with your index number written on it</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    className="hidden"
+                    onChange={handleFileUpload}
+                  />
+                  <button
+                    onClick={triggerFileInput}
+                    className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
+                  >
+                    Upload Slip
+                  </button>
+                </div>
+
+                {imagePreview && (
+                  <div className="mt-4">
+                    <p className="text-secondary font-semibold mb-2">Preview</p>
+                    <img
+                      src={imagePreview}
+                      alt="Payment slip preview"
+                      className="max-w-xs rounded-lg border border-gray-700"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row justify-end gap-4 mt-8">
+            <button
+              onClick={() => router.push("/")}
+              className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800/50 transition-colors"
+            >
+              Cancel Order
+            </button>
+            <button
+              onClick={handleOrderSubmission}
+              className="px-8 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
+            >
+              Place Order
+            </button>
+          </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
