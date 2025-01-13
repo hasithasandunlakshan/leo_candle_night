@@ -152,11 +152,48 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
           ))}
         </div>
 
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" className="right-10 bg-secondary text-white hover:bg-primary hover:text-white top-10 fixed"
-              >
-                Confirm
+
+        {/* Sheet to show the cart items */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline" className=' right-10 bg-secondary hover:bg-primary top-10 fixed '>Confirm</Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle className='font-bold'>Cart Items</SheetTitle>
+              <SheetDescription>
+                Review your selected items below.
+              </SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              {cart.length === 0 ? (
+                <div className="text-black-500 font-bold ">Your cart is empty.</div>
+              ) : (
+                <ul>
+                  {cart.map((item) => (
+                    <li key={item.id} className="flex justify-between text-gray-700">
+                      <span>{item.name} - ${item.price.toFixed(2)}</span>
+                      <Button 
+                        onClick={() => handleRemoveFromCart(item.id)} 
+                        variant="outline" 
+                        className="ml-2 font-xs bg-red-400"
+                      >
+                        Remove
+                      </Button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {cart.length > 0 && (
+                <div className="font-bold">
+                  Total: ${totalPrice.toFixed(2)}
+                </div>
+              )}
+            </div>
+            <SheetFooter>
+              <Button onClick={handleConfirm} className="bg-green-500 text-white">
+                Confirm Cart
+
               </Button>
             </SheetTrigger>
             <SheetContent>
