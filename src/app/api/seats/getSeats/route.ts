@@ -3,7 +3,7 @@ import Seat from "@/models/seatModel";
 import { NextRequest, NextResponse } from "next/server";
 
 // Disable caching in Vercel
-export const dynamic = "force-dynamic"; // Ensures the route is always dynamic
+export const dynamic = "force-dynamic"; 
 export const revalidate = 0; // Disables revalidation caching
 
 // Connect to the database
