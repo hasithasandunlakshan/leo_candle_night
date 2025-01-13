@@ -2,8 +2,9 @@ import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import { sendEmail } from "@/utils/mail.utils";
-import puppeteer from "puppeteer-core";
-import chromium from "chrome-aws-lambda"; // For serverless-compatible Chromium
+import puppeteer from "puppeteer";
+import path from "path";
+import fs from "fs";
 
 connect();
 
@@ -23,13 +24,8 @@ interface User {
   index: string;
 }
 
-async function generatePDF(user: User): Promise<Buffer> {
-  // Launch Puppeteer with serverless-friendly options
-  const browser = await puppeteer.launch({
-    args: chromium.args,
-    executablePath: await chromium.executablePath,
-    headless: true,
-  });
+async function generatePDF(user: User): Promise<string> {
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   const content = `
@@ -58,12 +54,14 @@ async function generatePDF(user: User): Promise<Buffer> {
   </body>
   </html>
   `;
+  
 
   await page.setContent(content);
-  const pdfBuffer = await page.pdf({ format: "a4", printBackground: true });
+  const pdfPath = path.join(process.cwd(), `visitor_${user.index}.pdf`);
+  await page.pdf({ path: pdfPath, format: "A4", printBackground: true });
 
   await browser.close();
-  return pdfBuffer;
+  return pdfPath;
 }
 
 export async function POST(request: NextRequest) {
@@ -87,12 +85,13 @@ export async function POST(request: NextRequest) {
 
     await newOrder.save();
 
+    
     const user = { ...orderDetails[0], index }; // Include the index field here
     if (user?.email) {
-      const pdfBuffer = await generatePDF(user);
+      const pdfPath = await generatePDF(user);
 
       const sender = { name: "Celestia'24", address: "chamindusathsara28@gmail.com" };
-      const subject = "Order placed successfully";
+      const subject = "Order placed succesfully";
       const message = `Dear ${user.username}, your order has been successfully placed! Please find your order details attached.`;
       const recipients = [{ name: user.username, address: user.email }];
 
@@ -103,12 +102,15 @@ export async function POST(request: NextRequest) {
         message,
         attachments: [
           {
-            filename: `${user.username}_order_details.pdf`,
-            content: pdfBuffer.toString("base64"),
+            filename: `${user.username}_order details.pdf`,
+            content: fs.readFileSync(pdfPath).toString("base64"),
             encoding: "base64",
           },
         ],
       });
+
+      // Delete the PDF file after sending the email
+      fs.unlinkSync(pdfPath);
     }
 
     return NextResponse.json({
