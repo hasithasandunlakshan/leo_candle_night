@@ -102,7 +102,7 @@ export default function OrderSummary() {
                 <div className="space-y-2">
                   <p className="text-gray-400">Seat Number: <span className="text-white">{seats ? seats.seatNumber : "Not selected"}</span></p>
                   <p className="text-gray-400">Number of Seats: <span className="text-white">{numOfSeat}</span></p>
-                  <p className="text-gray-400">Food Items: <span className="text-white">{users[-1].foodList.join(", ")}</span></p>
+                  <p className="text-gray-400">Food Items: <span className="text-white">{users[users.length-1].foodList.join(", ")}</span></p>
                   
                 </div>
               </div>
@@ -111,8 +111,8 @@ export default function OrderSummary() {
                 <h3 className="text-secondary font-semibold mb-2">User Details</h3>
                   <div className="space-y-2">
                     <p className="text-gray-400">Index Number: <span className="text-white">{index}</span></p>
-                    <p className="text-gray-400">Department: <span className="text-white">{users[-1].department}</span></p>
-                    <p className="text-gray-400">WhatsApp: <span className="text-white">{users[-1].whatsapp}</span></p>
+                    <p className="text-gray-400">Department: <span className="text-white">{users[users.length-1].department}</span></p>
+                    <p className="text-gray-400">WhatsApp: <span className="text-white">{users[users.length-1].whatsapp}</span></p>
                   </div>
               </div>
             </div>

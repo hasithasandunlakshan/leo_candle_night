@@ -1,6 +1,11 @@
-import React, { useState } from "react";
-import FoodCard from "./FoodCard";
-import { Button } from "../ui/button";
+"use client"
+import React, { useState } from 'react';
+import FoodCard from './FoodCard';
+import { Button } from '../ui/button';
+
+
+
+
 import {
   Sheet,
   SheetClose,
@@ -17,28 +22,48 @@ interface FoodItem {
   id: number;
   name: string;
   price: number;
+
+  image: string;
+
 }
 
 // Define the different food categories
 const foods: FoodItem[] = [
-  { id: 1, name: "Pizza", price: 9.99 },
-  { id: 2, name: "Burger", price: 5.99 },
-  { id: 3, name: "Sushi", price: 12.99 },
-  { id: 4, name: "Pasta", price: 7.99 },
-  { id: 5, name: "Salad", price: 4.99 },
+
+  { id: 1, name: 'Lamprais', price: 9.99, image: '/images/meals/Lamprais.jpg' },
+  { id: 2, name: 'Chicken Kottu', price: 5.99, image: '/images/meals/chickenkottu.jpg' },
+  { id: 3, name: 'Vegitable Kottu', price: 12.99, image: '/images/meals/vegikootu.jpg' },
+  { id: 4, name: 'Cheese Kottu', price: 7.99, image: '/images/meals/cheesekottu.jpg' },
+  { id: 5, name: 'Dosa & Curries', price: 4.99, image: '/images/meals/dosa.jpg' },
+  { id: 6, name: 'Chicken Biriyani', price: 4.99, image: '/images/meals/chickenbiriyani.jpg' },
+  { id: 7, name: 'Nasi Goreng', price: 4.99, image: '/images/meals/nasiguran.jpg' },
+  { id: 8, name: 'Ramen', price: 4.99, image: '/images/meals/ramen.jpg' },
+  { id: 9, name: 'Pasta', price: 4.99, image: '/images/meals/pasta.jpg' },
+  { id: 10, name: 'Naan', price: 4.99, image: '/images/meals/naan.jpg' },
 ];
 
 const drinks: FoodItem[] = [
-  { id: 6, name: "Coke", price: 1.99 },
-  { id: 7, name: "Water", price: 0.99 },
-  { id: 8, name: "Lemonade", price: 2.49 },
+  { id: 11, name: 'Falooda', price: 1.99, image: '/images/meals/falooda.jpg' },
+  { id: 12, name: 'Chocolate Milkshake', price: 1.99, image: '/images/meals/milkshake.jpg' },
+  { id: 13, name: 'Coke', price: 1.99, image: '/images/meals/coke.jpg' },
+  { id: 14, name: 'Sprite', price: 1.99, image: '/images/meals/sprite.jpg' },
+  { id: 15, name: 'Welcome Drink', price: 1.99, image: '/images/meals/welcomedrink.jpg' },
+  { id: 16, name: 'Fruit Juice', price: 1.99, image: '/images/meals/juice.jpeg' },
+
 ];
 
 const desserts: FoodItem[] = [
-  { id: 9, name: "Ice Cream", price: 3.99 },
-  { id: 10, name: "Cake", price: 4.99 },
-  { id: 11, name: "Brownie", price: 2.99 },
+  { id: 17, name: 'Biscuit Pudding', price: 1.99, image: '/images/meals/pudding.jpg' },
+  { id: 18, name: 'Vanila Ice Cream', price: 1.99, image: '/images/meals/vice.jpg' },
+  { id: 19, name: 'Chocolate Ice Cream', price: 1.99, image: '/images/meals/cice.jpg' },
+  { id: 20, name: 'Kesari', price: 1.99, image: '/images/meals/kesari.jpg' },
+
+ 
 ];
+
+
+
+
 
 interface FoodListProps {
   FinalFood: (cart: FoodItem[]) => void;

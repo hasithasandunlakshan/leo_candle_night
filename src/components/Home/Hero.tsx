@@ -46,14 +46,15 @@ export default function Hero() {
 
       <div className="justify-start container items-start">
         <div className="flex flex-col w-[100%] lg:w-[60%] items-center lg:items-start py-32">
-          <TextGenerateEffect
-            words={description}
-            className="text-gray-300 font-bold text-center sm:text-left text-xl sm:text-2xl"
-            duration={1}
-          />
+    
           <TextGenerateEffect
             words={description2}
-            className="text-secondary -mb-10 font-Qwigley text-7xl sm:text-8xl md:text-9xl"
+            className="text-secondary -mb-5 font-Qwigley  text-7xl sm:text-8xl md:text-9xl"
+            duration={1}
+          />
+                <TextGenerateEffect
+            words={description}
+            className="text-gray-300 font-bold text-center sm:text-left text-xl sm:text-2xl"
             duration={1}
           />
           <motion.p
@@ -64,7 +65,7 @@ export default function Hero() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="text-gray-400 w-[100%] justify-center lg:justify-start mt-6 text-center  lg:text-left"
+            className="text-gray-400 w-[100%] justify-center lg:justify-start mt-2 text-center  lg:text-left"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
             ipsa sit placeat earum error tempore tenetur iusto ipsum facilis!
@@ -73,7 +74,7 @@ export default function Hero() {
             adipisicing elit. 
           </motion.p>
 
-          <Button text="BOOK TICKET" />
+          <Button text="BOOK TICKET"  router="/bookseat"/>
         </div>
         <div className="md:flex hidden lg:ml-20 items-center justify-center align-middle">
           <motion.div
