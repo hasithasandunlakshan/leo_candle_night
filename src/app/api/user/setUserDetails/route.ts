@@ -111,12 +111,12 @@ export async function POST(request: NextRequest) {
 
       const recipients = [{ name: user.username, address: user.email }];
 
-      await sendEmail({
-        sender,
-        recipients,
-        subject,
-        message,
-      });
+      // await sendEmail({
+      //   sender,
+      //   recipients,
+      //   subject,
+      //   message,
+      // });
     }
 
     return NextResponse.json({
