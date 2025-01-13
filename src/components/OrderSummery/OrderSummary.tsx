@@ -60,29 +60,33 @@ export default function OrderSummary() {
         alert("No file selected for upload.");
         return null;
       }
-
-      const response = await fetch("/api/slips/uploadSlips", {
-        method: "POST",
-        body: formData,
+  
+      const response = await axios.post("/api/slips/uploadSlips", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data", // Set the correct content type
+        },
       });
-
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+  
+      if (response.status === 200) {
+        console.log("Image uploaded successfully");
+        alert("Image uploaded successfully");
       }
-
-      const data = await response.json();
-      console.log("Upload response data:", data);  // Log the full response data
+  
+      const data = response.data; // Directly access response.data
+      console.log("Upload response data:", data);
+  
       if (data && data.publicId && data.imageUrl) {
         setUploadedImage(data.imageUrl); // Save the uploaded image URL
         console.log("Image uploaded successfully, publicId:", data.publicId);
-        return data.imageUrl; // You can now use publicId if needed
+        return data.imageUrl; // Return the uploaded image URL
       } else {
-        console.error("publicId not found in the response:", data);
+        console.error("Invalid response structure:", data);
+        alert("Failed to upload image: Invalid response structure.");
         return null;
       }
-    } catch (error) {
-      console.error(error);
-      alert("Failed to upload image");
+    } catch (error: any) {
+      console.error("Error uploading image:", error.message || error);
+      alert("Failed to upload image. Please try again later.");
       return null;
     }
   };
