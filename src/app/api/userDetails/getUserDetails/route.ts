@@ -5,10 +5,13 @@ connect();
 
 export async function GET(request: NextRequest) {
   try {
-    const user = await User.find({});
+    const index = request.nextUrl.searchParams.get('index');
+   
+    const users = await User.find({index}).select("users seats");
+    
     return NextResponse.json({
-      success: true,
-      user,
+      users: users.map(user => user.users[0]),
+      seats: users.map(user => user.seats[0]),
 
     });
   } catch (error) {
