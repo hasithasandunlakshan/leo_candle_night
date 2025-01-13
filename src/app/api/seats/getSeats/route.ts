@@ -2,14 +2,20 @@ import { connect } from "@/dbConfig/dbConfig";
 import Seat from "@/models/seatModel";
 import { NextRequest, NextResponse } from "next/server";
 
+// Disable caching in Vercel
+export const dynamic = "force-dynamic"; // Ensures the route is always dynamic
+export const revalidate = 0; // Disables revalidation caching
+
+// Connect to the database
 connect();
 
 export async function GET(request: NextRequest) {
   try {
-    console.log("Fetching all seats");
+    console.log("Fetching all seats from the database...");
     const seats = await Seat.find({});
     console.log("Fetched seats:", seats);
 
+    // Return the response with cache control headers
     return NextResponse.json(
       {
         success: true,
@@ -26,7 +32,6 @@ export async function GET(request: NextRequest) {
     );
   } catch (error) {
     console.error("Error fetching seats:", error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    return NextResponse.json({ error: errorMessage }, { status: 500 });
+    return NextResponse.json({ success: false, error: (error as Error).message }, { status: 500 });
   }
 }
