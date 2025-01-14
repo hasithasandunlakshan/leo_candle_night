@@ -13,7 +13,7 @@ export default function OrderSummary() {
   const imageRef = useRef<HTMLImageElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false); // To handle the loading state
-  const [showThankYou, setShowThankYou] = useState(true); // To show the "Thank You" message
+  const [showThankYou, setShowThankYou] = useState(false); // To show the "Thank You" message
 
   const [formData, setFormData] = useState<FormData | null>(null);  // Declare formData as a state
 
