@@ -29,7 +29,7 @@ const Loading: React.FC = () => {
 
 
             
-            className="absolute text-center font-Allura text-7xl  flex justify-center items-center"
+            className="absolute text-center font-Allura text-4xl md:text-7xl  flex justify-center items-center"
           >
             {words[currentWordIndex]}
           </motion.div>
