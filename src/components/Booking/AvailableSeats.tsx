@@ -69,27 +69,33 @@ export default function BookSeats() {
         Book Your Seats
       </h1>
 
-      <div className="w-full flex justify-center items-center mt-4">
+      <div className="sm:w-[70%] w-[90%]  flex justify-center items-center mt-4">
         <Image
           src="/images/arrange.png"
           alt="Top Image"
           width={1400}
           height={600}
           unoptimized
-          className="rounded-lg shadow-md"
+          className="rounded-lg shadow-md h-[80%]"
         />
       </div>
 
-      <h2 className="text-xl mt-4 text-white">
+      <h2 className="text-xl mt-4 text-white mx-6">
         When booking your seat, the seat is the combination of the table letter
         and the seat number.
       </h2>
-      <h3 className="text-xl mt-4 mb-4 text-gray-400">
+      <h3 className="sm:text-xl text-md mx-6 mt-4 mb-4 text-gray-400">
         Ex - If you want to book seat 1 in table A, select A1
       </h3>
 
       {loading ? (
-        <div className="text-white text-2xl mt-10">Loading seats...</div>
+       <div className="text-center flex-col align-middle flex min-h-screen absolute w-screen z-50 bg-primary max-h-screen   items-center justify-center">
+       <div
+         className="w-10 h-10 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"
+       ></div>
+       <h2 className="text-white  mt-4">Loading Seats</h2>
+     
+     </div>
       ) : (
         <div className="w-full px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -102,7 +108,7 @@ export default function BookSeats() {
                   {tableSeats.map((seat) => (
                     <div
                       key={seat._id}
-                      className={`border rounded-lg p-1 text-center w-16 transition ${
+                      className={`border cursor-pointer rounded-lg p-1 text-center  w-12 transition ${
                         seat.isBooked
                           ? "bg-red-500 text-white"
                           : selectedSeat?.seatNumber === seat.seatNumber
@@ -116,7 +122,7 @@ export default function BookSeats() {
                         alt="Seat Icon"
                         width={30}
                         height={30}
-                        className="mx-auto mb-1"
+                        className="mx-auto  w-4 mb-1"
                       />
                       {seat.seatNumber}
                     </div>
