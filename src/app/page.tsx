@@ -73,6 +73,7 @@ export default function Page() {
       <Hero />
      <Details/>
     <VelocityText/>
+    
     {/*<Sponsers/> */}
     <ContactPage/>
     <Footer /> 
