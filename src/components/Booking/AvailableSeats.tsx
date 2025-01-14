@@ -2,20 +2,19 @@
 import { useState, useContext, useEffect } from "react";
 import { CartContext } from "@/context/userOrder";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import axios from "axios";
 
 export default function BookSeats() {
-  const [seats, setSeats] = useState<any[][]>([]); // Seat layout by table
-  const [selectedSeat, setSelectedSeat] = useState<any>(null); // Selected seat
-  const [loading, setLoading] = useState<boolean>(true); // API loading state
-  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false); // Booking loading state
-  const [showToast, setShowToast] = useState<boolean>(false); // Toast visibility state
-  const useOrder = useContext(CartContext); // Context for seat selection
+  const [seats, setSeats] = useState<any[][]>([]);
+  const [selectedSeat, setSelectedSeat] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
+  const [showToast, setShowToast] = useState<boolean>(false);
+  const useOrder = useContext(CartContext);
   const router = useRouter();
 
-  /** 🛠️ Fetch Seat Data from API **/
   useEffect(() => {
     async function fetchData() {
       try {
@@ -24,15 +23,11 @@ export default function BookSeats() {
           console.error("Failed to fetch seat data:", res.statusText);
           alert("Failed to fetch seat data. Please try again.");
         }
-
         const result = await res.data;
-        console.log("Fetched seats:", result);
-
         const tables: any[][] = [];
         for (let i = 0; i < result.seats.length; i += 10) {
           tables.push(result.seats.slice(i, i + 10));
         }
-
         setSeats(tables);
       } catch (error) {
         console.error("Error fetching seat data:", error);
@@ -40,23 +35,17 @@ export default function BookSeats() {
         setLoading(false);
       }
     }
-
     fetchData();
   }, []);
+
   const toggleSeatSelection = (seat: any) => {
     if (!seat.isBooked) {
       setSelectedSeat(seat);
-      setShowToast(true); // Show the toast
-      setTimeout(() => setShowToast(false), 3000); // Hide toast after 3 seconds
+      setShowToast(true);
     }
   };
 
-  const handleBookSeats = async () => {
-    if (!selectedSeat) {
-      alert("Please select a seat before proceeding.");
-      return;
-    }
-
+  const handleConfirm = () => {
     setLoadingSubmit(true);
     try {
       useOrder?.setSeats(selectedSeat);
@@ -69,8 +58,13 @@ export default function BookSeats() {
     }
   };
 
+  const handleCancel = () => {
+    setSelectedSeat(null);
+    setShowToast(false);
+  };
+
   return (
-    <div className="bg-primary min-h-screen w-full flex flex-col items-center">
+    <div className="bg-primary min-h-screen w-full flex flex-col items-center relative">
       <h1 className="text-2xl font-bold mb-4 mt-24 md:text-7xl pt-10 text-secondary">
         Book Your Seats
       </h1>
@@ -94,7 +88,6 @@ export default function BookSeats() {
         Ex - If you want to book seat 1 in table A, select A1
       </h3>
 
-      {/* 🌀 Loading State */}
       {loading ? (
         <div className="text-white text-2xl mt-10">Loading seats...</div>
       ) : (
@@ -111,9 +104,9 @@ export default function BookSeats() {
                       key={seat._id}
                       className={`border rounded-lg p-1 text-center w-16 transition ${
                         seat.isBooked
-                          ? "bg-red-500 text-white" // Booked seats in red
+                          ? "bg-red-500 text-white"
                           : selectedSeat?.seatNumber === seat.seatNumber
-                          ? "bg-green-500 text-white" // Selected seat in green
+                          ? "bg-green-500 text-white"
                           : "bg-primary hover:bg-secondary text-white"
                       }`}
                       onClick={() => toggleSeatSelection(seat)}
@@ -135,43 +128,65 @@ export default function BookSeats() {
         </div>
       )}
 
-      {/* 🚀 Next Button */}
-      <motion.button
-        onClick={handleBookSeats}
-        disabled={loadingSubmit}
-        className={`cursor-pointer py-1 my-10 px-14 text-base font-bold rounded-full transition ${
-          loadingSubmit
-            ? "bg-gray-400 text-white cursor-not-allowed"
-            : "border hover:text-white hover:bg-secondary text-white bg-primary border-white"
-        }`}
-      >
-        {loadingSubmit ? "Booking seats..." : "Next"}
-      </motion.button>
-
-      {/* 🛑 Toast Notification */}
-      {showToast && (
-        <div className="fixed bottom-4 right-4 bg-primary rounded-lg border-secondary border p-3 shadow-lg">
-          <div className="flex flex-row">
-            <div className="px-2">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 1792 1792"
-                fill= "#d5a000"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" />
-              </svg>
-            </div>
-            <div className="ml-2 mr-6">
-              <span className="font-semibold text-secondary">Seat Selected!</span>
-              <span className="block text-white">
-              Seat {selectedSeat?.seatNumber} selected. Click &quot;Next&quot; to continue.
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {showToast && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black bg-opacity-50 z-10"
+              onClick={handleCancel}
+            />
+            {/* Toast */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+              className="fixed top-1/3 left-1/8 transform -translate-x-1/2 -translate-y-1/2 z-50"
+            >
+              <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg w-180">
+                <div className="flex flex-col">
+                  <div className="flex items-center">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 1792 1792"
+                      fill="#d5a000"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="mr-2"
+                    >
+                      <path d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" />
+                    </svg>
+                    <span className="text-secondary font-semibold">
+                      Seat Selected!
+                    </span>
+                  </div>
+                  <span className="text-white mt-2">
+                    Seat {selectedSeat?.seatNumber} selected. Confirm your booking?
+                  </span>
+                  <div className="flex justify-end mt-4 space-x-2">
+                    <button
+                      onClick={handleCancel}
+                      className="px-4 py-2 text-sm bg-primary rounded text-white hover:bg-secondary focus:outline-none"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      onClick={handleConfirm}
+                      className="px-4 py-2 text-sm bg-primary text-white rounded hover:bg-secondary  focus:outline-none"
+                    >
+                      Confirm
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
