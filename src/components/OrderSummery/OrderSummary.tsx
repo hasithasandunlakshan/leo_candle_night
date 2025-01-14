@@ -13,7 +13,7 @@ export default function OrderSummary() {
   const imageRef = useRef<HTMLImageElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false); // To handle the loading state
-  const [showThankYou, setShowThankYou] = useState(false); // To show the "Thank You" message
+  const [showThankYou, setShowThankYou] = useState(true); // To show the "Thank You" message
 
   const [formData, setFormData] = useState<FormData | null>(null);  // Declare formData as a state
 
@@ -172,8 +172,8 @@ export default function OrderSummary() {
 
   if (showThankYou) {
     return (
-      <div className="min-h-screen bg-primary flex items-center justify-center">
-      <div className="bg-gray-900/50 p-8 rounded-2xl backdrop-blur-sm max-w-md w-full">
+      <div className="min-h-screen bg-primary flex items-center justify-center flex-col">
+      <div className="bg-gray-900/50 p-16 rounded-2xl backdrop-blur-sm max-w-md w-full">
         <div className="text-center">
           <div className="w-20 h-20 bg-green-500/20 rounded-full mx-auto flex items-center justify-center mb-6">
             <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -182,9 +182,10 @@ export default function OrderSummary() {
           </div>
           <h2 className="text-3xl font-bold text-white mb-4">Payment Complete!</h2>
           <p className="text-gray-300 mb-8">Thank you for your order. Your payment has been processed successfully.</p>
+          <a href="/orderdetails" className="text-secondary ">VIEW ORDER DETAILS</a>
           <button
             onClick={() => router.push("/")}
-            className="px-8 py-3 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/80 transition-colors"
+            className="px-8 py-2  bg-secondary mt-4 text-white rounded-lg font-medium hover:bg-secondary/80 transition-colors"
           >
             Return Home
           </button>
@@ -294,7 +295,7 @@ export default function OrderSummary() {
                   <img
                     src={imagePreview}
                     alt="Payment slip preview"
-                    className="max-w-xs rounded-lg border border-gray-700"
+                    className="max-w-xs w-full rounded-lg border border-gray-700"
                   />
                 </div>
               )}

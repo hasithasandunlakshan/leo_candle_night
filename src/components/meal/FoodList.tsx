@@ -86,7 +86,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
       setSelectedFood(food);
       addToCart(food);
       setShowToast(true);
-      setIsSheetOpen(true); // Open the Sheet when an item is added
+       // Open the Sheet when an item is added
     } else {
       alert('Item already in the cart');
     }
@@ -98,6 +98,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
     }
     setShowToast(false);
     setSelectedFood(null);
+    setIsSheetOpen(true);
   };
 
   const handleRemoveFromCart = (id: number) => {
@@ -180,7 +181,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
                 {cart.map((item) => (
                   <li
                     key={item.id}
-                    className="flex justify-between my-2 w-full bg-gray-800/80 p-2  rounded-xl text-gray-200 items-center align-middle"
+                    className="flex justify-between my-2 w-full bg-gray-800/80 p-2  rounded-xl text-sm  sm:text-lg text-gray-200 items-center align-middle"
                   >
                     {/* Product Image */}
                     <div className="flex w-[80%] gap-2">
@@ -221,7 +222,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
               PURCHASE
               </Button>
               <SheetClose asChild>
-                <Button type="button" className=" text-white">
+                <Button type="button" className=" text-white mb-5 sm:mb-0">
                   CONTINUE
                 </Button>
               </SheetClose>
