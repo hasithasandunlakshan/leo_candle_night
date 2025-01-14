@@ -9,7 +9,7 @@ import Button from "./Button";
 
 export default function Hero() {
   const router = useRouter();
-  const description = `Experience the magical world with us!!`;
+  const description = `Where culture meets elegance. ✨`;
   const description2 = `Celestia'25`;
 
   // For parallax effect
@@ -68,7 +68,7 @@ export default function Hero() {
             className="text-gray-400 w-[100%] justify-center lg:justify-start mt-2 text-center  lg:text-left"
           >
           
-          Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition.  Where culture meets elegance. ✨
+          Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. 
           </motion.p>
 
           <Button text="BOOK TICKET"  router="/bookseat"/>
