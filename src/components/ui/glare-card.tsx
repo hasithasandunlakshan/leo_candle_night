@@ -67,7 +67,7 @@ export const GlareCard = ({
   };
   return (
 
-    <Button duration={5000} className=" flex items-center justify-center align-middle">
+    <Button duration={5000} className=" flex items-center  justify-center align-middle">
 
     
     <div
@@ -121,7 +121,7 @@ export const GlareCard = ({
         }
       }}
     >
-      <div className="h-80 cursor-pointer mx-2 grid will-change-transform origin-center mt-8 md:mt-2 transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] [transform:rotateY(var(--r-x))_rotateX(var(--r-y))] rounded-[var(--radius)]  hover:[--opacity:0.6] hover:[--duration:200ms] hover:[--easing:linear] hover:filter-none overflow-hidden dark:border-neutral-800">
+      <div className=" h-full py-2 cursor-pointer mx-2 grid will-change-transform origin-center  transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] [transform:rotateY(var(--r-x))_rotateX(var(--r-y))] rounded-[var(--radius)]  hover:[--opacity:0.6] hover:[--duration:200ms] hover:[--easing:linear] hover:filter-none overflow-hidden dark:border-neutral-800">
         <div className="w-full h-full grid [grid-area:1/1] mix-blend-soft-light gap-4 [clip-path:inset(0_0_0_0_round_var(--radius))]">
           <div className={cn("h-full w-full bg-slate-950", className)}>
             {children}
