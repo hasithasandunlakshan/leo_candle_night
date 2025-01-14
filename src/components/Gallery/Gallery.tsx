@@ -20,7 +20,7 @@ export function InfiniteSliderResponsive() {
 {imageList.map((image, index) => (
     <div key={index} className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg">
       <img
-        className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
+        className="w-auto max-w-64 h-60 object-cover transition-transform duration-300 group-hover:scale-110"
         src={image.src}
         alt={image.alt}
       />
@@ -32,7 +32,7 @@ export function InfiniteSliderResponsive() {
       {imageList.map((image, index) => (
     <div key={index} className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg">
       <img
-        className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
+        className="w-auto max-w-64 h-60 object-cover transition-transform duration-300 group-hover:scale-110"
         src={image.src}
         alt={image.alt}
       />
@@ -48,7 +48,7 @@ export function InfiniteSliderResponsive() {
          <div key={index} className="grid gap-4">
          <div className="flex relative group cursor-pointer">
          <img
-           className="md:h-60 md:w-60 w-32 h-32 rounded-lg"
+           className="md:h-60 md:w-60 w-32 h-32 rounded-lg group-hover:scale-110"
            src={image.src}
            alt={image.alt}
          />
@@ -63,7 +63,7 @@ export function InfiniteSliderResponsive() {
           <div key={index} className="grid gap-4">
           <div className="flex relative group cursor-pointer">
           <img
-            className="md:h-60 md:w-60 w-32 h-32 rounded-lg"
+            className="md:h-60 md:w-60 w-32 h-32 rounded-lg group-hover:scale-110"
             src={image.src}
             alt={image.alt}
           />

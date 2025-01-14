@@ -29,11 +29,7 @@ export const imageList = [
     src: "/images/cultural/c6.jpg",
     alt: "Cultural Image 6",
   },
-  {
-    id: 7,
-    src: "/images/cultural/c7.jpg",
-    alt: "Cultural Image 7",
-  },
+
   {
     id: 8,
     src: "/images/cultural/c8.jpg",
