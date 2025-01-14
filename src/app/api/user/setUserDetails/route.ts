@@ -43,30 +43,30 @@ export async function POST(request: NextRequest) {
     if (user?.email) {
       const sender = { name: "Celestia'24", address: process.env.EMAIL_SENDER as string };
       const subject = "Order Placed Successfully";
+      const orderDetailsURL = `https://leo-candle-night.vercel.app/orderdetails/${user.index}`;
+    
       const message = `
         Dear ${user.username},
-
+    
         Your order has been successfully placed!
-
-        Here are your order details:
-        - Name: ${user.username}
-        - Index: ${user.index}
-        - Department: ${user.department}
-        - Batch: ${user.batch}
-        - Food List: ${user.foodList.join(", ")}
-        - Total Price: $${user.totalPrice}
-        - Seat Number: ${user.seatNumber}
-
+    
+   
+        We will notify you once your payment has been approved.
+    
+        You can view your order details anytime by visiting the link below:
+        ${orderDetailsURL}
+    
         Thank you for choosing Celestia'24. We look forward to seeing you at the event!
-
+    
         Best regards,
         The Celestia'24 Team
       `;
-
+    
       const recipients = [{ name: user.username, address: user.email }];
-
+    
       await sendEmail({ sender, recipients, subject, message });
     }
+    
 
     return NextResponse.json({ message: "Order saved successfully", order: newOrder });
   } catch (error) {
