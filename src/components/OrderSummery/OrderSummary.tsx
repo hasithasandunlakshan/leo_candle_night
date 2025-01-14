@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import ProcessingOrder from "../Loading/ProcessingOrder";
 import Image from "next/image";
 import { MdDelete } from "react-icons/md";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function OrderSummary() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [showToast, setShowToast] = useState<boolean>(false);
   const [loading, setLoading] = useState(false); // To handle the loading state
   const [showThankYou, setShowThankYou] = useState(false); // To show the "Thank You" message
 
@@ -50,6 +52,11 @@ export default function OrderSummary() {
       alert("Failed to add seat");
     }
   }
+
+  const handleCancel = () => {
+    setShowToast(false);
+  };
+
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -265,6 +272,7 @@ export default function OrderSummary() {
                          </ul>
           </div>
 
+
           {/* Payment Section */}
           <div className="bg-gray-800/50 p-6 rounded-xl">
             <div className="flex justify-between items-center mb-6">
@@ -303,23 +311,82 @@ export default function OrderSummary() {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row justify-end gap-4 mt-8">
+        {/* Place Order Button */}
+        <div className="text-center right-8 mt-8">
           <button
-            onClick={handleResetAndNavigate}
-            className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800/50 transition-colors"
-          >
-            Cancel Order
-          </button>
-          <button
-            onClick={handleOrderSubmission}
-            className="px-8 py-3 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
+            onClick={() => setShowToast(true)}
+            className="px-8 py-3 bg-secondary text-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
           >
             Place Order
           </button>
         </div>
+      
+    
+
+        <AnimatePresence>
+  {showToast && (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 bg-black bg-opacity-50 z-10"
+        onClick={handleCancel}
+      />
+      {/* Toast */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+        className="fixed top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 z-50"
+      >
+        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg w-80">
+          <div className="flex flex-col">
+            <div className="flex items-center">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 1792 1792"
+                fill="#d5a000"
+                xmlns="http://www.w3.org/2000/svg"
+                className="mr-2"
+              >
+                <path d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" />
+              </svg>
+              <span className="text-secondary font-semibold">All set!</span>
+            </div>
+            <span className="text-white mt-2">Place your order?</span>
+            <div className="flex justify-end mt-4 space-x-2">
+              <button
+                onClick={handleCancel}
+                className="px-4 py-2 text-sm bg-primary rounded text-white hover:bg-secondary focus:outline-none"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleOrderSubmission}
+                className="px-4 py-2 text-sm bg-primary text-white rounded hover:bg-secondary focus:outline-none"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
+
       </div>
     </div>
   </div>
-  );
+  
+);
+
+      
+  
+
+
 }
