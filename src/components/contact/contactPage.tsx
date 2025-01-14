@@ -28,39 +28,39 @@ Stay<span className="font-Qwigley text-secondary text-5xl md:text-8xl "> Connect
               <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
                 <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
                   <Image
-                    src="/ContactUs/chamindu.jpg" 
+                    src="/images/ContactUs/dummy.png" 
                     alt="Description"
                     width={160}  // width in pixels
                     height={160} // height in pixels
                     className="rounded-full object-cover"/>
                   <div className="flex flex-col">
-                    <h1 className="py-2  text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
+                    <h1 className="py-2  text-xl sm:text-4xl text-white font-bold ">Name</h1>
                   </div>
                 </div>
                 <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
-                <p className="text-center sm:text-left leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
-                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
+                <p className="text-center sm:text-left leading-7 text-white ">Position</p>
+                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">text@gmail.com</p>
               </div>
             </HeroHighlight>
             </motion.div>
 
             <motion.div  className="m-12 w-[70%] sm:w-[90%] rounded-3xl border border-black duration-700">
             <HeroHighlight className="w-full border border-secondary hover:border-white  transition-all rounded-xl">
-              <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
+            <div className="m-5 bg-transparent flex-col flex rounded-full p-2 mb-8"> {/* Added padding and border for better structure */}
                 <div className="flex flex-col sm:flex-row w-full  items-center gap-5 mb-6">
                   <Image
-                    src="/ContactUs/chamindu.jpg" 
+                    src="/images/ContactUs/dummy.png" 
                     alt="Description"
                     width={160}  // width in pixels
                     height={160} // height in pixels
                     className="rounded-full object-cover"/>
                   <div className="flex flex-col">
-                    <h1 className="py-2 text-xl sm:text-4xl text-white font-bold ">Chamindu Sathsara</h1>
+                    <h1 className="py-2  text-xl sm:text-4xl text-white font-bold ">Name</h1>
                   </div>
                 </div>
                 <p className="text-center sm:text-left leading-7 text-white font-semibold">Director</p>
-                <p className="text-center sm:text-left leading-7 text-white ">Computer Science & Engineering Undergraduate</p>
-                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">chamindusathsara.22@gmail.com</p>
+                <p className="text-center sm:text-left leading-7 text-white ">Position</p>
+                <p className="text-sm text-center sm:text-left leading-7 text-slate-300">text@gmail.com</p>
               </div>
             </HeroHighlight>
             </motion.div>

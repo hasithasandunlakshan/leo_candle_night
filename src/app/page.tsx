@@ -17,6 +17,7 @@ import ContactPage from "@/components/contact/contactPage";
 import Gallery from "@/components/Home/Gallery";
 import { Sponsers } from "@/components/sponser/CarouselSize";
 import { SmoothScrollHero } from "@/components/Home/TEST2";
+import { InfiniteSliderResponsive, } from "@/components/Gallery/Gallery";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -102,9 +103,8 @@ export default function Page() {
       <Hero />
    {/* <ShuffleHero/> */}
      <Details/>
+  {/* <InfiniteSliderResponsive/> */}
     <VelocityText/>
-      {/* <Gallery/> */}
-
 
       {/*
    <Sponsers/> */}

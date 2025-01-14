@@ -8,6 +8,7 @@ import {
 import React, { useRef } from "react";
 import Details from "../Home/Details";
 import Gallery from "../Home/Gallery";
+import { InfiniteSliderResponsive } from "../Gallery/Gallery";
 
 export default function VelocityText() {
   const targetRef = useRef(null);
@@ -30,7 +31,7 @@ export default function VelocityText() {
     
     <section ref={targetRef} className="relative h-full bg-transparent">
       {/* <Details/> */}
-      <Gallery/>
+    <InfiniteSliderResponsive/>
       <div className="sticky my-20 top-0 flex  items-center overflow-hidden">
         <motion.p
           style={{ skewX, x }}

@@ -47,3 +47,4 @@ body,html {
   scrollbar-width:1; /* Thin scrollbar */
   scrollbar-color: #050e3b #000000; /* Thumb and track colors */
 }
+@layer base {}
