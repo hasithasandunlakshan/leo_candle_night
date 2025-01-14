@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = [ "Celestia'25", "where", "culture" ,"meet","elegance"];
+const words = [ "Celestia'25", "Where", "Culture" ,"Meet","Elegance"];
 
 const Loading: React.FC = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
