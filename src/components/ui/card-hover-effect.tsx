@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-
+import { GlareCard } from "../ui/glare-card";
 export const HoverEffect = ({
   items,
   className,
@@ -24,7 +24,7 @@ export const HoverEffect = ({
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
                 className="absolute inset-0  h-full w-full bg-secondary block rounded-3xl"
@@ -34,12 +34,14 @@ export const HoverEffect = ({
                 exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
               />
             )}
-          </AnimatePresence>
-          <Card>
-             <span className="text-5xl text-white">{item.icon}</span>
+          </AnimatePresence> */}
+          <GlareCard className="flex flex-col items-center justify-center">
+         
+          <span className="text-5xl text-white">{item.icon}</span>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
-          </Card>
+     
+    </GlareCard>
         </div>
       ))}
     </div>

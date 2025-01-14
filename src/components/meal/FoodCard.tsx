@@ -12,7 +12,7 @@ interface FoodCardProps {
 
 const FoodCard: React.FC<FoodCardProps> = ({ food, onAddToCart }) => {
   return (
-    <div className="w-64 border border-secondary h-72 bg-white m-2 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+    <div className="w-64  h-72 bg-gray-700/40 m-2 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
       <a href="#">
         <img
           src={food.image} // Use the image property here
@@ -20,12 +20,12 @@ const FoodCard: React.FC<FoodCardProps> = ({ food, onAddToCart }) => {
           className="h-40 w-full object-cover rounded-t-xl"
         />
         <div className="px-4 py-3 w-64">
-          <p className="text-lg font-bold text-black truncate block capitalize">{food.name}</p>
-          <p className="text-lg font-semibold text-black cursor-auto">Rs:{food.price.toFixed(2)}</p>
+          <p className="text-lg font-bold text-secondary truncate block capitalize">{food.name}</p>
+          <p className="text-md  text-secondary/70 cursor-auto">Rs:{food.price.toFixed(2)}</p>
           <div className="flex w-full justify-center items-center">
             <button
               onClick={() => onAddToCart(food)}
-              className="hover:bg-secondary text-white px-4 py-2 w-full rounded-md bg-primary transition duration-200"
+              className="bg-transparent text-white border border-white px-4 py-2 mt-2 w-full rounded-md  hover:bg-primary transition duration-200"
             >
               Add to Cart
             </button>

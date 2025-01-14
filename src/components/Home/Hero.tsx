@@ -9,8 +9,8 @@ import Button from "./Button";
 
 export default function Hero() {
   const router = useRouter();
-  const description = `Experience the magical world with us!!`;
-  const description2 = `Celestia'24`;
+  const description = `Where culture meets elegance. ✨`;
+  const description2 = `Celestia'25`;
 
   // For parallax effect
   const { scrollY } = useScroll();
@@ -67,11 +67,8 @@ export default function Hero() {
             }}
             className="text-gray-400 w-[100%] justify-center lg:justify-start mt-2 text-center  lg:text-left"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-            ipsa sit placeat earum error tempore tenetur iusto ipsum facilis!
-            Praesentium nulla natus atque corrupti dolorem dolor cupiditate,
-            aliquam quia enim! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. 
+          
+          Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. 
           </motion.p>
 
           <Button text="BOOK TICKET"  router="/bookseat"/>
