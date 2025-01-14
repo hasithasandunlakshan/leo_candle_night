@@ -5,7 +5,7 @@ import FoodCard from './FoodCard';
 import { Button } from '../ui/button';
 
 import { MdDelete } from "react-icons/md";
-
+import { BsCart4 } from "react-icons/bs";
 
 import {
   Sheet,
@@ -79,12 +79,14 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   const [cart, setCart] = useState<FoodItem[]>(cartLocal);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
+  const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false); // New state for Sheet visibility
 
   const handleAddToCart = (food: FoodItem) => {
     if (!cart.some((item) => item.id === food.id)) {
       setSelectedFood(food);
       addToCart(food);
       setShowToast(true);
+      setIsSheetOpen(true); // Open the Sheet when an item is added
     } else {
       alert('Item already in the cart');
     }
@@ -106,6 +108,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   const handleConfirm = () => {
     console.log("cart", cart);
     FinalFood(cartLocal);
+    setIsSheetOpen(false); // Close Sheet after purchase
   };
 
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
@@ -151,11 +154,18 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         </div>
 
         {/* Sheet to show the cart items */}
-        <Sheet >
+        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen} >
           <SheetTrigger asChild>
-            <Button variant="outline" className='right-10 bg-primary border z-50 border-white text-secondary top-32 fixed'>
-            VIEW CART
-            </Button>
+          <div className="fixed right-5 top-20 z-50 text-center">
+      {/* Cart Button */}
+      <button className="bg-primary border-2 border-white text-secondary p-3 rounded-full hover:bg-white hover:text-primary relative">
+        <BsCart4 size={24} />
+       
+      </button>
+
+      {/* Cart Label */}
+      <p className="mt-1 text-sm text-white">CART</p>
+    </div>
           </SheetTrigger>
           <SheetContent className='bg-primary bg-opacity-85'>
             <SheetHeader>
