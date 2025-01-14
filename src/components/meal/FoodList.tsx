@@ -100,11 +100,12 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
 
   const handleRemoveFromCart = (id: number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    removeFromCart(id);
   };
 
   const handleConfirm = () => {
     console.log("cart", cart);
-    FinalFood(cart);
+    FinalFood(cartLocal);
   };
 
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
@@ -200,7 +201,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
               </ul>
               )}
               {cart.length > 0 && (
-                <div className="font-bold">
+                <div className="font-bold text-white">
                   Total: RS:{totalPrice.toFixed(2)}
                 </div>
               )}

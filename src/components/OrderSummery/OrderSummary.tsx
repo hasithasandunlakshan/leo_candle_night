@@ -4,6 +4,8 @@ import axios from "axios";
 import { CartContext } from "../../context/userOrder"; // Adjust the path as needed
 import { useRouter } from "next/navigation";
 import ProcessingOrder from "../Loading/ProcessingOrder";
+import Image from "next/image";
+import { MdDelete } from "react-icons/md";
 
 export default function OrderSummary() {
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
@@ -27,9 +29,15 @@ export default function OrderSummary() {
 
   console.log("cartContext:", cartContext);
 
-  const { users, name, numOfSeat, seats, index } = cartContext;
+  const { users, name, numOfSeat, seats, index,cartLocal } = cartContext;
 
   console.log("cartContext user:", users);
+  const handleResetAndNavigate = () => {
+    if (cartContext?.resetOrder) {
+      cartContext.resetOrder(); // Reset the users and other related state
+    }
+    router.push("/"); // Navigate to the home page
+  };
   const handleSeatBoook = async () => {
     const seatNumbers = seats?.seatNumber
     try{
@@ -151,7 +159,10 @@ export default function OrderSummary() {
     fileInputRef.current?.click();
   };
 
-  const totalPrice = users.reduce((sum, user) => sum + (user.totalprice || 0), 0);
+
+
+
+  const totalPrice =cartContext.totalPrice;
   if (loading) {
     return (
      <ProcessingOrder/>
@@ -196,26 +207,61 @@ export default function OrderSummary() {
               <h3 className="text-secondary font-semibold mb-2">Order Information</h3>
               <div className="space-y-2">
                 <p className="text-gray-400">Seat Number: <span className="text-white">{seats ? seats.seatNumber : "Not selected"}</span></p>
-                <p className="text-gray-400">Number of Seats: <span className="text-white">{numOfSeat}</span></p>
-      
-                
-              </div>
-            </div>
-            {users.length === 1 ? (
-  <ul className="text-slate-400">
-    {users.map((user, index) => (
-      <div className="space-y-2" key={index}>
-      <p className="text-gray-400">Index Number: <span className="text-white">{user.index}</span></p>
-      <p className="text-gray-400">Food Items: <span className="text-white">{user.foodList.join(", ")}</span></p>
-      <p className="text-gray-400">Department: <span className="text-white">{user.department}</span></p>
-      <p className="text-gray-400">WhatsApp: <span className="text-white">{user.whatsapp}</span></p>
-    </div>
-    ))}
-  </ul>
-) : (
-  <p className="mt-2 text-gray-500">No users added yet. hi</p>
+          
+          {users.length > 0 && (
+  <div className="space-y-2">
+    <p className="text-gray-400">
+      Index Number: <span className="text-white">{users[users.length - 1].index}</span>
+    </p>
+    <p className="text-gray-400">
+      Food Items: <span className="text-white">{users[users.length - 1].foodList.join(", ")}</span>
+    </p>
+    <p className="text-gray-400">
+      Department: <span className="text-white">{users[users.length - 1].department}</span>
+    </p>
+    <p className="text-gray-400">
+      WhatsApp: <span className="text-white">{users[users.length - 1].whatsapp}</span>
+    </p>
+  </div>
 )}
-           
+          
+              </div>
+
+
+            </div>
+            <ul>
+                           {cartLocal.map((item) => (
+                             <li
+                               key={item.id}
+                               className="flex justify-between my-2 w-full bg-gray-800/80 p-2  rounded-xl text-gray-200 items-center align-middle"
+                             >
+                               {/* Product Image */}
+                               <div className="flex w-[80%] gap-2">
+                               <Image
+                                 src={item.image}
+                                 width={50}
+                                 height={20}
+                                 alt={item.name}
+                                 className="rounded-xl max-h-32"
+                               />
+                               <span>
+                                 {item.name} <br /> RS:   {item.price.toFixed(2)}
+                               </span>
+                               </div>
+                               
+                         
+                               {/* Remove Button */}
+                               {/* <Button
+                                 onClick={() => handleRemoveFromCart(item.id)}
+                                 variant="outline"
+                                 className="ml-2 font-xs bg-red-400"
+                               >
+                               
+                               </Button> */}
+                          {/* <MdDelete className=' text-red-600 text-xl cursor-pointer hover:scale-110 transition-all duration-150'   onClick={() => (item.id)}/> */}
+                             </li>
+                           ))}
+                         </ul>
           </div>
 
           {/* Payment Section */}
@@ -259,7 +305,7 @@ export default function OrderSummary() {
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row justify-end gap-4 mt-8">
           <button
-            onClick={() => router.push("/")}
+            onClick={handleResetAndNavigate}
             className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800/50 transition-colors"
           >
             Cancel Order

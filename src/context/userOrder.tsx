@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useMemo } from "react";
 
 // Define the initial state
 const initialState = {
@@ -34,13 +34,13 @@ interface CartContextType {
   name: string;
   setName: (name: string) => void;
   index: string;
-  setIndex: (index: string) => void; // Function to update the index
-
+  setIndex: (index: string) => void; 
   addUser: (user: any) => void;
   resetOrder: () => void;
   cartLocal: FoodItem[];
   addToCart: (item: FoodItem) => void;
   removeFromCart: (id: number) => void;
+  totalPrice: number;
 }
 
 // Create the context with an initial null value
@@ -53,6 +53,10 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
   const [numOfSeat, setNumOfSeat] = useState<number>(initialState.numOfSeat);
   const [index, setIndex] = useState<string>(initialState.index); // Add state for index
   const [cartLocal, setCartLocal] = useState<FoodItem[]>(initialState.cartLocal);
+  const totalPrice = useMemo(
+    () => cartLocal.reduce((total, item) => total + item.price, 0),
+    [cartLocal]
+  );
 
   // Reset function to revert all values back to initial state
   const resetOrder = () => {
@@ -61,6 +65,7 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
     setSeats(initialState.seats);
     setNumOfSeat(initialState.numOfSeat);
     setIndex(initialState.index); // Reset index as well
+    setCartLocal(initialState.cartLocal)
   };
   const addToCart = (item: FoodItem) => {
     if (!cartLocal.some((cartItem) => cartItem.id === item.id)) {
@@ -89,6 +94,7 @@ export const CartContextProvider: React.FC<{ children: ReactNode }> = ({ childre
       value={{
         users,
         setUsers,
+        totalPrice,
         seats,
         setSeats,
         numOfSeat,

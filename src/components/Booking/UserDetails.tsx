@@ -64,18 +64,18 @@ export function UserDetails() {
   const router = useRouter();
   const useOrder = useContext(CartContext);
   const [isSeatOpen, setSeatOpen] = useState(false);
-  const [selectedFoods, setSelectedFoods] = useState<any[]>([]);
+  const [selectedFoods, setSelectedFoods] = useState<any[]>(useOrder?.cartLocal || []);
   const [price, setPrice] = useState(0);
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
-      index: "",
+      username: useOrder?.name,
+      index: useOrder?.index,
       email: "",
       whatsapp: "",
       department: "",
-      foodList: [],
+      foodList: useOrder?.cartLocal?.map(item => item.name),
       totalprice: 0,
       batch: "",
       faculty: ""
@@ -83,7 +83,7 @@ export function UserDetails() {
   });
 
   const handleFoodSelect = (cart: any[]) => {
-    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+    const totalPrice = useOrder?.totalPrice||0;
    
     setSelectedFoods(cart);
     setPrice(totalPrice);
@@ -106,8 +106,8 @@ export function UserDetails() {
       description: (
         <pre className="bg-black rounded-md p-4">
           <p className="text-white">Your Index Saved {data.index}</p>
-          <p className="text-white">Food List: {foodList.join(", ")}</p>
-          <p className="text-white">Total Price: {totalPrice}</p>
+          {/* <p className="text-white">Food List: {foodList.join(", ")}</p>
+          <p className="text-white">Total Price: {totalPrice}</p> */}
         </pre>
       ),
     });
