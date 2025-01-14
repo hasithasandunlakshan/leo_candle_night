@@ -45,7 +45,7 @@ export default function OrderSummary() {
     try{
       const response = await axios.post("/api/seats/bookSeats",{ seatNumbers: [seatNumbers] })
       if(response.status === 200){
-        alert("seat booked successfully")
+        
       }
     }catch(error){
       console.error("Error sending order to backend:", error);
@@ -84,7 +84,7 @@ export default function OrderSummary() {
   
       if (response.status === 200) {
         console.log("Image uploaded successfully");
-        alert("Image uploaded successfully");
+        
       }
   
       const data = response.data; // Directly access response.data
@@ -137,7 +137,7 @@ export default function OrderSummary() {
       
       const response = await axios.post("/api/user/setUserDetails", data);
       console.log("Order saved successfully:", response.data);
-      alert("Order saved successfully!");
+      
     } catch (error) {
       console.error("Error sending order to backend:", error);
       alert("Failed to send order");
@@ -311,15 +311,31 @@ export default function OrderSummary() {
           </div>
         </div>
 
-        {/* Place Order Button */}
-        <div className="text-center right-8 mt-8">
-          <button
-            onClick={() => setShowToast(true)}
-            className="px-8 py-3 bg-secondary text-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
-          >
-            Place Order
-          </button>
+
+        <div className="flex  items-end justify-end gap-6">
+          <div className="text-center right-8 mt-8">
+            <button
+              onClick={() => handleResetAndNavigate()}
+              className="px-3 py-2 bg-primary text-white border border-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
+            >
+              Cancel
+            </button>
+          </div>
+
+          {/* Place Order Button */}
+          <div className="text-center  mt-8">
+            <button
+              onClick={() => setShowToast(true)}
+              className="px-3 py-2 bg-primary text-white border border-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
+            >
+              Place Order
+            </button>
+          </div>
+        
         </div>
+
+        
+
       
     
 
