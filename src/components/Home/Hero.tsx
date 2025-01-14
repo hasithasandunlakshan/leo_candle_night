@@ -1,14 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+
 import Particles from "../Particle";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import Button from "./Button";
 
 export default function Hero() {
-  const router = useRouter();
+  
   const description = `Where culture meets elegance. ✨`;
   const description2 = `Celestia'25`;
 

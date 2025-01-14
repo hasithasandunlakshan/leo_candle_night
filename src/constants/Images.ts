@@ -39,16 +39,7 @@ export const imageList = [
     src: "/images/cultural/c8.jpg",
     alt: "Cultural Image 8",
   },
-  {
-    id: 9,
-    src: "/images/cultural/c13.jpg",
-    alt: "Cultural Image 9",
-  },
-  {
-    id: 10,
-    src: "/images/cultural/c14.jpg",
-    alt: "Cultural Image 10",
-  },
+
   {
     id: 11,
     src: "/images/cultural/c15.jpg",
@@ -64,19 +55,6 @@ export const imageList = [
     src: "/images/cultural/c9.jpg",
     alt: "Cultural Image 13",
   },
-  {
-    id: 14,
-    src: "/images/cultural/c10.jpg",
-    alt: "Cultural Image 14",
-  },
-  {
-    id: 15,
-    src: "/images/cultural/c11.jpg",
-    alt: "Cultural Image 15",
-  },
-  {
-    id: 16,
-    src: "/images/cultural/c12.jpg",
-    alt: "Cultural Image 16",
-  },
+
+  
 ];

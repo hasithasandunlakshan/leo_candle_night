@@ -17,38 +17,32 @@ export function InfiniteSliderResponsive() {
 </motion.h1>
 <div className="sm:flex-col sm:flex hidden">
 <InfiniteSlider direction="horizontal" className="my-6 ">
-      {imageList.map((image, index) => (
-          <div key={index} className="grid gap-4">
-            <div className="flex relative group cursor-pointer">
-            <img
-              className="md:h-60 md:w-60 w-32 h-32 rounded-lg"
-              src={image.src}
-              alt={image.alt}
-            />
-             <div className="absolute inset-0 bg-black opacity-60 group-hover:opacity-0 rounded-lg transition-opacity duration-300"></div>
-            </div>
-          
-          </div>
-        ))}
+{imageList.map((image, index) => (
+    <div key={index} className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+      <img
+        className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
+        src={image.src}
+        alt={image.alt}
+      />
+      <div className="absolute inset-0 bg-black opacity-40 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></div>
+    </div>
+  ))}
       </InfiniteSlider>
       <InfiniteSlider direction="horizontal" reverse className=" ">
       {imageList.map((image, index) => (
-           <div key={index} className="grid gap-4">
-           <div className="flex relative group cursor-pointer">
-           <img
-             className="md:h-60 md:w-60 w-32 h-32 rounded-lg"
-             src={image.src}
-             alt={image.alt}
-           />
-            <div className="absolute inset-0 bg-black opacity-60 group-hover:opacity-0 rounded-lg transition-opacity duration-300"></div>
-           </div>
-         
-         </div>
-        ))}
+    <div key={index} className="relative group cursor-pointer overflow-hidden rounded-lg shadow-lg">
+      <img
+        className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-110"
+        src={image.src}
+        alt={image.alt}
+      />
+      <div className="absolute inset-0 bg-black opacity-40 group-hover:opacity-10 transition-opacity duration-300 rounded-lg"></div>
+    </div>
+  ))}
       </InfiniteSlider>
 </div>
 
-    <div className="sm:hidden flex h-[350px]  justify-center w-[100%]  space-x-4">
+    <div className="sm:hidden flex h-[450px]  justify-center w-[100%]  space-x-4">
       <InfiniteSlider direction="vertical" className="my-6">
         {imageList.map((image, index) => (
          <div key={index} className="grid gap-4">
