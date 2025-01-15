@@ -362,9 +362,9 @@ export default function OrderSummary() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3 }}
-        className="flex justify-center items-center z-50 w-full sm:w-80 w-[90%]"
+        className="flex justify-center items-center z-50  "
       >
-        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg">
+        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg sm:w-96 w-[90%]">
           <div className="flex flex-col">
             <div className="flex items-center">
               <svg
@@ -421,7 +421,7 @@ export default function OrderSummary() {
         transition={{ duration: 0.3 }}
         className="  flex  z-50 w-full  justify-center  items-center"
       >
-<div className="bg-primary rounded-lg border-2 border-red-600 p-8 shadow-lg sm:w-80  w-[90%] max-w-full">
+<div className="bg-primary rounded-lg border-2 border-red-600 p-8 shadow-lg sm:w-96  w-[90%] max-w-full">
   <div className="flex flex-col">
     <div className="flex items-center">
       <span className="text-red-600 text-xl font-semibold">Are You Sure?</span>
