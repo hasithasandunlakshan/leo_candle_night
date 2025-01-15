@@ -16,7 +16,7 @@
  
  
  export const metadata = {
-  title: 'Where culture meets elegance.',
+  title: 'Celestia 2025',
   description: '   Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. ',
   // openGraph: {
   //   type: 'website',
