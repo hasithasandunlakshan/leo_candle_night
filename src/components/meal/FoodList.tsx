@@ -222,7 +222,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
               PURCHASE
               </Button>
               <SheetClose asChild>
-                <Button type="button" className=" text-white mb-5 sm:mb-0">
+                <Button type="button" className=" text-white mb-2 sm:mb-0">
                   CONTINUE
                 </Button>
               </SheetClose>

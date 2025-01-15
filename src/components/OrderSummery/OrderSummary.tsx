@@ -315,21 +315,21 @@ export default function OrderSummary() {
         </div>
 
 
-        <div className="flex  items-end justify-end gap-6">
-          <div className="text-center right-8 mt-8">
+        <div className="flex flex-col-reverse  sm:flex-row   items-end justify-end gap-2 sm:gap-6 text-md sm:text-lg">
+          <div className="text-center  ">
             <button
                  onClick={() => setShowToastCancel(true)}
-              className="px-3 py-2 bg-primary text-white border border-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
+              className="sm:px-3 px-6 min-w-40 py-2 bg-primary text-white border border-white rounded-lg  font-normal hover:bg-secondary/80 transition-colors"
             >
               Cancel
             </button>
           </div>
 
           {/* Place Order Button */}
-          <div className="text-center  mt-8">
+          <div className="text-center  ">
             <button
               onClick={() => setShowToast(true)}
-              className="px-3 py-2 bg-primary text-white border border-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
+              className="sm:px-3 min-w-40 px-6  py-2 bg-primary text-white border border-white rounded-lg  font-normal hover:bg-secondary/80 transition-colors"
             >
               Place Order
             </button>
@@ -345,15 +345,15 @@ export default function OrderSummary() {
 
       </div>
     </div>
-        <AnimatePresence>
+    <AnimatePresence>
   {showToast && (
-    <section className=" absolute  flex w-screen h-screen items-center justify-center align-middle z-40    inset-0">
+    <section className="fixed inset-0 flex items-center justify-center z-40">
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0  bg-black bg-opacity-50 z-10"
+        className="fixed inset-0 bg-black bg-opacity-50 z-10"
         // onClick={handleCancel}
       />
       {/* Toast */}
@@ -362,9 +362,9 @@ export default function OrderSummary() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3 }}
-        className="  flex  z-50 w-full  justify-center  items-center"
+        className="flex justify-center items-center z-50 w-full sm:w-80 w-[90%]"
       >
-        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg sm:w-80  w-[90%]">
+        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg">
           <div className="flex flex-col">
             <div className="flex items-center">
               <svg
@@ -397,13 +397,14 @@ export default function OrderSummary() {
           </div>
         </div>
       </motion.div>
-    </section >
+    </section>
   )}
 </AnimatePresence>
 
+
 <AnimatePresence>
   {showToastCancel && (
-    <section className=" absolute  flex w-screen h-screen items-center justify-center align-middle z-40    inset-0">
+    <section className=" fixed  flex w-screen h-screen items-center justify-center align-middle z-40    inset-0">
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
