@@ -41,7 +41,7 @@ export default function Page({ params }: { params: { index: string } }) {
       return (
         <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl overflow-hidden">
-            <div className="h-48 sm:h-64 flex items-center justify-center">
+            <div className="h-48 sm:h-64 flex items-center justify-center bg-white">
               <h1 className="text-3xl sm:text-4xl font-bold text-white">Order Details</h1>
             </div>
           </div>
