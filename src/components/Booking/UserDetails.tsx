@@ -128,7 +128,7 @@ export function UserDetails() {
   }
 
   return (
-    <main className="flex min-h-screen   w-screen bg-primary items-center justify-center">
+    <main className="flex min-h-screen     w-screen bg-primary items-center justify-center">
 
       
       <div className="flex flex-col py-20 mt-10 container w-[100%] lg:w-[50%]">
@@ -215,7 +215,7 @@ export function UserDetails() {
                         Select Meal
                       </Button>
                       {isSeatOpen && (
-                        <div className=" absolute  top-0 right-0 flex items-center  w-full  min-h-max justify-start  py-4 scroll-smooth  bg-primary bg-opacity-100 z-30">
+                        <div className=" absolute  top-0 right-0 flex items-center  w-full   min-h-[300vh] justify-start  scroll-py-10  scroll-smooth  bg-primary bg-opacity-100 z-30">
                           <FoodList FinalFood={handleFoodSelect} />
                         </div>
                       )}

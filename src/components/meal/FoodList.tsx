@@ -120,7 +120,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   }, [showToast]);
 
   return (
-    <div className="relative flex min-h-screen w-screen justify-center align-middle">
+    <div className="relative flex  w-screen justify-center align-middle">
 
       {/* Blur Background */}
       {showToast && <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
