@@ -101,16 +101,30 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
 
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
+  // useEffect(() => {
+  //   if (showToast) {
+  //     const timer = setTimeout(() => setShowToast(false), 3000);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [showToast]);
   useEffect(() => {
     if (showToast) {
-      const timer = setTimeout(() => setShowToast(false), 3000);
-      return () => clearTimeout(timer);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
     }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [showToast]);
 
   return (
     <div className="relative flex min-h-screen w-screen justify-center align-middle">
-      {showToast && <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
+
+      {/* Blur Background */}
+      {showToast && <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
+
 
       <div className="flex flex-col w-full justify-center items-center">
         {/* <div className="w-[50%] my-10 p-6 rounded-lg shadow-lg text-center mt-40">
@@ -234,20 +248,26 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
 
         {/* Toast Confirmation */}
         {showToast && (
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary border border-secondary p-6 rounded-lg shadow-lg z-20 w-[90%] sm:w-[50%]">
-            <h3 className="text-xl font-semibold text-white mb-4 text-center">
-              Add {selectedFood?.name} to the cart?
-            </h3>
-            <div className="flex justify-center gap-4">
-              <Button onClick={() => confirmAddToCart(true)} className="bg-secondary text-white border border-radius-4">
-                Yes
-              </Button>
-              <Button onClick={() => confirmAddToCart(false)} className="bg-secondary text-white">
-                No
-              </Button>
-            </div>
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary border border-secondary p-6 rounded-lg shadow-lg z-20 w-[90%] sm:w-[50%]">
+          <h3 className="text-xl font-semibold text-white mb-4 text-center">
+            Add {selectedFood?.name} to the cart?
+          </h3>
+          <div className="flex justify-center gap-4">
+            <Button
+              onClick={() => confirmAddToCart(true)}
+              className="bg-secondary text-white border border-radius-4"
+            >
+              Yes
+            </Button>
+            <Button
+              onClick={() => confirmAddToCart(false)}
+              className="bg-secondary text-white"
+            >
+              No
+            </Button>
           </div>
-        )}
+        </div>
+      )}
       </div>
     </div>
   );

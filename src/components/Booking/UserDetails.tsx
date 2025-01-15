@@ -143,7 +143,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Hasitha Sandun Lakshan" className="text-white bg-black border" {...field} />
+                    <Input placeholder="customer name" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -158,7 +158,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">Index</FormLabel>
                   <FormControl>
-                    <Input placeholder="220356R" className="text-white bg-black border" {...field} />
+                    <Input placeholder="000000R" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -188,7 +188,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">WhatsApp</FormLabel>
                   <FormControl>
-                    <Input placeholder="0761343793" className="text-white bg-black border" {...field} />
+                    <Input placeholder="0000000000" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -215,7 +215,7 @@ export function UserDetails() {
                         Select Meal
                       </Button>
                       {isSeatOpen && (
-                        <div className="absolute top-0 right-0 flex items-center justify-center w-full min-h-[200vh]  bg-primary bg-opacity-100 z-30">
+                        <div className="absolute top-0 right-0 flex items-center justify-center w-full h-auto min-h-[200vh]  bg-primary bg-opacity-100 z-30">
                           <FoodList FinalFood={handleFoodSelect} />
                         </div>
                       )}
