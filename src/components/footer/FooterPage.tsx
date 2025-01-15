@@ -48,7 +48,7 @@ export default function Footer() {
         ))}
       </ul>
 
-      <div className="text-center mt-8">
+      {/* <div className="text-center mt-8">
         <h6 className="text-lg font-semibold mb-4">Quick Links</h6>
         <ul className="flex justify-center gap-6 text-sm">
           {quickLinks.map((link, index) => (
@@ -59,6 +59,14 @@ export default function Footer() {
             </li>
           ))}
         </ul>
+      </div> */}
+
+      {/* New Contact Information Section */}
+      <div className="text-center mt-8">
+        <h6 className="text-lg font-semibold mb-4">Contact Us</h6>
+        <p className="text-sm text-gray-400">Address: Leo Club of University of Moratuwa, Bandaranayaka Mv, Moratuwa, Sri Lanka</p>
+        <p className="text-sm text-gray-400">Email: <a href="mailto:contact@leoclubuom.com" className="hover:text-secondary">uomleoclub@gmail.com</a></p>
+        <p className="text-sm text-gray-400">Phone: <a href="tel:+94123456789" className="hover:text-secondary">+94 70216 2942</a></p>
       </div>
 
       <div className="text-center mt-8">
