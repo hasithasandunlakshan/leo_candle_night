@@ -46,7 +46,10 @@ const FormSchema = z.object({
       message: "Please enter a valid 10-digit phone number.",
     }),
   department: z.string().min(1, { message: "Please select a department." }),
-  foodList: z.array(z.string()).min(1, { message: "At least one food item must be added." }),
+  foodList: z.union([
+    z.string().min(0, { message: "Food item must be provided." }),
+    z.array(z.string()).min(0, { message: "At least one food item must be added." })
+  ]),
   totalprice: z.number(),
   batch: z.string().min(1, { message: "Please select a batch." }),
   faculty: z.string().min(1, { message: "Please select a faculty." })
@@ -64,18 +67,18 @@ export function UserDetails() {
   const router = useRouter();
   const useOrder = useContext(CartContext);
   const [isSeatOpen, setSeatOpen] = useState(false);
-  const [selectedFoods, setSelectedFoods] = useState<any[]>([]);
+  const [selectedFoods, setSelectedFoods] = useState<any[]>(useOrder?.cartLocal || []);
   const [price, setPrice] = useState(0);
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: "",
-      index: "",
+      username: useOrder?.name,
+      index: useOrder?.index,
       email: "",
       whatsapp: "",
       department: "",
-      foodList: [],
+      foodList: useOrder?.cartLocal?.map(item => item.name),
       totalprice: 0,
       batch: "",
       faculty: ""
@@ -83,12 +86,12 @@ export function UserDetails() {
   });
 
   const handleFoodSelect = (cart: any[]) => {
-    const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+    const totalPrice = useOrder?.totalPrice||0;
    
-    setSelectedFoods(cart);
+    setSelectedFoods(useOrder?.cartLocal ?? cart);
     setPrice(totalPrice);
     form.setValue("totalprice", totalPrice); // Set the total price in the form
-    form.setValue("foodList", cart.map(item => item.name)); // Set food list based on selected items
+    form.setValue("foodList", useOrder?.cartLocal?.map(item => item.name) || []); // Set food list based on selected items
     setSeatOpen(false);
   };
 
@@ -106,8 +109,8 @@ export function UserDetails() {
       description: (
         <pre className="bg-black rounded-md p-4">
           <p className="text-white">Your Index Saved {data.index}</p>
-          <p className="text-white">Food List: {foodList.join(", ")}</p>
-          <p className="text-white">Total Price: {totalPrice}</p>
+          {/* <p className="text-white">Food List: {foodList.join(", ")}</p>
+          <p className="text-white">Total Price: {totalPrice}</p> */}
         </pre>
       ),
     });
@@ -207,7 +210,7 @@ export function UserDetails() {
                       <Button
                         onClick={() => setSeatOpen(!isSeatOpen)}
                         type="button"
-                        className="relative w-[40%] px-10   rounded-full isolation-auto z-10 border-2 border-secondary hover:text-white"
+                        className="relative w-48 px-10   rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
                       >
                         Select Meal
                       </Button>
@@ -266,10 +269,10 @@ export function UserDetails() {
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>Batch</SelectLabel>
-                          <SelectItem value="19">Batch 19</SelectItem>
                           <SelectItem value="20">Batch 20</SelectItem>
                           <SelectItem value="21">Batch 21</SelectItem>
                           <SelectItem value="22">Batch 22</SelectItem>
+                          <SelectItem value="23">Batch 23</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -309,9 +312,9 @@ export function UserDetails() {
            
 
       
-<div className="flex items-end justify-end">
-              <Button type="submit" className="px-8 py-1 rounded-full bg-secondary text-white">
-          Submit
+<div className="flex items-end justify-center md:justify-end">
+              <Button type="submit" className="px-10 py-1 rounded-lg hover:bg-secondary hover:text-primary bg-transparent border border-white w-48 text-white">
+          NEXT
               </Button>
             </div>
           </form>

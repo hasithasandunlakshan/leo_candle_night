@@ -23,7 +23,7 @@ export async function sendEmail({ sender, recipients, subject, message }: EmailO
       from: `${sender.name} <${sender.address}>`,
       to: recipients.map((recipient) => `${recipient.name} <${recipient.address}>`).join(", "),
       subject,
-      text: message,
+      html: message,
     });
     console.log("Email sent successfully.");
   } catch (error) {

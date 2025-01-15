@@ -1,15 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+
 import Particles from "../Particle";
 import { TextGenerateEffect } from "../ui/text-generate-effect";
 import Button from "./Button";
 
 export default function Hero() {
-  const router = useRouter();
-  const description = `Experience the magical world with us!!`;
+  
+  const description = `Where culture meets elegance. ✨`;
   const description2 = `Celestia'25`;
 
   // For parallax effect
@@ -65,12 +64,12 @@ export default function Hero() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="text-gray-400 w-[100%] justify-center lg:justify-start mt-2 text-center  lg:text-left"
+            className="text-gray-400 w-[95%] justify-center lg:justify-start mt-2 text-center  lg:text-left"
           >
           
-          Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition.  Where culture meets elegance. ✨
+          Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. 
           </motion.p>
-
+          
           <Button text="BOOK TICKET"  router="/bookseat"/>
         </div>
         <div className="md:flex hidden lg:ml-20 items-center justify-center align-middle">
