@@ -46,7 +46,10 @@ const FormSchema = z.object({
       message: "Please enter a valid 10-digit phone number.",
     }),
   department: z.string().min(1, { message: "Please select a department." }),
-  foodList: z.array(z.string()).min(1, { message: "At least one food item must be added." }),
+  foodList: z.union([
+    z.string().min(0, { message: "Food item must be provided." }),
+    z.array(z.string()).min(0, { message: "At least one food item must be added." })
+  ]),
   totalprice: z.number(),
   batch: z.string().min(1, { message: "Please select a batch." }),
   faculty: z.string().min(1, { message: "Please select a faculty." })
@@ -85,10 +88,10 @@ export function UserDetails() {
   const handleFoodSelect = (cart: any[]) => {
     const totalPrice = useOrder?.totalPrice||0;
    
-    setSelectedFoods(cart);
+    setSelectedFoods(useOrder?.cartLocal ?? cart);
     setPrice(totalPrice);
     form.setValue("totalprice", totalPrice); // Set the total price in the form
-    form.setValue("foodList", cart.map(item => item.name)); // Set food list based on selected items
+    form.setValue("foodList", useOrder?.cartLocal?.map(item => item.name) || []); // Set food list based on selected items
     setSeatOpen(false);
   };
 
