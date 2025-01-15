@@ -128,7 +128,7 @@ export function UserDetails() {
   }
 
   return (
-    <main className="flex min-h-screen w-screen bg-primary items-center justify-center">
+    <main className="flex min-h-screen   w-screen bg-primary items-center justify-center">
 
       
       <div className="flex flex-col py-20 mt-10 container w-[100%] lg:w-[50%]">
@@ -204,7 +204,7 @@ export function UserDetails() {
                   <FormLabel className="text-secondary">Select Food</FormLabel>
                   <FormControl>
                     <div className="flex items-end flex-col gap-2">
-                      <p className="w-full py-2  align-middle border-secondary rounded-md justify-start items-center flex text-white bg-black border">
+                      <p className="w-full py-2  align-middle border-secondary rounded-md  items-center flex text-white bg-black border">
                         <span className="ml-3">{selectedFoods.length > 0 ? selectedFoods.map(food => food.name).join(", ") : "No food selected"}</span>
                       </p>
                       <Button
@@ -215,7 +215,7 @@ export function UserDetails() {
                         Select Meal
                       </Button>
                       {isSeatOpen && (
-                        <div className="absolute top-0 right-0 flex items-center justify-center w-full h-auto min-h-[200vh]  bg-primary bg-opacity-100 z-30">
+                        <div className=" absolute  top-0 right-0 flex items-center  w-full  min-h-max justify-start  py-4 scroll-smooth  bg-primary bg-opacity-100 z-30">
                           <FoodList FinalFood={handleFoodSelect} />
                         </div>
                       )}

@@ -39,7 +39,7 @@ const foods: FoodItem[] = [
   { id: 3, name: "Vegetable Kottu", price: 550, image: "/images/meals/vegikootu.jpg" },
   { id: 4, name: "Cheese Kottu", price: 950, image: "/images/meals/cheesekottu.jpg" },
   { id: 5, name: "Dosa & Curries", price: 350, image: "/images/meals/dosa.jpg" },
-  { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/chickenbiriyani.jpg" },
+  { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/Chickenbiriyani.jpg" },
   { id: 7, name: "Nasi Goreng", price: 900, image: "/images/meals/nasiguran.jpg" },
   { id: 8, name: "Ramen", price: 800, image: "/images/meals/ramen.jpg" },
   { id: 9, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg" },
