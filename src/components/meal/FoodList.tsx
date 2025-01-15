@@ -120,7 +120,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   }, [showToast]);
 
   return (
-    <div className="relative flex  w-screen justify-center align-middle">
+    <div className="relative flex h-full  w-full  justify-center align-middle">
 
       {/* Blur Background */}
       {showToast && <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
@@ -155,7 +155,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:text-7xl pt-10 text-secondary my-10">
           Foods
         </h2>
-        <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
+        <div className="grid-cols-1 place-content-center place-items-center sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
           {foods.map((food) => (
             <FoodCard key={food.id} food={food} onAddToCart={handleAddToCart} />
           ))}
@@ -164,7 +164,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         <h2 className="text-3xl sm:text-4xl font-bold md:text-7xl py-0 text-secondary my-10 mt-20">
           Drinks
         </h2>
-        <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
+        <div className="grid-cols-1 place-content-center place-items-center  sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
           {drinks
             .filter((drink) => drink.id !== 15)
             .map((drink) => (
@@ -176,7 +176,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:text-7xl py-0 text-secondary my-10">
           Desserts
         </h2>
-        <div className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
+        <div className="grid-cols-1 place-content-center place-items-center sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
           {desserts.map((dessert) => (
             <FoodCard key={dessert.id} food={dessert} onAddToCart={handleAddToCart} />
           ))}

@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CartContext } from "@/context/userOrder";
 import FoodList from "../meal/FoodList";
@@ -69,7 +69,17 @@ export function UserDetails() {
   const [isSeatOpen, setSeatOpen] = useState(false);
   const [selectedFoods, setSelectedFoods] = useState<any[]>(useOrder?.cartLocal || []);
   const [price, setPrice] = useState(0);
-
+  useEffect(() => {
+    if (isSeatOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSeatOpen]);
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -204,19 +214,32 @@ export function UserDetails() {
                   <FormLabel className="text-secondary">Select Food</FormLabel>
                   <FormControl>
                     <div className="flex items-end flex-col gap-2">
-                      <p className="w-full py-2  align-middle border-secondary rounded-md  items-center flex text-white bg-black border">
-                        <span className="ml-3">{selectedFoods.length > 0 ? selectedFoods.map(food => food.name).join(", ") : "No food selected"}</span>
+                      <p className="w-full py-2 align-middle border-secondary rounded-md items-center flex text-white bg-black border">
+                        <span className="ml-3 break-words">{selectedFoods.length > 0 ? selectedFoods.map(food => food.name).join(", ") : "No food selected"}</span>
                       </p>
                       <Button
                         onClick={() => setSeatOpen(!isSeatOpen)}
                         type="button"
-                        className="relative w-48 px-10   rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
+                        className="relative w-48 px-10 rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
                       >
                         Select Meal
                       </Button>
                       {isSeatOpen && (
-                        <div className=" absolute  top-0 right-0 flex items-center  w-full   min-h-[300vh] justify-start  scroll-py-10  scroll-smooth  bg-primary bg-opacity-100 z-30">
-                          <FoodList FinalFood={handleFoodSelect} />
+                        <div className="fixed inset-0 z-50 flex flex-col bg-primary overflow-hidden">
+                          <div className="flex justify-between items-center p-4 border-b border-secondary">
+                            <h2 className="text-sm sm:text-xl font-semibold text-secondary">Select Your Meals</h2>
+                            <Button
+                              onClick={() => setSeatOpen(false)}
+                              className="bg-secondary text-primary hover:bg-secondary/90"
+                            >
+                              Back
+                            </Button>
+                          </div>
+                          <div className="flex-1 overflow-y-auto overflow-x-hidden">
+                            <div className="container mx-auto px-4">
+                              <FoodList FinalFood={handleFoodSelect} />
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
@@ -225,6 +248,8 @@ export function UserDetails() {
                 </FormItem>
               )}
             />
+
+
 
             {/* Department Field */}
             <FormField
