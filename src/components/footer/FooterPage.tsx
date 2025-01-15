@@ -35,7 +35,7 @@ export default function Footer() {
     <footer className="bg-gradient-to-r from-gray-800 via-black to-gray-900 text-white py-12 px-6 font-sans tracking-wide">
       <div className="text-center mb-6">
         <img className="h-20 mx-auto mb-4" src="/images/LeoLogSet.png" alt="Leo logo" />
-        <h6 className="text-lg font-semibold">Stay connected with us:</h6>
+        <h6 className="text-lg font-semibold">Stay connected with us: </h6>
       </div>
 
       <ul className="flex justify-center gap-8 my-6">
