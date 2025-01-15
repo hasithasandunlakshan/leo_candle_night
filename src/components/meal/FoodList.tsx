@@ -113,7 +113,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
       {showToast && <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
 
       <div className="flex flex-col w-full justify-center items-center">
-        <div className="w-[50%] my-10 p-6 rounded-lg shadow-lg text-center mt-40">
+        {/* <div className="w-[50%] my-10 p-6 rounded-lg shadow-lg text-center mt-40">
           <h2 className="text-3xl sm:text-5xl font-bold text-secondary mb-4">Special Welcome Drink</h2>
           <div className="flex justify-center items-center gap-4 pt-5 ">
             <Image
@@ -133,7 +133,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
               </Button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         
 
