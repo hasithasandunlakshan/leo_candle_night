@@ -1,9 +1,9 @@
 "use client";
-// components/Loading.tsx
+
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["2024", "Candle night", "organized by Leo Club", "University of Moratuwa"];
+const words = [ "Celestia'25", "Where", "Culture" ,"Meet","Elegance"];
 
 const Loading: React.FC = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -11,14 +11,14 @@ const Loading: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 500); // Change words every 1.5 seconds
+    }, 700); // Change words every 1.5 seconds
 
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="flex absolute z-50 w-screen top-0 justify-center items-center h-screen bg-black ">
-      <div className="text-2xl flex justify-center items-center text-secondary">
+      <div className="text-4xl flex justify-center items-center text-secondary">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentWordIndex}
@@ -29,7 +29,7 @@ const Loading: React.FC = () => {
 
 
             
-            className="absolute text-center font-Allura text-4xl  flex justify-center items-center"
+            className="absolute text-center font-Allura text-4xl md:text-7xl  flex justify-center items-center"
           >
             {words[currentWordIndex]}
           </motion.div>

@@ -1,86 +1,55 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-import { toast } from "@/hooks/use-toast"
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { useRouter } from "next/navigation"
+export default function OrderForm() {
+  const router = useRouter();
+  const [inputValue, setInputValue] = useState("");
 
-const FormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-})
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
-export function  OrderForm() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      username: "",
-    },
-  })
-
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-    //     </pre>
-    //   ),
-    // })
-
-    router.push(`/orderdetails/${data.username}`)
-  }
-
-
-  const router=useRouter();
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (inputValue.trim()) {
+      router.push(`/orderdetails/${encodeURIComponent(inputValue)}`);
+    }
+  };
 
   return (
+    <div className="min-h-screen bg-black flex items-center justify-center px-4">
+      <div className=" shadow-lg rounded-lg w-full max-w-lg p-8 border border-secondary">
+        <h1 className="text-3xl font-bold text-secondary text-center mb-6">
+          Get Your Ticket Details
+        </h1>
 
-    <div className="flex min-h-screen w-screen bg-primary items-center justify-center">
-  <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6  flex  flex-col">
-       
-      
-         <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem >
-              <FormLabel className=" text-secondary">Username</FormLabel>
-              <FormControl className="border-secondary">
-                <Input placeholder="220356R" className="  text-white bg-black  border" {...field} />
-              </FormControl>
-            
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <div className="flex items-end justify-center  sm:justify-end">
-        <button type="submit"
-  className="relative px-8 py-1 max-w-48 rounded-full  isolation-auto z-10 border-2 border-secondary before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full hover:text-white before:-right-full before:hover:right-0 before:rounded-full before:bg-secondary before:-z-10 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center  text-sm font-semibold text-black bg-white   shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
->
-  Get Ticket Details
-</button>
+        <form onSubmit={onSubmit} className="flex flex-col space-y-4">
+          <input
+            type="text"
+            placeholder="Enter your index"
+            value={inputValue}
+            onChange={handleChange}
+            className="bg-gray-100 w-full px-4 py-3 border border-[#d3c2a3] rounded-lg text-[#6b4f34] focus:outline-none focus:ring-2 focus:ring-[#a58464]"
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full text-white py-3 rounded-lg font-semibold hover:bg-secondary transition duration-200 border-2 border-secondary"
+          >
+            Submit
+          </button>
+        </form>
+
+        <div className="mt-6 text-center text-white">
+          <p>
+            Please enter your index to view ticket details. Make sure the
+            information is accurate.
+          </p>
         </div>
-      
-
-      </form>
-    </Form>
+      </div>
     </div>
-  
-  )
+  );
 }
