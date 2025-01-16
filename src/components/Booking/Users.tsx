@@ -9,7 +9,7 @@ export default function Users() {
 
 
   return (
-    <div className=' bg-primary w-full min-h-screen  m-0  flex justify-center items-center'>
+    <div className='  w-full min-h-screen  m-0  flex justify-center items-center'>
 
 
           <UserDetails />

@@ -138,7 +138,7 @@ export function UserDetails() {
   }
 
   return (
-    <main className="flex min-h-screen     w-screen bg-primary items-center justify-center">
+    <main className="flex min-h-screen     w-screen  items-center justify-center">
 
       
       <div className="flex flex-col py-20 mt-10 container w-[100%] lg:w-[50%]">
@@ -226,7 +226,7 @@ export function UserDetails() {
                       </Button>
                       {isSeatOpen && (
                         <div className="fixed inset-0 z-50 bg-primary">
-                          <div className="sticky top-0 flex justify-between items-center p-4 border-b border-secondary bg-primary">
+                          <div className="sticky top-0 flex justify-between items-center p-4 border-b border-secondary ">
                             <h2 className="text-sm sm:text-xl font-semibold text-secondary">Select Your Meals</h2>
                             <Button
                               onClick={() => setSeatOpen(false)}

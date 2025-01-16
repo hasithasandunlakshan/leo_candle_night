@@ -7,7 +7,7 @@ import OrderSummary from '@/components/OrderSummery/OrderSummary';
 export default function Page() {
 
   return (
-    <div className=' flex bg-primary w-screen min-h-screen  justify-center overflow-hidden'>
+    <div className=' flex bg-transparent w-screen min-h-screen  justify-center overflow-hidden'>
  
      <Users/>
     
