@@ -147,8 +147,8 @@ export function UserDetails() {
   if(isSeatOpen){
     return(
 
-<div className=" bg-primary flex flex-col absolute  inset-0 z-50 w-screen">
-          <div className="sticky top-0  flex justify-between items-center p-4 bg-primary border-b border-secondary">
+<div className=" bg-primary flex flex-col min-h-screen absolute    z-[1000] w-screen">
+          <div className="sticky top-0   flex justify-between items-center p-4 bg-primary border-b border-secondary">
             <h2 className="text-xl font-bold text-secondary">Select Your Meals</h2>
             <Button
               onClick={() => setSeatOpen(false)}
