@@ -18,7 +18,7 @@ const FoodCard: React.FC<FoodCardProps> = ({ food, onAddToCart }) => {
       transition={{ duration: 0.5, ease: "easeOut" }} // Animation timing
      
       className="w-64  h-72 bg-gray-700/40 m-2 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-      <a href="#">
+      <div >
         <img
           src={food.image} // Use the image property here
           alt={food.name}
@@ -36,7 +36,7 @@ const FoodCard: React.FC<FoodCardProps> = ({ food, onAddToCart }) => {
             </button>
           </div>
         </div>
-      </a>
+      </div>
     </motion.div>
   );
 };

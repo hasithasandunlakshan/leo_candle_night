@@ -69,17 +69,10 @@ export function UserDetails() {
   const [isSeatOpen, setSeatOpen] = useState(false);
   const [selectedFoods, setSelectedFoods] = useState<any[]>(useOrder?.cartLocal || []);
   const [price, setPrice] = useState(0);
-  useEffect(() => {
-    if (isSeatOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isSeatOpen]);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+ 
+
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -137,10 +130,45 @@ export function UserDetails() {
    
   }
 
-  return (
-    <main className="flex min-h-screen     w-screen  items-center justify-center">
+  useEffect(() => {
+    // When food list is open, prevent body scrolling
+    if (isSeatOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
 
-      
+    // Cleanup
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isSeatOpen]);
+
+  if(isSeatOpen){
+    return(
+
+<div className=" bg-primary flex flex-col absolute  inset-0 z-50 w-screen">
+          <div className="sticky top-0  flex justify-between items-center p-4 bg-primary border-b border-secondary">
+            <h2 className="text-xl font-bold text-secondary">Select Your Meals</h2>
+            <Button
+              onClick={() => setSeatOpen(false)}
+              className="bg-secondary text-primary hover:bg-secondary/90"
+            >
+              Close
+            </Button>
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <div className="container mx-auto p-4">
+              <FoodList FinalFood={handleFoodSelect} />
+            </div>
+          </div>
+        </div>
+    )
+  }
+  return (
+    <main className="flex min-h-screen w-screen items-center justify-center">
+
+
       <div className="flex flex-col py-20 mt-10 container w-[100%] lg:w-[50%]">
       <h1 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">User Details</h1>
         <Form {...form}>
@@ -215,33 +243,19 @@ export function UserDetails() {
                   <FormControl>
                     <div className="flex items-end flex-col gap-2">
                       <p className="w-full py-2 align-middle border-secondary rounded-md items-center flex text-white bg-black border">
-                        <span className="ml-3 break-words">{selectedFoods.length > 0 ? selectedFoods.map(food => food.name).join(", ") : "No food selected"}</span>
+                        <span className="ml-3 break-words">
+                          {selectedFoods.length > 0 
+                            ? selectedFoods.map(food => food.name).join(", ") 
+                            : "No food selected"}
+                        </span>
                       </p>
                       <Button
-                        onClick={() => setSeatOpen(!isSeatOpen)}
+                        onClick={() => setSeatOpen(true)}
                         type="button"
                         className="relative w-48 px-10 rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
                       >
                         Select Meal
                       </Button>
-                      {isSeatOpen && (
-                        <div className="fixed inset-0 z-50 bg-primary">
-                          <div className="sticky top-0 flex justify-between items-center p-4 border-b border-secondary ">
-                            <h2 className="text-sm sm:text-xl font-semibold text-secondary">Select Your Meals</h2>
-                            <Button
-                              onClick={() => setSeatOpen(false)}
-                              className="bg-secondary text-primary hover:bg-secondary/90"
-                            >
-                              Back
-                            </Button>
-                          </div>
-                          <div className="h-[calc(100vh-4rem)] overflow-y-auto">
-                            <div className="container mx-auto px-4 py-4">
-                              <FoodList FinalFood={handleFoodSelect} />
-                            </div>
-                          </div>
-                        </div>
-                      )}
                     </div>
                   </FormControl>
                   <FormMessage />

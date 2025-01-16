@@ -107,20 +107,9 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   //     return () => clearTimeout(timer);
   //   }
   // }, [showToast]);
-  useEffect(() => {
-    if (showToast) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [showToast]);
 
   return (
-    <div className="relative flex h-full  w-full  justify-center align-middle">
+    <div className=" flex   w-full z-0  justify-center ">
 
       {/* Blur Background */}
       {showToast && <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}

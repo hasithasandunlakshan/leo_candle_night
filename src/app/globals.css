@@ -23,7 +23,10 @@ body,html {
     scroll-behavior: true;
   }
   
-
+  .modal-content {
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
 
   /* styles/globals.css */
 

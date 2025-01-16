@@ -64,7 +64,7 @@ export default function BookSeats() {
   };
 
   return (
-    <div className="bg-primary min-h-screen w-full flex flex-col items-center relative">
+    <div className="bg-transparent min-h-screen w-full flex flex-col items-center relative">
       <h1 className="text-2xl font-bold mb-4 mt-24 md:text-7xl pt-10 text-secondary">
         Book Your Seats
       </h1>
