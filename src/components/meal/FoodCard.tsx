@@ -13,10 +13,10 @@ interface FoodCardProps {
 const FoodCard: React.FC<FoodCardProps> = ({ food, onAddToCart }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }} // Initial animation state
-      animate={{ opacity: 1, y: 0 }}  // Final animation state
-      transition={{ duration: 0.5, ease: "easeOut" }} // Animation timing
-     
+      initial={{ opacity: 0, y: 0 }} // Initial animation state
+      whileInView={{ opacity: 1, y: 0 }}  // Final animation state
+      transition={{ duration: 2, ease: "easeInOut" }} // Animation timing
+     viewport={{once:true}}
       className="w-64  h-72 bg-gray-700/40 m-2 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
       <div >
         <img
