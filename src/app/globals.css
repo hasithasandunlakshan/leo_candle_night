@@ -19,10 +19,10 @@ body,html {
   
   }
 
-  html {
-    scroll-behavior: smooth;
+  * {
+    scroll-behavior: true;
   }
-
+  
 
 
   /* styles/globals.css */
