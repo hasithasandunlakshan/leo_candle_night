@@ -5,6 +5,7 @@
  import "./globals.css";
  import Navbar from "@/components/Nav/Navbar";
  import { CartContextProvider } from "@/context/userOrder";
+import Logo from "@/components/Nav/Logo";
 
 
  const poppins = Poppins({
@@ -66,7 +67,7 @@
            
  
            <Navbar />
-            
+            <Logo/>
              {children}
     
              <Toaster />
