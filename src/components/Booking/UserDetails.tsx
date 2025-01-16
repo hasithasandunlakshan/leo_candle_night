@@ -225,8 +225,8 @@ export function UserDetails() {
                         Select Meal
                       </Button>
                       {isSeatOpen && (
-                        <div className="fixed inset-0 z-50 flex flex-col bg-primary overflow-hidden">
-                          <div className="flex justify-between items-center p-4 border-b border-secondary">
+                        <div className="fixed inset-0 z-50 bg-primary">
+                          <div className="sticky top-0 flex justify-between items-center p-4 border-b border-secondary bg-primary">
                             <h2 className="text-sm sm:text-xl font-semibold text-secondary">Select Your Meals</h2>
                             <Button
                               onClick={() => setSeatOpen(false)}
@@ -235,8 +235,8 @@ export function UserDetails() {
                               Back
                             </Button>
                           </div>
-                          <div className="flex-1 overflow-y-auto overflow-x-hidden">
-                            <div className="container mx-auto px-4">
+                          <div className="h-[calc(100vh-4rem)] overflow-y-auto">
+                            <div className="container mx-auto px-4 py-4">
                               <FoodList FinalFood={handleFoodSelect} />
                             </div>
                           </div>
