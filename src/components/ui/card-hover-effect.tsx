@@ -20,12 +20,13 @@ export const HoverEffect = ({
         <motion.div
           key={idx}
           className="relative group block p-2 h-full w-full"
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ 
-            duration: 0.5 * idx,
-            ease: "easeOut"  // Adding an easing function for smoother animation
+            duration: 0.5* idx,
+            ease: "easeInOut"  // Adding an easing function for smoother animation
           }}
+          viewport={{ once: true }}
     
         >
       

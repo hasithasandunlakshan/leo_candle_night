@@ -68,7 +68,7 @@ export default function Page() {
 
   return (
     
-    <main  className="   scroll-container relative scroll-smooth">
+    <main  className="    relative">
 
       <Hero />
      <Details/>
