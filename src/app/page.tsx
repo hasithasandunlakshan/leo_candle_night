@@ -17,45 +17,25 @@ import { Sponsers } from "@/components/sponser/CarouselSize";
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   let locomotiveScroll: any;
-  //   (async () => {
-  //     const LocomotiveScroll = (await import("locomotive-scroll")).default;
-
-  //     // Bypass TypeScript type error by casting options to 'any'
-  //     locomotiveScroll = new LocomotiveScroll({
-  //       el: document.querySelector(".scroll-container") as HTMLElement, 
-  //       smooth: true,
-  //     } as any);
-
-  //   })();
-
-  //   return () => {
-  //     if (locomotiveScroll) locomotiveScroll.destroy();
-  //   };
-  // }, []); 
-  useEffect( () => {
+ 
+  useEffect(() => {
     const lenis = new Lenis({
-      // Valeur entre 0 et 1
-      // Valeur par défaut : 0,1
-      // Plus la valeur est faible, plus le scroll sera fluide
-      lerp: 0.2, 
-      // Valeur par défaut : 1
-      // Plus la valeur est haute, plus le défilement sera rapide 
-      wheelMultiplier: 1, 
+      lerp: 0.2, // Scroll smoothing value
+      wheelMultiplier: 1, // Adjust scroll speed
     });
-    function raf(time:any) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf)
-},[])
+    requestAnimationFrame(raf);
+  }, []);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3500);
+    }, 4900);
 
     return () => clearTimeout(timer); 
   }, []);
