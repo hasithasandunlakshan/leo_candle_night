@@ -89,13 +89,13 @@ export default function BookSeats() {
       </h3>
 
       {loading ? (
-     
+       <div className="text-center flex-col align-middle flex bg-primary max-h-screen   items-center justify-center">
        <div
          className="w-10 h-10 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"
        ></div>
-  
+       <h2 className="text-white  mt-4">Loading Seats</h2>
      
-
+     </div>
       ) : (
         <div className="w-full px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
