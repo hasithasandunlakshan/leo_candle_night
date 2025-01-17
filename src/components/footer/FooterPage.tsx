@@ -32,7 +32,6 @@ const Footer = () => {
 
         
 
-        {/* Social Links Section */}
         <div className="w-full md:w-1/3 p-4">
           <h3 className="text-xl mb-4 font-bold">Follow Us</h3>
           <ul className="flex space-x-4">
@@ -92,7 +91,6 @@ const Footer = () => {
           </div>
       </div>
 
-      {/* Footer Bottom */}
       <div className="bg-secondary text-black text-center py-1">
         <p>&copy; UoMLeos 2025,All rights reserved.</p>
       </div>
