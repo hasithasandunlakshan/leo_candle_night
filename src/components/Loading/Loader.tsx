@@ -1,35 +1,58 @@
 "use client";
-// components/Loading.tsx
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["2024", "Candle night", "organized by Leo Club", "University of Moratuwa"];
+const words = ["Celestia'25", "Where", "Culture", "Meet", "Elegance"];
 
-const Loading: React.FC = () => {
+const Loading = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, 500); // Change words every 1.5 seconds
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
 
+  const variants = {
+    enter: {
+      opacity: 0,
+      y: 20,
+      scale: 0.9
+    },
+    center: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.1,
+        ease: [0.4, 0.0, 0.2, 1]
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      scale: 0.9,
+      transition: {
+        duration: 0.1,
+        ease: [0.4, 0.0, 0.2, 1]
+      }
+    }
+  };
+
   return (
-    <div className="flex absolute z-50 w-screen top-0 justify-center items-center h-screen bg-black ">
-      <div className="text-2xl flex justify-center items-center text-secondary">
+    <div className="fixed inset-0 z-50  w-screen items-center flex justify-center bg-primary">
+      <div className="relative h-24 w-full  place-content-center flex items-center justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentWordIndex}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.1 ,ease: "easeInOut"}}
-
-
-            
-            className="absolute text-center font-Allura text-4xl  flex justify-center items-center"
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            className="absolute  -translate-x-1/2 w-full  text-center text-4xl md:text-7xl text-secondary"
+            style={{ fontFamily: "'Allura', cursive" }}
           >
             {words[currentWordIndex]}
           </motion.div>

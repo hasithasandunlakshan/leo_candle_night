@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CartContext } from "@/context/userOrder";
 import FoodList from "../meal/FoodList";
@@ -46,7 +46,10 @@ const FormSchema = z.object({
       message: "Please enter a valid 10-digit phone number.",
     }),
   department: z.string().min(1, { message: "Please select a department." }),
-  foodList: z.array(z.string()).min(1, { message: "At least one food item must be added." }),
+  foodList: z.union([
+    z.string().min(0, { message: "Food item must be provided." }),
+    z.array(z.string()).min(0, { message: "At least one food item must be added." })
+  ]),
   totalprice: z.number(),
   batch: z.string().min(1, { message: "Please select a batch." }),
   faculty: z.string().min(1, { message: "Please select a faculty." })
@@ -66,6 +69,9 @@ export function UserDetails() {
   const [isSeatOpen, setSeatOpen] = useState(false);
   const [selectedFoods, setSelectedFoods] = useState<any[]>(useOrder?.cartLocal || []);
   const [price, setPrice] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+ 
 
   const form = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
@@ -85,10 +91,10 @@ export function UserDetails() {
   const handleFoodSelect = (cart: any[]) => {
     const totalPrice = useOrder?.totalPrice||0;
    
-    setSelectedFoods(cart);
+    setSelectedFoods(useOrder?.cartLocal ?? cart);
     setPrice(totalPrice);
     form.setValue("totalprice", totalPrice); // Set the total price in the form
-    form.setValue("foodList", cart.map(item => item.name)); // Set food list based on selected items
+    form.setValue("foodList", useOrder?.cartLocal?.map(item => item.name) || []); // Set food list based on selected items
     setSeatOpen(false);
   };
 
@@ -124,10 +130,45 @@ export function UserDetails() {
    
   }
 
-  return (
-    <main className="flex min-h-screen w-screen bg-primary items-center justify-center">
+  useEffect(() => {
+    // When food list is open, prevent body scrolling
+    if (isSeatOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
 
-      
+    // Cleanup
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isSeatOpen]);
+
+  if(isSeatOpen){
+    return(
+
+<div className=" bg-primary flex flex-col min-h-screen absolute    z-[1000] w-screen">
+          <div className="sticky top-0   flex justify-between items-center p-4 bg-primary border-b border-secondary">
+            <h2 className="text-xl font-bold text-secondary">Select Your Meals</h2>
+            <Button
+              onClick={() => setSeatOpen(false)}
+              className="bg-secondary text-primary hover:bg-secondary/90"
+            >
+              Close
+            </Button>
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <div className="container mx-auto p-4">
+              <FoodList FinalFood={handleFoodSelect} />
+            </div>
+          </div>
+        </div>
+    )
+  }
+  return (
+    <main className="flex min-h-screen w-screen items-center justify-center">
+
+
       <div className="flex flex-col py-20 mt-10 container w-[100%] lg:w-[50%]">
       <h1 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">User Details</h1>
         <Form {...form}>
@@ -140,7 +181,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Hasitha Sandun Lakshan" className="text-white bg-black border" {...field} />
+                    <Input placeholder="customer name" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -155,7 +196,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">Index</FormLabel>
                   <FormControl>
-                    <Input placeholder="220356R" className="text-white bg-black border" {...field} />
+                    <Input placeholder="000000R" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -185,7 +226,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">WhatsApp</FormLabel>
                   <FormControl>
-                    <Input placeholder="0761343793" className="text-white bg-black border" {...field} />
+                    <Input placeholder="0000000000" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -201,27 +242,28 @@ export function UserDetails() {
                   <FormLabel className="text-secondary">Select Food</FormLabel>
                   <FormControl>
                     <div className="flex items-end flex-col gap-2">
-                      <p className="w-full py-2  align-middle border-secondary rounded-md justify-start items-center flex text-white bg-black border">
-                        <span className="ml-3">{selectedFoods.length > 0 ? selectedFoods.map(food => food.name).join(", ") : "No food selected"}</span>
+                      <p className="w-full py-2 align-middle border-secondary rounded-md items-center flex text-white bg-black border">
+                        <span className="ml-3 break-words">
+                          {selectedFoods.length > 0 
+                            ? selectedFoods.map(food => food.name).join(", ") 
+                            : "No food selected"}
+                        </span>
                       </p>
                       <Button
-                        onClick={() => setSeatOpen(!isSeatOpen)}
+                        onClick={() => setSeatOpen(true)}
                         type="button"
-                        className="relative w-48 px-10   rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
+                        className="relative w-48 px-10 rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
                       >
                         Select Meal
                       </Button>
-                      {isSeatOpen && (
-                        <div className="absolute top-0 right-0 flex items-center justify-center w-full min-h-[200vh]  bg-primary bg-opacity-100 z-30">
-                          <FoodList FinalFood={handleFoodSelect} />
-                        </div>
-                      )}
                     </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+
 
             {/* Department Field */}
             <FormField

@@ -67,7 +67,7 @@ export const GlareCard = ({
   };
   return (
 
-    <Button duration={5000} className=" flex items-center  justify-center align-middle">
+    <Button duration={5000} className=" flex items-center  justify-center align-middle" >
 
     
     <div

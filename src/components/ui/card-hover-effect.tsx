@@ -13,36 +13,31 @@ export const HoverEffect = ({
   }[];
   className?: string;
 }) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <div className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 py-10", className)}>
       {items.map((item, idx) => (
-        <div
+        <motion.div
           key={idx}
           className="relative group block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 0.5* idx,
+            ease: "easeInOut"  // Adding an easing function for smoother animation
+          }}
+          viewport={{ once: true }}
+    
         >
-          {/* <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0  h-full w-full bg-secondary block rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { duration: 0.15 } }}
-                exit={{ opacity: 0, transition: { duration: 0.15, delay: 0.2 } }}
-              />
-            )}
-          </AnimatePresence> */}
+      
           <GlareCard className="flex flex-col items-center justify-center">
          
-          <span className="text-5xl text-white">{item.icon}</span>
+          <span className="text-7xl text-white">{item.icon}</span>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
      
     </GlareCard>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

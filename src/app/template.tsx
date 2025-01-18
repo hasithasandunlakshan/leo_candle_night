@@ -18,7 +18,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
         className="w-screen h-screen justify-center items-center flex  bg-black  z-50 fixed top-0 left-0"
       >
 
-        <h1 className="text-secondary  font-Allura text-6xl sm:text-7xl  md:text-8xl">Celestia&apos;24</h1>
+        <h1 className="text-secondary  font-Allura text-6xl sm:text-7xl  md:text-8xl">Celestia&apos;25</h1>
          {/* <TextGenerateEffect words={description2} className='text-secondary  font-Allura text-6xl sm:text-7xl  md:text-8xl font-bold' duration={2} /> */}
 
 

@@ -18,7 +18,7 @@ export default function OrderSummary() {
   const [showThankYou, setShowThankYou] = useState(false); // To show the "Thank You" message
 
   const [formData, setFormData] = useState<FormData | null>(null);  // Declare formData as a state
-
+  const [showToastCancel, setShowToastCancel] = useState<boolean>(false);
   const cartContext = useContext(CartContext);
   const router = useRouter();
   useEffect(() => {
@@ -55,6 +55,7 @@ export default function OrderSummary() {
 
   const handleCancel = () => {
     setShowToast(false);
+    setShowToastCancel(false);
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -206,13 +207,13 @@ export default function OrderSummary() {
     <div className="min-h-screen bg-primary py-16 px-4 sm:px-6 lg:px-8">
     <div className="max-w-3xl mx-auto">
       <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8">
-        <h1 className="text-7xl font-bold text-secondary mb-10 mt-10 text-center">Order Summary</h1>
+      <h1 className="md:text-6xl text-4xl font-bold text-secondary mb-10 mt-10 text-center">Order Summary</h1>
         
         {/* Order Details */}
         <div className="space-y-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-800/50 p-4 rounded-xl">
-              <h3 className="text-secondary font-semibold mb-2">Order Information</h3>
+              <h3 className="text-secondary font-semibold mb-2">User Information</h3>
               <div className="space-y-2">
                 <p className="text-gray-400">Seat Number: <span className="text-white">{seats ? seats.seatNumber : "Not selected"}</span></p>
           
@@ -221,9 +222,9 @@ export default function OrderSummary() {
     <p className="text-gray-400">
       Index Number: <span className="text-white">{users[users.length - 1].index}</span>
     </p>
-    <p className="text-gray-400">
+    {/* <p className="text-gray-400">
       Food Items: <span className="text-white">{users[users.length - 1].foodList.join(", ")}</span>
-    </p>
+    </p> */}
     <p className="text-gray-400">
       Department: <span className="text-white">{users[users.length - 1].department}</span>
     </p>
@@ -238,6 +239,8 @@ export default function OrderSummary() {
 
             </div>
             <ul>
+              
+               <h3 className="text-secondary font-semibold mb-2 mt-2">Order Information</h3>
                            {cartLocal.map((item) => (
                              <li
                                key={item.id}
@@ -312,21 +315,21 @@ export default function OrderSummary() {
         </div>
 
 
-        <div className="flex  items-end justify-end gap-6">
-          <div className="text-center right-8 mt-8">
+        <div className="flex flex-col-reverse  sm:flex-row   items-end justify-end gap-2 sm:gap-6 text-md sm:text-lg">
+          <div className="text-center  ">
             <button
-              onClick={() => handleResetAndNavigate()}
-              className="px-3 py-2 bg-primary text-white border border-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
+                 onClick={() => setShowToastCancel(true)}
+              className="sm:px-3 px-6 min-w-40 py-2 bg-primary text-white border border-white rounded-lg  font-normal hover:bg-secondary/80 transition-colors"
             >
               Cancel
             </button>
           </div>
 
           {/* Place Order Button */}
-          <div className="text-center  mt-8">
+          <div className="text-center  ">
             <button
               onClick={() => setShowToast(true)}
-              className="px-3 py-2 bg-primary text-white border border-white rounded-lg text-lg font-normal hover:bg-secondary/80 transition-colors"
+              className="sm:px-3 min-w-40 px-6  py-2 bg-primary text-white border border-white rounded-lg  font-normal hover:bg-secondary/80 transition-colors"
             >
               Place Order
             </button>
@@ -339,16 +342,19 @@ export default function OrderSummary() {
       
     
 
-        <AnimatePresence>
+
+      </div>
+    </div>
+    <AnimatePresence>
   {showToast && (
-    <>
+    <section className="fixed inset-0 flex items-center justify-center z-40">
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className="fixed inset-0 bg-black bg-opacity-50 z-10"
-        onClick={handleCancel}
+        // onClick={handleCancel}
       />
       {/* Toast */}
       <motion.div
@@ -356,9 +362,9 @@ export default function OrderSummary() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3 }}
-        className="fixed top-1/2 left-1/3 transform -translate-x-1/2 -translate-y-1/2 z-50"
+        className="flex justify-center items-center z-50  "
       >
-        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg w-80">
+        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg sm:w-96 w-[90%]">
           <div className="flex flex-col">
             <div className="flex items-center">
               <svg
@@ -391,12 +397,57 @@ export default function OrderSummary() {
           </div>
         </div>
       </motion.div>
-    </>
+    </section>
   )}
 </AnimatePresence>
 
-      </div>
+
+<AnimatePresence>
+  {showToastCancel && (
+    <section className=" fixed  flex w-screen h-screen items-center justify-center align-middle z-40    inset-0">
+      {/* Backdrop */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0  bg-black bg-opacity-50 z-10"
+        // onClick={handleCancel}
+      />
+      {/* Toast */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+        className="  flex  z-50 w-full  justify-center  items-center"
+      >
+<div className="bg-primary rounded-lg border-2 border-red-600 p-8 shadow-lg sm:w-96  w-[90%] max-w-full">
+  <div className="flex flex-col">
+    <div className="flex items-center">
+      <span className="text-red-600 text-xl font-semibold">Are You Sure?</span>
     </div>
+    <span className="text-white mt-2 text-sm">Are you sure you want to cancel your order?</span>
+    <div className="flex justify-end mt-6 space-x-4">
+      <button
+        onClick={handleCancel}
+        className="px-6 py-3 text-sm bg-primary text-white rounded-lg shadow-sm hover:bg-red-600 transition duration-300 focus:outline-none"
+      >
+        Cancel
+      </button>
+      <button
+        onClick={handleResetAndNavigate}
+        className="px-6 py-3 text-sm bg-red-600 text-white rounded-lg shadow-lg hover:bg-red-700 transition duration-300 focus:outline-none"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</div>
+
+      </motion.div>
+    </section >
+  )}
+</AnimatePresence>
   </div>
   
 );

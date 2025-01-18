@@ -5,15 +5,15 @@ import React from 'react';
 
 export default function Page() {
   return (
-    <>
-      <div className="flex bg-primary min-h-screen flex-col">
+   
+     
        
         
 
-        {/* Available Seats Component */}
+   
         <Availableseats />
-      </div>
-    </>
+   
+    
   )
 }
 

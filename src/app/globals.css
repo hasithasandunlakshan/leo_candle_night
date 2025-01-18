@@ -14,16 +14,19 @@ body,html {
       rgb(11, 8, 39) 100%,
       rgb(199, 139, 9) 100%
     );
-
+    background-attachment: fixed;
 
   
   }
 
-  html {
-    scroll-behavior: smooth;
+  * {
+    scroll-behavior: true;
   }
-
-
+  
+  .modal-content {
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
 
   /* styles/globals.css */
 
@@ -47,3 +50,4 @@ body,html {
   scrollbar-width:1; /* Thin scrollbar */
   scrollbar-color: #050e3b #000000; /* Thumb and track colors */
 }
+@layer base {}
