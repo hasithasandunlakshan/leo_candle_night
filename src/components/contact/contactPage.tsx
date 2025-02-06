@@ -1,11 +1,64 @@
-import React from 'react';
-import { HeroHighlight } from '../ui/hero-highlight';
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { UserRound, Mail, BadgeCheck } from 'lucide-react';
+import React from 'react'
+import { HeroHighlight } from '../ui/hero-highlight'
+import { motion } from 'framer-motion'
+import Image from 'next/image'
+
+interface Person {
+  name: string;
+  role: string;
+  email: string;
+  image: string;
+}
+
+const ContactCard = ({ person }: { person: Person }) => (
+  <motion.div 
+    className="w-full rounded-3xl border border-black"
+    whileHover={{ scale: 1.02 }}
+    initial={{ scale: 1 }}
+    transition={{ 
+      type: "tween", // Changed from spring to tween for smoother motion
+      duration: 0.5, // Longer duration
+      ease: "easeInOut" // Smooth easing function
+    }}
+  >
+    <HeroHighlight className="w-full h-full border border-secondary transition-all duration-700 rounded-3xl">
+      <div className="m-5 bg-transparent flex-col flex p-2 mb-8">
+        <div className="flex flex-col sm:flex-row w-full items-center gap-5 mb-6">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ 
+              type: "tween",
+              duration: 0.5,
+              ease: "easeInOut"
+            }}
+          >
+            <Image
+              src={person.image}
+              alt={`${person.name}'s photo`}
+              width={160}
+              height={160}
+              className="rounded-full object-cover"
+            />
+          </motion.div>
+          <div className="flex flex-col flex-1">
+            <h1 className="py-2 text-xl sm:text-4xl text-white font-bold text-center sm:text-left">
+              {person.name}
+            </h1>
+            <p className="leading-7 text-white font-semibold text-center sm:text-left">
+              {person.role}
+            </p>
+            <p className="text-sm leading-7 text-slate-300 text-center sm:text-left">
+              {person.email}
+            </p>
+          </div>
+        </div>
+      </div>
+    </HeroHighlight>
+  </motion.div>
+)
 
 export default function ContactPage() {
-  const contacts = [
+  const teamMembers = [
     {
       name: "Darshika Prabhashwara",
       role: "President",
@@ -18,80 +71,37 @@ export default function ContactPage() {
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg"
     },
+    
+    {
+      name: "Sanjalee Dasanayaka",
+      role: "Chairman",
+      email: "sanjaleedassanayake56@gmail.com",
+      image: "/images/ContactUs/4.jpg"
+    },
     {
       name: "Suvini Nisansala",
       role: "Director of Peace, Religeous & Cultural affairs",
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg"
-    }
+    },
   ];
 
   return (
-    <div className="flex flex-col items-center p-4 sm:p-8 pb-20 max-w-7xl mx-auto">
+    <div className="flex flex-col items-center justify-center p-8">
       <motion.h1
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.5 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
-        className="text-center text-white text-3xl sm:text-5xl lg:text-7xl mb-8 sm:mb-12"
+        className="text-center text-secondary text-7xl sm:text-8xl lg:pt-20 px-4 pt-20 font-Qwigley max-w-[90%] mx-auto mb-8"
       >
-        Stay<span className="font-Qwigley text-secondary text-4xl sm:text-6xl lg:text-8xl"> Connected </span> with Us
+        Stay Connected With Us
       </motion.h1>
 
-      <div className="w-full space-y-6 my-10 px-4 sm:px-8 md:px-16 lg:px-48">
-        {contacts.map((contact, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ 
-              scale: 1.02,
-              transition: { duration: 0.3 }
-            }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="w-full"
-          >
-            <HeroHighlight className="w-full border-2 border-secondary hover:border-secondary transition-all duration-300 rounded-lg sm:rounded-full group">
-              <div className="m-3 sm:m-5 bg-transparent flex-col flex p-2">
-                <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
-                  <div className="flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 lg:w-40 lg:h-40 relative">
-                    <Image
-                      src={contact.image}
-                      alt={`${contact.name}'s photo`}
-                      fill
-                      className="rounded-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-grow text-center sm:text-left space-y-3">
-                    <div className="flex items-center justify-center sm:justify-start gap-2">
-                      <UserRound className="w-5 h-5 text-secondary" />
-                      <h2 className="text-lg sm:text-xl lg:text-3xl text-white font-bold">
-                        {contact.name}
-                      </h2>
-                    </div>
-                    
-                    <div className="flex items-center justify-center sm:justify-start gap-2">
-                      <BadgeCheck className="w-5 h-5 text-secondary" />
-                      <p className="text-xs sm:text-sm lg:text-base text-white font-semibold">
-                        {contact.role}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-center sm:justify-start gap-2">
-                      <Mail className="w-5 h-5 text-secondary" />
-                      <a 
-                        href={`mailto:${contact.email}`}
-                        className="text-xs sm:text-sm text-slate-300 hover:text-secondary transition-colors duration-300"
-                      >
-                        {contact.email}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </HeroHighlight>
-          </motion.div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl">
+        {teamMembers.map((person, index) => (
+          <ContactCard key={index} person={person} />
         ))}
       </div>
     </div>
-  );
+  )
 }
