@@ -13,7 +13,9 @@ export function InfiniteSliderResponsive() {
   className="text-center text-white  text-3xl sm:text-7xl    mb-10  w-[90%]"
 
     >
-  Delight in a night of <span className="font-Qwigley text-secondary text-5xl md:text-8xl ">unforgettable </span> flavors
+  Savor a night of  <span className="font-Qwigley text-secondary text-5xl md:text-8xl ">unforgettable flavors </span>and 
+  <span className="font-Qwigley text-secondary text-5xl md:text-8xl "> cherished memories </span>
+ 
 </motion.h1>
 <div className="sm:flex-col sm:flex hidden">
 <InfiniteSlider direction="horizontal" className="my-6 ">
@@ -52,7 +54,7 @@ export function InfiniteSliderResponsive() {
            src={image.src}
            alt={image.alt}
          />
-          <div className="absolute inset-0 bg-black opacity-60 group-hover:opacity-0 rounded-lg transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
          </div>
        
        </div>
@@ -67,7 +69,7 @@ export function InfiniteSliderResponsive() {
             src={image.src}
             alt={image.alt}
           />
-           <div className="absolute inset-0 bg-black opacity-60 group-hover:opacity-0 rounded-lg transition-opacity duration-300"></div>
+           <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-0 rounded-lg transition-opacity duration-300"></div>
           </div>
         
         </div>

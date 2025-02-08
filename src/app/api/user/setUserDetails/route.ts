@@ -10,7 +10,7 @@ interface OrderDetails {
   email: string;
   whatsapp: string;
   department: string;
-  batch: string;
+  // batch: string;
   foodList: string[];
   totalPrice: number;
   seatNumber: string;

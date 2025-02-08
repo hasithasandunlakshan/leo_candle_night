@@ -70,7 +70,7 @@ export default function Hero() {
           Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. 
           </motion.p>
           
-          <Button text="BOOK TICKET"  router="/bookseat"/>
+          <Button text="Reserve Your Spot"  router="/bookseat"/>
         </div>
         <div className="md:flex hidden lg:ml-20 items-center justify-center align-middle">
           <motion.div

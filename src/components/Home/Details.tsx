@@ -13,7 +13,7 @@ export default function Details() {
         viewport={{ once: true }}
         >
         <h1 className="text-center  text-3xl text-white md:text-6xl">
-          Organized By the
+          Organized By
           <span className="mx-5 font-Qwigley text-5xl md:text-8xl  text-secondary">
             Leo Club
           </span>
@@ -33,7 +33,7 @@ export const projects = [
   {
     title: "Date",
     description:
-      "Octomber 30",
+      "February 24",
     icon:  <CgCalendarDates/>
     
 

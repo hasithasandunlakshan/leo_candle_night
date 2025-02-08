@@ -42,7 +42,7 @@ export default function Page({ params }: { params: { index: string } }) {
         <div className="max-w-4xl mx-auto px-4 py-8">
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl overflow-hidden">
             <div className="h-48 sm:h-64 flex items-center justify-center bg-white">
-              <h1 className="text-3xl sm:text-4xl font-bold text-white">Order Details</h1>
+              <h1 className="text-3xl sm:text-4xl font-bold text-white">Retrieve Your Ticket Information</h1>
             </div>
           </div>
           <div className="mt-8 p-6 bg-gray-800 rounded-xl text-center">
@@ -60,7 +60,7 @@ export default function Page({ params }: { params: { index: string } }) {
         <div className=" rounded-2xl overflow-hidden shadow-xl">
   <div className="h-20 sm:h-40 flex items-center justify-center p-6 relative backdrop-blur-sm">
     <div className="absolute inset-0 bg-black"></div>
-    <h1 className="text-3xl sm:text-4xl font-bold text-secondary relative z-10">Order Details</h1>
+    <h1 className="text-3xl sm:text-4xl font-bold text-secondary relative z-10">Ticket Details</h1>
   </div>
 </div>
  

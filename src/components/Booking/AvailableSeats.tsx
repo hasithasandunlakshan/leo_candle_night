@@ -81,15 +81,15 @@ export default function BookSeats() {
       </div>
 
       <h2 className="text-xl mt-4 text-white mx-6">
-        When booking your seat, the seat is the combination of the table letter
-        and the seat number.
+      When reserving your seat, your seat is identified by the table letter combined with the seat
+      number.
       </h2>
       <h3 className="sm:text-xl text-md mx-6 mt-4 mb-4 text-gray-400">
-        Ex - If you want to book seat 1 in table A, select A1
+      Example: To reserve Seat 1 at Table A, choose A1
       </h3>
 
       {loading ? (
-       <div className="text-center flex-col align-middle flex bg-primary max-h-screen   items-center justify-center">
+       <div className="text-center flex-col align-middle flex  max-h-screen   items-center justify-center">
        <div
          className="w-10 h-10 border-4 border-dashed rounded-full animate-spin border-yellow-500 mx-auto"
        ></div>

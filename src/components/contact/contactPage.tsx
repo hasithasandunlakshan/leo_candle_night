@@ -71,19 +71,19 @@ export default function ContactPage() {
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg"
     },
-    
-    {
-      name: "Sanjalee Dasanayaka",
-      role: "Chairman",
-      email: "sanjaleedassanayake56@gmail.com",
-      image: "/images/ContactUs/4.jpg"
-    },
     {
       name: "Suvini Nisansala",
       role: "Director of Peace, Religeous & Cultural affairs",
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg"
     },
+    {
+      name: "Sanjalee Dasanayaka",
+      role: "Chairman",
+      email: "sanjaleedassanayake56@gmail.com",
+      image: "/images/ContactUs/4.jpg"
+    },
+    
   ];
 
   return (

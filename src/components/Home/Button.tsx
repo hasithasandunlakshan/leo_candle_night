@@ -45,7 +45,7 @@ export default function Button({ text, router: route }: ButtonProps) {
                text-center rounded-xl relative mt-4 overflow-hidden group"
   >             
     <motion.span className="relative z-10 group-hover:text-white transition-colors duration-200">
-      BOOK TICKET →
+    Reserve Your Spot →
     </motion.span>
     
     <motion.div 
