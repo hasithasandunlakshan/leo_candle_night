@@ -21,7 +21,7 @@ export default function Navbar() {
           icon: <FaHome className='text-xl'/>
         },
         {
-          name: "Book",
+          name: "Reserve Seat",
           link: "/bookseat",
           icon: <GiMeal className='text-xl'/>
         },
