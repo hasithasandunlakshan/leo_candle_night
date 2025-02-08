@@ -1,15 +1,21 @@
+"use client"
 import  OrderForm  from '@/components/order/orderForm'
-import OrderSummary from '@/components/OrderSummery/OrderSummary'
+
+import Particles from '../../components/Particle'
+
 
 import React from 'react'
+import Footer from '@/components/footer/FooterPage'
 
 export default function page() {
   return (
-    <div>
+    <div className=' h-[100vh]  max-h-screen'>
 
 
         <OrderForm/>
-        {/* <OrderSummary/> */}
+     
+
+  <Footer/>
     </div>
   )
 }

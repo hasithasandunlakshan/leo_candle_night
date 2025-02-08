@@ -9,7 +9,7 @@ const Footer = () => {
   const ref = useRef(null);
 
   return (
-    <footer className="bg-black text-white py-8 mt-auto">
+    <footer className="bg-black  bg-opacity-25  rounded-t-3xl shadow-2xl shadow-sky-600 text-white py-8 mt-auto ">
       <div className="container mx-auto flex flex-col md:flex-row flex-wrap justify-between px-6 md:px-20">
         {/* Contact Section */}
         <div className="w-full md:w-1/2 p-4">

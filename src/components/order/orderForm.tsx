@@ -19,7 +19,7 @@ export default function OrderForm() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent flex items-center justify-center px-4">
+    <div className="min-h-screen bg-transparent flex items-center justify-center px-4 py-32">
       <div className=" shadow-lg rounded-lg w-full max-w-lg p-8 border border-secondary">
         <h1 className="text-3xl font-bold text-secondary text-center mb-6">
         Retrieve Your Ticket Information
