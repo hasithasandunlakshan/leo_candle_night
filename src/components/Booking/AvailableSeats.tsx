@@ -66,7 +66,7 @@ export default function BookSeats() {
   return (
     <div className="bg-transparent min-h-screen w-full flex flex-col items-center relative">
       <h1 className="text-2xl font-bold mb-4 mt-24 md:text-7xl pt-10 text-secondary">
-        Book Your Seats
+        Reserve your Spot
       </h1>
 
       <div className="sm:w-[70%] w-[90%]  flex justify-center items-center mt-4">
@@ -87,7 +87,9 @@ export default function BookSeats() {
       <h3 className="sm:text-xl text-md mx-6 mt-4 mb-4 text-gray-400">
       Example: To reserve Seat 1 at Table A, choose A1
       </h3>
-
+      <h3 className="sm:text-xl text-md animate-pulse mx-6 mt-4 mb-4 text-secondary">
+      🔴  Red seats are already booked
+      </h3>
       {loading ? (
        <div className="text-center flex-col align-middle flex  max-h-screen   items-center justify-center">
        <div

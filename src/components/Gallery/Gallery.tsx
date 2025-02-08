@@ -10,7 +10,7 @@ export function InfiniteSliderResponsive() {
   initial={{ opacity: 0, scale: 0.9 }}
   whileInView={{ opacity: 1, scale: 1 }}
   transition={{ duration: 1 }}
-  className="text-center text-white  text-3xl sm:text-7xl    mb-10  w-[90%]"
+  className="text-center text-white  font-medium text-3xl sm:text-7xl    mb-10  w-[90%]"
 
     >
   Savor a night of  <span className="font-Qwigley text-secondary text-5xl md:text-8xl ">unforgettable flavors </span>and 

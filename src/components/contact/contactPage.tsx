@@ -10,23 +10,28 @@ interface Person {
   image: string;
 }
 
-const ContactCard = ({ person }: { person: Person }) => (
-  <motion.div 
+const ContactCard = ({ person, index }: { person: Person; index: number }) => (
+  <motion.div
     className="w-full rounded-3xl border border-black"
-    whileHover={{ scale: 1.02 }}
-    initial={{ scale: 1 }}
-    transition={{ 
-      type: "tween", // Changed from spring to tween for smoother motion
-      duration: 0.5, // Longer duration
-      ease: "easeInOut" // Smooth easing function
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ 
+      opacity: 1, 
+      y: 0 
     }}
+    transition={{
+      duration: 0.6,
+      delay: index * 0.2,
+      ease: "easeOut"
+    }}
+    viewport={{ once: true }}
+    whileHover={{ scale: 1.02 }}
   >
     <HeroHighlight className="w-full h-full border border-secondary transition-all duration-700 rounded-3xl">
       <div className="m-5 bg-transparent flex-col flex p-2 mb-8">
         <div className="flex flex-col sm:flex-row w-full items-center gap-5 mb-6">
           <motion.div
             whileHover={{ scale: 1.05 }}
-            transition={{ 
+            transition={{
               type: "tween",
               duration: 0.5,
               ease: "easeInOut"
@@ -83,25 +88,44 @@ export default function ContactPage() {
       email: "sanjaleedassanayake56@gmail.com",
       image: "/images/ContactUs/4.jpg"
     },
-    
   ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center p-8">
       <motion.h1
-        initial={{ opacity: 0, scale: 0.5 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.9, y: 50 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 1 }}
-        className="text-center text-secondary text-7xl sm:text-8xl lg:pt-20 px-4 pt-20 font-Qwigley max-w-[90%] mx-auto mb-8"
+        viewport={{ once: true }}
+        className="text-center my-6 text-3xl font-medium text-white md:text-6xl"
       >
-        Stay Connected With Us
+        Stay
+        <span className="mx-3 font-Qwigley text-5xl md:text-8xl text-secondary">
+          Connected
+        </span>
+        With Us
       </motion.h1>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl"
+      >
         {teamMembers.map((person, index) => (
-          <ContactCard key={index} person={person} />
+          <ContactCard key={index} person={person} index={index} />
         ))}
-      </div>
+      </motion.div>
     </div>
   )
 }

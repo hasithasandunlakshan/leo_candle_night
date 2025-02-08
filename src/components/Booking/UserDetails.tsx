@@ -27,16 +27,33 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CartContext } from "@/context/userOrder";
 import FoodList from "../meal/FoodList";
+import { ShoppingCartIcon } from "lucide-react";
+const isValidSLNIC = (nic: string) => {
+  // Remove any spaces or special characters
+  nic = nic.trim().replace(/[^0-9vVxX]/g, '');
+  
+  // Old format: 9 digits + V/X
+  const oldFormatRegex = /^[0-9]{9}[vVxX]$/;
+  // New format: 12 digits
+  const newFormatRegex = /^[0-9]{12}$/;
+  
+  return oldFormatRegex.test(nic) || newFormatRegex.test(nic);
+};
 
 const FormSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   index: z
-    .string()
-    .regex(/^\d{6}[A-Za-z]$/, {
-      message: "Index must be in the format 220356R (6 digits followed by a letter).",
-    }),
+  .string()
+  .refine((val) => isValidSLNIC(val), {
+    message: "Please enter a valid NIC number (old format: 982345678V or new format: 199823456780)",
+  })
+  .transform(val => {
+    // Normalize NIC format (remove spaces, uppercase V)
+    val = val.trim().replace(/\s/g, '');
+    return val.length === 10 ? val.toUpperCase() : val;
+  }),
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -110,8 +127,9 @@ export function UserDetails() {
     toast({
       className: "bg-primary",
       description: (
-        <pre className="bg-black rounded-md p-4">
-          <p className="text-white">Your Index Saved {data.index}</p>
+        <pre className="bg-black   flex gap-2 items-center justify-center align-middle  rounded-md p-1">
+          <ShoppingCartIcon className="w-6 h-6 text-secondary" />
+          <p className="text-secondary">Order Created</p>
           {/* <p className="text-white">Food List: {foodList.join(", ")}</p>
           <p className="text-white">Total Price: {totalPrice}</p> */}
         </pre>
@@ -181,7 +199,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="customer name" className="text-white bg-black border" {...field} />
+                    <Input placeholder="Full name" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -196,7 +214,7 @@ export function UserDetails() {
                 <FormItem>
                   <FormLabel className="text-secondary">National Identity Card Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="000000R" className="text-white bg-black border" {...field} />
+                    <Input placeholder="***********" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

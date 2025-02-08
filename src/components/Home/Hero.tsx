@@ -34,13 +34,13 @@ export default function Hero() {
 
 <motion.div
         style={{
-          backgroundImage: "url('/images/hero.jpg')",
+          backgroundImage: "url('/images/12.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           y: imageY,
          
         }}
-        className="top-0 right-0 left-0 bottom-0 lg:hidden opacity-10 -z-50 absolute min-h-[100vh] w-screen"
+        className="top-0 right-0 left-0 bottom-0 lg:hidden opacity-15 -z-50 absolute min-h-[100vh] w-screen"
       ></motion.div>
 
       <div className="justify-start container items-start">
