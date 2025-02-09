@@ -29,7 +29,7 @@ export default function Button({ text, router: route }: ButtonProps) {
     duration: 0.8,       
     ease: "easeInOut"
   }}     
-  className="flex flex-wrap relative group justify-center mt-8 gap-6"
+  className="flex flex-wrap relative group justify-center  gap-6"
 >   
   <motion.button 
     whileHover={{ 

@@ -213,20 +213,20 @@ export default function OrderSummary() {
         <div className="space-y-6 mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-gray-800/50 p-4 rounded-xl">
-              <h3 className="text-secondary font-semibold mb-2">User Information</h3>
+              <h3 className="text-secondary font-semibold mb-2">your Details</h3>
               <div className="space-y-2">
                 <p className="text-gray-400">Seat Number: <span className="text-white">{seats ? seats.seatNumber : "Not selected"}</span></p>
           
           {users.length > 0 && (
   <div className="space-y-2">
     <p className="text-gray-400">
-      Index Number: <span className="text-white">{users[users.length - 1].index}</span>
+      NIC Number: <span className="text-white">{users[users.length - 1].index}</span>
     </p>
     {/* <p className="text-gray-400">
       Food Items: <span className="text-white">{users[users.length - 1].foodList.join(", ")}</span>
     </p> */}
     <p className="text-gray-400">
-      Department: <span className="text-white">{users[users.length - 1].department}</span>
+      status: <span className="text-white">{users[users.length - 1].department}</span>
     </p>
     <p className="text-gray-400">
       WhatsApp: <span className="text-white">{users[users.length - 1].whatsapp}</span>
@@ -362,10 +362,10 @@ export default function OrderSummary() {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.3 }}
-        className="flex justify-center items-center z-50  "
+        className="flex justify-center items-center z-50 w-screen  "
       >
-        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg sm:w-96 w-[90%]">
-          <div className="flex flex-col">
+        <div className="bg-primary rounded-lg border-secondary border p-6 shadow-lg sm:w-96 flex  w-[90%]  ">
+          <div className="flex flex-col ">
             <div className="flex items-center">
               <svg
                 width="24"
