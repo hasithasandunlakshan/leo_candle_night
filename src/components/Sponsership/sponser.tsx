@@ -9,14 +9,14 @@ const sponsors = [
 
 const Sponsor = () => {
   return (
-    <div className="container mx-auto p-4 flex flex-col items-center justify-center text-center rounded-2xl shadow-xl">
+    <div className="container mx-auto px-4 py-8 flex flex-col items-center justify-center text-center rounded-2xl shadow-xl">
       {/* Animated Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
         viewport={{ once: true }}
-        className="my-6 text-3xl font-medium text-white md:text-6xl tracking-widest drop-shadow-lg"
+        className="my-6 text-3xl md:text-5xl lg:text-6xl font-medium text-white  tracking-widest drop-shadow-lg"
       >
         Our Sponsors
       </motion.h2>
@@ -27,7 +27,7 @@ const Sponsor = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3 }}
           viewport={{ once: true }}
-          className="text-3xl text-gray-400 font-semibold mb-8 uppercase tracking-wider shadow-md"
+          className="text-xl md:text-3xl text-gray-400 font-semibold mb-8 uppercase tracking-wider shadow-md"
         >
           Bronze Sponsorship
         </motion.h3>
@@ -50,7 +50,7 @@ const Sponsor = () => {
                     height={250}
                     className="rounded-md shadow-md"
                 />
-                <p className="font-light mt-4 text-2xl uppercase tracking-wider text-gray-300 drop-shadow-md">
+                <p className="font-light mt-4 text-lg md:text-2xl uppercase tracking-wider text-gray-300 drop-shadow-md">
                     {sponsor.name}
                 </p>
                 </div>
