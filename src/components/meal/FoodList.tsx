@@ -77,6 +77,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   const [showToast, setShowToast] = useState<boolean>(false);
   const [selectedFood, setSelectedFood] = useState<FoodItem | null>(null);
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
+  const [isCartButtonVisible, setIsCartButtonVisible] = useState<boolean>(true);
 
   const handleAddToCart = (food: FoodItem) => {
    
@@ -103,51 +104,29 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   const handleConfirm = () => {
     FinalFood(cartLocal);
     setIsSheetOpen(false);
+    setIsCartButtonVisible(true); // Show the cart button after purchase
   };
 
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
 
-  // useEffect(() => {
-  //   if (showToast) {
-  //     const timer = setTimeout(() => setShowToast(false), 3000);
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [showToast]);
+  useEffect(() => {
+    if (isSheetOpen) {
+      setIsCartButtonVisible(false); // Hide the cart button when sheet is open
+    }
+  }, [isSheetOpen]);
 
   return (
-    <div className=" flex   w-full z-0  justify-center ">
+
+    <div className="flex w-full z-0 justify-center">
+      {/* Blur Background */}
+
 
       {showToast && <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
 
-
       <div className="flex flex-col w-full justify-center items-center">
-        {/* <div className="w-[50%] my-10 p-6 rounded-lg shadow-lg text-center mt-40">
-          <h2 className="text-3xl sm:text-5xl font-bold text-secondary mb-4">Special Welcome Drink</h2>
-          <div className="flex justify-center items-center gap-4 pt-5 ">
-            <Image
-              src="/images/meals/welcomedrink.jpg"
-              width={350}
-              height={150}
-              alt="Welcome Drink"
-              className="rounded-lg  border-white shadow-lg"
-            />
-            <div className="text-secondary">
-              <p className="text-xl font-semibold">Price: RS 200</p>
-              <Button
-                onClick={() => handleAddToCart(drinks.find((item) => item.id === 15)!)}
-                className="mt-2 bg-primary text-white border-white border-2"
-              >
-                Add to Cart
-              </Button>
-            </div>
-          </div>
-        </div> */}
-
-        
-
         {/* Foods */}
         <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:text-7xl pt-10 text-secondary my-10">
-          Foods
+          Food Items
         </h2>
         <div className="grid-cols-1 place-content-center place-items-center sm:grid-cols-2 lg:grid-cols-4 w-[90%] grid justify-center align-middle">
           {foods.map((food) => (
@@ -177,19 +156,25 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
         </div>
 
         {/* Cart Sheet */}
-        <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
-          <SheetTrigger asChild>
-            <div className="fixed right-5 top-20 z-50 text-center">
-              <button className="bg-primary border-2 border-white text-secondary p-3 rounded-full hover:bg-white hover:text-primary relative">
-                <BsCart4 size={24} />
-              </button>
-              <p className="mt-1 text-sm text-white">CART</p>
-            </div>
-          </SheetTrigger>
+        <Sheet open={isSheetOpen} onOpenChange={(open) => {
+          setIsSheetOpen(open);
+          setIsCartButtonVisible(!open); // Toggle cart button visibility based on sheet state
+        }}>
+          {isCartButtonVisible && (
+            <SheetTrigger asChild>
+              <div className="fixed right-5 top-20 z-50 text-center">
+                <button className="bg-primary border-2 border-white text-secondary p-3 rounded-full hover:bg-white hover:text-primary relative">
+                  <BsCart4 size={24} />
+                </button>
+                <p className="mt-1 text-sm text-white">CART</p>
+              </div>
+            </SheetTrigger>
+          )}
           <SheetContent className="bg-primary bg-opacity-85">
             <SheetHeader>
               <SheetTitle className="font-bold text-secondary text-2xl">Cart Items</SheetTitle>
               <SheetDescription>Review your selected items below.</SheetDescription>
+              <SheetDescription>If you want to add more items to cart select "Continue". If you are done choosing food Items please select "Purchase".</SheetDescription>
             </SheetHeader>
             <div className="grid gap-4 py-4">
               {cart.length === 0 ? (
@@ -242,26 +227,26 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
 
         {/* Toast Confirmation */}
         {showToast && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary border border-secondary p-6 rounded-lg shadow-lg z-20 w-[90%] sm:w-[50%]">
-          <h3 className="text-xl font-semibold text-white mb-4 text-center">
-            Add {selectedFood?.name} to the cart?
-          </h3>
-          <div className="flex justify-center gap-4">
-            <Button
-              onClick={() => confirmAddToCart(true)}
-              className="bg-secondary text-white border border-radius-4"
-            >
-              Yes
-            </Button>
-            <Button
-              onClick={() => confirmAddToCart(false)}
-              className="bg-secondary text-white"
-            >
-              No
-            </Button>
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-primary border border-secondary p-6 rounded-lg shadow-lg z-20 w-[90%] sm:w-[50%]">
+            <h3 className="text-xl font-semibold text-white mb-4 text-center">
+              Add {selectedFood?.name} to the cart?
+            </h3>
+            <div className="flex justify-center gap-4">
+              <Button
+                onClick={() => confirmAddToCart(true)}
+                className="bg-secondary text-white border border-radius-4"
+              >
+                Yes
+              </Button>
+              <Button
+                onClick={() => confirmAddToCart(false)}
+                className="bg-secondary text-white"
+              >
+                No
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     </div>
   );
