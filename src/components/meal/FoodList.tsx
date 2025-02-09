@@ -17,6 +17,7 @@ import {
 import Image from "next/image";
 import { CartContext } from "@/context/userOrder";
 
+
 interface FoodItem {
   id: number;
   name: string;
@@ -79,12 +80,15 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
   const [isCartButtonVisible, setIsCartButtonVisible] = useState<boolean>(true);
 
+
   const handleAddToCart = (food: FoodItem) => {
-   
+    if (!cart.some((item) => item.id === food.id)) {
       setSelectedFood(food);
       addToCart(food);
       setShowToast(true);
-    
+    } else {
+      alert("Item already in the cart");
+    }
   };
 
   const confirmAddToCart = (confirm: boolean) => {
@@ -178,15 +182,15 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   If you want to add more items to cart select &quot;Continue&quot;. If you are done choosing food Items please select &quot;Purchase&quot;.
 </SheetDescription>
             </SheetHeader>
-            <div className="grid gap-4 py-4">
+            <div className="grid gap-4 py-4 ">
               {cart.length === 0 ? (
                 <div className="text-black-500 font-bold">Your cart is empty.</div>
               ) : (
-                <ul>
+                <ul className="max-h-96 overflow-y-scroll">
                   {cart.map((item) => (
                     <li
                       key={item.id}
-                      className="flex justify-between my-2 w-full bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
+                      className="flex justify-between my-2 w-full   bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
                     >
                       <div className="flex w-[80%] gap-2">
                         <Image
