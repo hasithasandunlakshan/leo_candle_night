@@ -48,12 +48,12 @@ export default function Hero() {
     
           <TextGenerateEffect
             words={description2}
-            className="text-secondary -mb-5 font-Qwigley  text-7xl sm:text-8xl md:text-9xl"
+            className="text-secondary md:-mb-10 -mb-5 font-Qwigley  text-7xl sm:text-8xl md:text-9xl"
             duration={1}
           />
                 <TextGenerateEffect
             words={description}
-            className="text-gray-300 font-bold text-center sm:text-left text-xl sm:text-2xl"
+            className="text-gray-300 -mb-2 font-bold text-center sm:text-left text-xl sm:text-4xl"
             duration={1}
           />
           <motion.p
@@ -64,7 +64,7 @@ export default function Hero() {
               duration: 0.8,
               ease: "easeInOut",
             }}
-            className="text-gray-400 w-[95%] justify-center lg:justify-start mt-2 text-center  lg:text-left"
+            className="text-gray-300 w-[95%] justify-center lg:justify-start mt-4 text-center  lg:text-left"
           >
           
           Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. 
