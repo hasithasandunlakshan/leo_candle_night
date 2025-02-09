@@ -26,11 +26,11 @@ interface FoodItem {
 
 const drinks: FoodItem[] = [
   { id: 15, name: "Welcome Drink", price: 200, image: "/images/meals/welcomedrink.jpg" },
-  { id: 11, name: "Falooda", price: 320, image: "/images/meals/falooda.jpg" },
+  { id: 11, name: "Falooda", price: 300, image: "/images/meals/falooda.jpg" },
   { id: 12, name: "Chocolate Milkshake", price: 350, image: "/images/meals/milkshake.jpg" },
   { id: 13, name: "Coke", price: 200, image: "/images/meals/coke.jpg" },
-  { id: 14, name: "Sprite", price: 150, image: "/images/meals/sprite.jpg" },
-  { id: 16, name: "Fruit Juice", price: 200, image: "/images/meals/juice.jpeg" },
+  { id: 14, name: "Sprite", price: 200, image: "/images/meals/sprite.jpg" },
+
 ];
 
 const foods: FoodItem[] = [
@@ -38,19 +38,27 @@ const foods: FoodItem[] = [
   { id: 2, name: "Chicken Kottu", price: 650, image: "/images/meals/chickenkottu.jpg" },
   { id: 3, name: "Vegetable Kottu", price: 550, image: "/images/meals/vegikootu.jpg" },
   { id: 4, name: "Cheese Kottu", price: 950, image: "/images/meals/cheesekottu.jpg" },
-  { id: 5, name: "Dosa & Curries", price: 350, image: "/images/meals/dosa.jpg" },
+  { id: 5, name: "Dosa & Curries", price: 700, image: "/images/meals/dosa.jpg" },
   { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/Chickenbiriyani.jpg" },
-  { id: 7, name: "Nasi Goreng", price: 900, image: "/images/meals/nasiguran.jpg" },
-  { id: 8, name: "Ramen", price: 800, image: "/images/meals/ramen.jpg" },
-  { id: 9, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg" },
-  { id: 10, name: "Naan", price: 650, image: "/images/meals/naan.jpg" },
+  { id: 7, name: "Mutton", price: 1150, image: "/images/meals/mutton.jpg" },
+
+  { id: 8, name: "Nasi Goreng", price: 900, image: "/images/meals/nasiguran.jpg" },
+  { id: 6, name: "Sausage Pizza(3 slices)", price: 850, image: "/images/meals/Chickenbiriyani.jpg" },
+
+  { id: 10, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg" },
+  { id: 11, name: "Naan", price: 800, image: "/images/meals/naan.jpg" },
 ];
 
 const desserts: FoodItem[] = [
-  { id: 17, name: "Biscuit Pudding", price: 200, image: "/images/meals/pudding.jpg" },
-  { id: 18, name: "Vanilla Ice Cream", price: 180, image: "/images/meals/vice.jpg" },
-  { id: 19, name: "Chocolate Ice Cream", price: 200, image: "/images/meals/cice.jpg" },
-  { id: 20, name: "Kesari", price: 300, image: "/images/meals/kesari.jpg" },
+  { id: 17, name: "Biscuit Pudding", price: 250, image: "/images/meals/pudding.jpg" },
+  { id: 18, name: "Vanilla Ice Cream", price: 150, image: "/images/meals/vice.jpg" },
+  { id: 19, name: "Chocolate Ice Cream", price: 170, image: "/images/meals/cice.jpg" },
+  { id: 20, name: "Kesari", price: 350, image: "/images/meals/kesari.jpg" },
+  { id: 20, name: "Kaum", price: 90, image: "/images/meals/Kaum.jpg" },
+
+  { id: 20, name: "Kokis", price: 40, image: "/images/meals/Kokis.jpg" },
+  { id: 20, name: "Kiri Pani", price: 200, image: "/images/meals/KiriPani.jpg" },
+
 ];
 
 interface FoodListProps {
@@ -109,7 +117,6 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   return (
     <div className=" flex   w-full z-0  justify-center ">
 
-      {/* Blur Background */}
       {showToast && <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-10"></div>}
 
 
