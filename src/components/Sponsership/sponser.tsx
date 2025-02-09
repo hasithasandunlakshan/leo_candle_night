@@ -1,0 +1,64 @@
+import Image from 'next/image';
+import { motion } from 'framer-motion'
+
+
+
+const sponsors = [
+  { name: 'Saththu Sadambara', image: '/images/sponser/saththu2.jpg' }
+];
+
+const Sponsor = () => {
+  return (
+    <div className="container mx-auto p-4 flex flex-col items-center justify-center text-center rounded-2xl shadow-xl">
+      {/* Animated Heading */}
+      <motion.h2
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+        viewport={{ once: true }}
+        className="my-6 text-3xl font-medium text-white md:text-6xl tracking-widest drop-shadow-lg"
+      >
+        Our Sponsors
+      </motion.h2>
+      
+      <div className="w-full mb-6 flex flex-col items-center">
+      <motion.h3
+          initial={{ opacity: 0, y: 70 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-3xl text-gray-400 font-semibold mb-8 uppercase tracking-wider shadow-md"
+        >
+          Bronze Sponsorship
+        </motion.h3>
+        <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-6"
+            >
+            {sponsors.map((sponsor, index) => (
+                <div
+                key={index}
+                className="p-3 border bg-gray-900 border-secondary rounded-3xl shadow-md flex flex-col items-center transform transition duration-1000 hover:scale-105 hover:border-yellow-500 hover:shadow-yellow-400"
+                >
+                <Image
+                    src={sponsor.image}
+                    alt={sponsor.name}
+                    width={350}
+                    height={250}
+                    className="rounded-md shadow-md"
+                />
+                <p className="font-light mt-4 text-2xl uppercase tracking-wider text-gray-300 drop-shadow-md">
+                    {sponsor.name}
+                </p>
+                </div>
+            ))}
+            </motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default Sponsor;
