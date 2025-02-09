@@ -12,7 +12,8 @@ import "locomotive-scroll/dist/locomotive-scroll.css"; // Make sure to import th
 import Details from "@/components/Home/Details";
 import Lenis from '@studio-freight/lenis'
 import ContactPage from "@/components/contact/contactPage";
-import { Sponsers } from "@/components/sponser/CarouselSize";
+//import { Sponsers } from "@/components/sponser/CarouselSize";
+import Sponsor from "@/components/Sponsership/sponser";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,6 +56,7 @@ export default function Page() {
     <VelocityText/>
     
     {/*<Sponsers/> */}
+    <Sponsor/>
     <ContactPage/>
     <Footer /> 
     </main>
