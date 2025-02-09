@@ -174,7 +174,9 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
             <SheetHeader>
               <SheetTitle className="font-bold text-secondary text-2xl">Cart Items</SheetTitle>
               <SheetDescription>Review your selected items below.</SheetDescription>
-              <SheetDescription>If you want to add more items to cart select "Continue". If you are done choosing food Items please select "Purchase".</SheetDescription>
+<SheetDescription>
+  If you want to add more items to cart select &quot;Continue&quot;. If you are done choosing food Items please select &quot;Purchase&quot;.
+</SheetDescription>
             </SheetHeader>
             <div className="grid gap-4 py-4">
               {cart.length === 0 ? (
