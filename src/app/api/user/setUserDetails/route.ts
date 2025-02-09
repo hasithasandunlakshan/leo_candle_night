@@ -10,7 +10,7 @@ interface OrderDetails {
   email: string;
   whatsapp: string;
   department: string;
-  batch: string;
+  // batch: string;
   foodList: string[];
   totalPrice: number;
   seatNumber: string;
@@ -68,11 +68,11 @@ export async function POST(request: NextRequest) {
           If you have any questions or need assistance, feel free to contact us.
         </p>
         <p style="font-size: 16px; color: #FFD700; margin: 10px 0;">Thank you,</p>
-        <p style="font-size: 16px; color: #ffffff; margin: 5px 0;">The Celestia 2024 Team</p>
+        <p style="font-size: 16px; color: #ffffff; margin: 5px 0;">The Celestia 2025 Team</p>
       </div>
       <div style="text-align: center; background-color: #001f3f; padding: 10px; border-top: 2px solid #FFD700; margin-top: 20px;">
         <p style="font-size: 12px; color: #888888; margin: 5px 0;">Please do not share this email or its contents with anyone.</p>
-        <p style="font-size: 12px; color: #888888; margin: 5px 0;">&copy; 2024 Celestia, All Rights Reserved.</p>
+        <p style="font-size: 12px; color: #888888; margin: 5px 0;">&copy; 2025 Celestia, All Rights Reserved.</p>
       </div>
     </div>
   `;

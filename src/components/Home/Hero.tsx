@@ -34,13 +34,13 @@ export default function Hero() {
 
 <motion.div
         style={{
-          backgroundImage: "url('/images/hero.jpg')",
+          backgroundImage: "url('/images/12.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           y: imageY,
          
         }}
-        className="top-0 right-0 left-0 bottom-0 lg:hidden opacity-10 -z-50 absolute min-h-[100vh] w-screen"
+        className="top-0 right-0 left-0 bottom-0 lg:hidden opacity-15 -z-50 absolute min-h-[100vh] w-screen"
       ></motion.div>
 
       <div className="justify-start container items-start">
@@ -70,7 +70,7 @@ export default function Hero() {
           Celebrate culture, elegance, and togetherness under the gentle glow of candlelight. Reserve your seat, savor delightful cuisine, and immerse yourself in a night filled with warmth and tradition. 
           </motion.p>
           
-          <Button text="BOOK TICKET"  router="/bookseat"/>
+          <Button text="Reserve Your Spot"  router="/bookseat"/>
         </div>
         <div className="md:flex hidden lg:ml-20 items-center justify-center align-middle">
           <motion.div

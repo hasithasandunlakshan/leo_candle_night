@@ -27,16 +27,33 @@ import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CartContext } from "@/context/userOrder";
 import FoodList from "../meal/FoodList";
+import { ShoppingCartIcon } from "lucide-react";
+const isValidSLNIC = (nic: string) => {
+  // Remove any spaces or special characters
+  nic = nic.trim().replace(/[^0-9vVxX]/g, '');
+  
+  // Old format: 9 digits + V/X
+  const oldFormatRegex = /^[0-9]{9}[vVxX]$/;
+  // New format: 12 digits
+  const newFormatRegex = /^[0-9]{12}$/;
+  
+  return oldFormatRegex.test(nic) || newFormatRegex.test(nic);
+};
 
 const FormSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   index: z
-    .string()
-    .regex(/^\d{6}[A-Za-z]$/, {
-      message: "Index must be in the format 220356R (6 digits followed by a letter).",
-    }),
+  .string()
+  .refine((val) => isValidSLNIC(val), {
+    message: "Please enter a valid NIC number (old format: 982345678V or new format: 199823456780)",
+  })
+  .transform(val => {
+    // Normalize NIC format (remove spaces, uppercase V)
+    val = val.trim().replace(/\s/g, '');
+    return val.length === 10 ? val.toUpperCase() : val;
+  }),
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -51,8 +68,8 @@ const FormSchema = z.object({
     z.array(z.string()).min(0, { message: "At least one food item must be added." })
   ]),
   totalprice: z.number(),
-  batch: z.string().min(1, { message: "Please select a batch." }),
-  faculty: z.string().min(1, { message: "Please select a faculty." })
+  // batch: z.string().min(1, { message: "Please select a batch." }),
+  // faculty: z.string().min(1, { message: "Please select a faculty." })
 });
 
 type FormSchemaType = z.infer<typeof FormSchema>;
@@ -83,8 +100,8 @@ export function UserDetails() {
       department: "",
       foodList: useOrder?.cartLocal?.map(item => item.name),
       totalprice: 0,
-      batch: "",
-      faculty: ""
+      // batch: "",
+      // faculty: ""
     },
   });
 
@@ -110,8 +127,9 @@ export function UserDetails() {
     toast({
       className: "bg-primary",
       description: (
-        <pre className="bg-black rounded-md p-4">
-          <p className="text-white">Your Index Saved {data.index}</p>
+        <pre className="bg-black   flex gap-2 items-center justify-center align-middle  rounded-md p-1">
+          <ShoppingCartIcon className="w-6 h-6 text-secondary" />
+          <p className="text-secondary">Order Created</p>
           {/* <p className="text-white">Food List: {foodList.join(", ")}</p>
           <p className="text-white">Total Price: {totalPrice}</p> */}
         </pre>
@@ -170,7 +188,7 @@ export function UserDetails() {
 
 
       <div className="flex flex-col py-20 mt-10 container w-[100%] lg:w-[50%]">
-      <h1 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">User Details</h1>
+      <h1 className="text-3xl sm:text-4xl  font-bold mb-4 md:text-7xl py-0 text-secondary ">Guest Information</h1>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6">
             {/* Username Field */}
@@ -179,9 +197,9 @@ export function UserDetails() {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-secondary">Username</FormLabel>
+                  <FormLabel className="text-secondary">Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="customer name" className="text-white bg-black border" {...field} />
+                    <Input placeholder="Full name" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -194,9 +212,9 @@ export function UserDetails() {
               name="index"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-secondary">Index</FormLabel>
+                  <FormLabel className="text-secondary">National Identity Card Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="000000R" className="text-white bg-black border" {...field} />
+                    <Input placeholder="***********" className="text-white bg-black border" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -209,7 +227,7 @@ export function UserDetails() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-secondary">Email</FormLabel>
+                  <FormLabel className="text-secondary">Email Address</FormLabel>
                   <FormControl>
                     <Input placeholder="you@example.com" className="text-white bg-black border" {...field} />
                   </FormControl>
@@ -234,34 +252,7 @@ export function UserDetails() {
             />
 
             {/* Food List Field */}
-            <FormField
-              control={form.control}
-              name="foodList"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-secondary">Select Food</FormLabel>
-                  <FormControl>
-                    <div className="flex items-end flex-col gap-2">
-                      <p className="w-full py-2 align-middle border-secondary rounded-md items-center flex text-white bg-black border">
-                        <span className="ml-3 break-words">
-                          {selectedFoods.length > 0 
-                            ? selectedFoods.map(food => food.name).join(", ") 
-                            : "No food selected"}
-                        </span>
-                      </p>
-                      <Button
-                        onClick={() => setSeatOpen(true)}
-                        type="button"
-                        className="relative w-48 px-10 rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
-                      >
-                        Select Meal
-                      </Button>
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+           
 
 
 
@@ -271,19 +262,19 @@ export function UserDetails() {
               name="department"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-secondary">Department</FormLabel>
+                  <FormLabel className="text-secondary">Membership Status</FormLabel>
                   <FormControl>
                     <Select value={field.value || ""} onValueChange={(value) => field.onChange(value)} >
                       <SelectTrigger>
-                        <SelectValue placeholder="Select a department" />
+                        <SelectValue placeholder="Select Membership Status" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          <SelectLabel>Departments</SelectLabel>
-                          <SelectItem value="CS">Computer Science</SelectItem>
-                          <SelectItem value="IT">Information Technology</SelectItem>
-                          <SelectItem value="ENG">Engineering</SelectItem>
-                          <SelectItem value="MATH">Mathematics</SelectItem>
+                          <SelectLabel>select one</SelectLabel>
+                          <SelectItem value="LeoClubMora">Member of Leo Club of University of Moratuwa</SelectItem>
+                          <SelectItem value="AnotherLeo">Member of Another Leo Club</SelectItem>
+                          <SelectItem value="Student">Student at University of Moratuwa</SelectItem>
+                          
                         </SelectGroup>
                       </SelectContent>
                     </Select>
@@ -294,7 +285,7 @@ export function UserDetails() {
             />
 
             {/* Batch Field */}
-            <FormField
+            {/* <FormField
               control={form.control}
               name="batch"
               render={({ field }) => (
@@ -319,10 +310,10 @@ export function UserDetails() {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
 
             {/* Faculty Field */}
-            <FormField
+            {/* <FormField
               control={form.control}
               name="faculty"
               render={({ field }) => (
@@ -346,10 +337,37 @@ export function UserDetails() {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            /> */}
 
            
-
+<FormField
+              control={form.control}
+              name="foodList"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-secondary">Choose Your Meal</FormLabel>
+                  <FormControl>
+                    <div className="flex items-end flex-col gap-2">
+                      <p className="w-full py-2 align-middle border-secondary rounded-md items-center flex text-white bg-black border">
+                        <span className="ml-3 break-words">
+                          {selectedFoods.length > 0 
+                            ? selectedFoods.map(food => food.name).join(", ") 
+                            : "No food selected"}
+                        </span>
+                      </p>
+                      <Button
+                        onClick={() => setSeatOpen(true)}
+                        type="button"
+                        className="relative w-48 px-10 rounded-lg isolation-auto z-10 border-2 border-secondary hover:text-white"
+                      >
+                        Select Meal
+                      </Button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
       
 <div className="flex items-end justify-center md:justify-end">
               <Button type="submit" className="px-10 py-1 rounded-lg hover:bg-secondary hover:text-primary bg-transparent border border-white w-48 text-white">

@@ -19,16 +19,23 @@ export default function OrderForm() {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center px-4">
-      <div className=" shadow-lg rounded-lg w-full max-w-lg p-8 border border-secondary">
-        <h1 className="text-3xl font-bold text-secondary text-center mb-6">
-          Get Your Ticket Details
+    <div className=" min-h-screen bg-transparent flex items-center justify-center px-4 py-36 md:py-36  w-screen overflow-hidden">
+
+
+
+      <div className="relative z-10 md:w-[60%]  ">
+      <div className=" w-40 h-40 md:w-48 md:h-48 overflow-hidden -z-20 -top-20 opacity-45 absolute -left-20 bg-secondary rounded-full"></div>
+      <div className="w-40 h-40 md:w-48 md:h-48 -z-20 opacity-45 -bottom-20 overflow-hidden absolute -right-20 bg-secondary rounded-full"></div>
+<div className=" rounded-xl w-full   p-16   shadow-2xl shadow-slate-800 relative z-50  ">
+
+<h1 className="text-3xl font-bold text-secondary text-center mb-6">
+        Retrieve Your Ticket Information
         </h1>
 
         <form onSubmit={onSubmit} className="flex flex-col space-y-4">
           <input
             type="text"
-            placeholder="Enter your index"
+            placeholder="Enter your NIC"
             value={inputValue}
             onChange={handleChange}
             className="bg-gray-100 w-full px-4 py-3 border border-[#d3c2a3] rounded-lg text-[#6b4f34] focus:outline-none focus:ring-2 focus:ring-[#a58464]"
@@ -45,10 +52,12 @@ export default function OrderForm() {
 
         <div className="mt-6 text-center text-white">
           <p>
-            Please enter your index to view ticket details. Make sure the
-            information is accurate.
+          Kindly enter your NIC number to access your ticket details. Ensure the information provided is
+accurate for a smooth experience.
           </p>
         </div>
+</div>
+       
       </div>
     </div>
   );

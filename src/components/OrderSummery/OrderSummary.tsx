@@ -122,8 +122,8 @@ export default function OrderSummary() {
         department: user.department,
         foodList: user.foodList,
         totalPrice: user.totalprice,
-        batch: user.batch,
-        faculty: user.faculty,
+        // batch: user.batch,
+        // faculty: user.faculty,
         seatNumber: user.seatNumber,
         imageURL: imageUrl, // Pass the uploaded image URL
         isApproved: user.isApproved || false,

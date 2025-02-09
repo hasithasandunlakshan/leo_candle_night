@@ -12,8 +12,8 @@ const orderSchema = new mongoose.Schema({
       department: { type: String, required: true },
       foodList: { type: [String], required: true },
       totalPrice: { type: Number, required: true },
-      batch: { type: String, required: true },
-      faculty: { type: String, required: true },
+      // batch: { type: String, required: true },
+      // faculty: { type: String, required: true },
       seatNumber: { type: String, default: undefined }, // Optional field
       imageURL: { type: String, required: true }, // New field
       isApproved: { type: Boolean, required: [true, "Approval status is required"], default: false }, // New field
