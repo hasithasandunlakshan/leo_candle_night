@@ -71,13 +71,11 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
   const [isSheetOpen, setIsSheetOpen] = useState<boolean>(false);
 
   const handleAddToCart = (food: FoodItem) => {
-    if (!cart.some((item) => item.id === food.id)) {
+   
       setSelectedFood(food);
       addToCart(food);
       setShowToast(true);
-    } else {
-      alert("Item already in the cart");
-    }
+    
   };
 
   const confirmAddToCart = (confirm: boolean) => {
