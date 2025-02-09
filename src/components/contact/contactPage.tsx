@@ -2,12 +2,13 @@ import React from 'react'
 import { HeroHighlight } from '../ui/hero-highlight'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-
+import { FaSquareWhatsapp } from "react-icons/fa6";
 interface Person {
   name: string;
   role: string;
   email: string;
   image: string;
+  contact:string;
 }
 
 const ContactCard = ({ person, index }: { person: Person; index: number }) => (
@@ -55,6 +56,21 @@ const ContactCard = ({ person, index }: { person: Person; index: number }) => (
             <p className="text-sm leading-7 text-slate-300 text-center sm:text-left">
               {person.email}
             </p>
+            <p className="text-sm leading-7 text-slate-300 text-center sm:text-left flex items-center gap-2">
+
+
+            <a
+      href={`https://wa.me/${person.contact.replace(/\D/g, "")}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-slate-500 hover:text-secondary"
+    >
+      <FaSquareWhatsapp size={20} />
+    </a>
+              
+    {person.contact}
+   
+  </p>
           </div>
         </div>
       </div>
@@ -68,25 +84,30 @@ export default function ContactPage() {
       name: "Darshika Prabhashwara",
       role: "President",
       email: "darshikaprabhashwara@gmail.com",
-      image: "/images/ContactUs/1.jpg"
+      image: "/images/ContactUs/1.jpg",
+      contact:'0789084354'
+
     },
     {
       name: "Hasitha Dhananjaya",
       role: "Vice President",
       email: "hasithadhananjaya2020@gmail.com",
-      image: "/images/ContactUs/2.jpg"
+      image: "/images/ContactUs/2.jpg",
+      contact:'0763183081'
     },
     {
       name: "Suvini Nisansala",
       role: "Director of Peace, Religeous & Cultural affairs",
       email: "suvininiyagama2002@gmail.com",
-      image: "/images/ContactUs/3.jpg"
+      image: "/images/ContactUs/3.jpg",
+      contact:'0766863345'
     },
     {
       name: "Sanjalee Dasanayaka",
       role: "Chairman",
       email: "sanjaleedassanayake56@gmail.com",
-      image: "/images/ContactUs/4.jpg"
+      image: "/images/ContactUs/4.jpg",
+      contact:'0782871199'
     },
   ];
 
