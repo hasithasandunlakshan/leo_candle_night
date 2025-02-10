@@ -50,6 +50,8 @@
           const response = await axios.post("/api/seats/bookSeats",{ seatNumbers: [seatNumbers] })
           if(response.status === 200){
             cartContext.resetOrder();
+            setShowThankYou(true);
+            
           }
         }catch(error){
           console.error("Error sending order to backend:", error);
