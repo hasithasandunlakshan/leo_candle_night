@@ -36,16 +36,17 @@ export default function OrderSummary() {
   console.log("cartContext user:", users);
   const handleResetAndNavigate = () => {
     if (cartContext?.resetOrder) {
-      cartContext.resetOrder(); // Reset the users and other related state
+      cartContext.resetOrder(); 
+      setShowThankYou(true); 
     }
-    router.push("/"); // Navigate to the home page
+    router.push("/");
   };
   const handleSeatBoook = async () => {
     const seatNumbers = seats?.seatNumber
     try{
       const response = await axios.post("/api/seats/bookSeats",{ seatNumbers: [seatNumbers] })
       if(response.status === 200){
-        
+        cartContext.resetOrder();
       }
     }catch(error){
       console.error("Error sending order to backend:", error);
@@ -67,7 +68,7 @@ export default function OrderSummary() {
 
     const newFormData = new FormData();
     newFormData.append("file", file);
-    setFormData(newFormData);  // Update the global formData state
+    setFormData(newFormData);
   };
 
   const uploadImage = async (): Promise<string | null> => {
@@ -79,12 +80,13 @@ export default function OrderSummary() {
   
       const response = await axios.post("/api/slips/uploadSlips", formData, {
         headers: {
-          "Content-Type": "multipart/form-data", // Set the correct content type
+          "Content-Type": "multipart/form-data",
         },
       });
   
       if (response.status === 200) {
         console.log("Image uploaded successfully");
+        await sendOrderToBackend(response.data.imageUrl);
         
       }
   
@@ -137,6 +139,11 @@ export default function OrderSummary() {
       };
       
       const response = await axios.post("/api/user/setUserDetails", data);
+      if (response.status === 200){
+        
+        await handleSeatBoook();
+        
+      }
       console.log("Order saved successfully:", response.data);
       
     } catch (error) {
@@ -152,10 +159,10 @@ export default function OrderSummary() {
     try {
       const imageUrl = await uploadImage();
       if (imageUrl) {
-        await sendOrderToBackend(imageUrl);
-        await handleSeatBoook();
-        cartContext.resetOrder();
-        setShowThankYou(true); // Show the Thank You message
+        //await sendOrderToBackend(imageUrl);
+        //await handleSeatBoook();
+        //cartContext.resetOrder();
+        //setShowThankYou(true); 
       }
     } finally {
       setLoading(false); // Stop loading
