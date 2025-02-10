@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     // Upload the file to Cloudinary
     const result = await new Promise<CloudinaryUploadResult>((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: 'nextjs' },
+        { folder: 'nextjs'},
         (error, result) => {
           if (error) {
             console.error("Cloudinary upload error:", error);
