@@ -220,11 +220,11 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
             </div>
             <SheetFooter>
               <Button onClick={handleConfirm} className="text-secondary">
-                PURCHASE
+                Confirm Cart
               </Button>
               <SheetClose asChild>
                 <Button type="button" className="text-white mb-2 sm:mb-0">
-                  CONTINUE
+                  Select More
                 </Button>
               </SheetClose>
             </SheetFooter>
