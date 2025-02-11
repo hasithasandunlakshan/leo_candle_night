@@ -34,11 +34,11 @@ const drinks: FoodItem[] = [
 ];
 
 const foods: FoodItem[] = [
-  { id: 1, name: "Lamprais", price: 750, image: "/images/meals/Lamprais.jpg" },
+  { id: 1, name: "Lamprais fgdfdsfefdd", price: 750, image: "/images/meals/Lamprais.jpg" },
   { id: 2, name: "Chicken Kottu", price: 650, image: "/images/meals/chickenkottu.jpg" },
   { id: 3, name: "Vegetable Kottu", price: 550, image: "/images/meals/vegikootu.jpg" },
   { id: 4, name: "Cheese Kottu", price: 950, image: "/images/meals/cheesekottu.jpg" },
-  { id: 5, name: "Dosa & Curries", price: 700, image: "/images/meals/dosa.jpg" },
+  { id: 5, name: "Dosa(2 pcs) & Chicken Curries", price: 700, image: "/images/meals/dosa.jpg" },
   { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/Chickenbiriyani.jpg" },
   { id: 7, name: "Mutton", price: 1150, image: "/images/meals/mutton.jpg" },
 
