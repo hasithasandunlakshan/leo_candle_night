@@ -187,7 +187,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
               {cart.length === 0 ? (
                 <div className="text-black-500 font-bold">Your cart is empty.</div>
               ) : (
-                <ul className="max-h-96 overflow-y-scroll">
+                <ul className="max-h-72 overflow-y-scroll">
                   {cart.map((item) => (
                     <li
                       key={item.id}
