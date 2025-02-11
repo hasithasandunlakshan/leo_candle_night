@@ -85,7 +85,7 @@ export default function ContactPage() {
       role: "President",
       email: "darshikaprabhashwara@gmail.com",
       image: "/images/ContactUs/1.jpg",
-      contact:'0789084354'
+      contact:'+94789084354'
 
     },
     {
@@ -93,21 +93,21 @@ export default function ContactPage() {
       role: "Vice President",
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg",
-      contact:'0763183081'
+      contact:'+94763183081'
     },
     {
       name: "Suvini Nisansala",
       role: "Director of Peace, Religeous & Cultural affairs",
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg",
-      contact:'0766863345'
+      contact:'+94766863345'
     },
     {
       name: "Sanjalee Dasanayaka",
       role: "Chairman",
       email: "sanjaleedassanayake56@gmail.com",
       image: "/images/ContactUs/4.jpg",
-      contact:'0782871199'
+      contact:'+94782871199'
     },
   ];
 
