@@ -40,17 +40,18 @@ const foods: FoodItem[] = [
   { id: 2, name: "Chicken Kottu", price: 650, image: "/images/meals/chickenkottu.jpg", description: "" },
   { id: 3, name: "Vegetable Kottu", price: 550, image: "/images/meals/vegikootu.jpg", description: "" },
   { id: 4, name: "Cheese Kottu", price: 950, image: "/images/meals/cheesekottu.jpg", description: "" },
+  { id: 4, name: "Idiappam(15pcs)", price: 375, image: "/images/meals/indiappa.jpg", description: "" },
+
   { id: 5, name: "Dosa(2pcs) with Chicken Curry", price: 700, image: "/images/meals/dosa.jpg", description: "" },
   { id: 5, name: "Dosa(2pcs) with Fish Curry", price: 700, image: "/images/meals/dosa.jpg", description: "" },
   { id: 5, name: "Dosa(2pcs) with Sambaru", price: 700, image: "/images/meals/dosa.jpg", description: "" },
   { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/Chickenbiriyani.jpg", description: "Served with raita and a boiled egg" },
-  { id: 6, name: "Mutton Biriyani", price: 900, image: "/images/meals/muttonbiriyani.jpg", description: "Served with raita and a boiled egg" },
-  { id: 7, name: "Mutton", price: 1150, image: "/images/meals/mutton.jpg", description: "" },
+  { id: 6, name: "Mutton Biriyani", price: 1150, image: "/images/meals/muttonbiriyani.jpg", description: "Served with raita and a boiled egg" },
   { id: 8, name: "Nasi Goreng", price: 900, image: "/images/meals/nasiguran.jpg", description: "" },
   { id: 6, name: "Sausage Pizza(3 slices)", price: 850, image: "/images/meals/saupizza.jpg", description: "" },
-  { id: 12, name: "Pizza(2 pics)", price: 850, image: "/images/meals/pizza.jpg", description: "with chicken mini sub (6inch) " },
+  { id: 12, name: "Pizza(2 pics)", price: 1100, image: "/images/meals/pizza.jpg", description: "with chicken mini sub (6inch) " },
   { id: 10, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg", description: "" },
-  { id: 11, name: "Naan", price: 800, image: "/images/meals/naan.jpg", description: "Served with butter chicken and lentilcurry" },
+  { id: 11, name: "Naan(2pcs)", price: 800, image: "/images/meals/naan.jpg", description: "Served with butter chicken and lentilcurry" },
 ];
 
 const desserts: FoodItem[] = [
