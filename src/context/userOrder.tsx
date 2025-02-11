@@ -16,6 +16,7 @@ interface FoodItem {
   name: string;
   price: number;
   image: string;
+  description: string;
 }
 type Seat = {
 
