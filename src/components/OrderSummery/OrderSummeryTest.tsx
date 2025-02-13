@@ -21,7 +21,7 @@ export default function OrderSummaryTest() {
   }
 
   const { users, numOfSeat, seats, index } = cartContext;
-  console.log("cartContext user:", users);
+  //console.log("cartContext user:", users);
   const totalPrice = users.reduce((sum, user) => sum + (user.totalprice || 0), 0);
 
   interface User {

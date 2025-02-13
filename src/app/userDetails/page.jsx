@@ -16,7 +16,7 @@ export default function UserDetailsPage() {
     const onSave = async () => {
         try {
             const response = await axios.post("/api/userDetails/setUserDetails", user);
-            console.log("Data saved successfully:", response.data);
+            //console.log("Data saved successfully:", response.data);
         } catch (error) {
             console.error("Error saving user details:", error);
             alert("An error occurred while saving user details.");
@@ -27,7 +27,7 @@ export default function UserDetailsPage() {
         const fetchUserCount = async () => {
             try {
                 const response = await axios.get("/api/userDetails/getUserCount");
-                console.log("User count:", response.data.count);
+                //console.log("User count:", response.data.count);
                 setUserCount(response.data.count); // assuming response contains { count: number }
             } catch (error) {
                 console.error("Error fetching user count:", error);

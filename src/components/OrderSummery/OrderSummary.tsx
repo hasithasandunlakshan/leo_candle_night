@@ -23,7 +23,7 @@ export default function OrderSummary() {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("cartContext:", cartContext);
+    //console.log("cartContext:", cartContext);
   }, [cartContext]);
 
   if (!cartContext) {

@@ -8,9 +8,9 @@ export async function POST(request: NextRequest) {
   try {
     
     const reqBody = await request.json();
-    console.log("***********************")
+    //console.log("***********************")
     const { username, email, phoneNumber, faculty, indexNumber } = reqBody;
-    console.log(reqBody)
+    //console.log(reqBody)
 
     // Check if the paper already exists
     const existUser = await User.findOne({ indexNumber });

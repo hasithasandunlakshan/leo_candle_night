@@ -7,7 +7,7 @@ export default function page() {
     const onSave = async () => {
         try {
             const response = await axios.post("/api/addSeats");
-            console.log("Added successfully:", response.data);
+            //console.log("Added successfully:", response.data);
         } catch (error) {
             console.error("Error saving user details:", error);
             alert("An error occurred while saving user details.");

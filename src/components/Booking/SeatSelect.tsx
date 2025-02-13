@@ -32,7 +32,7 @@ export default function SeatSelect() {
     setSelectedSeat(seatNumber);
     useOrder?.setNumOfSeat(seatNumber); 
     // router.push("/bookseat/users");
-    console.log("kkkkkkkkkkk",useOrder?.numOfSeat)
+    //console.log("kkkkkkkkkkk",useOrder?.numOfSeat)
  
   }
 
