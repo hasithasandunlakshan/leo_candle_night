@@ -3,6 +3,7 @@ import { CgCalendarDates } from "react-icons/cg";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdAccessTime } from "react-icons/md";
 import { motion } from 'framer-motion';
+import { Over_the_Rainbow } from "next/font/google";
 export default function Details() {
   return (
     <div className=' min-h-screen   items-center flex justify-center  flex-col h-full'>
@@ -35,13 +36,14 @@ export const projects = [
     description:
       "February 24",
     icon:  <CgCalendarDates/>
-    
+   , other: "Monday"
 
   },
   {
     title: "Location ",
     description:
       "Old Gymnasium",
+    other:"University Of Moratuwa",
 
     icon:<FaLocationDot/>
 
@@ -50,7 +52,7 @@ export const projects = [
     title: "Time",
     description:
       "6.00 P.M. Onwards",
-      icon:<MdAccessTime/>
+      icon:<MdAccessTime/>,
 
   },
 

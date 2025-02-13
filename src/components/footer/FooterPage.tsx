@@ -22,7 +22,9 @@ const Footer = () => {
           </p>
           
           <p className="text-sm md:text-base">
-            <b>Address:</b> Leo Club of University of Moratuwa,
+            <b>Address:</b><br/> Leo Club of University of Moratuwa,
+            <br />
+            <b>University of Moratuwa</b>
             <br />
             Katubadda.
             

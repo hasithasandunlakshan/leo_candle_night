@@ -10,6 +10,7 @@ export const HoverEffect = ({
     title: string;
     description: string;
     icon?: JSX.Element;
+    other?: string;
   }[];
   className?: string;
 }) => {
@@ -35,6 +36,8 @@ export const HoverEffect = ({
           <span className="text-7xl text-white">{item.icon}</span>
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
+            {item.other &&
+            <h1 className="font-normal my-1 text-2xl">{item.other}</h1>}
      
     </GlareCard>
         </motion.div>
