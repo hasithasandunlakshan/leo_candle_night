@@ -8,6 +8,7 @@ interface Person {
   role: string;
   email: string;
   image: string;
+  contact:string;
 
 }
 
@@ -46,7 +47,7 @@ const ContactCard = ({ person, index }: { person: Person; index: number }) => (
               className="rounded-full object-cover"
             />
           </motion.div>
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col flex-1 items-center md:justify-start  md:items-start justify-center">
             <h1 className="py-2 text-xl sm:text-4xl text-white font-bold text-center sm:text-left">
               {person.name}
             </h1>
@@ -60,12 +61,12 @@ const ContactCard = ({ person, index }: { person: Person; index: number }) => (
 
 
             <a
-      //href={`https://wa.me/${person.contact.replace(/\D/g, "")}`}
+      href={`https://wa.me/${person.contact.replace(/\D/g, "")}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-slate-500 hover:text-secondary"
+      className="text-slate-100 hover:text-secondary"
     >
-  
+  {person.contact}
     </a>
               
     
@@ -86,7 +87,7 @@ export default function ContactPage() {
       email: "darshikaprabhashwara@gmail.com",
       image: "/images/ContactUs/1.jpg",
 
-      contact:'+94789084354'
+      contact:'0789084354'
 
 
       
@@ -98,7 +99,7 @@ export default function ContactPage() {
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg",
 
-      contact:'+94763183081'
+      contact:'0763183081'
 
     },
     {
@@ -107,7 +108,7 @@ export default function ContactPage() {
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg",
 
-      contact:'+94766863345'
+      contact:'0766863345'
 
     },
     {
@@ -116,7 +117,7 @@ export default function ContactPage() {
       email: "sanjaleedassanayake56@gmail.com",
       image: "/images/ContactUs/4.jpg",
 
-      contact:'+94782871199'
+      contact:'0782871199'
 
     },
   ];
