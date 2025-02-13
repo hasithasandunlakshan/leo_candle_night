@@ -51,10 +51,17 @@ const ContactCard = ({ person, index }: { person: Person; index: number }) => (
             <h1 className="py-2 text-xl sm:text-4xl text-white font-bold text-center sm:text-left">
               {person.name}
             </h1>
-            <p className="leading-7 text-white font-semibold text-center sm:text-left">
+            <p className="leading-5 text-white font-medium text-center sm:text-left">
               {person.role}
             </p>
-            <p className="text-sm leading-7 text-slate-300 text-center sm:text-left">
+            <p className="leading-5 text-white font-medium text-center sm:text-left">
+         
+            Leo Club of University of Moratuwa
+            </p>
+            <p className="leading-5 my-1 text-white font-medium text-center sm:text-left">
+             2024/25
+            </p>
+            <p className="text-sm leading-7 text-slate-100 text-center sm:text-left">
               {person.email}
             </p>
             <p className="text-sm leading-7 text-slate-300 text-center sm:text-left flex items-center gap-2">
@@ -83,7 +90,7 @@ export default function ContactPage() {
   const teamMembers = [
     {
       name: "Darshika Prabhashwara",
-      role: "President, Leo Club of University of Moratuwa 24/25",
+      role: "President",
       email: "darshikaprabhashwara@gmail.com",
       image: "/images/ContactUs/1.jpg",
 
@@ -95,7 +102,7 @@ export default function ContactPage() {
     },
     {
       name: "Hasitha Dhananjaya",
-      role: "Vice President, Leo Club of University of Moratuwa 24/25",
+      role: "Vice President,  ",
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg",
 
@@ -104,7 +111,7 @@ export default function ContactPage() {
     },
     {
       name: "Suvini Nisansala",
-      role: "Director of Peace, Religeous & Cultural affairs, Leo Club of University of Moratuwa 24/25",
+      role: "Director of Peace, Religeous & Cultural affairs",
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg",
 
@@ -113,7 +120,7 @@ export default function ContactPage() {
     },
     {
       name: "Sanjalee Dasanayaka",
-      role: "Chairman, Celestia 2025",
+      role: "Project Chairman, Celestia'25",
       email: "sanjaleedassanayake56@gmail.com",
       image: "/images/ContactUs/4.jpg",
 
