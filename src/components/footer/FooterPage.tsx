@@ -29,7 +29,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Follow Us Section */}
+        
         <div className="w-full md:w-1/2 p-4">
           <h3 className="text-lg md:text-xl mb-4 font-bold">Follow Us</h3>
           <ul className="flex space-x-4 mb-4">
