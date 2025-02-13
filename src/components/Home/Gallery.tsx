@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { ShuffleGrid } from './Test'
+
 
 export default function Gallery() {
   return (
@@ -20,7 +20,7 @@ export default function Gallery() {
         </div>
 
 <div className="md:grid hidden  w-[80%] grid-cols-1">
-        <ShuffleGrid/>
+  
     
 </div>
         {/* <div className="grid md:hidden grid-cols-2 md:grid-cols-4 w-[80%] gap-4">
