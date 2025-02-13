@@ -83,7 +83,7 @@ export default function ContactPage() {
   const teamMembers = [
     {
       name: "Darshika Prabhashwara",
-      role: "Club President, Leo Club of University of Moratuwa",
+      role: "President, Leo Club of University of Moratuwa",
       email: "darshikaprabhashwara@gmail.com",
       image: "/images/ContactUs/1.jpg",
 
