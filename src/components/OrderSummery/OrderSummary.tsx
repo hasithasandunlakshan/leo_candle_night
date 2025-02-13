@@ -243,7 +243,7 @@ export default function OrderSummary() {
               </div>
 
               <div className="space-y-4">
-                <p className="text-sm text-gray-400">Please upload the payment slip with your index number written on it</p>
+                <p className="text-sm text-gray-400">Please upload the payment slip with your NIC number written on it</p>
                 <p className="text-lg text-white">Bank Details</p>
                 <p className="text-sm text-white">Name - Lakshan Pradeep,</p>
                 <p className="text-sm text-white">Account Number - 0090298788</p>
