@@ -34,11 +34,9 @@ const Footer = () => {
           <p className="text-sm md:text-base">
             <b>Address:</b> Leo Club of University of Moratuwa,
             <br />
-            Bandaranayake Mv,
+            University of Moratuwa,
             <br />
-            Moratuwa,
-            <br />
-            Sri Lanka
+            Katubedda. 
           </p>
         </div>
 
