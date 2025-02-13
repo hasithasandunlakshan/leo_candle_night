@@ -95,7 +95,7 @@ export default function ContactPage() {
     },
     {
       name: "Hasitha Dhananjaya",
-      role: "Vice President, Leo Club of University of Moratuwa",
+      role: "Vice President, Leo Club of University of Moratuwa 24/25",
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg",
 
@@ -104,7 +104,7 @@ export default function ContactPage() {
     },
     {
       name: "Suvini Nisansala",
-      role: "Director of Peace, Religeous & Cultural affairs, Leo Club of University of Moratuwa",
+      role: "Director of Peace, Religeous & Cultural affairs, Leo Club of University of Moratuwa 24/25",
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg",
 
