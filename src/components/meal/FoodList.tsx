@@ -29,7 +29,7 @@ interface FoodItem {
 const drinks: FoodItem[] = [
   { id: 15, name: "Welcome Drink", price: 200, image: "/images/meals/welcomedrink.jpg", description: "" },
   { id: 11, name: "Falooda", price: 300, image: "/images/meals/falooda.jpg", description: "" },
-  { id: 12, name: "Chocolate Milkshake", price: 350, image: "/images/meals/milkshake.jpg", description: "" },
+  { id: 12, name: "Chocolate Milkshake", price: 350, image: "/images/meals/milkshake.jpeg", description: "" },
   { id: 13, name: "Coke", price: 200, image: "/images/meals/coke.jpg", description: "" },
   { id: 14, name: "Sprite", price: 200, image: "/images/meals/sprite.jpg", description: "" },
 ];
