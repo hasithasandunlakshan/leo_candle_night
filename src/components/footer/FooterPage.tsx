@@ -20,27 +20,18 @@ const Footer = () => {
               <span className="text-white cursor-pointer">uomleoclub@gmail.com</span>
             </Link>
           </p>
-          <p className="mb-2 font-bold text-sm md:text-base">
-            Phone:{" "}
-            <a
-              href="https://wa.me/94702162942"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white"
-            >
-              0702162942
-            </a>
-          </p>
+          
           <p className="text-sm md:text-base">
-            <b>Address:</b> Leo Club of University of Moratuwa,
+            <b>Address:</b><br/> Leo Club of University of Moratuwa,
             <br />
-            University of Moratuwa,
+            <b>University of Moratuwa</b>
             <br />
-            Katubedda. 
+            Katubadda.
+            
           </p>
         </div>
 
-        {/* Follow Us Section */}
+        
         <div className="w-full md:w-1/2 p-4">
           <h3 className="text-lg md:text-xl mb-4 font-bold">Follow Us</h3>
           <ul className="flex space-x-4 mb-4">

@@ -8,7 +8,7 @@ connect();
 export async function GET(request: NextRequest) {
   try {
     const count = await User.countDocuments({});
-    console.log('Total number of users:', count);
+    //console.log('Total number of users:', count);
 
     return NextResponse.json({
       success: true,

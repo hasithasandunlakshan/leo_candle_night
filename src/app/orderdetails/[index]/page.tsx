@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { index: string } }) {
         setUserDetails(response.data.users);
         setUserDetailsSeats(response.data.seats);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
         alert("Cannot fetch data");
       }
     };

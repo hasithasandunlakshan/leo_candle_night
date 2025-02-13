@@ -17,7 +17,7 @@ async function populateSeats() {
 
   try {
     // await Seat.insertMany(seats);
-    console.log('Successfully inserted seats into database');
+    //console.log('Successfully inserted seats into database');
   } catch (error) {
     console.error('Error inserting seats:', error);
   }

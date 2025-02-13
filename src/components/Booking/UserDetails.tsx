@@ -136,8 +136,8 @@ export function UserDetails() {
       ),
     });
 
-    console.log("Submitted food list:", foodList);
-    console.log("Total Price:", totalPrice);
+    //console.log("Submitted food list:", foodList);
+    //console.log("Total Price:", totalPrice);
 
     useOrder?.addUser(data);
 

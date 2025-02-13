@@ -85,7 +85,9 @@ export default function ContactPage() {
       role: "Club President, Leo Club of University of Moratuwa",
       email: "darshikaprabhashwara@gmail.com",
       image: "/images/ContactUs/1.jpg",
-      
+
+      contact:'+94789084354'
+
 
       
   
@@ -95,21 +97,27 @@ export default function ContactPage() {
       role: "Vice President, Leo Club of University of Moratuwa",
       email: "hasithadhananjaya2020@gmail.com",
       image: "/images/ContactUs/2.jpg",
-    
+
+      contact:'+94763183081'
+
     },
     {
       name: "Suvini Nisansala",
       role: "Director of Peace, Religeous & Cultural affairs, Leo Club of University of Moratuwa",
       email: "suvininiyagama2002@gmail.com",
       image: "/images/ContactUs/3.jpg",
- 
+
+      contact:'+94766863345'
+
     },
     {
       name: "Sanjalee Dasanayaka",
       role: "Chairman, Celestia 2025",
       email: "sanjaleedassanayake56@gmail.com",
       image: "/images/ContactUs/4.jpg",
-    
+
+      contact:'+94782871199'
+
     },
   ];
 

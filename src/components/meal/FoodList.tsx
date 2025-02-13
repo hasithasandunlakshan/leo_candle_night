@@ -23,43 +23,45 @@ interface FoodItem {
   name: string;
   price: number;
   image: string;
+  description: string;    
 }
 
 const drinks: FoodItem[] = [
-  { id: 15, name: "Welcome Drink", price: 200, image: "/images/meals/welcomedrink.jpg" },
-  { id: 11, name: "Falooda", price: 300, image: "/images/meals/falooda.jpg" },
-  { id: 12, name: "Chocolate Milkshake", price: 350, image: "/images/meals/milkshake.jpg" },
-  { id: 13, name: "Coke", price: 200, image: "/images/meals/coke.jpg" },
-  { id: 14, name: "Sprite", price: 200, image: "/images/meals/sprite.jpg" },
-
+  { id: 15, name: "Welcome Drink", price: 200, image: "/images/meals/welcomedrink.jpg", description: "" },
+  { id: 11, name: "Falooda", price: 300, image: "/images/meals/falooda.jpg", description: "" },
+  { id: 12, name: "Chocolate Milkshake", price: 350, image: "/images/meals/milkshake.jpg", description: "" },
+  { id: 13, name: "Coke", price: 200, image: "/images/meals/coke.jpg", description: "" },
+  { id: 14, name: "Sprite", price: 200, image: "/images/meals/sprite.jpg", description: "" },
 ];
 
 const foods: FoodItem[] = [
-  { id: 1, name: "Lamprais", price: 750, image: "/images/meals/Lamprais.jpg" },
-  { id: 2, name: "Chicken Kottu", price: 650, image: "/images/meals/chickenkottu.jpg" },
-  { id: 3, name: "Vegetable Kottu", price: 550, image: "/images/meals/vegikootu.jpg" },
-  { id: 4, name: "Cheese Kottu", price: 950, image: "/images/meals/cheesekottu.jpg" },
-  { id: 5, name: "Dosa & Curries", price: 700, image: "/images/meals/dosa.jpg" },
-  { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/Chickenbiriyani.jpg" },
-  { id: 7, name: "Mutton", price: 1150, image: "/images/meals/mutton.jpg" },
+  { id: 1, name: "Chicken Lamprais", price: 750, image: "/images/meals/Lamprais.jpg", description: "Served with lentil curry,potato curry ,egg plant pickle ,chillipaste ,papadam" },
+  { id: 8, name: "Fish Lamprais", price: 750, image: "/images/meals/fishlamp.jpg", description: "Served with lentil curry,potato curry ,egg plant pickle ,chillipaste ,papadam" },
+  { id: 2, name: "Chicken Kottu", price: 650, image: "/images/meals/chickenkottu.jpg", description: "" },
+  { id: 3, name: "Vegetable Kottu", price: 550, image: "/images/meals/vegikootu.jpg", description: "" },
+  { id: 4, name: "Cheese Kottu", price: 950, image: "/images/meals/cheesekottu.jpg", description: "" },
+  { id: 4, name: "Idiappam(15pcs)", price: 375, image: "/images/meals/indiappa.jpg", description: "" },
 
-  { id: 8, name: "Nasi Goreng", price: 900, image: "/images/meals/nasiguran.jpg" },
-  { id: 6, name: "Sausage Pizza(3 slices)", price: 850, image: "/images/meals/Chickenbiriyani.jpg" },
-
-  { id: 10, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg" },
-  { id: 11, name: "Naan", price: 800, image: "/images/meals/naan.jpg" },
+  { id: 5, name: "Dosa(2pcs) with Chicken Curry", price: 700, image: "/images/meals/dosa.jpg", description: "" },
+  { id: 5, name: "Dosa(2pcs) with Fish Curry", price: 700, image: "/images/meals/dosa.jpg", description: "" },
+  { id: 5, name: "Dosa(2pcs) with Sambaru", price: 700, image: "/images/meals/dosa.jpg", description: "" },
+  { id: 6, name: "Chicken Biriyani", price: 900, image: "/images/meals/Chickenbiriyani.jpg", description: "Served with raita and a boiled egg" },
+  { id: 6, name: "Mutton Biriyani", price: 1150, image: "/images/meals/muttonbiriyani.jpg", description: "Served with raita and a boiled egg" },
+  { id: 8, name: "Nasi Goreng", price: 900, image: "/images/meals/nasiguran.jpg", description: "" },
+  { id: 6, name: "Sausage Pizza(3 slices)", price: 850, image: "/images/meals/saupizza.jpg", description: "" },
+  { id: 12, name: "Pizza(2 pics)", price: 1100, image: "/images/meals/pizza.jpg", description: "with chicken mini sub (6inch) " },
+  { id: 10, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg", description: "" },
+  { id: 11, name: "Naan(2pcs)", price: 800, image: "/images/meals/naan.jpg", description: "Served with butter chicken and lentilcurry" },
 ];
 
 const desserts: FoodItem[] = [
-  { id: 17, name: "Biscuit Pudding", price: 250, image: "/images/meals/pudding.jpg" },
-  { id: 18, name: "Vanilla Ice Cream", price: 150, image: "/images/meals/vice.jpg" },
-  { id: 19, name: "Chocolate Ice Cream", price: 170, image: "/images/meals/cice.jpg" },
-  { id: 20, name: "Kesari", price: 350, image: "/images/meals/kesari.jpg" },
-  { id: 20, name: "Kaum", price: 90, image: "/images/meals/Kaum.jpg" },
-
-  { id: 20, name: "Kokis", price: 40, image: "/images/meals/Kokis.jpg" },
-  { id: 20, name: "Kiri Pani", price: 200, image: "/images/meals/KiriPani.jpg" },
-
+  { id: 17, name: "Biscuit Pudding", price: 250, image: "/images/meals/pudding.jpg", description: "" },
+  { id: 18, name: "Vanilla Ice Cream", price: 150, image: "/images/meals/vice.jpg", description: "" },
+  { id: 19, name: "Chocolate Ice Cream", price: 170, image: "/images/meals/cice.jpg", description: "" },
+  { id: 20, name: "Kesari", price: 350, image: "/images/meals/kesari.jpg", description: "" },
+  { id: 20, name: "Kaum", price: 90, image: "/images/meals/Kaum.jpg", description: "" },
+  { id: 20, name: "Kokis", price: 40, image: "/images/meals/Kokis.jpg", description: "" },
+  { id: 20, name: "Kiri Pani", price: 200, image: "/images/meals/KiriPani.jpg", description: "" },
 ];
 
 interface FoodListProps {
@@ -186,7 +188,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
               {cart.length === 0 ? (
                 <div className="text-black-500 font-bold">Your cart is empty.</div>
               ) : (
-                <ul className="max-h-96 overflow-y-scroll">
+                <ul className="max-h-72 overflow-y-scroll">
                   {cart.map((item) => (
                     <li
                       key={item.id}
