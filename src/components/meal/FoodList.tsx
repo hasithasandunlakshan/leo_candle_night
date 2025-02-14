@@ -185,15 +185,61 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
 </SheetDescription>
             </SheetHeader>
             <div className="grid gap-4 py-4 ">
+              
+                              <li
+                    className="flex justify-between my-2 w-full bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
+                  >
+                    <div className="flex w-[80%] gap-2">
+                      <Image
+                        src="/images/meals/welcomedrink.jpg"
+                        width={50}
+                        height={20}
+                        alt="Welcome"
+                        className="rounded-xl max-h-32"
+                      />
+                      <span>
+                        Welcome Drink <br /> RS: 0.00
+                      </span>
+                    </div>
+                    {/* <MdDelete
+                      className="text-red-600 text-xl cursor-pointer hover:scale-110 transition-all duration-150"
+                      onClick={() => handleRemoveFromCart(0)} // Set a dummy ID (0) since item.id is removed
+                    /> */}
+                  </li>
+                  <li
+                    className="flex justify-between my-2 w-full bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
+                  >
+                    <div className="flex w-[80%] gap-2">
+                      <Image
+                        src="/images/meals/entry.jpg"
+                        width={50}
+                        height={20}
+                        alt="Welcome"
+                        className="rounded-xl max-h-32"
+                      />
+                      <span>
+                        Entrace Fee <br /> RS: 0.00
+                      </span>
+                    </div>
+                    {/* <MdDelete
+                      className="text-red-600 text-xl cursor-pointer hover:scale-110 transition-all duration-150"
+                      onClick={() => handleRemoveFromCart(0)} // Set a dummy ID (0) since item.id is removed
+                    /> */}
+                  </li>
+
+
+
               {cart.length === 0 ? (
                 <div className="text-black-500 font-bold">Your cart is empty.</div>
               ) : (
                 <ul className="max-h-72 overflow-y-scroll">
+                  
                   {cart.map((item) => (
                     <li
                       key={item.id}
                       className="flex justify-between my-2 w-full   bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
                     >
+                      
                       <div className="flex w-[80%] gap-2">
                         <Image
                           src={item.image}
