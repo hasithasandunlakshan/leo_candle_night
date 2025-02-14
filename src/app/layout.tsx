@@ -6,7 +6,7 @@
  import Navbar from "@/components/Nav/Navbar";
  import { CartContextProvider } from "@/context/userOrder";
 import Logo from "@/components/Nav/Logo";
-
+import { Analytics } from "@vercel/analytics/react"
 
  const poppins = Poppins({
    subsets: ["latin"],
@@ -69,7 +69,7 @@ import Logo from "@/components/Nav/Logo";
            <Navbar />
             <Logo/>
              {children}
-    
+    <Analytics />
              <Toaster />
           
            </CartContextProvider>

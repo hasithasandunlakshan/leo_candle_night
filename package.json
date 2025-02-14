@@ -27,6 +27,7 @@
         "@studio-freight/react-lenis": "^0.0.47",
         "@tabler/icons-react": "^3.17.0",
         "@tsparticles/react": "^3.0.0",
+        "@vercel/analytics": "^1.5.0",
         "axios": "^1.7.7",
         "axos": "^0.0.1",
         "chrome-aws-lambda": "^10.1.0",
