@@ -186,7 +186,7 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
             </SheetHeader>
             <div className="grid gap-4 py-4 ">
               
-                              <li
+                              {/* <li
                     className="flex justify-between my-2 w-full bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
                   >
                     <div className="flex w-[80%] gap-2">
@@ -201,12 +201,12 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
                         Welcome Drink <br /> RS: 0.00
                       </span>
                     </div>
-                    {/* <MdDelete
+                    <MdDelete
                       className="text-red-600 text-xl cursor-pointer hover:scale-110 transition-all duration-150"
                       onClick={() => handleRemoveFromCart(0)} // Set a dummy ID (0) since item.id is removed
-                    /> */}
-                  </li>
-                  <li
+                    />
+                  </li> */}
+                  {/* <li
                     className="flex justify-between my-2 w-full bg-gray-800/80 p-2 rounded-xl text-sm sm:text-lg text-gray-200 items-center align-middle"
                   >
                     <div className="flex w-[80%] gap-2">
@@ -221,11 +221,11 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
                         Entrace Fee <br /> RS: 0.00
                       </span>
                     </div>
-                    {/* <MdDelete
+                    <MdDelete
                       className="text-red-600 text-xl cursor-pointer hover:scale-110 transition-all duration-150"
                       onClick={() => handleRemoveFromCart(0)} // Set a dummy ID (0) since item.id is removed
-                    /> */}
-                  </li>
+                    />
+                  </li> */}
 
 
 
@@ -260,11 +260,21 @@ const FoodList: React.FC<FoodListProps> = ({ FinalFood }) => {
                   ))}
                 </ul>
               )}
-              {cart.length > 0 && (
-                <div className="font-bold text-white">
-                  Total: RS: {totalPrice.toFixed(2)}
-                </div>
-              )}
+            {cart.length > 0 && (
+        <div className="space-y-2">
+          <div className="text-sm text-gray-300 flex justify-between items-center">
+            <span>Welcome Drink</span>
+            <span className="text-secondary">Free</span>
+          </div>
+          <div className="text-sm text-gray-300 flex justify-between items-center">
+            <span>Entrance</span>
+            <span className="text-secondary">Free</span>
+          </div>
+          <div className="font-bold text-white">
+            Total: RS {totalPrice.toFixed(2)}
+          </div>
+        </div>
+      )}
             </div>
             <SheetFooter>
               <Button onClick={handleConfirm} className="text-secondary">

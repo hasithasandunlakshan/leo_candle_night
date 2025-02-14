@@ -237,19 +237,36 @@ export default function OrderSummary() {
             </div>
 
             <div className="bg-gray-800/50 p-6 rounded-xl">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-secondary font-semibold">Payment Details</h3>
-                <p className="text-2xl font-bold text-white">RS {totalPrice}.00</p>
-              </div>
+            <div className=" bg-gray-800/60 p-4  rounded-xl">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-secondary font-extrabold">Payment Details</h3>
+        <p className=""></p>
+      </div>
+      
+      <div className="flex justify-between items-center text-sm text-gray-300">
+        <span className="text-lg font-semibold">Welcome Drink</span>
+        <span className="text-xl font-bold text-white">Free</span>
+      </div>
+      
+      <div className="flex justify-between items-center text-sm text-gray-300">
+        <span className="text-lg font-semibold">Entrance</span>
+        <span className="text-xl font-bold text-white">Free</span>
+      </div>
+      <div className="flex justify-between items-center text-sm mt-5 text-gray-300">
+      <h3 className="text-secondary text-2xl font-extrabold">Total</h3>
+        <span className="text-2xl font-bold text-white">RS {totalPrice}.00</span>
+      </div>
+    </div>
 
-              <div className="space-y-4">
+
+              <div className="space-y-1 my-6 bg-gray-800/60 p-4 rounded-xl">
                 <p className="text-sm text-gray-400">Please upload the payment slip with your NIC number written on it</p>
-                <p className="text-lg text-white">Bank Details</p>
+                <p className="text-lg text-white mt-2">Bank Details</p>
                 <p className="text-sm text-white">Name - Lakshan Pradeep,</p>
                 <p className="text-sm text-white">Account Number - 0090298788</p>
                 <p className="text-sm text-white">Bank - BOC</p>
-                <p className="text-sm text-white">Branch - KATUBEDDA CAMPUS [631]</p>
-                <div className="flex flex-col sm:flex-row gap-4">
+                <p className="text-sm text-white ">Branch - KATUBEDDA CAMPUS [631]</p>
+                <div className="flex flex-col sm:flex-row gap-4 my-6 ">
                   <input
                     type="file"
                     ref={fileInputRef}
@@ -258,7 +275,7 @@ export default function OrderSummary() {
                   />
                   <button
                     onClick={triggerFileInput}
-                    className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 transition-colors"
+                    className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/80 mt-6 transition-colors"
                   >
                     Upload Slip
                   </button>
