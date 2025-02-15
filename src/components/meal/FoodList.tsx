@@ -51,7 +51,7 @@ const foods: FoodItem[] = [
   { id: 6, name: "Sausage Pizza(3 slices)", price: 850, image: "/images/meals/saupizza.jpg", description: "" },
   { id: 12, name: "Pizza(2 pics)", price: 1100, image: "/images/meals/pizza.jpg", description: "with chicken mini sub (6inch) " },
   { id: 10, name: "Pasta", price: 900, image: "/images/meals/pasta.jpg", description: "" },
-  { id: 11, name: "Naan(2pcs)", price: 800, image: "/images/meals/naan.jpg", description: "Served with butter chicken and lentilcurry" },
+  { id: 11, name: "Naan(2pcs)", price: 800, image: "/images/meals/wat.jpeg", description: "Served with butter chicken and lentilcurry" },
 ];
 
 const desserts: FoodItem[] = [
@@ -62,6 +62,7 @@ const desserts: FoodItem[] = [
   { id: 20, name: "Kaum", price: 90, image: "/images/meals/Kaum.jpg", description: "" },
   { id: 20, name: "Kokis", price: 40, image: "/images/meals/Kokis.jpg", description: "" },
   { id: 20, name: "Kiri Pani", price: 200, image: "/images/meals/KiriPani.jpg", description: "" },
+  { id: 21, name: "Watalappan", price: 200, image: "/images/meals/KiriPani.jpg", description: "" },
 ];
 
 interface FoodListProps {
