@@ -166,7 +166,37 @@ export default function OrderSummary() {
   if (loading) {
     return <ProcessingOrder />;
   }
-
+  if (!seats || !seats.seatNumber) {
+    return (
+      <div className="min-h-screen bg-primary flex items-center justify-center px-4">
+      <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-md w-full text-center shadow-xl border border-gray-800">
+        <div className="mb-6">
+          <svg 
+            className="w-16 h-16 mx-auto text-secondary" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth="2" 
+              d="M19 13C19 14.6569 17.6569 16 16 16H8C6.34315 16 5 14.6569 5 13M19 13V11C19 9.34315 17.6569 8 16 8H8C6.34315 8 5 9.34315 5 11V13M19 13L19 17C19 18.6569 17.6569 20 16 20H8C6.34315 20 5 18.6569 5 17L5 13M12 4C10.3431 4 9 5.34315 9 7C9 8.65685 10.3431 10 12 10C13.6569 10 15 8.65685 15 7C15 5.34315 13.6569 4 12 4Z"
+            />
+          </svg>
+        </div>
+        <h1 className="text-3xl font-bold text-white mb-4">No Seat Selected</h1>
+        <p className="text-gray-400 mb-8">Please select a seat to continue with your order.</p>
+        <button 
+          onClick={()=>router.push("/bookseat")}
+          className="px-8 py-3 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/80 transition-colors duration-300 shadow-lg hover:shadow-secondary/20"
+        >
+          Go Back to Seat Selection
+        </button>
+      </div>
+    </div>
+    );
+  }
   if (showThankYou) {
     return (
       <div className="min-h-screen bg-primary flex items-center justify-center flex-col">
