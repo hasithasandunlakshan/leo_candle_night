@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     if (user?.email) {
       const sender = { name: "Celestia'25", address: process.env.EMAIL_SENDER as string };
       const subject = "Order Placed Successfully";
-      const orderDetailsURL = `https://leo-candle-night.vercel.app/orderdetails/${user.index}`;
+      const orderDetailsURL = `https://celestia.uomleos.org/orderdetails/${user.index}`;
     
       const message = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background-color: #001f3f; color: white; padding: 20px; border-radius: 10px; border: 2px solid #FFD700;">
