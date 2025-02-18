@@ -166,7 +166,32 @@ export default function OrderSummary() {
   if (loading) {
     return <ProcessingOrder />;
   }
-  if (!seats || !seats.seatNumber) {
+
+  if (showThankYou) {
+    return (
+      <div className="min-h-screen bg-primary flex items-center justify-center flex-col">
+        <div className="bg-gray-900/50 p-16 rounded-2xl backdrop-blur-sm max-w-md w-full">
+          <div className="text-center">
+            <div className="w-20 h-20 bg-green-500/20 rounded-full mx-auto flex items-center justify-center mb-6">
+              <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-4">Payment Complete!</h2>
+            <p className="text-gray-300 mb-8">Thank you for your order. Your payment has been processed successfully.</p>
+            <a href="/orderdetails" className="text-secondary">VIEW ORDER DETAILS</a>
+            <button
+              onClick={() => router.push("/")}
+              className="px-8 py-2 bg-secondary mt-4 text-white rounded-lg font-medium hover:bg-secondary/80 transition-colors"
+            >
+              Return Home
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  else if (!seats || !seats.seatNumber) {
     return (
       <div className="min-h-screen bg-primary flex items-center justify-center px-4">
       <div className="bg-gray-900/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 max-w-md w-full text-center shadow-xl border border-gray-800">
@@ -197,31 +222,6 @@ export default function OrderSummary() {
     </div>
     );
   }
-  if (showThankYou) {
-    return (
-      <div className="min-h-screen bg-primary flex items-center justify-center flex-col">
-        <div className="bg-gray-900/50 p-16 rounded-2xl backdrop-blur-sm max-w-md w-full">
-          <div className="text-center">
-            <div className="w-20 h-20 bg-green-500/20 rounded-full mx-auto flex items-center justify-center mb-6">
-              <svg className="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-              </svg>
-            </div>
-            <h2 className="text-3xl font-bold text-white mb-4">Payment Complete!</h2>
-            <p className="text-gray-300 mb-8">Thank you for your order. Your payment has been processed successfully.</p>
-            <a href="/orderdetails" className="text-secondary">VIEW ORDER DETAILS</a>
-            <button
-              onClick={() => router.push("/")}
-              className="px-8 py-2 bg-secondary mt-4 text-white rounded-lg font-medium hover:bg-secondary/80 transition-colors"
-            >
-              Return Home
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-primary py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
